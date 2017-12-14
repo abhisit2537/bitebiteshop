@@ -1,7 +1,19 @@
 <ion-tabs>
-    <ion-tab [root]="shopRoot" tabTitle="Shop" tabIcon="information-circle"></ion-tab>
-    <ion-tab [root]="bikerRoot" tabTitle="Biker" tabIcon="information-circle"></ion-tab>
-    <ion-tab [root]="orderRoot" tabTitle="Order" tabIcon="information-circle"></ion-tab>
-    <ion-tab [root]="statusRoot" tabTitle="Status" tabIcon="information-circle"></ion-tab>
-    <ion-tab [root]="moreRoot" tabTitle="More" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="shopRoot" tabTitle="Shop" tabIcon="icon-e-myshop"></ion-tab>
+    <ion-tab [root]="bikerRoot" tabTitle="Biker" tabIcon="icon-e-biker"></ion-tab>
+    <!-- <ion-tab [root]="orderRoot" tabTitle="Order" tabIcon="information-circle"></ion-tab> -->
+
+    <ion-tab [root]="orderRoot" tabTitle="" tabIcon=""></ion-tab>
+    <ion-fab bottom center no-margin style="bottom:-0.3%;">
+      <button ion-fab no-padding no-margin style="width:75px; height:75px;  background-color:#fee02b" (click)="tabAddAddress()">
+        <img no-padding src="./assets/fab.png">
+      </button>
+    </ion-fab>
+
+
+    <ion-tab [root]="statusRoot" tabTitle="Status" tabIcon="icon-e-status"></ion-tab>
+    <ion-tab [root]="moreRoot" tabTitle="More" tabIcon="icon-e-more"></ion-tab>
+
+
+   
 </ion-tabs>
