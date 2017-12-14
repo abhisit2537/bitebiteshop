@@ -13,4 +13,16 @@ page-tabnav {
         margin-right: -50% !important;
         transform: translate(-50%, -0%) !important;
       }
+    //   .tabs-ios .tabbar {
+    //     -webkit-box-pack: center;
+    //     -webkit-justify-content: center;
+    //     -ms-flex-pack: center;
+    //     justify-content: center;
+    //     border-top: 0.55px solid rgba(0, 0, 0, 0.3);
+    //     background: red;
+    // }
+}
+.fab-ios {
+    color: #fff;
+    background-color: #b3222f;
 }

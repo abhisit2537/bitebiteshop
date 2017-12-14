@@ -46,6 +46,8 @@ $val) {
 '\e901');
 @include makeIcon(icon-e-myshop,
 '\e902');
+@include makeIcon(icon-e-order,
+'\e903');
 @include makeIcon(icon-e-status,
 '\e904');
 [class^="icon-e"],
@@ -86,7 +88,7 @@ $val) {
 
 .icon-e-order:before {
     content: "\e903";
-    color: #ED3740;
+    color: white;
     font-size: 84px;
 }
 
