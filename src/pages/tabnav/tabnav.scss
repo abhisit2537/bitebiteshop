@@ -8,6 +8,7 @@ page-tabnav {
         object-fit: cover;
       }
       ion-fab[center] {
+          height: 92px;
         margin-left: 0px !important;
         left: 50% !important;
         margin-right: -50% !important;
@@ -25,4 +26,7 @@ page-tabnav {
 .fab-ios {
     color: #fff;
     background-color: #b3222f;
+}
+.fabnamecen{
+    margin-top: 20px;
 }
