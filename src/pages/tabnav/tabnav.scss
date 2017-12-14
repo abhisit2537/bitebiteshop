@@ -1,4 +1,31 @@
 page-tabnav {
+    .tabs-ios .tab-button[aria-selected=true] {
+        color: #fff;
+        background: #b3222f;
+        
+      }
+      .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+        color: #fff;
+        background: #b3222f;
+      }
+      .tabs-ios .tabbar {
+        background: #ED3740;
+      }
+      .tabs-ios .tab-button-icon {
+        color: #fff;
+      }
+      .tabs-ios .tab-button {
+        color: #fff;
+      }
+      .tabs-md .tabbar {
+        background: #ED3740;
+      }
+      .tabs-md .tab-button-icon {
+        color: #f4f4f4;
+      }
+      .tabs-md .tab-button {
+        color: #f4f4f4;
+      }
     img {
         border: 0;
         // width: 200%;
@@ -25,7 +52,11 @@ page-tabnav {
 }
 .fab-ios {
     color: #fff;
-    background-color: #b3222f;
+    background-color: #ED3740;
+}
+.fab-md {
+    color: #fff;
+    background-color: #ED3740;
 }
 .fabnamecen{
     margin-top: 20px;
