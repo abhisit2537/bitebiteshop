@@ -1,0 +1,109 @@
+{
+    "_id": "shop01",
+    "name": "ชื่อร้าน",
+    "name_eng": "shop name",
+    "detail": "รายละเอียดร้านค้า",
+    "address": {
+        "addressdetail": "ตรงข้าน big c",
+        "address": "88/8",
+        "subdistinct": "ลำลูกกา",
+        "distinct": "ลำลูกกา",
+        "province": "ปทุมธานี",
+        "postcode": "12150",
+        "lat": 10.00000,
+        "lng": 52.00000
+    },
+    "tel": "0856664444",
+    "email": "testmail@gmail.com",
+    "facebook": "facebookid",
+    "line": "lineid",
+    "promoteimage": ["http://lh3.googleusercontent.com/QrMHpYsKspYqOwNGRVG49XV_g57_IaMXft2sheGUr2rBd38ie5vl2He2_Wl7bOwCKpgMsHkFzzAshHUvQetN9TN0=s800"
+        , "https://static1.squarespace.com/static/56a1a14b05caa7ee9f26f47d/t/57424f54c6fc088e2ca5e82c/1463963501630/"
+        ,"http://www.newcastlediggers.com.au/wp-content/uploads/2014/10/Best-Thai-Restaurants-in-Newcastle.jpg"
+    ],
+    "items": [
+        {
+            "cate": {
+                "_id": "cate01",
+                "name": "ของทานเล่น",
+                "image": "https://i.pinimg.com/736x/a1/b6/2e/a1b62e13c959f4ede0f450605c67ed33--thai-dessert-thaifood.jpg"
+            },
+            "products": [
+                {
+                    "_id": "product01",
+                    "name": "เค้ก",
+                    "image": "https://i.warosu.org/data/ck/img/0095/55/1508128241737.jpg",
+                    "price": 200
+                },
+                {
+                    "_id": "product02",
+                    "name": "เค้ก2",
+                    "image": "https://i.warosu.org/data/ck/img/0095/55/1508128241737.jpg",
+                    "price": 200
+                }
+            ]
+        },
+        {
+            "cate": {
+                "_id": "cate02",
+                "name": "ทะเล",
+                "image": "https://i.pinimg.com/736x/a1/b6/2e/a1b62e13c959f4ede0f450605c67ed33--thai-dessert-thaifood.jpg"
+            },
+            "products": [
+                {
+                    "_id": "product03",
+                    "name": "ปลาวาฬผัดเผ็ด",
+                    "image": "https://i.warosu.org/data/ck/img/0095/55/1508128241737.jpg",
+                    "price": 200
+                }
+            ]
+        },
+        {
+            "cate": {
+                "_id": "cate03",
+                "name": "แม่น้ำ",
+                "image": "https://i.pinimg.com/736x/a1/b6/2e/a1b62e13c959f4ede0f450605c67ed33--thai-dessert-thaifood.jpg"
+            },
+            "products": [
+                {
+                    "_id": "product04",
+                    "name": "ต้มโค้งเรือ",
+                    "image": "https://i.warosu.org/data/ck/img/0095/55/1508128241737.jpg",
+                    "price": 200
+                }
+            ]
+        },
+        {
+            "cate": {
+                "_id": "cate04",
+                "name": "เส้น",
+                "image": "https://i.pinimg.com/736x/a1/b6/2e/a1b62e13c959f4ede0f450605c67ed33--thai-dessert-thaifood.jpg"
+            },
+            "products": [
+                {
+                    "_id": "product05",
+                    "name": "พ่อเป็นตำรวจ",
+                    "image": "https://i.warosu.org/data/ck/img/0095/55/1508128241737.jpg",
+                    "price": 200
+                }
+            ]
+        }
+    ],
+    "coverimage": "http://www.hardrock.com/cafes/amsterdam/files/2308/LegendsRoom.jpg",
+    "isactiveshop": false,
+    "issendmail": false,
+    "importform": "manual",
+    "times": [
+        {
+            "description": "ทุกวัน",
+            "timestart": "07.00",
+            "timeend": "20.00",
+            "days": [
+                "จัน",
+                "พุธ",
+                "ศุกร์"
+            ]
+        }
+    ]
+
+}
