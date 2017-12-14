@@ -2,55 +2,51 @@ page-tabnav {
     .tabs-ios .tab-button[aria-selected=true] {
         color: #fff;
         background: #b3222f;
-        
-      }
-      .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    }
+    .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
         color: #fff;
         background: #b3222f;
-      }
-      .tabs-ios .tabbar {
+    }
+    .tabs-ios .tabbar {
         background: #ED3740;
-      }
-      .tabs-ios .tab-button-icon {
+    }
+    .tabs-ios .tab-button-icon {
         color: #fff;
-      }
-      .tabs-ios .tab-button {
+    }
+    .tabs-ios .tab-button {
         color: #fff;
-      }
-      .tabs-md .tab-button[aria-selected=true] {
-        color: #fff;
-        background: #b3222f;
-        
-      }
-      .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    }
+    .tabs-md .tab-button[aria-selected=true] {
         color: #fff;
         background: #b3222f;
-      }
-      .tabs-md .tabbar {
+    }
+    .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+        color: #fff;
+        background: #b3222f;
+    }
+    .tabs-md .tabbar {
         background: #ED3740;
-      }
-      .tabs-md .tab-button-icon {
+    }
+    .tabs-md .tab-button-icon {
         color: #f4f4f4;
-      }
-      .tabs-md .tab-button {
+    }
+    .tabs-md .tab-button {
         color: #f4f4f4;
-      }
+    }
     img {
-        border: 0;
-        // width: 200%;
+        border: 0; // width: 200%;
         // height: 80px;
         // max-width: 150px;
         height: auto;
         object-fit: cover;
-      }
-      ion-fab[center] {
-          height: 92px;
+    }
+    ion-fab[center] {
+        height: 100px;
         margin-left: 0px !important;
         left: 50% !important;
         margin-right: -50% !important;
         transform: translate(-50%, -0%) !important;
-      }
-    //   .tabs-ios .tabbar {
+    } //   .tabs-ios .tabbar {
     //     -webkit-box-pack: center;
     //     -webkit-justify-content: center;
     //     -ms-flex-pack: center;
@@ -59,14 +55,22 @@ page-tabnav {
     //     background: red;
     // }
 }
-.fab-ios {
-    color: #fff;
-    background-color: #ED3740;
+
+// .fab-ios {
+//     color: #fff;
+//     background-color: #ED3740;
+// }
+
+// .fab-md {
+//     color: #fff;
+//     background-color: #ED3740;
+// }
+
+.tabs-md .tab-button-text {
+    font-size: 1.4rem;
+    margin-top: 5px !important;
 }
-.fab-md {
-    color: #fff;
-    background-color: #ED3740;
-}
-.fabnamecen{
-    margin-top: 25px;
-}
+// .tabs-ios .tab-button-text {
+//   font-size: 1.4rem;
+//   margin-top: 5px !important;
+// }
