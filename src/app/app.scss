@@ -15,6 +15,10 @@
 content {
     font-family: 'Kanit', sans-serif !important;
 }
+.tabs-ios .tab-button-icon::before {
+    vertical-align: top;
+    font-weight: 900 !important;
+}
 
 @font-face {
     font-family: 'icomoon';
