@@ -15,10 +15,6 @@
 content {
     font-family: 'Kanit', sans-serif !important;
 }
-.tabs-ios .tab-button-icon::before {
-    vertical-align: top;
-    font-weight: 900 !important;
-}
 
 @font-face {
     font-family: 'icomoon';
@@ -30,14 +26,6 @@ content {
 
 @mixin makeIcon($arg,
 $val) {
-    .ion-ios-#{$arg}:before,
-    .ion-ios-#{$arg}-circle:before,
-    .ion-ios-#{$arg}-circle-outline:before,
-    .ion-ios-#{$arg}-outline:before {
-        font-family: "icomoon" !important;
-        content: $val;
-        font-weight: bold;
-    }
     .ion-md-#{$arg}:before,
     .ion-md-#{$arg}-circle:before,
     .ion-md-#{$arg}-circle-outline:before,
@@ -46,6 +34,14 @@ $val) {
         content: $val;
         font-weight: bold;
         font-size: xx-large;
+    }
+    .ion-ios-#{$arg}:before,
+    .ion-ios-#{$arg}-circle:before,
+    .ion-ios-#{$arg}-circle-outline:before,
+    .ion-ios-#{$arg}-outline:before {
+        font-family: "icomoon" !important;
+        content: $val;
+        font-weight: bold;
     }
 }
 
