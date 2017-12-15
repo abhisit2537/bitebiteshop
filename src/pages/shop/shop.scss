@@ -49,9 +49,9 @@ page-shop {
         flex-wrap: inherit !important;
     }
     .cateimg{
-        height: 90px;
-        width: 160px;
-        border-bottom: 1px solid #ed3740;
+        height: 70px;
+        // width: 160px;
+        // border-bottom: 1px solid #ed3740;
     }
     .texthovercate {
         text-align: center;
@@ -81,5 +81,30 @@ page-shop {
         flex: 0 0 33.333334%;
         position: relative;
         width: 100%;
+    }
+    [col-2-4] {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 25%;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        width: 25%;
+        max-width: 20%;
+    }
+    
+    img {
+        object-fit: cover !important;
+    }
+    .texthover2 {
+        text-align: center;
+        position: absolute;
+        margin-top: -45px;
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 80%;
+        color: #FFF;
+        height: 40px;
+        padding-top: 10px;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
     }
 }

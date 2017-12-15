@@ -54,9 +54,9 @@
 
         <ion-scroll scrollX="true" class="slide-xcate">
             <ion-row no-padding class="row-custom">
-              <ion-col col-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i)">
+              <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i)">
                 <img [src]="item.cate.image" class="cateimg">
-                <span mode="ios" class="texthovercate"> {{item.cate.name}} </span>
+                <span mode="ios" class="texthover2"> {{item.cate.name}} </span>
               </ion-col>
               <ion-col col-4>
                 <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
