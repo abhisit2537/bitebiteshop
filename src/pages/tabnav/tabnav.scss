@@ -34,9 +34,7 @@ page-tabnav {
         color: #f4f4f4;
     }
     img {
-        border: 0; // width: 200%;
-        // height: 80px;
-        // max-width: 150px;
+        border: 0; 
         height: auto;
         object-fit: cover;
     }
@@ -68,16 +66,23 @@ page-tabnav {
         background-color: #ffffff;
     }
 }
-
-ion-icon::before {
-    font-weight: bolder !important;
+.ion-ios-icon-e-myshop:before, .ion-ios-icon-e-myshop-circle:before, .ion-ios-icon-e-myshop-circle-outline:before, .ion-ios-icon-e-myshop-outline:before {
+    font-family: "icomoon" !important;
+    content: "";
+    font-weight: bold !important;
 }
-
-// .fab-ios {
-//     color: #fff;
-//     background-color: #ED3740;
-// }
-// .fab-md {
-//     color: #fff;
-//     background-color: #ED3740;
-// }
+.ion-ios-icon-e-biker:before, .ion-ios-icon-e-biker-circle:before, .ion-ios-icon-e-biker-circle-outline:before, .ion-ios-icon-e-biker-outline:before {
+    font-family: "icomoon" !important;
+    content: "";
+    font-weight: bold !important;
+}
+.ion-ios-icon-e-status:before, .ion-ios-icon-e-status-circle:before, .ion-ios-icon-e-status-circle-outline:before, .ion-ios-icon-e-status-outline:before {
+    font-family: "icomoon" !important;
+    content: "";
+    font-weight: bold !important;
+}
+.ion-ios-icon-e-more:before, .ion-ios-icon-e-more-circle:before, .ion-ios-icon-e-more-circle-outline:before, .ion-ios-icon-e-more-outline:before {
+    font-family: "icomoon" !important;
+    content: "";
+    font-weight: 900 !important;
+}
