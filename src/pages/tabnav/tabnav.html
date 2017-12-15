@@ -4,10 +4,13 @@
     <!-- <ion-tab [root]="orderRoot" tabTitle="Order" tabIcon="icon-e-order"></ion-tab> -->
 
     <ion-tab [root]="orderRoot" tabTitle="Order" tabIcon="icon-e-order"></ion-tab>
-    <ion-fab bottom center no-margin style="bottom:-0.3%;">
+    <!-- <ion-fab bottom center no-margin style="bottom:-0.3%;">
       <button ion-fab no-padding no-margin style="width:75px; height:75px; background-color:#fff" (click)="ordertab()">
         <span class="icon-e-order"></span>
       </button>
+    </ion-fab> -->
+    <ion-fab bottom center no-margin>
+      <button ion-fab no-padding no-margin class="buttonFab" (click)="ordertab()"><span class="icon-e-order"></span></button>
     </ion-fab>
 
 
