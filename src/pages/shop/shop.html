@@ -19,74 +19,78 @@
 
 
 <ion-content>
-  <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
-  <span class="thisfill"></span>
-  <ion-row class="camera">
-    <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
-  </ion-row>
-  <ion-row class="nameshop">
-    <ion-col>
-      {{shop.name}}
-      <ion-icon name="md-create" color="light" (click)="edit()">
-      </ion-icon>
-    </ion-col>
-  </ion-row>
-  <ion-row class="days">
-    <ion-col *ngFor="let item of shop.times">
-      {{item.days}}
-    </ion-col>
-  </ion-row>
-  <ion-row class="times">
-    <ion-col *ngFor="let item of shop.times">
-      <span ion-text color="light"> {{item.timestart}}</span>
-      <span ion-text color="light">{{item.timeend}} </span>
-    </ion-col>
-  </ion-row>
-  <ion-scroll scrollX="true" class="slide-xpromote">
-    <ion-row no-padding class="row-custom">
-      <ion-col col-2-4>
-        <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
-      </ion-col>
-      <ion-col col-2-4 *ngFor="let item of shop.promoteimage">
-        <img [src]="item" class="cateimg">
+  <div ion-fixed class="setBg">
+    <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
+    <span class="thisfill"></span>
+    <ion-row class="camera">
+      <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
+    </ion-row>
+    <ion-row class="nameshop">
+      <ion-col>
+        {{shop.name}}
+        <ion-icon name="md-create" color="light" (click)="edit()">
+        </ion-icon>
       </ion-col>
     </ion-row>
-  </ion-scroll>
-  <ion-label fixed class="productstxt">Products</ion-label>
+    <ion-row class="days">
+      <ion-col *ngFor="let item of shop.times">
+        {{item.days}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="times">
+      <ion-col *ngFor="let item of shop.times">
+        <span ion-text color="light"> {{item.timestart}}</span>
+        <span ion-text color="light">{{item.timeend}} </span>
+      </ion-col>
 
-  <ion-scroll scrollX="true" class="slide-xcate">
-    <ion-row no-padding class="row-custom">
-      <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i)">
-        <img [src]="item.cate.image" class="cateimg">
-        <div class="texthover2">
-          <span mode="ios"> {{item.cate.name}} </span>
-        </div>
-      </ion-col>
-      <ion-col col-2-4>
-        <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
-      </ion-col>
     </ion-row>
-  </ion-scroll>
-  <ion-grid *ngIf="shop.items && shop.items.length > 0">
-    <ion-row no-padding>
-      <ion-col *ngFor="let itm of shop.items[index].products" class="col-md-2">
-        <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
-        <div class="texthoverproduct2" *ngIf="itm.name">
-          <div>
-            <label> {{itm.name}}</label>
+    <ion-scroll scrollX="true" class="slide-xpromote">
+      <ion-row no-padding class="row-custom">
+        <ion-col col-2-4>
+          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+        </ion-col>
+        <ion-col col-2-4 *ngFor="let item of shop.promoteimage">
+          <img [src]="item" class="cateimg">
+        </ion-col>
+      </ion-row>
+    </ion-scroll>
+    <ion-label fixed class="productstxt">Products</ion-label>
+
+    <ion-scroll scrollX="true" class="slide-xcate">
+      <ion-row no-padding class="row-custom">
+        <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i)">
+          <img [src]="item.cate.image" class="cateimg">
+          <div class="texthover2">
+            <span mode="ios"> {{item.cate.name}} </span>
           </div>
-          <div class="paragraph">
-            <p>{{itm.price | number}}.-</p>
+        </ion-col>
+        <ion-col col-2-4>
+          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+        </ion-col>
+      </ion-row>
+    </ion-scroll>
+  </div>
+
+  <div class="setDiv">
+   
+
+    <ion-grid *ngIf="shop.items && shop.items.length > 0">
+      <ion-row no-padding>
+        <ion-col *ngFor="let itm of shop.items[index].products" class="col-md-2">
+          <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
+          <div class="texthoverproduct2" *ngIf="itm.name">
+            <div *ngIf="itm.name">
+              <label> {{itm.name}}</label>
+            </div>
+            <div class="paragraph" *ngIf="itm.price">
+              <p>{{itm.price | number}}.-</p>
+            </div>
           </div>
-        </div>
 
-      </ion-col>
-      <ion-col class="col-md-2">
-        <img class="img-h" height="180px" width="220px" src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg">
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
   <!-- <div class="col-md-2" *ngFor="let item of shop.items">
               <div *ngFor="let itm of item.products">
