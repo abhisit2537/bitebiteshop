@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabnavPage } from '../pages/tabnav/tabnav';
 import { ShopServiceProvider } from '../pages/shop/shop-service';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -20,6 +21,7 @@ import { ShopServiceProvider } from '../pages/shop/shop-service';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

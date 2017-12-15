@@ -7,12 +7,81 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
+    <ion-buttons start>
+      <button ion-button icon-only>
+        <ion-icon name="ios-contact-outline"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Shop</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <img src="{{shop.coverimage ? shop.coverimage : 'http://www.hardrock.com/cafes/amsterdam/files/2308/LegendsRoom.jpg'}}" alt="image">
+  <span class="fill"></span>
+  <ion-row class="camera">
+    <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
+  </ion-row>
+  <ion-row class="nameshop">
+    <ion-col>
+      {{shop.name}}
+      <ion-icon name="md-create" color="light" (click)="edit()">
+
+      </ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="days">
+      <ion-col *ngFor="let item of shop.times">
+        {{item.days}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="times">
+        <ion-col *ngFor="let item of shop.times">
+          <span ion-text color="light"> {{item.timestart}}</span>
+          <span ion-text color="light">{{item.timeend}} </span>
+        </ion-col>
+      </ion-row>
+      <ion-scroll scrollX="true" class="slide-xpromote">
+          <ion-row no-padding class="row-custom">
+            <ion-col col-4 *ngFor="let item of shop.promoteimage">
+              <img [src]="item" width="180vh" height="95vh">
+            </ion-col>
+          </ion-row>
+        </ion-scroll>
+        <ion-label fixed class="productstxt">Products</ion-label>
+
+        <ion-scroll scrollX="true" class="slide-xcate">
+            <ion-row no-padding class="row-custom">
+              <ion-col col-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i)">
+                <img [src]="item.cate.image" class="cateimg">
+                <span mode="ios" class="texthovercate"> {{item.cate.name}} </span>
+              </ion-col>
+              <ion-col col-4>
+                <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+              </ion-col>
+            </ion-row>
+          </ion-scroll>
+          <ion-grid *ngIf="shop.items && shop.items.length > 0">
+            <ion-row>
+              <ion-col *ngFor="let itm of shop.items[index].products"  class="col-md-2">
+                  <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
+                  <span class="texthoverproduct" *ngIf="itm.name"> {{itm.name}} {{itm.price | number}}.-</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+          <!-- <div class="col-md-2" *ngFor="let item of shop.items">
+              <div *ngFor="let itm of item.products">
+                <span class="bin" (click)="deleteProduct(item.id)" *ngIf="sd[item.id]">
+                  <ion-icon name="md-close-circle"></ion-icon>
+                </span>
+                <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
+                <span class="texthoverproduct" *ngIf="itm.name"> {{itm.name}} {{itm.price | number}}.-</span>
+              </div>
+            </div> -->
+          
 
 </ion-content>
