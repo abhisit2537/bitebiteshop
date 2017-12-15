@@ -62,13 +62,13 @@
           <span mode="ios"> {{item.cate.name}} </span>
         </div>
       </ion-col>
-      <ion-col col-4>
+      <ion-col col-2-4>
         <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
       </ion-col>
     </ion-row>
   </ion-scroll>
   <ion-grid *ngIf="shop.items && shop.items.length > 0">
-    <ion-row>
+    <ion-row no-padding>
       <ion-col *ngFor="let itm of shop.items[index].products" class="col-md-2">
         <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
         <div class="texthoverproduct2" *ngIf="itm.name">
