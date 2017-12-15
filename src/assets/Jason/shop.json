@@ -17,9 +17,11 @@
     "email": "testmail@gmail.com",
     "facebook": "facebookid",
     "line": "lineid",
-    "promoteimage": ["http://lh3.googleusercontent.com/QrMHpYsKspYqOwNGRVG49XV_g57_IaMXft2sheGUr2rBd38ie5vl2He2_Wl7bOwCKpgMsHkFzzAshHUvQetN9TN0=s800"
-        , "https://static1.squarespace.com/static/56a1a14b05caa7ee9f26f47d/t/57424f54c6fc088e2ca5e82c/1463963501630/"
-        ,"http://www.newcastlediggers.com.au/wp-content/uploads/2014/10/Best-Thai-Restaurants-in-Newcastle.jpg"
+    "promoteimage": ["http://soimilk.com/sites/default/files/u143056/13528419_497821473741911_1179151975926373336_o.jpg"
+        , "http://soimilk.com/sites/default/files/u143056/841128_788347794565227_8687025660509098200_o.jpg"
+        ,"http://soimilk.com/sites/default/files/u143056/11402392_840851149314891_2781537114366370680_o.jpg"
+        , "http://soimilk.com/sites/default/files/u143056/unnamed.jpg"
+        ,"http://soimilk.com/sites/default/files/u143056/2458.jpg"
     ],
     "items": [
         {
