@@ -34,9 +34,7 @@ page-tabnav {
         color: #f4f4f4;
     }
     img {
-        border: 0; // width: 200%;
-        // height: 80px;
-        // max-width: 150px;
+        border: 0; 
         height: auto;
         object-fit: cover;
     }
@@ -68,16 +66,7 @@ page-tabnav {
         background-color: #ffffff;
     }
 }
-
-ion-icon::before {
-    font-weight: bolder !important;
+.tabs-ios .tab-button-icon::before {
+    vertical-align: top;
+    font-weight: 900 !important;
 }
-
-// .fab-ios {
-//     color: #fff;
-//     background-color: #ED3740;
-// }
-// .fab-md {
-//     color: #fff;
-//     background-color: #ED3740;
-// }
