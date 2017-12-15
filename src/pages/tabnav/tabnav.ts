@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, Tabs } from 'ionic-angular';
 
 /**
  * Generated class for the TabnavPage tabs.
@@ -14,7 +14,7 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'tabnav.html'
 })
 export class TabnavPage {
-
+  @ViewChild('myTabs') tabRef: Tabs;
   shopRoot = 'ShopPage'
   bikerRoot = 'BikerPage'
   orderRoot = 'OrderPage'
@@ -23,5 +23,10 @@ export class TabnavPage {
 
 
   constructor(public navCtrl: NavController) {}
-
+  ordertab(){
+    this.tabRef.select(2);
+  }
+  getSelectedTab(){
+    return 0;
+  }
 }
