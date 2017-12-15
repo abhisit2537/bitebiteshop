@@ -18,10 +18,10 @@ export class ShopPage {
   shop: ShopModel = new ShopModel();
   index: Number = 0;
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-     public loadingCtrl: LoadingController,
-     public shopServiceProvider: ShopServiceProvider
-     
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController,
+    public shopServiceProvider: ShopServiceProvider
+
   ) {
   }
 
@@ -29,19 +29,19 @@ export class ShopPage {
     console.log('ionViewDidLoad ShopPage');
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     console.log('ionViewWillEnter ShopPage');
-   this.shopService();
+    this.shopService();
   }
   shopService() {
-    this.shopServiceProvider.getShop().then(data=>{
+    this.shopServiceProvider.getShop().then(data => {
       console.log(data);
-      this.shop = data;      
+      this.shop = data;
     });
   }
   selectedCate(index) {
     console.log(index);
     this.index = index;
-    
+
   }
 }

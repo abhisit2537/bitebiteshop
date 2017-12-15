@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ShopPage } from './shop';
+import { ShopServiceProvider } from './shop-service';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { ShopPage } from './shop';
   ],
   imports: [
     IonicPageModule.forChild(ShopPage),
+    ShopServiceProvider
   ],
 })
 export class ShopPageModule {}

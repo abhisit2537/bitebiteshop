@@ -1,7 +1,7 @@
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
 
 /*
   Generated class for the ShopServiceProvider provider.
@@ -12,16 +12,16 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ShopServiceProvider {
 
-  constructor(public http: Http) {
+  constructor(public http: HttpClient) {
     console.log('Hello ShopServiceProvider Provider');
     
   }
  
 
   getShop(){
-    return this.http.get("./assets/jason/shop.json")
+    return this.http.get("./assets/Jason/shop.json")
       .toPromise()
-      .then(response => response.json() as any)
+      .then(response => response as any)
       .catch(this.handleError);
   }
   private handleError(error: any): Promise<any> {
