@@ -58,17 +58,19 @@ page-tabnav {
         font-size: 1.3rem;
         margin-top: 10px !important;
     }
-    
     .tabs-ios .tab-button-text {
         font-size: 1.3rem;
         margin-top: 5px !important;
     }
-    
     .buttonFab {
         width: 78px;
         height: 79px;
         background-color: #ffffff;
     }
+}
+
+ion-icon::before {
+    font-weight: bolder !important;
 }
 
 // .fab-ios {
