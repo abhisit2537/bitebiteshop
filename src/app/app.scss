@@ -104,9 +104,12 @@ $val) {
     font-weight: bold;
 }
 
-.tabs-ios {
+.tabs-ios .tab-button {
     -webkit-text-stroke: 1px !important;
 }
+// .tabs-ios {
+//     -webkit-text-stroke: 1px !important;
+// }
 // .tab-button-icon::before {
 //     -webkit-text-stroke: 1px !important;
 // }
