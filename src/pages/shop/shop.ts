@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-
+import { ShopModel } from "./shop.model";
+import { ShopServiceProvider } from "./shop-service"
 /**
  * Generated class for the ShopPage page.
  *
@@ -14,10 +15,13 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
   templateUrl: 'shop.html',
 })
 export class ShopPage {
-
+  shop: ShopModel = new ShopModel();
+  index: Number = 0;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
-     public loadingCtrl: LoadingController
+     public loadingCtrl: LoadingController,
+     public shopServiceProvider: ShopServiceProvider
+     
   ) {
   }
 
@@ -27,15 +31,17 @@ export class ShopPage {
 
   ionViewWillEnter(){
     console.log('ionViewWillEnter ShopPage');
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-  
-    loading.present();
-
-    setTimeout(() => {
-      loading.dismiss();
-    }, 1000);
+   this.shopService();
   }
-
+  shopService() {
+    this.shopServiceProvider.getShop().then(data=>{
+      console.log(data);
+      this.shop = data;      
+    });
+  }
+  selectedCate(index) {
+    console.log(index);
+    this.index = index;
+    
+  }
 }

@@ -1,9 +1,9 @@
-export class shopModel {
+export class ShopModel {
     _id: string;
     name: string;
     name_eng: string;
     detail: string;
-    address: Array<addressModel>;
+    address: Array<AddressModel>;
     tel: string;
     email: string;
     facebook: string;
@@ -13,10 +13,10 @@ export class shopModel {
     isactiveshop: string;
     issendmail: string;
     importform: string;
-    times: Array<timeModel>;
+    times: Array<TimeModel>;
 
 }
-export class addressModel {
+export class AddressModel {
     addressdetail: string;
     address: string;
     subdistinct: string;
@@ -26,23 +26,23 @@ export class addressModel {
     lat: string;
     lng: string;
 }
-export class itemsModel {
-    cate: Array<cateModel>
-    products: Array<productsModel>
+export class ItemsModel {
+    cate: Array<CateModel>
+    products: Array<ProductsModel>
 }
-export class cateModel {
+export class CateModel {
     _id: string;
     name: string;
     image: string;
 }
 
-export class productsModel {
+export class ProductsModel {
     _id: string;
     name: string;
     image: string;
     price: Number;
 }
-export class timeModel{
+export class TimeModel{
     description: string;
     timestart: string;
     timeend: string;
