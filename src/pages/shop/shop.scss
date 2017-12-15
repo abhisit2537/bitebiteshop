@@ -10,7 +10,7 @@ page-shop {
         top: 0;
         height: 24.7vh;
         background-color: rgba(0, 0, 0, 0.4);
-        width: -webkit-fill-available;
+        width: 400px;
     }
     .nameshop {
         font-weight: bold;
@@ -120,5 +120,20 @@ page-shop {
     }
     .paragraph {
         margin-top: -10px;
+    }
+    .thisfill {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        color: #FFF;
+        height: 165px;
+        top: 0px;
+        left: 0px;
+    }
+    .slide-xpromote {
+        height: 11vh;
+    }
+    .slide-xcate {
+        height: 11vh;
     }
 }

@@ -19,8 +19,8 @@
 
 
 <ion-content>
-  <img src="{{shop.coverimage ? shop.coverimage : 'http://www.hardrock.com/cafes/amsterdam/files/2308/LegendsRoom.jpg'}}" alt="image">
-  <span class="fill"></span>
+  <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
+  <span class="thisfill"></span>
   <ion-row class="camera">
     <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
   </ion-row>
@@ -28,7 +28,6 @@
     <ion-col>
       {{shop.name}}
       <ion-icon name="md-create" color="light" (click)="edit()">
-
       </ion-icon>
     </ion-col>
   </ion-row>
