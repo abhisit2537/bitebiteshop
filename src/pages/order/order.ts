@@ -14,12 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'order.html',
 })
 export class OrderPage {
-
+  order: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.order = "new";
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
   }
+  
 
 }

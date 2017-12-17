@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, App } from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the ShopPage page.
  *
@@ -20,7 +21,8 @@ export class ShopPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loading: LoadingController,
-    public shopServiceProvider: ShopServiceProvider
+    public shopServiceProvider: ShopServiceProvider,
+    public app: App
 
   ) {
   }
@@ -43,8 +45,9 @@ export class ShopPage {
       }, 500);
 
     }, (err) => {
-      console.log(err);
+      window.localStorage.removeItem('bikebikeshop');
       loading.dismiss();
+      this.app.getRootNav().setRoot(LoginPage);
     });
   }
   selectedCate(index) {

@@ -4,15 +4,305 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
+<ion-header>
   <ion-navbar color="maintheme">
     <ion-title>Order</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
+  <!-- <ion-toolbar> -->
+  <ion-segment [(ngModel)]="order" color="maintheme">
+    <ion-segment-button value="new">
+      <label style="font-size: 17px;">รายการใหม่</label>
+    </ion-segment-button>
+    <ion-segment-button value="paid">
+      <label style="font-size: 17px;">รายการสั่งซื้อ</label>
+    </ion-segment-button>
+  </ion-segment>
+  <!-- </ion-toolbar> -->
 
-<ion-content padding>
+
+  <div [ngSwitch]="order">
+    <div *ngSwitchCase="'new'">
+      <ion-list>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-row class="textStyle">
+              <ion-col>
+                <h2>
+                  <ion-icon name="paper" item-start></ion-icon>
+                  NO.00001
+                </h2>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h3>
+                  <ion-icon name="clock" item-start></ion-icon>
+                  วันนี้ 12:00 น.
+                </h3>
+              </ion-col>
+            </ion-row>
+            <ion-card>
+              <ion-card-content>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Latte</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Mocha</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Cappuccino</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="danger">
+              <ion-icon name="trash"></ion-icon>
+              Delete
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-row class="textStyle">
+              <ion-col>
+                <h2>
+                  <ion-icon name="paper" item-start></ion-icon>
+                  NO.00002
+                </h2>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h3>
+                  <ion-icon name="clock" item-start></ion-icon>
+                  วันนี้ 21:00 น.
+                </h3>
+              </ion-col>
+            </ion-row>
+            <ion-card>
+              <ion-card-content>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Latte</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Mocha</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Cappuccino</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="danger">
+              <ion-icon name="trash"></ion-icon>
+              Delete
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+
+        <ion-item-sliding>
+          <ion-item>
+            <ion-row class="textStyle">
+              <ion-col>
+                <h2>
+                  <ion-icon name="paper" item-start></ion-icon>
+                  NO.00003
+                </h2>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h3>
+                  <ion-icon name="clock" item-start></ion-icon>
+                  วันนี้ 21:32 น.
+                </h3>
+              </ion-col>
+            </ion-row>
+            <ion-card>
+              <ion-card-content>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Latte</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col width="80" text-left>
+                    <p>Cappuccino</p>
+                  </ion-col>
+                  <ion-col width="20" text-right>
+                    <p>2</p>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="danger">
+              <ion-icon name="trash"></ion-icon>
+              Delete
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'paid'">
+      <ion-list>
+        <ion-item>
+          <ion-row class="textStyle">
+            <ion-col>
+              <h2>
+                <ion-icon name="paper" item-start></ion-icon>
+                NO.00011
+              </h2>
+            </ion-col>
+          </ion-row>
+          <ion-card>
+            <ion-card-content>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Latte 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Mocha 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Cappuccino 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+          <div text-right>
+            <button ion-button small outline color="danger">รับออเดอร์</button>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-row class="textStyle">
+            <ion-col>
+              <h2>
+                <ion-icon name="paper" item-start></ion-icon>
+                NO.00012
+              </h2>
+            </ion-col>
+          </ion-row>
+          <ion-card>
+            <ion-card-content>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Latte 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Mocha 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Cappuccino 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+          <div text-right>
+            <button ion-button small outline color="danger">รับออเดอร์</button>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-row class="textStyle">
+            <ion-col>
+              <h2>
+                <ion-icon name="paper" item-start></ion-icon>
+                NO.00013
+              </h2>
+            </ion-col>
+          </ion-row>
+          <ion-card>
+            <ion-card-content>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Latte 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col width="80" text-left>
+                  <p>Cappuccino 2</p>
+                </ion-col>
+                <ion-col width="20" text-right>
+                  <p>90฿</p>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+          <div text-right>
+            <button ion-button small outline color="danger">รับออเดอร์</button>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 
 </ion-content>
