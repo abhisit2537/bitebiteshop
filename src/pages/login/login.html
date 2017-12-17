@@ -31,6 +31,6 @@
     </ion-label>
     <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
   </ion-item>
-  <button class="button-login" ion-button round block outline color="light" (click)="login()">เข้าสู่ระบบ</button>
+  <button class="button-login" ion-button round block outline color="light" (click)="login()" [disabled]="!credentials.username || !credentials.password">เข้าสู่ระบบ</button>
   <!-- <button ion-button full margin-top (click)="register()">สมัครสมาชิก</button> -->
 </ion-content>
