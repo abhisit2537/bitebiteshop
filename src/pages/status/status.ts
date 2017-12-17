@@ -22,4 +22,10 @@ export class StatusPage {
     console.log('ionViewDidLoad StatusPage');
   }
 
+  doRefresh(refresher) {
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
+
 }
