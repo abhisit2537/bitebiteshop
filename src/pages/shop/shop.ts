@@ -172,7 +172,7 @@ export class ShopPage {
           setTimeout(() => {
             loading[loadingCount].dismiss();
             loadingCount++;
-            alert(loadingCount + '===' + results.length);
+            // alert(loadingCount + '===' + results.length);
 
             if (loadingCount === results.length) {
               if (from.toString() === 'cover') {
