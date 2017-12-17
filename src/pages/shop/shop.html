@@ -39,7 +39,7 @@
     </ion-row>
     <ion-row class="times">
       <ion-col>
-        <span ion-text color="light"> {{shop.address.addressdetail}}</span>
+        <span *ngIf="shop.address.addressdetail" ion-text color="light"> {{shop.address.addressdetail}}</span>
         <ion-badge color="secondary" *ngIf="shop.isopen == true"  class="isopen" (click)="changeStatus('open')">เปิด</ion-badge>
         <ion-badge color="danger" *ngIf="shop.isopen == false" class="isopen" (click)="changeStatus('close')">ปิด</ion-badge>
       </ion-col>
