@@ -3,6 +3,7 @@
     "name": "ครัวคุณโก๋",
     "name_eng": "shop name",
     "detail": "รายละเอียดร้านค้า",
+    "isopen":true,
     "address": {
         "addressdetail": "ตรงข้าน big c",
         "address": "88/8",
