@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPage } from '../pages/login/login';
 import { Auth } from '../providers/auth-service/auth-service';
 import { Server } from '../providers/server-config/server-config';
+import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 
 
 
@@ -55,7 +56,8 @@ import { Server } from '../providers/server-config/server-config';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShopServiceProvider,
     Auth,
-    Server
+    Server,
+    CoreserviceProvider
   ]
 })
 export class AppModule {}

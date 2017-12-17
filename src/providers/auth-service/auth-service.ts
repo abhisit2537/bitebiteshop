@@ -5,27 +5,27 @@ import "rxjs/add/operator/toPromise";
 
 import { Server } from '../server-config/server-config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CoreserviceProvider } from '../../providers/coreservice/coreservice';
 @Injectable()
 export class Auth {
 
-  constructor(public http: HttpClient, public server: Server) {
+  constructor(public http: HttpClient, public server: Server, public coreService: CoreserviceProvider) {
   }
 
-  AuthHeaders() {
-    let header = new HttpHeaders();
-    header.append("Authorization", "Bearer " + window.localStorage.getItem('token'));
-    return header;
-  }
+  // AuthHeaders() {
+  //   let headers = this.coreService.authorizationHeader();
+  //   headers.append("Authorization", "Bearer " + window.localStorage.getItem('token'));
+  //   return headers;
+  // }
 
   private(): Promise<any> {
-    // let data = { test: '1234' };
-    let header = this.AuthHeaders();
-    return this.http.post(this.server.url + 'api/users/me', null, { headers: header })
+    let headers = this.coreService.authorizationHeader();
+    return this.http.post(this.server.url + 'api/users/me', null, { headers: headers })
       .toPromise()
       .then((response) => {
         let res = response as any;
         window.localStorage.setItem('user', JSON.stringify(res));
-        window.localStorage.setItem('token', JSON.stringify(res.loginToken));
+        window.localStorage.setItem('token', JSON.parse(res.loginToken));
         return res;
       })
       .catch(this.handleError);
