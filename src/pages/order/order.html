@@ -12,8 +12,11 @@
 </ion-header>
 
 <ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-down" pullingText="Pull to refresh" refreshingSpinner="dots" refreshingText="Refreshing..."></ion-refresher-content>
+      </ion-refresher>
   <!-- <ion-toolbar> -->
-  <ion-segment [(ngModel)]="order" color="maintheme">
+  <ion-segment mode="md" [(ngModel)]="order" color="maintheme">
     <ion-segment-button value="new">
       <label style="font-size: 17px;">รายการใหม่</label>
     </ion-segment-button>
@@ -33,7 +36,7 @@
               <ion-col>
                 <h2>
                   <ion-icon name="paper" item-start></ion-icon>
-                  NO.00001
+                  NO.B652350
                 </h2>
               </ion-col>
             </ion-row>
@@ -87,7 +90,7 @@
               <ion-col>
                 <h2>
                   <ion-icon name="paper" item-start></ion-icon>
-                  NO.00002
+                  NO.B652351
                 </h2>
               </ion-col>
             </ion-row>
@@ -142,7 +145,7 @@
               <ion-col>
                 <h2>
                   <ion-icon name="paper" item-start></ion-icon>
-                  NO.00003
+                  NO.B652352
                 </h2>
               </ion-col>
             </ion-row>
@@ -191,7 +194,7 @@
             <ion-col>
               <h2>
                 <ion-icon name="paper" item-start></ion-icon>
-                NO.00011
+                NO.B652353
               </h2>
             </ion-col>
           </ion-row>
@@ -224,7 +227,7 @@
             </ion-card-content>
           </ion-card>
           <div text-right>
-            <button ion-button small outline color="danger">รับออเดอร์</button>
+            <button mode="md" ion-button small outline color="danger">รับออเดอร์</button>
           </div>
         </ion-item>
         <ion-item>
@@ -232,7 +235,7 @@
             <ion-col>
               <h2>
                 <ion-icon name="paper" item-start></ion-icon>
-                NO.00012
+                NO.B652354
               </h2>
             </ion-col>
           </ion-row>
@@ -265,7 +268,7 @@
             </ion-card-content>
           </ion-card>
           <div text-right>
-            <button ion-button small outline color="danger">รับออเดอร์</button>
+            <button mode="md" ion-button small outline color="danger">รับออเดอร์</button>
           </div>
         </ion-item>
         <ion-item>
@@ -273,7 +276,7 @@
             <ion-col>
               <h2>
                 <ion-icon name="paper" item-start></ion-icon>
-                NO.00013
+                NO.B652355
               </h2>
             </ion-col>
           </ion-row>
@@ -298,7 +301,7 @@
             </ion-card-content>
           </ion-card>
           <div text-right>
-            <button ion-button small outline color="danger">รับออเดอร์</button>
+            <button mode="md" ion-button small outline color="danger">รับออเดอร์</button>
           </div>
         </ion-item>
       </ion-list>

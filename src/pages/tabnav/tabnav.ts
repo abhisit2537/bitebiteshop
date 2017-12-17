@@ -19,6 +19,7 @@ import { MorePage } from '../more/more';
   templateUrl: 'tabnav.html'
 })
 export class TabnavPage {
+  color: string = '#EB3841';
   @ViewChild('myTabs') tabRef: Tabs;
   shopRoot = ShopPage;
   bikerRoot = BikerPage;
@@ -33,5 +34,12 @@ export class TabnavPage {
   }
   getSelectedTab(){
     return 0;
+  }
+  onSelectChange(e) {
+    if (e.id === 't0-2') {
+      this.color = '#b3222f';
+    } else {
+      this.color = '#EB3841';
+    }
   }
 }

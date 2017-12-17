@@ -23,6 +23,10 @@ export class OrderPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
   }
-  
+  doRefresh(refresher) {
+    setTimeout(() => {
+      refresher.complete();
+    }, 1500);
+  }
 
 }
