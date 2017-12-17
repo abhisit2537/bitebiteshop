@@ -2,10 +2,10 @@
     "_id": "shop01",
     "name": "ครัวคุณโก๋",
     "name_eng": "shop name",
-    "detail": "รายละเอียดร้านค้า",
+    "detail": "Coffice Idea Space",
     "isopen":true,
     "address": {
-        "addressdetail": "ตรงข้าน big c",
+        "addressdetail": "ตรงข้าม big c",
         "address": "88/8",
         "subdistinct": "ลำลูกกา",
         "distinct": "ลำลูกกา",
@@ -980,9 +980,9 @@
             "timestart": "07.00",
             "timeend": "20.00",
             "days": [
-                "จัน",
-                "พุธ",
-                "ศุกร์"
+                "",
+                "",
+                ""
             ]
         }
     ]

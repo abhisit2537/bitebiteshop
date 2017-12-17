@@ -17,6 +17,7 @@ import { ShopServiceProvider } from "./shop-service"
 export class ShopPage {
   shop: ShopModel = new ShopModel();
   index: Number = 0;
+ disabled = false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
@@ -44,4 +45,9 @@ export class ShopPage {
     this.index = index;
 
   }
+
+disable()
+{
+this.disabled = true;
+}
 }

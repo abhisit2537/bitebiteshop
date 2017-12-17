@@ -3,7 +3,7 @@ export class ShopModel {
     name: string;
     name_eng: string;
     detail: string;
-    address: Array<AddressModel>;
+    address: AddressModel = new AddressModel();
     tel: string;
     email: string;
     facebook: string;

@@ -33,14 +33,17 @@
       </ion-col>
     </ion-row>
     <ion-row class="days">
-      <ion-col *ngFor="let item of shop.times">
-        {{item.days}}
+      <ion-col >
+        {{shop.detail}}
       </ion-col>
     </ion-row>
     <ion-row class="times">
       <ion-col *ngFor="let item of shop.times">
-        <span ion-text color="light"> {{item.timestart}}</span>
-        <span ion-text color="light">{{item.timeend}} </span>
+       
+        <span ion-text color="light"> {{shop.address.addressdetail}}</span>
+        <ion-badge color="secondary" *ngIf="shop.isopen == true" class="isopen">เปิด</ion-badge>
+        <ion-badge color="danger" *ngIf="shop.isopen == false" class="isopen">ปิด</ion-badge>
+        
       </ion-col>
 
     </ion-row>
