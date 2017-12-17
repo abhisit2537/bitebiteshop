@@ -18,8 +18,7 @@
 </ion-header>
 
 
-<ion-content>
-
+<ion-content *ngIf="shop">
   <div *ngIf="shop && shop.coverimage" ion-fixed class="setBg">
     <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
     <span class="thisfill"></span>

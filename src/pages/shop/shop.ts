@@ -37,9 +37,11 @@ export class ShopPage {
     let loading = this.loading.create();
     loading.present();
     this.shopServiceProvider.getShop().then(data => {
-      console.log(data);
       this.shop = data;
-      loading.dismiss();
+      setTimeout(function () {
+        loading.dismiss();
+      }, 500);
+
     }, (err) => {
       console.log(err);
       loading.dismiss();
@@ -59,5 +61,5 @@ export class ShopPage {
       this.shop.isopen = true;
     }
   }
-  
+
 }
