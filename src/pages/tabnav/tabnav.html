@@ -1,4 +1,4 @@
-<ion-tabs color="maintheme" #myTabs selectedIndex="{{getSelectedTab()}}" text-center>
+<ion-tabs (ionChange)="onSelectChange($event)" color="maintheme" #myTabs selectedIndex="{{getSelectedTab()}}" text-center>
     <ion-tab [root]="shopRoot" tabTitle="Shop" tabIcon="icon-e-myshop"></ion-tab>
     <ion-tab [root]="bikerRoot" tabTitle="Biker" tabIcon="icon-e-biker"></ion-tab>
     <!-- <ion-tab [root]="orderRoot" tabTitle="Order" tabIcon="icon-e-order"></ion-tab> -->
@@ -10,7 +10,7 @@
       </button>
     </ion-fab> -->
     <ion-fab bottom center no-margin>
-      <button ion-fab no-padding no-margin class="buttonFab" (click)="ordertab()"><span class="icon-e-order"></span></button>
+      <button [ngStyle]="{'color':color}" ion-fab no-padding no-margin class="buttonFab" (click)="ordertab()"><span class="icon-e-order"></span></button>
     </ion-fab>
 
 

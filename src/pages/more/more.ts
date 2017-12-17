@@ -26,5 +26,10 @@ export class MorePage {
     window.localStorage.removeItem('bikebikeshop');
     this.app.getRootNav().setRoot(LoginPage);
   }
+  doRefresh(refresher) {
+    setTimeout(() => {
+      refresher.complete();
+    }, 1500);
+  }
 
 }

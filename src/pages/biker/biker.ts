@@ -22,4 +22,10 @@ export class BikerPage {
     console.log('ionViewDidLoad BikerPage');
   }
 
+  doRefresh(refresher) {
+    setTimeout(() => {
+      refresher.complete();
+    }, 1500);
+  }
+
 }
