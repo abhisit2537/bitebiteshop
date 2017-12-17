@@ -23,12 +23,14 @@
     <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
     <span class="thisfill"></span>
     <ion-row class="camera">
-      <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
+      <!-- <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon> -->
+      <ion-icon name="camera" color="light"></ion-icon>
     </ion-row>
     <ion-row class="nameshop">
       <ion-col>
         {{shop.name}}
-        <ion-icon name="md-create" color="light" (click)="edit()">
+        <!-- <ion-icon name="md-create" color="light" (click)="edit()"> -->
+        <ion-icon name="md-create" color="light">
         </ion-icon>
       </ion-col>
     </ion-row>
@@ -40,7 +42,7 @@
     <ion-row class="times">
       <ion-col>
         <span *ngIf="shop.address.addressdetail" ion-text color="light"> {{shop.address.addressdetail}}</span>
-        <ion-badge color="secondary" *ngIf="shop.isopen == true"  class="isopen" (click)="changeStatus('open')">เปิด</ion-badge>
+        <ion-badge color="secondary" *ngIf="shop.isopen == true" class="isopen" (click)="changeStatus('open')">เปิด</ion-badge>
         <ion-badge color="danger" *ngIf="shop.isopen == false" class="isopen" (click)="changeStatus('close')">ปิด</ion-badge>
       </ion-col>
     </ion-row>
