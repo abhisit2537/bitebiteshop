@@ -20,7 +20,7 @@
 
 <ion-content>
   
-  <div ion-fixed class="setBg">
+  <div *ngIf="shop.coverimage" ion-fixed class="setBg">
     <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
     <span class="thisfill"></span>
     <ion-row class="camera">
