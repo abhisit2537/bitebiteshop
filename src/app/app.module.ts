@@ -14,6 +14,9 @@ import { OrderPage } from '../pages/order/order';
 import { StatusPage } from '../pages/status/status';
 import { MorePage } from '../pages/more/more';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginPage } from '../pages/login/login';
+import { Auth } from '../providers/auth-service/auth-service';
+import { Server } from '../providers/server-config/server-config';
 
 
 
@@ -26,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     OrderPage,
     StatusPage,
     MorePage,
-    TabnavPage
+    TabnavPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -42,13 +46,16 @@ import { HttpClientModule } from '@angular/common/http';
     OrderPage,
     StatusPage,
     MorePage,
-    TabnavPage
+    TabnavPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ShopServiceProvider
+    ShopServiceProvider,
+    Auth,
+    Server
   ]
 })
 export class AppModule {}
