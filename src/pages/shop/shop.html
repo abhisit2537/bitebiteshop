@@ -19,8 +19,8 @@
 
 
 <ion-content>
-  
-  <div *ngIf="shop.coverimage" ion-fixed class="setBg">
+
+  <div *ngIf="shop && shop.coverimage" ion-fixed class="setBg">
     <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
     <span class="thisfill"></span>
     <ion-row class="camera">
@@ -54,7 +54,7 @@
 
       </ion-col>
     </ion-row> -->
-    <ion-scroll scrollX="true" class="slide-xpromote">
+    <ion-scroll *ngIf="shop && shop.promoteimage" scrollX="true" class="slide-xpromote">
       <ion-row no-padding class="row-custom">
         <ion-col col-2-4>
           <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
@@ -66,7 +66,7 @@
     </ion-scroll>
     <ion-label fixed class="productstxt">Products</ion-label>
 
-    <ion-scroll scrollX="true" class="slide-xcate">
+    <ion-scroll *ngIf="shop && shop.items && shop.items.length > 0" scrollX="true" class="slide-xcate">
       <ion-row no-padding class="row-custom">
         <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i)">
           <img [src]="item.cate.image" class="cateimg">
@@ -80,11 +80,8 @@
       </ion-row>
     </ion-scroll>
   </div>
-
   <div class="setDiv">
-
-
-    <ion-grid *ngIf="shop.items && shop.items.length > 0">
+    <ion-grid *ngIf="shop && shop.items && shop.items.length > 0">
       <ion-row no-padding>
         <ion-col *ngFor="let itm of shop.items[index].products" class="col-md-2">
           <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
@@ -96,7 +93,6 @@
               <p>{{itm.price | number}}.-</p>
             </div>
           </div>
-
         </ion-col>
       </ion-row>
     </ion-grid>

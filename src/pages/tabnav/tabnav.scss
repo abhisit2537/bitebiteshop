@@ -34,7 +34,7 @@ page-tabnav {
         color: #f4f4f4;
     }
     img {
-        border: 0; 
+        border: 0;
         height: auto;
         object-fit: cover;
     }
@@ -44,17 +44,13 @@ page-tabnav {
         left: 50% !important;
         margin-right: -50% !important;
         transform: translate(-50%, -0%) !important;
-    } //   .tabs-ios .tabbar {
-    //     -webkit-box-pack: center;
-    //     -webkit-justify-content: center;
-    //     -ms-flex-pack: center;
-    //     justify-content: center;
-    //     border-top: 0.55px solid rgba(0, 0, 0, 0.3);
-    //     background: red;
-    // }
+    }
     .tabs-md .tab-button-text {
         font-size: 1.3rem;
-        margin-top: 10px !important;
+        margin-top: 4px !important;
+    }
+    .tabs-md .tab-button-icon {
+        margin-top: 6px;
     }
     .tabs-ios .tab-button-text {
         font-size: 1.3rem;
