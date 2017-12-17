@@ -33,17 +33,24 @@
       </ion-col>
     </ion-row>
     <ion-row class="days">
-      <ion-col *ngFor="let item of shop.times">
-        {{item.days}}
+      <ion-col>
+        {{shop.detail}}
       </ion-col>
     </ion-row>
     <ion-row class="times">
-      <ion-col *ngFor="let item of shop.times">
-        <span ion-text color="light"> {{item.timestart}}</span>
-        <span ion-text color="light">{{item.timeend}} </span>
+      <ion-col>
+        <span ion-text color="light"> {{shop.address.addressdetail}}</span>
+        <ion-badge color="secondary" *ngIf="shop.isopen == true"  class="isopen" (click)="changeStatus('open')">เปิด</ion-badge>
+        <ion-badge color="danger" *ngIf="shop.isopen == false" class="isopen" (click)="changeStatus('close')">ปิด</ion-badge>
       </ion-col>
-
     </ion-row>
+    <!-- <ion-row>
+      <ion-col>
+
+        <ion-toggle color="secondary" checked="true" class="toggle"></ion-toggle>
+
+      </ion-col>
+    </ion-row> -->
     <ion-scroll scrollX="true" class="slide-xpromote">
       <ion-row no-padding class="row-custom">
         <ion-col col-2-4>
@@ -72,7 +79,7 @@
   </div>
 
   <div class="setDiv">
-   
+
 
     <ion-grid *ngIf="shop.items && shop.items.length > 0">
       <ion-row no-padding>
