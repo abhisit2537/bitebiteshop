@@ -12,7 +12,7 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   // rootPage:any = TabnavPage;
   rootPage:any = LoginPage;
-
+  user = {} as any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -20,6 +20,11 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
+    if (this.user) {
+      console.log(this.user);
+      this.rootPage = TabnavPage;
+    }
   }
 }
 

@@ -25,6 +25,7 @@ export class LoginPage {
   login() {
     this.auth.login(this.credentials).then((res) => {
       console.log(res);
+      window.localStorage.setItem('bikebikeshop', JSON.stringify(res));
       this.navCtrl.setRoot(TabnavPage);
      }, (err) => { 
        console.log(err);
