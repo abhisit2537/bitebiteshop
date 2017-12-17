@@ -1,12 +1,12 @@
 page-login {
     .backgound-image {
         // background-image: url('../../assets/imgs/1.jpg');
-        background-image: url('../../assets/imgs/2.jpg');   
+        background-image: url('../../assets/imgs/2.jpg');
         width: 100%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: center center;
-      }
+    }
     .logo-img {
         width: 50%;
         margin-top: 20%;
@@ -15,11 +15,13 @@ page-login {
         display: inline-block;
         font-size: 2.5em;
     }
-    ion-item{
+    ion-item {
         background-color: transparent !important;
     }
-    .button-login{
-        margin-top: 10%;
-        // color: #eb3841;
+    .button-login {
+        margin-top: 10%; // color: #eb3841;
+    }
+    ion-input {
+        color: white;
     }
 }

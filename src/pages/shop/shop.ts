@@ -19,7 +19,7 @@ export class ShopPage {
   index: Number = 0;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public loadingCtrl: LoadingController,
+    public loading: LoadingController,
     public shopServiceProvider: ShopServiceProvider
 
   ) {
@@ -34,9 +34,15 @@ export class ShopPage {
     this.shopService();
   }
   shopService() {
+    let loading = this.loading.create();
+    loading.present();
     this.shopServiceProvider.getShop().then(data => {
       console.log(data);
       this.shop = data;
+      loading.dismiss();
+    }, (err) => {
+      console.log(err);
+      loading.dismiss();
     });
   }
   selectedCate(index) {
@@ -49,8 +55,9 @@ export class ShopPage {
     // console.log(status);
     if (status === 'open') {
       this.shop.isopen = false;
-    }else{
+    } else {
       this.shop.isopen = true;
     }
   }
+  
 }
