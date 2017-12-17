@@ -142,6 +142,30 @@ page-shop {
     .slide-xcate {
         height: 12vh;
     }
+    .toggle {
+        position: absolute;
+        right: 26px;
+        margin-top: -7vh;
+        height: 22px;
+    }
+
+    // .toggle-ios .toggle-inner {
+    //     left: 12px;
+    //     top: 2px;
+    //     border-radius: 14px;
+    //     position: absolute;
+    //     width: 17px;
+    //     height: 17px;
+    //     background-color: #fff;
+    //     -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16), 0 3px 1px rgba(0, 0, 0, 0.1);
+    //     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16), 0 3px 1px rgba(0, 0, 0, 0.1);
+    //     -webkit-transition: width 120ms ease-in-out 80ms, left 110ms ease-in-out 80ms, right 110ms ease-in-out 80ms, -webkit-transform 300ms;
+    //     transition: width 120ms ease-in-out 80ms, left 110ms ease-in-out 80ms, right 110ms ease-in-out 80ms, -webkit-transform 300ms;
+    //     transition: transform 300ms, width 120ms ease-in-out 80ms, left 110ms ease-in-out 80ms, right 110ms ease-in-out 80ms;
+    //     transition: transform 300ms, width 120ms ease-in-out 80ms, left 110ms ease-in-out 80ms, right 110ms ease-in-out 80ms, -webkit-transform 300ms;
+    //     will-change: transform;
+    //     contain: strict;
+    //   }
 }
 
 .fab-ios.activated {
@@ -163,3 +187,4 @@ page-shop {
     margin-left: 7px;
     font-size: 10px;
 }
+
