@@ -23,8 +23,8 @@
     <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
     <span class="thisfill"></span>
     <ion-row class="camera">
-      <!-- <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon> -->
-      <ion-icon name="camera" color="light"></ion-icon>
+      <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
+      <!-- <ion-icon name="camera" color="light" ></ion-icon> -->
     </ion-row>
     <ion-row class="nameshop">
       <ion-col>
@@ -53,27 +53,31 @@
 
       </ion-col>
     </ion-row> -->
-    <ion-scroll *ngIf="shop && shop.promoteimage" scrollX="true" class="slide-xpromote">
+    <ion-scroll scrollX="true" class="slide-xpromote" *ngIf="shop">
       <ion-row no-padding class="row-custom">
-        <ion-col col-2-4>
+        <ion-col col-2-4 (click)="addPromote()">
           <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
         </ion-col>
+        <!-- <div *ngIf="shop && shop.promoteimage"> -->
         <ion-col col-2-4 *ngFor="let item of shop.promoteimage">
           <img [src]="item" class="cateimg">
         </ion-col>
+        <!-- </div> -->
       </ion-row>
     </ion-scroll>
     <ion-label fixed class="productstxt">Products</ion-label>
 
-    <ion-scroll *ngIf="shop && shop.items && shop.items.length > 0" scrollX="true" class="slide-xcate">
+    <ion-scroll scrollX="true" class="slide-xcate">
       <ion-row no-padding class="row-custom">
-        <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i)">
+        <!-- <div *ngIf="shop && shop.items && shop.items.length > 0"> -->
+        <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i, item.cate)">
           <img [src]="item.cate.image" class="cateimg">
           <div class="texthover2">
             <span mode="ios"> {{item.cate.name}} </span>
           </div>
         </ion-col>
-        <ion-col col-2-4>
+        <!-- </div> -->
+        <ion-col col-2-4 (click)="createCate()">
           <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
         </ion-col>
       </ion-row>
@@ -82,7 +86,7 @@
   <div class="setDiv">
     <ion-grid *ngIf="shop && shop.items && shop.items.length > 0">
       <ion-row no-padding>
-        <ion-col *ngFor="let itm of shop.items[index].products" class="col-md-2">
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" (click)="productIndex(i)">
           <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
           <div class="texthoverproduct2" *ngIf="itm.name">
             <div *ngIf="itm.name">

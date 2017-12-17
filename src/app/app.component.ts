@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { TabnavPage } from '../pages/tabnav/tabnav';
 import { LoginPage } from '../pages/login/login';
+import * as firebase from 'firebase';
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,6 +20,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.configFirebase();
     });
     this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
     if (this.user) {
@@ -26,5 +28,18 @@ export class MyApp {
       this.rootPage = TabnavPage;
     }
   }
+
+  configFirebase() {
+    let config = {
+      apiKey: "AIzaSyAIjuU99uz_H4Er6J6Xsja48SMpLmuoZ5o",
+      authDomain: "schoolbus-cnet.firebaseapp.com",
+      databaseURL: "https://schoolbus-cnet.firebaseio.com/",
+      projectId: "schoolbus-cnet",
+      storageBucket: "schoolbus-cnet.appspot.com",
+      messagingSenderId: "356749167374"
+    };
+    firebase.initializeApp(config);
+  }
 }
+
 

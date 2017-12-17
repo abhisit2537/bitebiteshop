@@ -13,7 +13,7 @@ import { CoreserviceProvider } from '../../providers/coreservice/coreservice';
 @Injectable()
 export class ShopServiceProvider {
 
-  constructor(public http: HttpClient,public coreService: CoreserviceProvider, public server: Server) {
+  constructor(public http: HttpClient, public coreService: CoreserviceProvider, public server: Server) {
     console.log('Hello ShopServiceProvider Provider');
 
   }
@@ -30,10 +30,45 @@ export class ShopServiceProvider {
   getShop(): Promise<any> {
     let headers = this.coreService.authorizationHeader();
     return this.http.get(this.server.url + 'api/shopshome', { headers: headers })
-    .toPromise()
-    .then(response => response as any)
-    .catch(this.handleError);
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
   }
+
+  setCover(shopId, img): Promise<any> {
+    let data = { data: img };
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/changecover/' + shopId, data, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
+  addPromote(shopId, img): Promise<any> {
+    let data = { data: img };
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/addpromote/' + shopId, data, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
+  addCate(shopId, data): Promise<any> {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/createcate/' + shopId, data, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
+  addProduct(shopId, data): Promise<any> {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/createproduct/' + shopId, data, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }

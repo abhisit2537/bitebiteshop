@@ -18,8 +18,11 @@ import { LoginPage } from '../pages/login/login';
 import { Auth } from '../providers/auth-service/auth-service';
 import { Server } from '../providers/server-config/server-config';
 import { CoreserviceProvider } from '../providers/coreservice/coreservice';
-
-
+import { CreateproductPage } from '../pages/createproduct/createproduct';
+import { IonUploadImagesComponent } from '../components/ion-upload-image/ion-upload-image';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
+import { CreatecatePage } from '../pages/createcate/createcate';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
     StatusPage,
     MorePage,
     TabnavPage,
-    LoginPage
+    LoginPage,
+    CreateproductPage,
+    IonUploadImagesComponent,
+    CreatecatePage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,9 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
     StatusPage,
     MorePage,
     TabnavPage,
-    LoginPage
+    LoginPage,
+    CreateproductPage,
+    CreatecatePage
   ],
   providers: [
     StatusBar,
@@ -57,7 +65,9 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
     ShopServiceProvider,
     Auth,
     Server,
-    CoreserviceProvider
+    CoreserviceProvider,
+    Base64,
+    ImagePicker
   ]
 })
 export class AppModule {}
