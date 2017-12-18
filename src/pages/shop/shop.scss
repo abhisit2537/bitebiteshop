@@ -40,7 +40,8 @@ page-shop {
     .productstxt {
         font-size: 2.7vh;
         padding-left: 1vh;
-        border-bottom: 2px solid #ed3740;
+        border-bottom: 2px solid #ed3740 !important;
+       
     }
     .slide-xcate {
         height: 18vh;
@@ -81,7 +82,7 @@ page-shop {
         
     }
     .setDiv {
-        margin-top: 365px;
+        margin-top: 390px;
     }
     .setBg {
         background-color: #fff;

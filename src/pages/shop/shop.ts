@@ -85,11 +85,15 @@ export class ShopPage {
     this.isModify = true;
 
   }
+  clearMode(){
+    this.isModify = false;
+    
+  }
 
   createCate() {
 
-    // this.onUpload('cate', 1);
-    this.formCate();
+    this.onUpload('cate', 1);
+    // this.formCate();
 
     // let popover = this.popoverCtrl.create(CreatecatePage);
     // popover.present({

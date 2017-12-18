@@ -65,7 +65,14 @@
         <!-- </div> -->
       </ion-row>
     </ion-scroll>
-    <ion-label fixed class="productstxt">Products</ion-label>
+    <!-- <ion-label fixed class="productstxt">Products</ion-label>  -->
+    <ion-list>
+      <ion-item style=" padding: 0;">
+        <ion-label fixed class="productstxt" item-start>Products</ion-label>
+
+        <button ion-button item-end (click)="clearMode()">Done</button>
+      </ion-item>
+    </ion-list>
 
     <ion-scroll scrollX="true" class="slide-xcate">
       <ion-row no-padding class="row-custom">
@@ -81,24 +88,39 @@
           <img src="./assets/imgs/add-circle.png" class="cateimg">
         </ion-col>
         <ion-col col-2-4 (click)="createCate()" *ngIf="isModify">
-            <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
-          </ion-col>
+          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+        </ion-col>
       </ion-row>
     </ion-scroll>
   </div>
   <div class="setDiv">
     <ion-grid *ngIf="shop && shop.items && shop.items.length > 0">
       <ion-row no-padding>
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" (click)="productIndex(i)">
-          <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
-          <div class="texthoverproduct2" *ngIf="itm.name">
-            <div *ngIf="itm.name">
-              <label> {{itm.name}}</label>
-            </div>
-            <div class="paragraph" *ngIf="itm.price">
-              <p>{{itm.price | number}}.-</p>
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
+          <div *ngIf="isModify">
+            <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px" (click)="productIndex(i)">
+            <div class="texthoverproduct2" *ngIf="itm.name">
+              <div *ngIf="itm.name">
+                <label> {{itm.name}}</label>
+              </div>
+              <div class="paragraph" *ngIf="itm.price">
+                <p>{{itm.price | number}}.-</p>
+              </div>
             </div>
           </div>
+
+          <div *ngIf="!isModify">
+            <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px">
+            <div class="texthoverproduct2" *ngIf="itm.name">
+              <div *ngIf="itm.name">
+                <label> {{itm.name}}</label>
+              </div>
+              <div class="paragraph" *ngIf="itm.price">
+                <p>{{itm.price | number}}.-</p>
+              </div>
+            </div>
+          </div>
+
         </ion-col>
       </ion-row>
     </ion-grid>
