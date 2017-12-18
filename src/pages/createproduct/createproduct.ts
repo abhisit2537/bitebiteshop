@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ShopServiceProvider } from '../shop/shop-service';
 
 /**
@@ -20,7 +20,8 @@ export class CreateproductPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public shopServiceProvider: ShopServiceProvider
+    public shopServiceProvider: ShopServiceProvider,
+    public viewCtrl:ViewController
   ) {
     this.createprod.cateindex = this.navParams.data.cateindex;
     this.createprod.index = this.navParams.data.index;
@@ -32,11 +33,9 @@ export class CreateproductPage {
     console.log('ionViewDidLoad CreateproductPage');
   }
   save() {
-    this.shopServiceProvider.addProduct(this.navParams.data.shopid, this.createprod).then((data) => {
-      this.navCtrl.pop();
-    }, (err) => {
-      alert(JSON.stringify(JSON.parse(err._body).message));
-    });
+    this.viewCtrl.dismiss(this.createprod);
   }
-
+  closeDismiss() {
+    this.viewCtrl.dismiss();
+  }
 }

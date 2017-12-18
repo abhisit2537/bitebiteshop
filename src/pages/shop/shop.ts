@@ -52,6 +52,10 @@ export class ShopPage {
     loading.present();
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
+      if (data.items && data.items.length > 0) {
+        this.cate = data.items[0].cate;
+        console.log(this.cate);
+      }
       setTimeout(function () {
         loading.dismiss();
       }, 500);
@@ -85,13 +89,12 @@ export class ShopPage {
     this.isModify = true;
 
   }
-  clearMode(){
+  clearMode() {
     this.isModify = false;
-    
+
   }
 
   createCate() {
-
     this.onUpload('cate', 1);
     // this.formCate();
 
@@ -106,13 +109,30 @@ export class ShopPage {
       shopid: this.shop._id,
       img: img
     };
-    let popover = this.popoverCtrl.create(CreatecatePage, data);
-    popover.present({
+    let modalopen = this.modalCtrl.create(CreatecatePage, data);
+
+
+    modalopen.onDidDismiss(datadismiss => {
+      this.images = [];
+      if (datadismiss) {
+        this.shopServiceProvider.addCate(this.shop._id, datadismiss).then((data) => {
+          this.shopService();
+        }, (err) => {
+          alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+          // alert(JSON.stringify(JSON.parse(err._body).message));
+        });
+      }
 
     });
-    popover.onDidDismiss(data => {
-      this.shopService();
-    });
+    modalopen.present();
+
+    // let popover = this.popoverCtrl.create(CreatecatePage, data);
+    // popover.present({
+
+    // });
+    // popover.onDidDismiss(data => {
+    //   this.shopService();
+    // });
   }
 
   formProduct() {
@@ -123,13 +143,27 @@ export class ShopPage {
       index: this.prodIndex,
       cateindex: this.index
     };
-    let popover = this.popoverCtrl.create(CreateproductPage, data);
-    popover.present({
+    let modalproduct = this.modalCtrl.create(CreateproductPage, data);
+    modalproduct.onDidDismiss(datadismiss => {
+      this.images = [];
+      // alert(JSON.stringify(datadismiss));
+      if (datadismiss) {
+        this.shopServiceProvider.addProduct(this.shop._id, datadismiss).then((data) => {
+          this.shopService();
+        }, (err) => {
+          // alert(JSON.stringify(JSON.parse(err._body).message));
+          alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+        });
+      }
+    });
+    modalproduct.present();
+    // let popover = this.popoverCtrl.create(CreateproductPage, data);
+    // popover.present({
 
-    });
-    popover.onDidDismiss(data => {
-      this.shopService();
-    });
+    // });
+    // popover.onDidDismiss(data => {
+    //   this.shopService();
+    // });
   }
 
   selectShopBG() {
@@ -141,7 +175,9 @@ export class ShopPage {
     this.shopServiceProvider.setCover(this.shop._id, img).then((data) => {
       this.shopService();
     }, (err) => {
-      alert(JSON.stringify(JSON.parse(err._body).message));
+      // alert(JSON.stringify(JSON.parse(err._body).message));
+      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+
       console.log(err);
     });
   }
@@ -155,7 +191,8 @@ export class ShopPage {
     this.shopServiceProvider.addPromote(this.shop._id, img).then((data) => {
       this.shopService();
     }, (err) => {
-      alert(JSON.stringify(JSON.parse(err._body).message));
+      // alert(JSON.stringify(JSON.parse(err._body).message));
+      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');      
       console.log(err);
     });
   }

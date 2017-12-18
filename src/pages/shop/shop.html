@@ -18,8 +18,8 @@
 </ion-header>
 
 
-<ion-content *ngIf="shop">
-  <div *ngIf="shop && shop.coverimage" ion-fixed class="setBg">
+<ion-content>
+  <div *ngIf="shop && shop.coverimage" class="setBg">
     <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
     <span class="thisfill"></span>
     <ion-row class="camera">
@@ -93,7 +93,7 @@
       </ion-row>
     </ion-scroll>
   </div>
-  <div class="setDiv">
+  <div>
     <ion-grid *ngIf="shop && shop.items && shop.items.length > 0">
       <ion-row no-padding>
         <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
@@ -110,7 +110,7 @@
           </div>
 
           <div *ngIf="!isModify">
-            <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px">
+            <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()">
             <div class="texthoverproduct2" *ngIf="itm.name">
               <div *ngIf="itm.name">
                 <label> {{itm.name}}</label>

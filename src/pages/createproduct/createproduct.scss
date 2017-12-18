@@ -1,22 +1,28 @@
 page-createproduct {
-    .padding {
-        padding-right: 1vh;
-        padding-left: 2vh;
-        margin-left: 1vh;
-        margin-top: 4vh;
+    img {
+        object-fit: cover;
     }
-    .borderinput {
-        background: rgb(255, 255, 255);
-        padding-left: 2vh;
-        height: 5vh;
-        width: auto;
-        margin-left: 1vh;
-        margin-right: 1vh;
-        margin-bottom: 3vh;
-        border-radius: 25px;
-        border: 1px solid red;
-    }
-    .btncent {
-        text-align: center;
-    }
+    // .setImg {
+    //     width: 100%
+    // }
+    // .padding {
+    //     padding-right: 1vh;
+    //     padding-left: 2vh;
+    //     margin-left: 1vh;
+    //     margin-top: 4vh;
+    // }
+    // .borderinput {
+    //     background: rgb(255, 255, 255);
+    //     padding-left: 2vh;
+    //     height: 5vh;
+    //     width: auto;
+    //     margin-left: 1vh;
+    //     margin-right: 1vh;
+    //     margin-bottom: 3vh;
+    //     border-radius: 25px;
+    //     border: 1px solid red;
+    // }
+    // .btncent {
+    //     text-align: center;
+    // }
 }

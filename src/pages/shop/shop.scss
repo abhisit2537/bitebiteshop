@@ -137,25 +137,28 @@ page-shop {
         margin-top: -7vh;
         height: 22px;
     }
-}
 
-.fab-ios.activated {
-    background-color: #fff;
-}
-
-.fab-md.activated {
-    background-color: #fff;
-}
-.bar-button-md[icon-only] ion-icon {
-    padding: 0 0.1em;
-    min-width: 28px;
-    font-size: 2.2em;
-    line-height: .67;
-    pointer-events: none;
-}
-
-.isopen{
-    margin-left: 7px;
-    font-size: 10px;
+    .fab-ios.activated {
+        background-color: #fff;
+    }
+    
+    .fab-md.activated {
+        background-color: #fff;
+    }
+    .bar-button-md[icon-only] ion-icon {
+        padding: 0 0.1em;
+        min-width: 28px;
+        font-size: 2.2em;
+        line-height: .67;
+        pointer-events: none;
+    }
+    
+    .isopen{
+        margin-left: 7px;
+        font-size: 10px;
+    }
+    .settestwidth{
+        width:100% !important;
+    }
 }
 

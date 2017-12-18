@@ -6,7 +6,12 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="maintheme">
+      <ion-buttons right>
+          <button ion-button icon-only (click)="closeDismiss()">
+            <ion-icon name="ios-close-circle"></ion-icon>
+          </button>
+        </ion-buttons>
     <ion-title>Create Category</ion-title>
   </ion-navbar>
 
@@ -14,26 +19,34 @@
 
 
 <ion-content no-padding>
+  <!-- <ion-item>
+    <ion-label floating >test</ion-label>
+    <ion-input type="text" ></ion-input>
+  </ion-item> -->
   <ion-grid>
-    <ion-row fix-height>
+    <ion-row>
       <ion-col col-12 text-center>
         <!-- <button ion-button clear (click)="selectPic()" fix-height2> -->
         <!-- <ion-upload-images [maximumImagesCount]="1" [isShowUpload]="true" (resImage)="resImages($event)"></ion-upload-images> -->
-        <img src="{{cate.image}}" width="90vw" height="90vh">
+        <img src="{{cate.image}}" class="setImg">
         <!-- </button> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Category name</ion-label>
+          <ion-input type="text" [(ngModel)]="cate.name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <ion-input type="text" placeholder="Category name" [(ngModel)]="cate.name" class="borderinput">
-        </ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <button ion-button round color="danger" (click)="save()">Save</button>
-      </ion-col>
-    </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col text-center>
+      <button ion-button round block color="danger" (click)="save()">Save</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

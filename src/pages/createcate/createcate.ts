@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { ShopServiceProvider } from '../shop/shop-service';
 
@@ -18,10 +18,11 @@ import { ShopServiceProvider } from '../shop/shop-service';
 export class CreatecatePage {
   cate: any = {};
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private imagePicker: ImagePicker,
-    public shopServiceProvider: ShopServiceProvider
+    public shopServiceProvider: ShopServiceProvider,
+    public viewCtrl: ViewController
   ) {
     this.cate.image = this.navParams.data.img;
   }
@@ -29,11 +30,10 @@ export class CreatecatePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatecatePage');
   }
+  closeDismiss() {
+    this.viewCtrl.dismiss();
+  }
   save() {
-    this.shopServiceProvider.addCate(this.navParams.data.shopid, this.cate).then((data)=>{
-      this.navCtrl.pop();      
-    },(err)=>{
-      alert(JSON.stringify(JSON.parse(err._body).message));      
-    });
+    this.viewCtrl.dismiss(this.cate);
   }
 }

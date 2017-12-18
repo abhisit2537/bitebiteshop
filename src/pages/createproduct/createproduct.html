@@ -6,7 +6,12 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="maintheme">
+    <ion-buttons right>
+      <button ion-button icon-only (click)="closeDismiss()">
+        <ion-icon name="ios-close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Create Product</ion-title>
   </ion-navbar>
 
@@ -22,16 +27,27 @@
     </ion-row>
     <ion-row>
       <ion-col col-12>
-        <ion-input type="text" placeholder="Product Name" [(ngModel)]="createprod.name" class="borderinput">
+        <ion-item>
+          <ion-label floating>Product Name</ion-label>
+          <ion-input type="text" [(ngModel)]="createprod.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Price</ion-label>
+          <ion-input type="number" [(ngModel)]="createprod.price"></ion-input>
+        </ion-item>
+        <!-- <ion-input type="text" placeholder="Product Name" [(ngModel)]="createprod.name" class="borderinput">
         </ion-input>
         <ion-input type="number" placeholder="Price" [(ngModel)]="createprod.price" class="borderinput">
-        </ion-input>
+        </ion-input> -->
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col col-12 class="btncent">
-        <button ion-button round color="danger" (click)="save()">Save</button>
-      </ion-col>
-    </ion-row>
+
   </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col col-12 class="btncent">
+      <button ion-button round block color="danger" (click)="save()">Save</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
