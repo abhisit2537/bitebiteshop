@@ -79,7 +79,7 @@
         <!-- <div *ngIf="shop && shop.items && shop.items.length > 0"> -->
         <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i, item.cate)">
           <img [src]="item.cate.image" class="cateimg">
-          <div class="texthover2">
+          <div class="texthover2" [ngClass]=" i === index ? 'selectedCategory' : ''">
             <span mode="ios"> {{item.cate.name}} </span>
           </div>
         </ion-col>
