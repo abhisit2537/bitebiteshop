@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, App, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, App, PopoverController, ModalController } from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
 import { LoginPage } from '../login/login';
@@ -25,13 +25,15 @@ export class ShopPage {
   images: Array<any> = [];
   prodIndex: Number = 0;
   cate: any = {};
+  isModify: boolean = false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loading: LoadingController,
     public shopServiceProvider: ShopServiceProvider,
     public app: App,
     public popoverCtrl: PopoverController,
-    public imagePicker: ImagePicker
+    public imagePicker: ImagePicker,
+    public modalCtrl: ModalController
   ) {
   }
 
@@ -40,6 +42,7 @@ export class ShopPage {
   }
 
   ionViewWillEnter() {
+
     console.log('ionViewWillEnter ShopPage');
     this.shopService();
   }
@@ -78,8 +81,16 @@ export class ShopPage {
     }
   }
 
+  setModeEdit() {
+    this.isModify = true;
+
+  }
+
   createCate() {
-    this.onUpload('cate', 1);
+
+    // this.onUpload('cate', 1);
+    this.formCate();
+
     // let popover = this.popoverCtrl.create(CreatecatePage);
     // popover.present({
     // });

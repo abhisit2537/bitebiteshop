@@ -77,9 +77,12 @@
           </div>
         </ion-col>
         <!-- </div> -->
-        <ion-col col-2-4 (click)="createCate()">
-          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+        <ion-col col-2-4 (press)="setModeEdit()" *ngIf="!isModify">
+          <img src="./assets/imgs/add-circle.png" class="cateimg">
         </ion-col>
+        <ion-col col-2-4 (click)="createCate()" *ngIf="isModify">
+            <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+          </ion-col>
       </ion-row>
     </ion-scroll>
   </div>
