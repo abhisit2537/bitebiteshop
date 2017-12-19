@@ -7,6 +7,7 @@ import { CreatecatePage } from '../createcate/createcate';
 import { ImagePicker } from '@ionic-native/image-picker';
 import * as firebase from 'firebase';
 import { CreateproductPage } from '../createproduct/createproduct';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 /**
  * Generated class for the ShopPage page.
  *
@@ -33,7 +34,8 @@ export class ShopPage {
     public app: App,
     public popoverCtrl: PopoverController,
     public imagePicker: ImagePicker,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public alertCtrl: AlertController
   ) {
   }
 
@@ -278,6 +280,13 @@ export class ShopPage {
           resolve(parseUpload.snapshot.downloadURL);
         });
     });
+  }
+  doAlert(itm) {
+    console.log(itm.image);
+    let alert = this.alertCtrl.create({
+      
+    });
+    alert.present();
   }
 
 }

@@ -23,7 +23,7 @@ import { IonUploadImagesComponent } from '../components/ion-upload-image/ion-upl
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
 import { CreatecatePage } from '../pages/createcate/createcate';
-
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 @NgModule({
   declarations: [
     MyApp,
@@ -42,7 +42,8 @@ import { CreatecatePage } from '../pages/createcate/createcate';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
