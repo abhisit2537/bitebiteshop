@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, App, PopoverController, ModalController } from 'ionic-angular';
+import { Component,ViewChild  } from '@angular/core';
+import {
+    App,
+    IonicPage,
+    LoadingController,
+    ModalController,
+    NavController,
+    NavParams,
+    PopoverController,
+    Slides,
+} from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
 import { LoginPage } from '../login/login';
@@ -8,6 +17,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import * as firebase from 'firebase';
 import { CreateproductPage } from '../createproduct/createproduct';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { ProfilePage } from '../profile/profile';
 /**
  * Generated class for the ShopPage page.
  *
@@ -19,6 +29,7 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 @Component({
   selector: 'page-shop',
   templateUrl: 'shop.html',
+  
 })
 export class ShopPage {
   shop: ShopModel = new ShopModel();
@@ -27,6 +38,8 @@ export class ShopPage {
   prodIndex: Number = 0;
   cate: any = {};
   isModify: boolean = false;
+  slides: Slides;
+  
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loading: LoadingController,
@@ -35,7 +48,8 @@ export class ShopPage {
     public popoverCtrl: PopoverController,
     public imagePicker: ImagePicker,
     public modalCtrl: ModalController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    
   ) {
   }
 
@@ -48,6 +62,7 @@ export class ShopPage {
     console.log('ionViewWillEnter ShopPage');
     this.shopService();
   }
+  
   shopService() {
     this.images = [];
     let loading = this.loading.create();
@@ -288,5 +303,16 @@ export class ShopPage {
     });
     alert.present();
   }
-
+  
+  slideChanged() {
+    let currentIndex = this.slides.getActiveIndex();
+    console.log('Current index is', currentIndex);
+  }
+  modalPresent(){
+    let profileModal = this.modalCtrl.create({});
+    profileModal.present();
+  }
+  myProfile(){
+    this.navCtrl.push(ProfilePage);
+  }
 }

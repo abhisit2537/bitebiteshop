@@ -24,6 +24,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
 import { CreatecatePage } from '../pages/createcate/createcate';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { ProfilePage } from '../pages/profile/profile';
 @NgModule({
   declarations: [
     MyApp,
@@ -37,7 +38,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     LoginPage,
     CreateproductPage,
     IonUploadImagesComponent,
-    CreatecatePage
+    CreatecatePage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     TabnavPage,
     LoginPage,
     CreateproductPage,
-    CreatecatePage
+    CreatecatePage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
