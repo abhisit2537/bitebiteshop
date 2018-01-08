@@ -18,6 +18,7 @@ import * as firebase from 'firebase';
 import { CreateproductPage } from '../createproduct/createproduct';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { ProfilePage } from '../profile/profile';
+import { SortablejsOptions } from 'angular-sortablejs/dist';
 /**
  * Generated class for the ShopPage page.
  *
@@ -39,7 +40,8 @@ export class ShopPage {
   cate: any = {};
   isModify: boolean = false;
   slides: Slides;
-  
+  options: SortablejsOptions = {
+  };
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loading: LoadingController,
@@ -51,6 +53,15 @@ export class ShopPage {
     public alertCtrl: AlertController,
     
   ) {
+    this.options = {
+      chosenClass: 'xxx',
+      ghostClass: 'xxx2',
+      onUpdate: (event: any) => {
+        // console.log(this.q1);
+      },
+      animation: 150,
+      delay: 0
+    };
   }
 
   ionViewDidLoad() {

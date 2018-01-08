@@ -25,6 +25,8 @@ import { Base64 } from '@ionic-native/base64';
 import { CreatecatePage } from '../pages/createcate/createcate';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ProfilePage } from '../pages/profile/profile';
+import { SortablejsModule } from "angular-sortablejs";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -44,6 +46,7 @@ import { ProfilePage } from '../pages/profile/profile';
   imports: [
     BrowserModule,
     HttpClientModule,
+    SortablejsModule,
     IonicModule.forRoot(MyApp),
     IonicImageViewerModule
   ],

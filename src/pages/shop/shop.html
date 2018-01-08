@@ -56,7 +56,7 @@
     <ion-scroll scrollX="true" class="slide-xpromote" *ngIf="shop">
       <ion-row no-padding class="row-custom ">
         <ion-col col-2-4 (click)="addPromote()">
-          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg" >
+          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
         </ion-col>
         <!-- <div *ngIf="shop && shop.promoteimage"> -->
         <ion-col col-2-4 *ngFor="let item of shop.promoteimage">
@@ -70,7 +70,7 @@
       <ion-item style=" padding: 0;">
         <ion-label fixed class="productstxt" item-start>Products</ion-label>
 
-        <button ion-button item-end (click)="clearMode()" *ngIf="isModify">Done</button>
+        <!-- <button ion-button item-end (click)="clearMode()" *ngIf="isModify">Done</button> -->
       </ion-item>
     </ion-list>
 
@@ -95,29 +95,28 @@
   </div>
   <div>
     <ion-grid *ngIf="shop && shop.items && shop.items.length > 0">
-      <ion-row no-padding>
+      <ion-row no-padding *ngIf="isModify" [sortablejs]="shop.items[index].products" [sortablejsOptions]="options">
         <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
-          <div *ngIf="isModify">
-            <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px" (click)="productIndex(i)">
-            <div class="texthoverproduct2" *ngIf="itm.name">
-              <div *ngIf="itm.name">
-                <label> {{itm.name}}</label>
-              </div>
-              <div class="paragraph" *ngIf="itm.price">
-                <p>{{itm.price | number}}.-</p>
-              </div>
+          <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px" (click)="productIndex(i)">
+          <div class="texthoverproduct2" *ngIf="itm.name">
+            <div *ngIf="itm.name">
+              <label> {{itm.name}}</label>
+            </div>
+            <div class="paragraph" *ngIf="itm.price">
+              <p>{{itm.price | number}}.-</p>
             </div>
           </div>
-
-          <div *ngIf="!isModify">
-            <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()">
-            <div class="texthoverproduct2" *ngIf="itm.name">
-              <div *ngIf="itm.name">
-                <label> {{itm.name}}</label>
-              </div>
-              <div class="paragraph" *ngIf="itm.price">
-                <p>{{itm.price | number}}.-</p>
-              </div>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding *ngIf="!isModify">
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
+          <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()">
+          <div class="texthoverproduct2" *ngIf="itm.name">
+            <div *ngIf="itm.name">
+              <label> {{itm.name}}</label>
+            </div>
+            <div class="paragraph" *ngIf="itm.price">
+              <p>{{itm.price | number}}.-</p>
             </div>
           </div>
 
@@ -135,6 +134,8 @@
                 <span class="texthoverproduct" *ngIf="itm.name"> {{itm.name}} {{itm.price | number}}.-</span>
               </div>
             </div> -->
-
+  <ion-fab right bottom *ngIf="isModify">
+    <button ion-fab mini color="danger" (click)="clearMode()"><ion-icon name="ios-checkmark" ></ion-icon></button>
+  </ion-fab>
 
 </ion-content>
