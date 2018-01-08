@@ -27,6 +27,9 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ProfilePage } from '../pages/profile/profile';
 import { SortablejsModule } from "angular-sortablejs";
 
+import { ShopeditPage } from '../pages/shopedit/shopedit';
+import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,7 +44,9 @@ import { SortablejsModule } from "angular-sortablejs";
     CreateproductPage,
     IonUploadImagesComponent,
     CreatecatePage,
-    ProfilePage
+    ProfilePage,
+    ShopeditPage,
+    ShoptimeeditPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,9 @@ import { SortablejsModule } from "angular-sortablejs";
     LoginPage,
     CreateproductPage,
     CreatecatePage,
-    ProfilePage
+    ProfilePage,
+    ShopeditPage,
+    ShoptimeeditPage
   ],
   providers: [
     StatusBar,
