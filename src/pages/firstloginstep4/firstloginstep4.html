@@ -14,12 +14,21 @@
 
 
 <ion-content padding>
-  <div class="slide-xpromote">
-    <p class="font-size">เวลาที่เปิด-ปิดร้าน</p> 
+    <!-- <ion-row>
+        <ion-col class="roundedclass containerclass" col-12 text-left>
+          <ion-label>
+            เวลาที่เปิด - ปิดร้าน
+          </ion-label>
+          <img src="https://image.flaticon.com/icons/svg/159/159719.svg" width="50vw" height="90vh" (click)="shopTimeEditPage()">
+        </ion-col>
+      </ion-row> -->
+  <div class="roundedclass containerclass" padding>
+  <!-- <div class="slide-xpromote"> -->
+    <p class="font-size">เวลาที่เปิด - ปิดร้าน</p> 
     <ion-scroll scrollX="true" class="slide-xsize">
       <ion-row no-padding class="row-custom">
         <ion-col col-4 (click)="addTime()">
-          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg">
         </ion-col>
         <!-- <div> -->
         <!-- </div> -->
@@ -98,6 +107,6 @@
     </ion-row>
   </div>
 </ion-content>
-<ion-footer padding>
+<ion-footer padding no-border>
   <button ion-button block (click)="step5()" color="danger">ถัดไป</button>
 </ion-footer>
