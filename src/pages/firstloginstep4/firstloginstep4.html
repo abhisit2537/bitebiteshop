@@ -22,7 +22,7 @@
           <img src="https://image.flaticon.com/icons/svg/159/159719.svg" width="50vw" height="90vh" (click)="shopTimeEditPage()">
         </ion-col>
       </ion-row> -->
-  <div class="roundedclass containerclass" padding>
+  <div class="containerclass" padding>
   <!-- <div class="slide-xpromote"> -->
     <p class="font-size">เวลาที่เปิด - ปิดร้าน</p> 
     <ion-scroll scrollX="true" class="slide-xsize">
@@ -42,7 +42,8 @@
     </ion-scroll>
   </div>
 
-  <div *ngIf="isAdd" class="detail-open-close">
+  <div *ngIf="isAdd" class="containerclass">
+      <!-- <div *ngIf="isAdd" class="detail-open-close"> -->
     <ion-item>
       <ion-label floating>รายละเอียด</ion-label>
       <ion-input></ion-input>
@@ -60,7 +61,8 @@
 
       </ion-col>
       <ion-col>
-        <ion-list class="detail-open-close">
+        <ion-list class="containerclass">
+            <!-- <ion-list class="detail-open-close"> -->
 
           <ion-item>
             <ion-label>จันทร์</ion-label>
@@ -98,11 +100,11 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block (click)="add()" color="danger">เพิ่ม</button>
+      <ion-col text-right>
+        <button ion-button class="buttonIon" (click)="add()"  color="danger">เพิ่ม</button>
       </ion-col>
-      <ion-col>
-        <button ion-button block (click)="cancel()" color="danger">ยกเลิก</button>
+      <ion-col text-left>
+        <button ion-button class="buttonIon" (click)="cancel()" color="danger">ยกเลิก</button>
       </ion-col>
     </ion-row>
   </div>

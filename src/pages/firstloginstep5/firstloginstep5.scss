@@ -1,11 +1,18 @@
 page-firstloginstep5 {
+    .containerclass {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #eb3841;
+        margin-bottom: 3vh; // padding-bottom: 1vh;
+    }
     .slide-xpromote {
         border: solid red;
     }
-    .font-size{
+    .font-size {
         font-size: 1.5em;
     }
-    .button-tranparent{
+    .button-tranparent {
         background-color: transparent !important;
         font-size: 4vh !important;
         color: red !important;
