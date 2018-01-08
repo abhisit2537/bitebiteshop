@@ -20,6 +20,7 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 import { ProfilePage } from '../profile/profile';
 import { SortablejsOptions } from 'angular-sortablejs/dist';
 import { ShopeditPage } from '../shopedit/shopedit';
+import { GalleryModal } from 'ionic-gallery-modal';
 /**
  * Generated class for the ShopPage page.
  *
@@ -69,7 +70,7 @@ export class ShopPage {
 
   edit(shop) {
     console.log(shop);
-    this.navCtrl.push(ShopeditPage,shop)
+    this.navCtrl.push(ShopeditPage, shop)
   }
 
   shopService() {
@@ -333,5 +334,34 @@ export class ShopPage {
   }
   myProfile() {
     this.navCtrl.push(ProfilePage);
+  }
+
+  viewImage(img) {
+    let images = [{ url: img }];
+    this.imageGallery(images);
+  }
+  viewProduct(prodID) {
+    let loading = this.loading.create();
+    loading.present();
+    this.shopServiceProvider.getProduct(prodID).then((data) => {
+      loading.dismiss();
+      let images = [];
+      data.images.forEach(img => {
+        images.push({
+          url: img
+        });
+      });
+      this.imageGallery(images);
+    }, (err) => {
+      loading.dismiss();
+      console.log(err);
+    })
+
+  }
+  imageGallery(images) {
+    let modal = this.modalCtrl.create(GalleryModal, {
+      photos: images
+    });
+    modal.present();
   }
 }

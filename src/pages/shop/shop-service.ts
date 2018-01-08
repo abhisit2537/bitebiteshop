@@ -69,6 +69,14 @@ export class ShopServiceProvider {
       .catch(this.handleError);
   }
 
+  getProduct(prodID): Promise<any> {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.get(this.server.url + 'api/products/' + prodID, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }

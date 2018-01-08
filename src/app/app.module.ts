@@ -35,7 +35,8 @@ import { Firstloginstep5Page } from '../pages/firstloginstep5/firstloginstep5';
 
 import { ShopeditPage } from '../pages/shopedit/shopedit';
 import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
-
+import * as ionicGalleryModal from 'ionic-gallery-modal';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     MyApp,
@@ -65,7 +66,8 @@ import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
     HttpClientModule,
     SortablejsModule,
     IonicModule.forRoot(MyApp),
-    IonicImageViewerModule
+    IonicImageViewerModule,
+    ionicGalleryModal.GalleryModalModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -94,6 +96,10 @@ import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: ionicGalleryModal.GalleryModalHammerConfig,
+    },
     ShopServiceProvider,
     Auth,
     Server,
