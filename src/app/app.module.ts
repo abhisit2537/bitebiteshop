@@ -26,6 +26,12 @@ import { CreatecatePage } from '../pages/createcate/createcate';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ProfilePage } from '../pages/profile/profile';
 import { SortablejsModule } from "angular-sortablejs";
+import { AgreementPage } from '../pages/agreement/agreement';
+import { Firstloginstep1Page } from '../pages/firstloginstep1/firstloginstep1';
+import { Firstloginstep2Page } from '../pages/firstloginstep2/firstloginstep2';
+import { Firstloginstep3Page } from '../pages/firstloginstep3/firstloginstep3';
+import { Firstloginstep4Page } from '../pages/firstloginstep4/firstloginstep4';
+import { Firstloginstep5Page } from '../pages/firstloginstep5/firstloginstep5';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,13 @@ import { SortablejsModule } from "angular-sortablejs";
     CreateproductPage,
     IonUploadImagesComponent,
     CreatecatePage,
-    ProfilePage
+    ProfilePage,
+    AgreementPage,
+    Firstloginstep1Page,
+    Firstloginstep2Page,
+    Firstloginstep3Page,
+    Firstloginstep4Page,
+    Firstloginstep5Page
   ],
   imports: [
     BrowserModule,
@@ -63,7 +75,13 @@ import { SortablejsModule } from "angular-sortablejs";
     LoginPage,
     CreateproductPage,
     CreatecatePage,
-    ProfilePage
+    ProfilePage,
+    AgreementPage,
+    Firstloginstep1Page,
+    Firstloginstep2Page,
+    Firstloginstep3Page,
+    Firstloginstep4Page,
+    Firstloginstep5Page
   ],
   providers: [
     StatusBar,

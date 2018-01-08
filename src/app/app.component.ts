@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabnavPage } from '../pages/tabnav/tabnav';
 import { LoginPage } from '../pages/login/login';
 import * as firebase from 'firebase';
+import { AgreementPage } from '../pages/agreement/agreement';
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,11 +23,17 @@ export class MyApp {
       splashScreen.hide();
       this.configFirebase();
     });
-    this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
-    if (this.user) {
-      console.log(this.user);
-      this.rootPage = TabnavPage;
+    let isFirstLogin = window.localStorage.getItem('bikebikeshopfirstlogin');
+    if (!isFirstLogin) {
+      this.rootPage = AgreementPage;
+    } else {
+      this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
+      if (this.user) {
+        console.log(this.user);
+        this.rootPage = TabnavPage;
+      }
     }
+
   }
 
   configFirebase() {

@@ -1,0 +1,103 @@
+<!--
+  Generated template for the Firstloginstep4Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>firstloginstep4</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding>
+  <div class="slide-xpromote">
+    <p class="font-size">เวลาที่เปิด-ปิดร้าน</p> 
+    <ion-scroll scrollX="true" class="slide-xsize">
+      <ion-row no-padding class="row-custom">
+        <ion-col col-4 (click)="addTime()">
+          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
+        </ion-col>
+        <!-- <div> -->
+        <!-- </div> -->
+
+        <!-- <div *ngIf="shop && shop.promoteimage"> -->
+        <!-- <ion-col col-2-4 *ngFor="let item of shop.promoteimage">
+              <img [src]="item" class="cateimg">
+            </ion-col> -->
+        <!-- </div> -->
+      </ion-row>
+    </ion-scroll>
+  </div>
+
+  <div *ngIf="isAdd" class="detail-open-close">
+    <ion-item>
+      <ion-label floating>รายละเอียด</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>เวลาเปิด</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>เวลาปิด</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col col-2>
+
+      </ion-col>
+      <ion-col>
+        <ion-list class="detail-open-close">
+
+          <ion-item>
+            <ion-label>จันทร์</ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>อังคาร</ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>พุทธ</ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>พฤหัสบดี</ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>ศุกร์</ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>เสาร์</ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>อาทิตย์</ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+      <ion-col col-2>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block (click)="add()" color="danger">เพิ่ม</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block (click)="cancel()" color="danger">ยกเลิก</button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+<ion-footer padding>
+  <button ion-button block (click)="step5()" color="danger">ถัดไป</button>
+</ion-footer>
