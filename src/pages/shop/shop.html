@@ -96,7 +96,7 @@
   <div>
     <ion-grid *ngIf="shop && shop.items && shop.items.length > 0">
       <ion-row no-padding *ngIf="isModify" [sortablejs]="shop.items[index].products" [sortablejsOptions]="options">
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''">
           <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px" (click)="productIndex(i)">
           <div class="texthoverproduct2" *ngIf="itm.name">
             <div *ngIf="itm.name">
@@ -135,7 +135,9 @@
               </div>
             </div> -->
   <ion-fab right bottom *ngIf="isModify">
-    <button ion-fab mini color="danger" (click)="clearMode()"><ion-icon name="ios-checkmark" ></ion-icon></button>
+    <button ion-fab mini color="danger" (click)="clearMode()">
+      <ion-icon name="ios-checkmark"></ion-icon>
+    </button>
   </ion-fab>
 
 </ion-content>

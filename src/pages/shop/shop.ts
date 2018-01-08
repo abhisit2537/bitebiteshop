@@ -54,15 +54,7 @@ export class ShopPage {
     public alertCtrl: AlertController,
 
   ) {
-    this.options = {
-      chosenClass: 'xxx',
-      ghostClass: 'xxx2',
-      onUpdate: (event: any) => {
-        // console.log(this.q1);
-      },
-      animation: 150,
-      delay: 0
-    };
+
   }
 
   ionViewDidLoad() {
@@ -88,8 +80,18 @@ export class ShopPage {
       this.shop = data;
       if (data.items && data.items.length > 0) {
         this.cate = data.items[0].cate;
-        console.log(this.cate);
+        console.log(data.items);
       }
+      this.options = {
+        chosenClass: 'xxx',
+        ghostClass: 'xxx2',
+        onUpdate: (event: any) => {
+          // console.log(this.q1);
+        },
+        animation: 150,
+        delay: 0,
+        filter: ".js-edit"
+      };
       setTimeout(function () {
         loading.dismiss();
       }, 500);
