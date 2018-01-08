@@ -1,13 +1,13 @@
-import { Component,ViewChild  } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
-    App,
-    IonicPage,
-    LoadingController,
-    ModalController,
-    NavController,
-    NavParams,
-    PopoverController,
-    Slides,
+  App,
+  IonicPage,
+  LoadingController,
+  ModalController,
+  NavController,
+  NavParams,
+  PopoverController,
+  Slides,
 } from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
@@ -19,6 +19,7 @@ import { CreateproductPage } from '../createproduct/createproduct';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { ProfilePage } from '../profile/profile';
 import { SortablejsOptions } from 'angular-sortablejs/dist';
+import { ShopeditPage } from '../shopedit/shopedit';
 /**
  * Generated class for the ShopPage page.
  *
@@ -30,7 +31,7 @@ import { SortablejsOptions } from 'angular-sortablejs/dist';
 @Component({
   selector: 'page-shop',
   templateUrl: 'shop.html',
-  
+
 })
 export class ShopPage {
   shop: ShopModel = new ShopModel();
@@ -51,17 +52,9 @@ export class ShopPage {
     public imagePicker: ImagePicker,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
-    
+
   ) {
-    this.options = {
-      chosenClass: 'xxx',
-      ghostClass: 'xxx2',
-      onUpdate: (event: any) => {
-        // console.log(this.q1);
-      },
-      animation: 150,
-      delay: 0
-    };
+
   }
 
   ionViewDidLoad() {
@@ -73,7 +66,12 @@ export class ShopPage {
     console.log('ionViewWillEnter ShopPage');
     this.shopService();
   }
-  
+
+  edit(shop) {
+    console.log(shop);
+    this.navCtrl.push(ShopeditPage,shop)
+  }
+
   shopService() {
     this.images = [];
     let loading = this.loading.create();
@@ -82,8 +80,18 @@ export class ShopPage {
       this.shop = data;
       if (data.items && data.items.length > 0) {
         this.cate = data.items[0].cate;
-        console.log(this.cate);
+        console.log(data.items);
       }
+      this.options = {
+        chosenClass: 'xxx',
+        ghostClass: 'xxx2',
+        onUpdate: (event: any) => {
+          // console.log(this.q1);
+        },
+        animation: 150,
+        delay: 0,
+        filter: ".js-edit"
+      };
       setTimeout(function () {
         loading.dismiss();
       }, 500);
@@ -220,7 +228,7 @@ export class ShopPage {
       this.shopService();
     }, (err) => {
       // alert(JSON.stringify(JSON.parse(err._body).message));
-      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');      
+      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
       console.log(err);
     });
   }
@@ -310,20 +318,20 @@ export class ShopPage {
   doAlert(itm) {
     console.log(itm.image);
     let alert = this.alertCtrl.create({
-      
+
     });
     alert.present();
   }
-  
+
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
     console.log('Current index is', currentIndex);
   }
-  modalPresent(){
+  modalPresent() {
     let profileModal = this.modalCtrl.create({});
     profileModal.present();
   }
-  myProfile(){
+  myProfile() {
     this.navCtrl.push(ProfilePage);
   }
 }

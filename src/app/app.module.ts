@@ -33,6 +33,9 @@ import { Firstloginstep3Page } from '../pages/firstloginstep3/firstloginstep3';
 import { Firstloginstep4Page } from '../pages/firstloginstep4/firstloginstep4';
 import { Firstloginstep5Page } from '../pages/firstloginstep5/firstloginstep5';
 
+import { ShopeditPage } from '../pages/shopedit/shopedit';
+import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -53,7 +56,9 @@ import { Firstloginstep5Page } from '../pages/firstloginstep5/firstloginstep5';
     Firstloginstep2Page,
     Firstloginstep3Page,
     Firstloginstep4Page,
-    Firstloginstep5Page
+    Firstloginstep5Page,
+    ShopeditPage,
+    ShoptimeeditPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +86,9 @@ import { Firstloginstep5Page } from '../pages/firstloginstep5/firstloginstep5';
     Firstloginstep2Page,
     Firstloginstep3Page,
     Firstloginstep4Page,
-    Firstloginstep5Page
+    Firstloginstep5Page,
+    ShopeditPage,
+    ShoptimeeditPage
   ],
   providers: [
     StatusBar,
