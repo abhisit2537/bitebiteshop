@@ -15,6 +15,7 @@ export class ShopModel {
     issendmail: string;
     importform: string;
     times: Array<TimeModel>;
+    items: Array<ItemsModel>;
 
 }
 export class AddressModel {
@@ -28,8 +29,8 @@ export class AddressModel {
     lng: string;
 }
 export class ItemsModel {
-    cate: Array<CateModel>
-    products: Array<ProductsModel>
+    cate: CateModel = new CateModel();
+    products: Array<ProductsModel>;
 }
 export class CateModel {
     _id: string;
