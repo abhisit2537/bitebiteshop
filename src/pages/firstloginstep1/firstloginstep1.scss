@@ -7,7 +7,8 @@ page-firstloginstep1 {
         font-size: 1.2em;
     }
     .fix-itm{
+        .item-md.item-block .item-inner{
             border-bottom: 1px solid transparent !important;
-        
+        }
     }
 }
