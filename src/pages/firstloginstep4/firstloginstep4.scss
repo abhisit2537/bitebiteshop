@@ -1,4 +1,15 @@
 page-firstloginstep4 {
+    .roundedclass {
+        border-radius: 15px;
+    }
+    .containerclass {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #eb3841;
+        // margin-bottom: 3vh;
+        // padding-bottom: 1vh;
+    }
     .slide-xpromote {
         height: 30vh;
         border: solid red;
@@ -7,7 +18,7 @@ page-firstloginstep4 {
         font-size: 1.2em;
     }
     .slide-xsize{
-        height: 25vh;        
+        height: 20vh;        
     }
     .row-custom {
         flex-wrap: inherit !important;
