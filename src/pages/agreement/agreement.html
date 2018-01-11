@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-bounce>
   <h2>Privacy Policy</h2>
 
   <ion-scroll scrollY="true">
@@ -51,6 +51,13 @@
     </ion-row>
     </ion-scroll>
 
-  <button ion-button block (click)="agreement()" color="danger">Accept</button>
-
+  
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button [disabled]="!isShowAgreementBtn" ion-button block (click)="agreement()" color="danger">Accept</button>
+  </ion-toolbar>
+</ion-footer>
