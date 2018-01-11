@@ -91,4 +91,7 @@
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAqsI0tE4IKhn3K0OZzYhuFCv_MbEZtVrM" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyAqsI0tE4IKhn3K0OZzYhuFCv_MbEZtVrM" />
     </plugin>
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
 </widget>

@@ -17,20 +17,20 @@
   <div text-center>
     <img class="logo-img" src="./assets/imgs/logo-bg.png" alt="">
   </div>
-  <ion-item>
-    <ion-label mode="ios" color="light" stacked>
-      <ion-icon name="ios-person-outline" item-start></ion-icon>
+  <ion-item class="loginfont">
+    <ion-label mode="ios" color="light" floating>
+      <!-- <ion-icon name="ios-person-outline" item-start></ion-icon> -->
       Username
     </ion-label>
     <ion-input type="text" [(ngModel)]="credentials.username"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label mode="ios" color="light" stacked>
-      <ion-icon name="md-log-in" item-start></ion-icon>
+  <ion-item class="loginfont">
+    <ion-label mode="ios" color="light" floating>
+      <!-- <ion-icon name="md-log-in" item-start></ion-icon> -->
       Password
     </ion-label>
     <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
   </ion-item>
-  <button class="button-login" ion-button round block outline color="dark" (click)="login()" [disabled]="!credentials.username || !credentials.password">เข้าสู่ระบบ</button>
+  <button class="button-login" ion-button block color="maintheme" (click)="login()" [disabled]="!credentials.username || !credentials.password">เข้าสู่ระบบ</button>
   <!-- <button ion-button full margin-top (click)="register()">สมัครสมาชิก</button> -->
 </ion-content>

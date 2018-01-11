@@ -6,8 +6,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { TabnavPage } from '../pages/tabnav/tabnav';
 import { LoginPage } from '../pages/login/login';
+
 import * as firebase from 'firebase';
 import { AgreementPage } from '../pages/agreement/agreement';
+import { GreetingPage } from '../pages/greeting/greeting';
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,7 +27,7 @@ export class MyApp {
     });
     let isFirstLogin = window.localStorage.getItem('bikebikeshopfirstlogin');
     if (!isFirstLogin) {
-      this.rootPage = AgreementPage;
+      this.rootPage = GreetingPage;
     } else {
       this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
       if (this.user) {

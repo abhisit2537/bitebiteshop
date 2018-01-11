@@ -15,7 +15,7 @@ import { LoginPage } from '../login/login';
   templateUrl: 'agreement.html',
 })
 export class AgreementPage {
-
+  isShowAgreementBtn: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -26,6 +26,10 @@ export class AgreementPage {
   agreement() {
     // window.localStorage.setItem('bikebikeshopfirstlogin', 'true');
     this.navCtrl.setRoot(LoginPage);
+  }
+  doInfinite(infiniteScroll) {
+    this.isShowAgreementBtn = true;
+    infiniteScroll.complete();
   }
 
 }

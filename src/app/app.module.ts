@@ -38,6 +38,13 @@ import { ShopeditPage } from '../pages/shopedit/shopedit';
 import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
 import * as ionicGalleryModal from 'ionic-gallery-modal';
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { Geolocation } from '@ionic-native/geolocation';
+import {
+  GoogleMaps
+ } from '@ionic-native/google-maps';
+ import { NativeGeocoder } from '@ionic-native/native-geocoder';
+
+import { GreetingPage } from '../pages/greeting/greeting';
 @NgModule({
   declarations: [
     MyApp,
@@ -61,7 +68,8 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
     Firstloginstep5Page,
     ShopeditPage,
     ShoptimeeditPage,
-    FirstloginstepModalPage
+    FirstloginstepModalPage,
+    GreetingPage,
   ],
   imports: [
     BrowserModule,
@@ -93,7 +101,8 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
     Firstloginstep5Page,
     ShopeditPage,
     ShoptimeeditPage,
-    FirstloginstepModalPage
+    FirstloginstepModalPage,
+    GreetingPage,
   ],
   providers: [
     StatusBar,
@@ -108,7 +117,10 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
     Server,
     CoreserviceProvider,
     Base64,
-    ImagePicker
+    ImagePicker,
+    Geolocation,
+    GoogleMaps,
+    NativeGeocoder
   ]
 })
 export class AppModule {}
