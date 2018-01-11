@@ -1,9 +1,9 @@
 <ion-header no-border>
-  <ion-navbar transparent>
-    <!-- <ion-buttons right>
+  <!-- <ion-navbar transparent>
+    <ion-buttons right>
         <button ion-button color="light" *ngIf="slideIndex < slides.length - 1" class="skip-button" (click)="skip()">SKIP</button>
-      </ion-buttons> -->
-  </ion-navbar>
+      </ion-buttons>
+  </ion-navbar> -->
 </ion-header>
 <ion-content fullscreen="true" class="no-padding-top">
   <!-- autoplay="2000" -->
@@ -20,7 +20,10 @@
   <!-- <ion-fab bottom right>
     <button ion-fab color="danger" (click)="goToApp()">Skip</button>
   </ion-fab> -->
-  <div class="floating-buttons pop-in" *ngIf="slideIndex >= slides.length - 1" text-center>
-      <button ion-button clear (click)="goToApp()">ตกลง</button>
-    </div>
+  <div class="floating-buttons pop-in skip" *ngIf="slideIndex != 4" text-center>
+      <button ion-button color="danger" clear (click)="goToApp()">Skip</button>
+  </div>
+  <div class="floating-buttons button pop-in skip" *ngIf="slideIndex == 4" text-center>
+      <button ion-button color="danger" clear (click)="goToApp()">ตกลง</button>
+  </div>
 </ion-content>

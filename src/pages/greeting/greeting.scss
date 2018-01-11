@@ -19,12 +19,15 @@ page-greeting {
     transition: all .4s linear; // background-color: $base-color-transparent;
   }
   .floating-buttons button {
-    color: white;
+    color: #eb3841;
     min-height: 3.5vh;
     text-transform: none;
     font-size: 1.2em;
     font-weight: bold; // background: rgba(49, 161, 216, 0.67);
-    background: #EB3841;
+    background: transparent;
+    margin-bottom: 87vh;
+    margin-right: -50vh;
+
   }
   .slide-background {
     background-size: cover !important;
@@ -71,4 +74,5 @@ page-greeting {
       color: #000000;
     }
   }
+
 }
