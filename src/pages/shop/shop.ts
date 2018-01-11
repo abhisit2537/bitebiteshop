@@ -335,15 +335,32 @@ export class ShopPage {
   myProfile() {
     this.navCtrl.push(ProfilePage);
   }
-  imageGallery() {
+
+  viewImage(img) {
+    let images = [{ url: img }];
+    this.imageGallery(images);
+  }
+  viewProduct(prodID) {
+    let loading = this.loading.create();
+    loading.present();
+    this.shopServiceProvider.getProduct(prodID).then((data) => {
+      loading.dismiss();
+      let images = [];
+      data.images.forEach(img => {
+        images.push({
+          url: img
+        });
+      });
+      this.imageGallery(images);
+    }, (err) => {
+      loading.dismiss();
+      console.log(err);
+    })
+
+  }
+  imageGallery(images) {
     let modal = this.modalCtrl.create(GalleryModal, {
-      photos: [{
-        url: 'http://www.trendycovers.com/covers/make_a_wish_facebook_cover_1484111405.jpg',
-        //type: '',
-      }, {
-        url: 'http://www.trendycovers.com/covers/make_a_wish_facebook_cover_1484111405.jpg',
-        //type: '',
-      }]
+      photos: images
     });
     modal.present();
   }

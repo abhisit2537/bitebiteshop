@@ -60,7 +60,7 @@
         </ion-col>
         <!-- <div *ngIf="shop && shop.promoteimage"> -->
         <ion-col col-2-4 *ngFor="let item of shop.promoteimage">
-          <img [src]="item" class="cateimg">
+          <img [src]="item" class="cateimg" (click)="viewImage(item)">
         </ion-col>
         <!-- </div> -->
       </ion-row>
@@ -78,7 +78,7 @@
       <ion-row no-padding class="row-custom">
         <!-- <div *ngIf="shop && shop.items && shop.items.length > 0"> -->
         <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i, item.cate)">
-          <img [src]="item.cate.image" class="cateimg">
+          <img [src]="item.cate.image" class="cateimg" (click)="viewImage(item.cate.image)">
           <div class="texthover2" [ngClass]=" i === index ? 'selectedCategory' : ''">
             <span mode="ios"> {{item.cate.name}} </span>
           </div>
@@ -109,8 +109,8 @@
         </ion-col>
       </ion-row>
       <ion-row no-padding *ngIf="!isModify">
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
-          <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()">
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" [ngClass]="''">
+          <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()" (click)="viewProduct(itm._id)">
           <div class="texthoverproduct2" *ngIf="itm.name">
             <div *ngIf="itm.name">
               <label> {{itm.name}}</label>
@@ -135,9 +135,9 @@
               </div>
             </div> -->
   <ion-fab right bottom *ngIf="isModify">
-    <button ion-fab mini color="danger" (click)="clearMode()">
+    <button ion-fab color="danger" (click)="clearMode()">
       <ion-icon name="ios-checkmark"></ion-icon>
     </button>
   </ion-fab>
- <button ion-button block (click)="imageGallery()"></button>
+ <!-- <button ion-button block (click)="imageGallery()"></button> -->
 </ion-content>
