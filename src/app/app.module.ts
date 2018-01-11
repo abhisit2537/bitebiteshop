@@ -32,7 +32,6 @@ import { Firstloginstep2Page } from '../pages/firstloginstep2/firstloginstep2';
 import { Firstloginstep3Page } from '../pages/firstloginstep3/firstloginstep3';
 import { Firstloginstep4Page } from '../pages/firstloginstep4/firstloginstep4';
 import { Firstloginstep5Page } from '../pages/firstloginstep5/firstloginstep5';
-
 import { ShopeditPage } from '../pages/shopedit/shopedit';
 import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
 import * as ionicGalleryModal from 'ionic-gallery-modal';
@@ -43,6 +42,7 @@ import {
  } from '@ionic-native/google-maps';
  import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
+import { GreetingPage } from '../pages/greeting/greeting';
 @NgModule({
   declarations: [
     MyApp,
@@ -65,7 +65,8 @@ import {
     Firstloginstep4Page,
     Firstloginstep5Page,
     ShopeditPage,
-    ShoptimeeditPage
+    ShoptimeeditPage,
+    GreetingPage,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +97,8 @@ import {
     Firstloginstep4Page,
     Firstloginstep5Page,
     ShopeditPage,
-    ShoptimeeditPage
+    ShoptimeeditPage,
+    GreetingPage,
   ],
   providers: [
     StatusBar,
