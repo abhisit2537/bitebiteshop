@@ -41,8 +41,8 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { Geolocation } from '@ionic-native/geolocation';
 import {
   GoogleMaps
- } from '@ionic-native/google-maps';
- import { NativeGeocoder } from '@ionic-native/native-geocoder';
+} from '@ionic-native/google-maps';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 import { GreetingPage } from '../pages/greeting/greeting';
 @NgModule({
@@ -107,7 +107,7 @@ import { GreetingPage } from '../pages/greeting/greeting';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: ionicGalleryModal.GalleryModalHammerConfig,
@@ -123,4 +123,4 @@ import { GreetingPage } from '../pages/greeting/greeting';
     NativeGeocoder
   ]
 })
-export class AppModule {}
+export class AppModule { }
