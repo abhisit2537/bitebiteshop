@@ -15,15 +15,13 @@
             <p [innerHTML]="slide.description"></p>
           </div> -->
       </div>
+      <div class="floating-buttons pop-in skip" text-center>
+        <button ion-button color="danger" clear (click)="goToApp()">{{slideIndex==4?'ตกลง':'Skip'}}</button>
+      </div>
     </ion-slide>
   </ion-slides>
   <!-- <ion-fab bottom right>
     <button ion-fab color="danger" (click)="goToApp()">Skip</button>
   </ion-fab> -->
-  <div class="floating-buttons pop-in skip" *ngIf="slideIndex != 4" text-center>
-      <button ion-button color="danger" clear (click)="goToApp()">Skip</button>
-  </div>
-  <div class="floating-buttons button pop-in skip" *ngIf="slideIndex == 4" text-center>
-      <button ion-button color="danger" clear (click)="goToApp()">ตกลง</button>
-  </div>
+
 </ion-content>
