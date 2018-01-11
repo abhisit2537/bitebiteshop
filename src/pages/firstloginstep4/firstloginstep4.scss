@@ -7,13 +7,30 @@ page-firstloginstep4 {
         margin-left: auto;
         margin-right: auto;
         border: 1px solid #eb3841;
-        margin-bottom: 3vh; // padding-bottom: 1vh;
+        margin-bottom: 3vh; // padding-bottom: 4vh;
+    }
+    .detailtimes {
+        width: auto;
+        height: 97%;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #eb3841;
+        // margin-bottom: 3vh;
+        background-color: #eb3841;
+        color: white;
+        // margin-bottom: -22px;
+    }
+    .textTimes{
+        margin-left: 5px;
+        margin-bottom: -12px;
+    }
+    .textTimesDay{
+        margin-left: 5px;
+        margin-bottom: 0px;
     }
     .buttonIon {
         width: 80px;
     }
-
-    
     .slide-xpromote {
         height: 30vh;
         border: solid red;
@@ -22,7 +39,7 @@ page-firstloginstep4 {
         font-size: 1.2em;
     }
     .slide-xsize {
-        height: 20vh;
+        height: 30vh;
     }
     .row-custom {
         flex-wrap: inherit !important;

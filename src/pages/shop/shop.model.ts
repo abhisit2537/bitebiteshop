@@ -16,6 +16,7 @@ export class ShopModel {
     importform: string;
     times: Array<TimeModel>;
     items: Array<ItemsModel>;
+    categories: Array<CateModel>;
 
 }
 export class AddressModel {

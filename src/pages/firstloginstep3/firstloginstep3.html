@@ -14,28 +14,27 @@
 
 
 <ion-content padding>
-  <ion-item>
+  <ion-item *ngIf="cate && cate.length > 0">
     <ion-label>หมวดหมู่ร้าน</ion-label>
-    <ion-select multiple="true">
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
+    <ion-select [(ngModel)]="categories" multiple="true">
+      <ion-option *ngFor="let catename of cate" (ionChange)="onSelect()" [value]="catename">{{catename.name}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label floating>รายละเอียดร้าน</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="firstLogin.detail"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>E-mail</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="firstLogin.email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Facebook</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="firstLogin.facebook"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Line</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="firstLogin.line"></ion-input>
   </ion-item>
 </ion-content>
 <ion-footer padding no-border>

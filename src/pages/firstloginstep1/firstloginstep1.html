@@ -14,31 +14,46 @@
 
 
 <ion-content padding no-lines>
+
   <ion-row>
-    <ion-col col-4>
+    
+    <ion-col col-12 text-center>
+      <div *ngIf="firstLogin && firstLogin.profileImageURL">
+        <img src="{{firstLogin.profileImageURL}}" style="height: 165px;width:100%;" alt="image">
+        <!-- <img src="./assets/imgs/logo-bg.png" style="height: 165px;width:100%;" alt="image"> -->
+        <span class="thisfill"></span>
+        <ion-row class="camera">
+          <ion-icon name="camera" color="light" (click)="selectProfile()"></ion-icon>
+        </ion-row>
+      </div>
     </ion-col>
-    <ion-col col-4>
-      <img src="./assets/imgs/logo-bg.png" alt="">
-    </ion-col>
-    <ion-col col-4>
-    </ion-col>
+    
   </ion-row>
   <ion-row>
     <ion-col col-6>
       <ion-item>
         <ion-label floating>ชื่อ</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="firstLogin.firstName"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-6>
       <ion-item>
         <ion-label floating>นามสกุล</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="firstLogin.lastName"></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
-  <p padding class="font-size">วัน/เดือน/ปี เกิด</p> 
+  <!-- <p padding class="font-size">วัน/เดือน/ปี เกิด</p>  -->
   <ion-row>
+    <ion-col col-12>
+      <ion-item>
+        <ion-label>วันเกิด</ion-label>
+        <!-- <ion-datetime placeholder="กรุณาเลือกวันเกิด" displayFormat="hh/mm/A" [(ngModel)]="firstLogin.dateOfBirth"></ion-datetime> -->
+        <ion-datetime placeholder="กรุณาเลือกวันเกิด" displayFormat="DD/MM/YYYY" [(ngModel)]="firstLogin.dateOfBirth"></ion-datetime>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row>
     <ion-col col-4>
       <ion-item>
         <ion-label>วัน</ion-label>
@@ -66,15 +81,23 @@
         </ion-select>
       </ion-item>
     </ion-col>
+  </ion-row> -->
+  <ion-row>
+    <ion-col col-12>
+      <ion-item>
+        <ion-label floating>เลขที่บัตรประชาชน</ion-label>
+        <ion-input [(ngModel)]="firstLogin.citizenid"></ion-input>
+      </ion-item>
+    </ion-col>
   </ion-row>
-  <ion-item>
-    <ion-label floating>เลขที่บัตรประชาชน</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>เลขที่บัญชีธนาคาร</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+  <ion-row>
+    <ion-col col-12>
+      <ion-item>
+        <ion-label floating>เลขที่บัญชีธนาคาร</ion-label>
+        <ion-input [(ngModel)]="firstLogin.bankaccount"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 
 </ion-content>
 <ion-footer padding no-border>

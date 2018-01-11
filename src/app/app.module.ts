@@ -32,6 +32,7 @@ import { Firstloginstep2Page } from '../pages/firstloginstep2/firstloginstep2';
 import { Firstloginstep3Page } from '../pages/firstloginstep3/firstloginstep3';
 import { Firstloginstep4Page } from '../pages/firstloginstep4/firstloginstep4';
 import { Firstloginstep5Page } from '../pages/firstloginstep5/firstloginstep5';
+import { FirstloginstepModalPage } from '../pages/firstloginstep-modal/firstloginstep-modal';
 
 import { ShopeditPage } from '../pages/shopedit/shopedit';
 import { ShoptimeeditPage } from '../pages/shoptimeedit/shoptimeedit';
@@ -59,7 +60,8 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
     Firstloginstep4Page,
     Firstloginstep5Page,
     ShopeditPage,
-    ShoptimeeditPage
+    ShoptimeeditPage,
+    FirstloginstepModalPage
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
     Firstloginstep4Page,
     Firstloginstep5Page,
     ShopeditPage,
-    ShoptimeeditPage
+    ShoptimeeditPage,
+    FirstloginstepModalPage
   ],
   providers: [
     StatusBar,

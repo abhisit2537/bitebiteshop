@@ -35,6 +35,14 @@ export class ShopServiceProvider {
       .catch(this.handleError);
   }
 
+  getCate(): Promise<any> {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.get(this.server.url + 'api/categoryshops', { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
   setCover(shopId, img): Promise<any> {
     let data = { data: img };
     let headers = this.coreService.authorizationHeader();
