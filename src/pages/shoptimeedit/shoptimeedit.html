@@ -23,7 +23,7 @@
     <!-- <div *ngIf="isAdd" class="detail-open-close"> -->
     <ion-item>
       <ion-label fixed>รายละเอียด</ion-label>
-      <ion-input type="text" [(ngModel)]="addTime.detail"></ion-input>
+      <ion-input type="text" [(ngModel)]="addTime.detail" text-right></ion-input>
     </ion-item>
 
     <ion-item>
@@ -46,7 +46,7 @@
               
 
           <ion-item fix-margin-label *ngFor="let day of addTime.days">
-            <ion-label>{{day.name}}</ion-label>
+            <ion-label class="fontStyle">{{day.name}}</ion-label>
             <ion-checkbox  [(ngModel)]="day.checked" item-end></ion-checkbox>
           </ion-item>
           <!-- <ion-item no-lines fix-margin-label>
