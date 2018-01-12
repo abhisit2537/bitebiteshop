@@ -68,7 +68,8 @@ export class Auth {
   }
 
   manageUser(user): Promise<any> {
-    return this.http.put(this.server.url + 'api/usermanage', user)
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/usermanage/' + user._id, user, { headers: headers })
       .toPromise()
       .then((response) => {
         let res = response as any;
