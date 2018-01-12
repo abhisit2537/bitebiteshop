@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TabnavPage } from '../tabnav/tabnav';
 import { Geolocation } from '@ionic-native/geolocation';
 import {
@@ -41,8 +41,12 @@ export class Firstloginstep5Page {
     lng: ''
   }
   firstLogin: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private googleMaps: GoogleMaps, private nativeGeocoder: NativeGeocoder, public shopServiceProvider: ShopServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private googleMaps: GoogleMaps, private nativeGeocoder: NativeGeocoder, public shopServiceProvider: ShopServiceProvider, public loading: LoadingController) {
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
     this.firstLogin = this.navParams.data;
+    loadingCtrl.dismiss();
+    
     // alert(JSON.stringify(this.firstLogin));
     // alert(this.firstLogin._id);
   }
@@ -56,11 +60,15 @@ export class Firstloginstep5Page {
   }
 
   save() {
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
     window.localStorage.setItem('bikebikeshopfirstlogin', 'true');
     console.log(this.firstLogin);
     this.shopServiceProvider.addFirstShop(this.firstLogin).then((data) => {
+      loadingCtrl.dismiss();
       this.navCtrl.setRoot(TabnavPage);
     }, (err) => {
+      loadingCtrl.dismiss();
       alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
       // alert(JSON.stringify(JSON.parse(err._body).message));
     });
@@ -77,6 +85,7 @@ export class Firstloginstep5Page {
     });
   }
   showMap() {
+    
     this.nativeGeocoder.reverseGeocode(this.firstLogin.address.lat, this.firstLogin.address.lng)
       .then((result: NativeGeocoderReverseResult) => {
         // alert(JSON.stringify(result))
@@ -85,6 +94,7 @@ export class Firstloginstep5Page {
         this.address.distinct = result.subAdministrativeArea;
         this.address.province = result.administrativeArea;
         this.address.postcode = result.postalCode;
+        
       })
       .catch((error: any) => console.log(error));
 
@@ -98,7 +108,8 @@ export class Firstloginstep5Page {
         tilt: 30
       }
     };
-
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
     this.map = this.googleMaps.create('map_canvas', mapOptions);
 
     // Wait the MAP_READY before using any methods.
@@ -130,8 +141,8 @@ export class Firstloginstep5Page {
                   .catch((error: any) => console.log(error));
               });
           });
-
       });
+      loadingCtrl.dismiss();
   }
 }
 

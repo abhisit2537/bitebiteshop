@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the FirstloginstepModalPage page.
@@ -16,11 +16,10 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 export class FirstloginstepModalPage {
   firstLogin: any = {};
   // addTime: any = [];
-  cucumber: boolean;
   addTime: any = {
     detail: "",
-    openTime: Date,
-    closeTime: Date,
+    openTime: new Date(),
+    closeTime: new Date(),
     days: [{
       name: 'จันทร์',
       checked: false
@@ -50,7 +49,7 @@ export class FirstloginstepModalPage {
       checked: false
     }]
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
     this.firstLogin = this.navParams.data;
     // alert(JSON.stringify(this.firstLogin));
   }
@@ -75,7 +74,11 @@ export class FirstloginstepModalPage {
       timeend: data.closeTime,
       days: newDay
     });
-    this.viewCtrl.dismiss(this.firstLogin);
+    if (data.openTime && data.closeTime) {
+      this.viewCtrl.dismiss(this.firstLogin);
+    } else {
+      alert('เกิดข้อผิดพลาด กรุณาเลือดเวลาเปิด-ปิด');
+    }
   }
   closeModel() {
     this.viewCtrl.dismiss();

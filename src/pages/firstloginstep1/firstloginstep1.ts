@@ -25,14 +25,16 @@ export class Firstloginstep1Page {
   myDate: String = new Date().toISOString();
   shop: ShopModel = new ShopModel();
   constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public loading: LoadingController, public shopServiceProvider: ShopServiceProvider) {
-
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
       console.log(this.shop);
-
+      loadingCtrl.dismiss();
 
 
     }, (err) => {
+      loadingCtrl.dismiss();
       // window.localStorage.removeItem('bikebikeshop');
     });
 

@@ -15,7 +15,12 @@
 
 <ion-content padding>
   <div class="containerclass">
-    <p>ที่อยู่</p>
+    <ion-item no-lines>
+      <ion-label class="fontStyle">
+        ที่อยู่
+      </ion-label>
+    </ion-item>
+    <!-- <p>ที่อยู่</p> -->
     <p class="txtAddress">
       {{firstLogin.address.address ? firstLogin.address.address : ''}}
     </p>
