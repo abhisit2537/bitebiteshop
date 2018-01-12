@@ -3,18 +3,20 @@ page-shopedit {
     //     border-radius: 15px;
     // }
     .containerclass {
-        width: 100%;
-        // height: auto;
+        width: 100%; // height: auto;
         margin-left: auto;
         margin-right: auto;
         border: 1px solid #eb3841;
         margin-bottom: 1vh;
         padding-bottom: 1vh;
     }
-    .fixHeight{
+    .fixHeight {
         margin-bottom: -25px;
     }
-    .fixPin{
+    .padding-15 {
+        padding-top: 15px;
+    }
+    .fixPin {
         margin-bottom: 0px;
     }
     .pin {
@@ -26,17 +28,15 @@ page-shopedit {
         height: 120px;
         margin-left: auto;
         margin-right: auto;
-        border: 1px solid #eb3841;
-        // margin-bottom: 3vh;
+        border: 1px solid #eb3841; // margin-bottom: 3vh;
         background-color: #eb3841;
-        color: white;
-        // margin-bottom: -22px;
+        color: white; // margin-bottom: -22px;
     }
-    .textTimes{
+    .textTimes {
         margin-right: 5px;
         margin-bottom: -12px;
     }
-    .textTimesDay{
+    .textTimesDay {
         margin-left: 5px;
         margin-bottom: 0px;
     }
