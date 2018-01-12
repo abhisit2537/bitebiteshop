@@ -84,7 +84,7 @@
           </div>
         </ion-col>
         <!-- </div> -->
-        <ion-col col-2-4 (press)="setModeEdit()" *ngIf="!isModify">
+        <ion-col col-2-4 *ngIf="!isModify">
           <img src="./assets/imgs/add1.jpg" class="cateimg">
         </ion-col>
         <ion-col col-2-4 (click)="createCate()" *ngIf="isModify">
@@ -108,11 +108,11 @@
           </div>
         </ion-col>
       </ion-row>
-      <ion-row no-padding *ngIf="!isModify" [sortablejs]="shop.items[index].products" [sortablejsOptions]="{disabled: true}">
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" (press)="setModeEdit()">
+      <ion-row no-padding *ngIf="!isModify">
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" >
           <img class="img-h" *ngIf="itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px"
-            (click)="viewProduct(itm._id)" [ngClass]="itm.image !== './assets/imgs/add.jpg' ? 'js-edit' : ''">
-          <img class="img-h" *ngIf="!itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''">
+            (click)="viewProduct(itm._id)">
+          <img class="img-h" *ngIf="!itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px">
           <div class="texthoverproduct2" *ngIf="itm.name">
             <div *ngIf="itm.name">
               <label> {{itm.name}}</label>
@@ -138,7 +138,12 @@
             </div> -->
   <ion-fab right bottom *ngIf="isModify">
     <button ion-fab color="danger" (click)="clearMode()">
-      <ion-icon name="ios-checkmark"></ion-icon>
+      <ion-icon name="md-checkmark"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab right bottom *ngIf="!isModify">
+    <button ion-fab color="danger" (click)="setModeEdit()">
+      <ion-icon name="md-create"></ion-icon>
     </button>
   </ion-fab>
   <!-- <button ion-button block (click)="imageGallery()"></button> -->
