@@ -20,7 +20,10 @@ export class Firstloginstep2Page {
   images: Array<any> = [];
   coverImg: string = '';
   constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public loading: LoadingController) {
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
     this.firstLogin = this.navParams.data;
+    loadingCtrl.dismiss();
     // alert(this.firstLogin.coverimage);
 
   }

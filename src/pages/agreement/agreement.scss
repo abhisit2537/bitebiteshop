@@ -16,3 +16,6 @@ page-agreement {
     }
     
 }
+ion-scroll.scroll-y .scroll-content {
+    overflow-y: unset !important;
+}

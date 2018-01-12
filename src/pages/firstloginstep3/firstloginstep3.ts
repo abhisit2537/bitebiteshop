@@ -20,7 +20,7 @@ export class Firstloginstep3Page {
   firstLogin: any = {};
   cate: Array<CateModel>;
   categories = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public shopServiceProvider: ShopServiceProvider, public loadingCtrl: LoadingController, ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public shopServiceProvider: ShopServiceProvider, public loadingCtrl: LoadingController) {
     this.firstLogin = this.navParams.data;
     let loading = this.loadingCtrl.create();
     loading.present();
