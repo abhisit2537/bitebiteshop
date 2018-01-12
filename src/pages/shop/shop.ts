@@ -88,6 +88,11 @@ export class ShopPage {
         ghostClass: 'xxx2',
         onUpdate: (event: any) => {
           // console.log(this.q1);
+          this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
+            this.shopService();
+          }, (err) => {
+
+          });
         },
         animation: 150,
         delay: 0,

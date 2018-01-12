@@ -67,6 +67,16 @@ export class Auth {
       .catch(this.handleError);
   }
 
+  manageUser(user): Promise<any> {
+    return this.http.put(this.server.url + 'api/usermanage', user)
+      .toPromise()
+      .then((response) => {
+        let res = response as any;
+        window.localStorage.setItem('user', JSON.stringify(res));
+        return res;
+      })
+      .catch(this.handleError);
+  }
 
   logout() {
     window.localStorage.removeItem('token');
