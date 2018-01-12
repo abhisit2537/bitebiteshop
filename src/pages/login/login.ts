@@ -27,8 +27,8 @@ export class LoginPage {
     let loading = this.loading.create();
     loading.present()
     this.auth.login(this.credentials).then((res) => {
-      console.log(res);
-      if (res.roles.indexOf('shop') > 0) {
+      alert(JSON.stringify(res.roles.indexOf('shop')));
+      if (res.roles.indexOf('shop') >= 0) {
         window.localStorage.setItem('bikebikeshop', JSON.stringify(res));
         loading.dismiss();
         let isFirstLogin = window.localStorage.getItem('bikebikeshopfirstlogin');
