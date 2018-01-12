@@ -37,6 +37,7 @@ export class Firstloginstep1Page {
       this.firstLogin.line = this.shop.line ? this.shop.line : '';
       this.firstLogin.times = this.shop.times ? this.shop.times : [];
       this.firstLogin.categories = this.shop.categories ? this.shop.categories : [];
+      this.firstLogin.address = this.shop.address ? this.shop.address : {};
 
 
     }, (err) => {

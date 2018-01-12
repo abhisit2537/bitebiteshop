@@ -56,6 +56,10 @@ export class Firstloginstep3Page {
   }
 
   step4() {
+    if (this.categories && this.categories.length > 0) {
+      this.firstLogin.categories = this.categories;
+    }
+    // alert(JSON.stringify(this.firstLogin));
     this.navCtrl.setRoot(Firstloginstep4Page, this.firstLogin);
   }
 

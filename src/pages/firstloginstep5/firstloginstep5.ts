@@ -39,7 +39,11 @@ export class Firstloginstep5Page {
     lat: '',
     lng: ''
   }
+  firstLogin: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private googleMaps: GoogleMaps, private nativeGeocoder: NativeGeocoder) {
+    this.firstLogin = this.navParams.data;
+    alert(JSON.stringify(this.firstLogin));
+    alert(JSON.stringify(this.firstLogin.address));
   }
 
   ionViewDidLoad() {
@@ -71,7 +75,7 @@ export class Firstloginstep5Page {
         this.address.postcode = result.postalCode;
       })
       .catch((error: any) => console.log(error));
-      
+
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {

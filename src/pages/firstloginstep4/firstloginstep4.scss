@@ -4,6 +4,7 @@ page-firstloginstep4 {
     }
     .containerclass {
         width: auto;
+        height: auto;
         margin-left: auto;
         margin-right: auto;
         border: 1px solid #eb3841;
@@ -11,7 +12,7 @@ page-firstloginstep4 {
     }
     .detailtimes {
         width: auto;
-        height: 97%;
+        height: 150px;
         margin-left: auto;
         margin-right: auto;
         border: 1px solid #eb3841;
@@ -42,7 +43,7 @@ page-firstloginstep4 {
         height: 30vh;
     }
     .row-custom {
-        flex-wrap: inherit !important;
+        // flex-wrap: inherit !important;
     }
     .cateimg {
         height: 110px;
