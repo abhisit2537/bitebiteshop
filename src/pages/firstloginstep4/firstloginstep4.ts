@@ -49,7 +49,12 @@ export class Firstloginstep4Page {
   // cancel() {
   //   this.isAdd = false;
   // }
-
+  deleteTimes(index) {
+    // this.firstLogin.times.forEach(data => {
+    //   data.slice(item, 1);
+    // });
+    this.firstLogin.times.splice(index, 1);
+  }
   step5() {
     this.navCtrl.setRoot(Firstloginstep5Page, this.firstLogin);
   }
