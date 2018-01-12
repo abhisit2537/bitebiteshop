@@ -34,7 +34,7 @@ export class ShopServiceProvider {
       .then(response => response as any)
       .catch(this.handleError);
   }
-  editShop(shopID,data): Promise<any> {
+  editShop(shopID, data): Promise<any> {
 
     let headers = this.coreService.authorizationHeader();
     return this.http.put(this.server.url + 'api/manageshop/' + shopID, data, { headers: headers })
@@ -42,10 +42,10 @@ export class ShopServiceProvider {
       .then(response => response as any)
       .catch(this.handleError);
   }
-  editIndexProduct(shopID,data): Promise<any> {
+  editIndexProduct(shopID, data): Promise<any> {
 
     let headers = this.coreService.authorizationHeader();
-    return this.http.put(this.server.url + 'api/updateitems/' + shopID, {items: data.items}, { headers: headers })
+    return this.http.put(this.server.url + 'api/updateitems/' + shopID, { items: data.items }, { headers: headers })
       .toPromise()
       .then(response => response as any)
       .catch(this.handleError);
@@ -63,7 +63,11 @@ export class ShopServiceProvider {
     let headers = this.coreService.authorizationHeader();
     return this.http.put(this.server.url + 'api/manageshopinfo', data, { headers: headers })
       .toPromise()
-      .then(response => response as any)
+      .then(response => {
+        let data = response as any;
+        window.localStorage.setItem('user', JSON.stringify(data.user));
+        return response;
+      })
       .catch(this.handleError);
   }
 
