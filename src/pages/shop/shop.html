@@ -108,10 +108,11 @@
           </div>
         </ion-col>
       </ion-row>
-      <ion-row no-padding *ngIf="!isModify">
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
-          <img class="img-h" *ngIf="itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()" (click)="viewProduct(itm._id)">
-          <img class="img-h" *ngIf="!itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()" >
+      <ion-row no-padding *ngIf="!isModify" [sortablejs]="shop.items[index].products" [sortablejsOptions]="{disabled: true}">
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" (press)="setModeEdit()">
+          <img class="img-h" *ngIf="itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px"
+            (click)="viewProduct(itm._id)" [ngClass]="itm.image !== './assets/imgs/add.jpg' ? 'js-edit' : ''">
+          <img class="img-h" *ngIf="!itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''">
           <div class="texthoverproduct2" *ngIf="itm.name">
             <div *ngIf="itm.name">
               <label> {{itm.name}}</label>
@@ -140,5 +141,5 @@
       <ion-icon name="ios-checkmark"></ion-icon>
     </button>
   </ion-fab>
- <!-- <button ion-button block (click)="imageGallery()"></button> -->
+  <!-- <button ion-button block (click)="imageGallery()"></button> -->
 </ion-content>

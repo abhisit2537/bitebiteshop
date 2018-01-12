@@ -5,6 +5,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { ShopServiceProvider } from '../shop/shop-service';
 
 import * as firebase from 'firebase';
+import { Auth } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the ProfilePage page.
@@ -25,7 +26,7 @@ export class ProfilePage {
   profileImg: string = '';
   myDate: String = new Date().toISOString();
   shop: ShopModel = new ShopModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public loading: LoadingController, public shopServiceProvider: ShopServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public loading: LoadingController, public shopServiceProvider: ShopServiceProvider, private auth: Auth) {
 
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
@@ -135,6 +136,14 @@ export class ProfilePage {
     } else {
       this.firstLogin.profileImageURL = '';
     }
+  }
+
+  save() {
+    this.auth.manageUser(this.firstLogin).then((data) => {
+      this.navCtrl.pop();
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   // step2() {
