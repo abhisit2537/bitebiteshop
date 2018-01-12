@@ -4,15 +4,22 @@ page-shopedit {
     // }
     .containerclass {
         width: 100%;
+        // height: auto;
         margin-left: auto;
         margin-right: auto;
         border: 1px solid #eb3841;
-        margin-bottom: 3vh;
+        margin-bottom: 1vh;
         padding-bottom: 1vh;
+    }
+    .fixHeight{
+        margin-bottom: -25px;
+    }
+    .fixPin{
+        margin-bottom: 0px;
     }
     .pin {
         // position: absolute;
-        font-size: 1.8em
+        font-size: 1.8em;
     }
     .detailtimes {
         width: 150px;
@@ -44,7 +51,7 @@ page-shopedit {
         font-size: 1.2em;
     }
     .slide-xsize {
-        height: 30vh;
+        height: 24vh;
     }
     .row-custom {
         flex-wrap: inherit !important;

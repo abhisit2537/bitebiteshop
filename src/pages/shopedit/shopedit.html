@@ -76,7 +76,7 @@
         <!-- <ion-label text-left>
           เวลาที่เปิด - ปิดร้าน
         </ion-label> -->
-        <ion-item no-lines>
+        <ion-item class="fixHeight" no-lines>
           <ion-label class="fontStyle">
             เวลาที่เปิด - ปิดร้าน
           </ion-label>
@@ -117,15 +117,15 @@
         <!-- <ion-label text-left>
           ที่อยู่
         </ion-label> -->
-        <ion-item no-lines>
+        <ion-item class="fixHeight" no-lines>
           <ion-label class="fontStyle">
             ที่อยู่
           </ion-label>
         </ion-item>
-        <ion-textarea placeholder="Enter a description" type="text" class="wordbreak" rows="4" [(ngModel)]="editData.address.address">
+        <ion-textarea placeholder="Enter a description" type="text" class="wordbreak fixHeight" rows="4" [(ngModel)]="editData.address.address">
         </ion-textarea>
 
-        <ion-label text-right>
+        <ion-label class="fixPin" text-right>
           <span ion-text class="pin">
             <ion-icon name="pin" color="maintheme"></ion-icon>
           </span>
