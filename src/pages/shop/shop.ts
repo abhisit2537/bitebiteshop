@@ -92,21 +92,20 @@ export class ShopPage {
       this.options = {
         chosenClass: 'xxx',
         ghostClass: 'xxx2',
-        onUpdate: (event: any) => {
-          // console.log(this.q1);
-          this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
-            this.shopService();
-          }, (err) => {
+        onEnd: (event: any) => {
+          // console.log(JSON.stringify(this.shop.items[0]));
+            this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
+              this.shopService();
+            }, (err) => {
 
-          });
+            });
+
         },
         animation: 150,
         delay: 0,
         filter: ".js-edit"
       };
-      setTimeout(function () {
-        loading.dismiss();
-      }, 500);
+      loading.dismiss();
 
     }, (err) => {
       window.localStorage.removeItem('bikebikeshop');
