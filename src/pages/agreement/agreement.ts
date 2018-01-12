@@ -15,7 +15,7 @@ import { LoginPage } from '../login/login';
   templateUrl: 'agreement.html',
 })
 export class AgreementPage {
-  isShowAgreementBtn: boolean = false;
+  isShowAgreementBtn: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -28,7 +28,7 @@ export class AgreementPage {
     this.navCtrl.setRoot(LoginPage);
   }
   doInfinite(infiniteScroll) {
-    this.isShowAgreementBtn = true;
+    this.isShowAgreementBtn = false;
     infiniteScroll.complete();
   }
 
