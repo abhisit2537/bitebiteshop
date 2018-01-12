@@ -57,7 +57,7 @@ export class Firstloginstep5Page {
 
   save() {
     window.localStorage.setItem('bikebikeshopfirstlogin', 'true');
-    console.log(this.firstLogin.categories);
+    console.log(this.firstLogin);
     this.shopServiceProvider.addFirstShop(this.firstLogin).then((data) => {
       this.navCtrl.setRoot(TabnavPage);
     }, (err) => {
