@@ -34,6 +34,14 @@ export class ShopServiceProvider {
       .then(response => response as any)
       .catch(this.handleError);
   }
+  editShop(shopID,data): Promise<any> {
+
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/manageshop/' + shopID, data, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
 
   getCate(): Promise<any> {
     let headers = this.coreService.authorizationHeader();
