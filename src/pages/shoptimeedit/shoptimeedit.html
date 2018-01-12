@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ShoptimeeditPage page.
+  Generated template for the FirstloginstepModalPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -9,74 +9,88 @@
   <ion-navbar color="maintheme">
     <ion-buttons right>
       <button ion-button icon-only (click)="dismiss()">
-        <ion-icon name="ios-close-circle-outline"></ion-icon>
+        <ion-icon name="close-circle"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Shop Time Edit</ion-title>
+    <ion-title>Add Times</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <ion-item>
-    <ion-label floating>รายละเอียด</ion-label>
-    <ion-input type="text" [(ngModel)]="editTime.timeDetail"></ion-input>
-  </ion-item>
-  
-  <ion-item>
-    <ion-label>เวลาเปิด</ion-label>
-    <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="editTime.openTime"></ion-datetime>
-  </ion-item>
+<ion-content>
+  <div>
+    <!-- <div *ngIf="isAdd" class="detail-open-close"> -->
+    <ion-item>
+      <ion-label fixed>รายละเอียด</ion-label>
+      <ion-input type="text" [(ngModel)]="addTime.detail"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label>เวลาปิด</ion-label>
-    <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="editTime.closeTime"></ion-datetime>
-  </ion-item>
+    <ion-item>
+      <ion-label>เวลาเปิด</ion-label>
+      <ion-datetime placeholder="กรุณาเลือกเวลาเปิด" displayFormat="hh/mm/A" [(ngModel)]="addTime.openTime"></ion-datetime>
+    </ion-item>
 
-  <ion-grid>
+    <ion-item>
+      <ion-label>เวลาปิด</ion-label>
+      <ion-datetime placeholder="กรุณาเลือกเวลาปิด" displayFormat="hh/mm/A" [(ngModel)]="addTime.closeTime"></ion-datetime>
+    </ion-item>
+
     <ion-row>
-      <ion-col col-12>
-        <ion-list>
-          <ion-label label1>วันเปิดร้าน</ion-label>
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-10>
+        <ion-list class="containerclass">
+          <!-- <ion-list class="detail-open-close"> -->
+
+              
+
+          <ion-item fix-margin-label *ngFor="let day of addTime.days">
+            <ion-label>{{day.name}}</ion-label>
+            <ion-checkbox  [(ngModel)]="day.checked" item-end></ion-checkbox>
+          </ion-item>
+          <!-- <ion-item no-lines fix-margin-label>
+            <ion-label>อังคาร</ion-label>
+            <ion-checkbox [(ngModel)]="addTime.days.tue" item-end></ion-checkbox>
+          </ion-item>
+          <ion-item no-lines fix-margin-label>
+            <ion-label>พุธ</ion-label>
+            <ion-checkbox [(ngModel)]="addTime.days.wed" item-end></ion-checkbox>
+          </ion-item>
+          <ion-item no-lines fix-margin-label>
+            <ion-label>พฤหัสบดี</ion-label>
+            <ion-checkbox [(ngModel)]="addTime.days.thu" item-end></ion-checkbox>
+          </ion-item>
+          <ion-item no-lines fix-margin-label>
+            <ion-label>ศุกร์</ion-label>
+            <ion-checkbox [(ngModel)]="addTime.days.fri" item-end></ion-checkbox>
+          </ion-item>
+          <ion-item no-lines fix-margin-label>
+            <ion-label>เสาร์</ion-label>
+            <ion-checkbox [(ngModel)]="addTime.days.sat" item-end></ion-checkbox>
+          </ion-item>
 
           <ion-item no-lines fix-margin-label>
-            <ion-label item-start>อาทิตย์</ion-label>
-            <ion-checkbox [(ngModel)]="editTime.day.sun" item-end></ion-checkbox>
-          </ion-item>
+              <ion-label item-start>อาทิตย์</ion-label>
+              <ion-checkbox [(ngModel)]="addTime.days.sun" item-end></ion-checkbox>
+            </ion-item> -->
+       
 
-          <ion-item no-lines fix-margin-label>
-            <ion-label item-start>จันทร์</ion-label>
-            <ion-checkbox [(ngModel)]="editTime.day.mon" item-end></ion-checkbox>
-          </ion-item>
-          <ion-item no-lines fix-margin-label>
-            <ion-label item-start>อังคาร</ion-label>
-            <ion-checkbox [(ngModel)]="editTime.day.tue" item-end></ion-checkbox>
-          </ion-item>
-
-          <ion-item no-lines fix-margin-label>
-            <ion-label item-start>พุธ</ion-label>
-            <ion-checkbox [(ngModel)]="editTime.day.wed" item-end></ion-checkbox>
-          </ion-item>
-          <ion-item no-lines fix-margin-label>
-            <ion-label item-start>พฤหัสบดี</ion-label>
-            <ion-checkbox [(ngModel)]="editTime.day.thu" item-end></ion-checkbox>
-          </ion-item>
-          <ion-item no-lines fix-margin-label>
-            <ion-label item-start>ศุกร์</ion-label>
-            <ion-checkbox [(ngModel)]="editTime.day.fri" item-end></ion-checkbox>
-          </ion-item>
-          <ion-item no-lines>
-            <ion-label item-start>เสาร์</ion-label>
-            <ion-checkbox [(ngModel)]="editTime.day.sat" item-end></ion-checkbox>
-          </ion-item>
         </ion-list>
       </ion-col>
+      <ion-col col-1>
+      </ion-col>
     </ion-row>
-  </ion-grid>
-  <ion-row>
-    <ion-col col-12 text-center>
-      <button ion-button round color="danger" (click)="save()">Save</button>
-    </ion-col>
-  </ion-row>
+    <!-- <ion-row>
+      <ion-col text-right>
+        <button ion-button class="buttonIon" (click)="add()" color="danger">เพิ่ม</button>
+      </ion-col>
+      <ion-col text-left>
+        <button ion-button class="buttonIon" (click)="cancel()" color="danger">ยกเลิก</button>
+      </ion-col>
+    </ion-row> -->
+  </div>
 </ion-content>
+<ion-footer no-border>
+  <button ion-button block (click)="add(addTime,days)" color="danger">เพิ่ม</button>
+</ion-footer>

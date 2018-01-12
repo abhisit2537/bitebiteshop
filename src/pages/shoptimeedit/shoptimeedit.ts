@@ -14,14 +14,43 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'shoptimeedit.html',
 })
 export class ShoptimeeditPage {
-  private editTime: any = {
-    timeDetail: "",
+  editData: any = {};
+  addTime: any = {
+    detail: "",
     openTime: Date,
     closeTime: Date,
-    day: []
+    days: [{
+      name: 'จันทร์',
+      checked: false
+    },
+    {
+      name: 'อังคาร',
+      checked: false
+    },
+    {
+      name: 'พุธ',
+      checked: false
+    },
+    {
+      name: 'พฤหัสบดี',
+      checked: false
+    },
+    {
+      name: 'ศุกร์',
+      checked: false
+    },
+    {
+      name: 'เสาร์',
+      checked: false
+    },
+    {
+      name: 'อาทิตย์',
+      checked: false
+    }]
   };
   // private day: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    this.editData = this.navParams.data;
   }
 
   ionViewDidLoad() {
@@ -31,8 +60,21 @@ export class ShoptimeeditPage {
   dismiss() {
     this.viewCtrl.dismiss();
   }
-  save() {
-    this.viewCtrl.dismiss(this.editTime);
+  add(data) {
+    let newDay = [];
+    data.days.forEach(day => {
+      if (day.checked === true) {
+        newDay.push(day.name);
+      }
+    });
+    // alert(JSON.stringify(this.addTime));
+    this.editData.times.push({
+      description: data.detail,
+      timestart: data.openTime,
+      timeend: data.closeTime,
+      days: newDay
+    });
+    this.viewCtrl.dismiss(this.editData);
   }
 
 }
