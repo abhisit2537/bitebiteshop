@@ -44,6 +44,7 @@ export class ShopPage {
   slides: Slides;
   options: SortablejsOptions = {
   };
+  isCreateCate: boolean = false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loading: LoadingController,
@@ -82,6 +83,11 @@ export class ShopPage {
       if (data.items && data.items.length > 0) {
         this.cate = data.items[0].cate;
         console.log(data.items);
+      }
+      if (this.isCreateCate) {
+        let lastcate = data.items.length - 1;
+        this.cate = data.items[lastcate].cate;
+        this.index = lastcate;
       }
       this.options = {
         chosenClass: 'xxx',
@@ -158,6 +164,7 @@ export class ShopPage {
       this.images = [];
       if (datadismiss) {
         this.shopServiceProvider.addCate(this.shop._id, datadismiss).then((data) => {
+          this.isCreateCate = true;
           this.shopService();
         }, (err) => {
           alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
