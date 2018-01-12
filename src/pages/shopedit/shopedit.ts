@@ -57,7 +57,7 @@ export class ShopeditPage {
     ShoptimeModal.present();
   }
   save(){
-    this.shopServiceProvider.addFirstShop(this.editData).then((data) => {
+    this.shopServiceProvider.editShop(this.editData._id,this.editData).then((data) => {
       this.navCtrl.setRoot(TabnavPage);
     }, (err) => {
       alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
