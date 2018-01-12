@@ -43,6 +43,14 @@ export class ShopServiceProvider {
       .catch(this.handleError);
   }
 
+  addFirstShop(data): Promise<any> {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/manageshopinfo', data, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
   setCover(shopId, img): Promise<any> {
     let data = { data: img };
     let headers = this.coreService.authorizationHeader();

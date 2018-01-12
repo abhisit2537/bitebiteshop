@@ -12,6 +12,7 @@ import {
   Marker
 } from '@ionic-native/google-maps';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+import { ShopServiceProvider } from '../shop/shop-service';
 
 /**
  * Generated class for the Firstloginstep5Page page.
@@ -40,32 +41,43 @@ export class Firstloginstep5Page {
     lng: ''
   }
   firstLogin: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private googleMaps: GoogleMaps, private nativeGeocoder: NativeGeocoder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private googleMaps: GoogleMaps, private nativeGeocoder: NativeGeocoder, public shopServiceProvider: ShopServiceProvider) {
     this.firstLogin = this.navParams.data;
-    alert(JSON.stringify(this.firstLogin));
-    alert(JSON.stringify(this.firstLogin.address));
+    // alert(JSON.stringify(this.firstLogin));
+    // alert(this.firstLogin._id);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Firstloginstep5Page');
     this.getlocation();
+    if (this.firstLogin.address.lat && this.firstLogin.address.lng) {
+      this.showMap();
+    }
   }
 
   save() {
     window.localStorage.setItem('bikebikeshopfirstlogin', 'true');
-    this.navCtrl.setRoot(TabnavPage);
+    console.log(this.firstLogin.categories);
+    this.shopServiceProvider.addFirstShop(this.firstLogin).then((data) => {
+      this.navCtrl.setRoot(TabnavPage);
+    }, (err) => {
+      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      // alert(JSON.stringify(JSON.parse(err._body).message));
+    });
+
   }
   getlocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
       console.log(resp.coords.latitude + '    ' + resp.coords.longitude);
-      this.lat = resp.coords.latitude;
-      this.long = resp.coords.longitude;
+      this.firstLogin.address.lat = resp.coords.latitude;
+      this.firstLogin.address.lng = resp.coords.longitude;
+
     }).catch((error) => {
       console.log('Error getting location', error);
     });
   }
   showMap() {
-    this.nativeGeocoder.reverseGeocode(this.lat, this.long)
+    this.nativeGeocoder.reverseGeocode(this.firstLogin.address.lat, this.firstLogin.address.lng)
       .then((result: NativeGeocoderReverseResult) => {
         // alert(JSON.stringify(result))
         this.address.address = result.subThoroughfare;
@@ -79,8 +91,8 @@ export class Firstloginstep5Page {
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
-          lat: this.lat,
-          lng: this.long
+          lat: this.firstLogin.address.lat,
+          lng: this.firstLogin.address.lng
         },
         zoom: 18,
         tilt: 30
@@ -99,14 +111,14 @@ export class Firstloginstep5Page {
           icon: 'blue',
           animation: 'DROP',
           position: {
-            lat: this.lat,
-            lng: this.long
+            lat: this.firstLogin.address.lat,
+            lng: this.firstLogin.address.lng
           }
         })
           .then(marker => {
             marker.on(GoogleMapsEvent.MARKER_CLICK)
               .subscribe(() => {
-                this.nativeGeocoder.reverseGeocode(this.lat, this.long)
+                this.nativeGeocoder.reverseGeocode(this.firstLogin.address.lat, this.firstLogin.address.lng)
                   .then((result: NativeGeocoderReverseResult) => {
                     // alert(JSON.stringify(result))
                     this.address.address = result.subThoroughfare;

@@ -17,11 +17,14 @@
   <div class="containerclass">
     <p>ที่อยู่</p>
     <p class="txtAddress">
+      {{firstLogin.address.address ? firstLogin.address.address : ''}}
+    </p>
+    <!-- <p class="txtAddress">
       {{address.address ? address.address : ''}} {{address.subdistinct ? address.subdistinct : ''}} {{address.distinct ? address.distinct
       : ''}} {{address.province ? address.province : ''}} {{address.postcode ? address.postcode : ''}}
-    </p>
+    </p> -->
     <ion-buttons end>
-      <button class="button-tranparent" (click)="showMap()">
+      <button class="button-tranparent">
         <ion-icon name="pin" class="pin-style"></ion-icon>
       </button>
     </ion-buttons>

@@ -25,19 +25,11 @@ export class Firstloginstep1Page {
   myDate: String = new Date().toISOString();
   shop: ShopModel = new ShopModel();
   constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public loading: LoadingController, public shopServiceProvider: ShopServiceProvider) {
+
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
-      this.firstLogin.coverimage = this.shop.coverimage ? this.shop.coverimage : 'no image';
-      this.firstLogin.name = this.shop.name ? this.shop.name : '';
-      this.firstLogin.name_eng = this.shop.name_eng ? this.shop.name_eng : '';
-      this.firstLogin.detail = this.shop.detail ? this.shop.detail : '';
-      this.firstLogin.email = this.shop.email ? this.shop.email : '';
-      this.firstLogin.tel = this.shop.tel ? this.shop.tel : '';
-      this.firstLogin.facebook = this.shop.facebook ? this.shop.facebook : '';
-      this.firstLogin.line = this.shop.line ? this.shop.line : '';
-      this.firstLogin.times = this.shop.times ? this.shop.times : [];
-      this.firstLogin.categories = this.shop.categories ? this.shop.categories : [];
-      this.firstLogin.address = this.shop.address ? this.shop.address : {};
+      console.log(this.shop);
+
 
 
     }, (err) => {
@@ -45,22 +37,15 @@ export class Firstloginstep1Page {
     });
 
     let getfirstLogin = JSON.parse(window.localStorage.getItem('user'));
-    getfirstLogin.profileImageURL = './assets/imgs/Upload-Profile.png';
+    getfirstLogin.profileImageURL = getfirstLogin.profileImageURL ? getfirstLogin.profileImageURL : './assets/imgs/Upload-Profile.png';
+    getfirstLogin.dateOfBirth = getfirstLogin.dateOfBirth ? getfirstLogin.dateOfBirth : this.myDate;
 
     // let getDate = new Date();
     // let month = getDate.getUTCMonth() + 1; //months from 1-12
     // let day = getDate.getUTCDate();
     // let year = getDate.getUTCFullYear();
 
-    this.firstLogin = {
-      profileImageURL: getfirstLogin.profileImageURL,
-      firstName: getfirstLogin.firstName,
-      lastName: getfirstLogin.lastName,
-      dateOfBirth: this.myDate,
-      // name_eng: '',
-      // name: 'ครัวคุณโก๋',
-      // coverimage: this.shop.coverimage ? this.shop.coverimage : ''
-    }
+    this.firstLogin = getfirstLogin;
   }
 
   ionViewDidLoad() {
@@ -152,6 +137,17 @@ export class Firstloginstep1Page {
   }
 
   step2() {
+    this.firstLogin.coverimage = this.shop.coverimage ? this.shop.coverimage : 'no image';
+    this.firstLogin.name = this.shop.name ? this.shop.name : '';
+    this.firstLogin.name_eng = this.shop.name_eng ? this.shop.name_eng : '';
+    this.firstLogin.detail = this.shop.detail ? this.shop.detail : '';
+    this.firstLogin.email = this.shop.email ? this.shop.email : '';
+    this.firstLogin.tel = this.shop.tel ? this.shop.tel : '';
+    this.firstLogin.facebook = this.shop.facebook ? this.shop.facebook : '';
+    this.firstLogin.line = this.shop.line ? this.shop.line : '';
+    this.firstLogin.times = this.shop.times ? this.shop.times : [];
+    this.firstLogin.categories = this.shop.categories ? this.shop.categories : [];
+    this.firstLogin.address = this.shop.address ? this.shop.address : {};
     // alert(JSON.stringify(this.firstLogin.coverimage));
     this.navCtrl.setRoot(Firstloginstep2Page, this.firstLogin);
   }
