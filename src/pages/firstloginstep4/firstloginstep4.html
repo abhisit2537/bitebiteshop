@@ -42,7 +42,7 @@
       <!-- <div *ngIf="shop && shop.promoteimage"> -->
       <ion-col col-6 *ngFor="let time of firstLogin.times;let i = index">
         <div class="detailtimes">
-          <div class="textTimes" text-right>
+          <div class="iconCloseTimes" text-right>
             <ion-icon name="close-circle" color="light" (click)="deleteTimes(i)"></ion-icon>
           </div>
           <p class="textTimes">{{time.description}}</p>
