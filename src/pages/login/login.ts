@@ -28,17 +28,28 @@ export class LoginPage {
     loading.present()
     this.auth.login(this.credentials).then((res) => {
       console.log(res);
-      window.localStorage.setItem('bikebikeshop', JSON.stringify(res));
-      loading.dismiss();
-      let isFirstLogin = window.localStorage.getItem('bikebikeshopfirstlogin');
-      if (isFirstLogin) {
-        this.navCtrl.setRoot(TabnavPage);
+      if (res.roles.indexOf('shop') > 0) {
+        window.localStorage.setItem('bikebikeshop', JSON.stringify(res));
+        loading.dismiss();
+        let isFirstLogin = window.localStorage.getItem('bikebikeshopfirstlogin');
+        if (isFirstLogin) {
+          this.navCtrl.setRoot(TabnavPage);
+        } else {
+          this.navCtrl.setRoot(Firstloginstep1Page);
+        }
       } else {
-        this.navCtrl.setRoot(Firstloginstep1Page);
+        loading.dismiss();
+        alert('คุณไม่มีสิทธิ์เข้าใช้งาน!');
+        this.credentials.username = '';
+        this.credentials.password = '';
       }
+
     }, (err) => {
       console.log(err);
       loading.dismiss();
+      alert('เกิดข้อผิดพลาด กรุณาเข้าสู่ระบบอีกครั้ง');
+      this.credentials.username = '';
+      this.credentials.password = '';
     });
   }
 }
