@@ -46,8 +46,8 @@
             <ion-icon name="close-circle" color="light" (click)="deleteTimes(i)"></ion-icon>
           </div>
           <p class="textTimes">{{time.description}}</p>
-          <p class="textTimes">เปิด {{time.timestart}} AM</p>
-          <p class="textTimes">ปิด {{time.timeend}} PM</p>
+          <p class="textTimes">เปิด {{time.timestart}}</p>
+          <p class="textTimes">ปิด {{time.timeend}}</p>
           <p class="textTimesDay">วันที่เปิด</p>
           <label style="margin-left: 5px;" *ngFor="let day of time.days">{{day.length > 1 ? day + ', ' : day}}</label>
         </div>

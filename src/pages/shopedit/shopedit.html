@@ -96,7 +96,7 @@
                   <ion-icon name="close-circle" color="light" (click)="deleteTimes(i)"></ion-icon>
                 </div>
                 <p class="textTimes">{{time.description}}</p>
-                <p class="textTimes">{{time.timestart}} AM - {{time.timeend}} PM</p>
+                <p class="textTimes">{{time.timestart}} - {{time.timeend}}</p>
                 <p class="textTimesDay">วันที่เปิด</p>
                 <div *ngIf="time.days.length == 7">
                   <label style="margin-left: 5px;">ทุกวัน</label>

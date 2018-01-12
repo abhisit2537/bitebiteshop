@@ -16,42 +16,46 @@ import { IonicPage, NavController, NavParams, ViewController, LoadingController 
 export class FirstloginstepModalPage {
   firstLogin: any = {};
   // addTime: any = [];
-  addTime: any = {
-    detail: "",
-    openTime: new Date(),
-    closeTime: new Date(),
-    days: [{
-      name: 'จันทร์',
-      checked: false
-    },
-    {
-      name: 'อังคาร',
-      checked: false
-    },
-    {
-      name: 'พุธ',
-      checked: false
-    },
-    {
-      name: 'พฤหัสบดี',
-      checked: false
-    },
-    {
-      name: 'ศุกร์',
-      checked: false
-    },
-    {
-      name: 'เสาร์',
-      checked: false
-    },
-    {
-      name: 'อาทิตย์',
-      checked: false
-    }]
-  };
+  addTime: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
     this.firstLogin = this.navParams.data;
     // alert(JSON.stringify(this.firstLogin));
+    let timenow = new Date();
+    // timenow.setHours(timenow.getHours() + 7);
+    // alert(timenow);
+    this.addTime = {
+      detail: "",
+      openTime: timenow,
+      closeTime: timenow,
+      days: [{
+        name: 'จันทร์',
+        checked: false
+      },
+      {
+        name: 'อังคาร',
+        checked: false
+      },
+      {
+        name: 'พุธ',
+        checked: false
+      },
+      {
+        name: 'พฤหัสบดี',
+        checked: false
+      },
+      {
+        name: 'ศุกร์',
+        checked: false
+      },
+      {
+        name: 'เสาร์',
+        checked: false
+      },
+      {
+        name: 'อาทิตย์',
+        checked: false
+      }]
+    };
   }
 
   ionViewDidLoad() {
