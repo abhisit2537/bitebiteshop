@@ -3,7 +3,7 @@ page-shopedit {
         border-radius: 15px;
     }
     .containerclass {
-        width: auto;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
         border: 1px solid #eb3841;
@@ -13,5 +13,51 @@ page-shopedit {
     .pin {
         // position: absolute;
         font-size: 1.8em
+    }
+    .detailtimes {
+        width: 150px;
+        height: 120px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #eb3841;
+        // margin-bottom: 3vh;
+        background-color: #eb3841;
+        color: white;
+        // margin-bottom: -22px;
+    }
+    .textTimes{
+        margin-left: 5px;
+        margin-bottom: -12px;
+    }
+    .textTimesDay{
+        margin-left: 5px;
+        margin-bottom: 0px;
+    }
+    .buttonIon {
+        width: 80px;
+    }
+    .slide-xpromote {
+        height: 30vh;
+        border: solid red;
+    }
+    .font-size {
+        font-size: 1.2em;
+    }
+    .slide-xsize {
+        height: 30vh;
+    }
+    .row-custom {
+        flex-wrap: inherit !important;
+    }
+    .cateimg {
+        height: 110px;
+        width: 150px;
+        border-style: solid;
+        border-width: 0.5px;
+        border-color: #dadada;
+    }
+    .detail-open-close {
+        margin-top: 20px;
+        border: solid red;
     }
 }

@@ -8,6 +8,11 @@
 
   <ion-navbar color="maintheme">
     <ion-title>Edit Shop</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="save()">
+        Save
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -16,14 +21,11 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col col-8>
-        <ion-item>
-          <ion-label>หมวดหมู่ร้านค้า</ion-label>
-          <ion-select [(ngModel)]="Categories">
-            <ion-option>ตามสั่ง</ion-option>
-            <ion-option>คาเฟ่</ion-option>
-            <ion-option>ชาบู</ion-option>
-            <ion-option>หมูกะทะ</ion-option>
+      <ion-col>
+        <ion-item *ngIf="cate && cate.length > 0">
+          <ion-label>หมวดหมู่ร้าน</ion-label>
+          <ion-select [(ngModel)]="categories" multiple="true">
+            <ion-option *ngFor="let catename of cate" (ionChange)="onSelect()" [value]="catename">{{catename.name}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
@@ -32,12 +34,7 @@
         </ion-item>
         <ion-item>
           <ion-label floating>ชื่อร้าน (ภาษาอังกฤษ)</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-4>
-        <ion-item no-lines>
-          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511519960/camera_bkdxf8.png">
+          <ion-input type="text" [(ngModel)]="editData.name_eng"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -45,28 +42,67 @@
       <ion-col col-12>
         <ion-item>
           <ion-label floating>รายละเอียดร้าน</ion-label>
-          <ion-input type="text" [(ngModel)]="editData.description"></ion-input>
+          <ion-input type="text" [(ngModel)]="editData.detail"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>E-mail</ion-label>
-          <ion-input type="text" [(ngModel)]="editData.description"></ion-input>
+          <ion-input type="text" [(ngModel)]="editData.email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>หมายเลขโทรศัพท์</ion-label>
-          <ion-input type="text" [(ngModel)]="editData.description"></ion-input>
+          <ion-input type="text" [(ngModel)]="editData.tel"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>ช่องทางการติดต่ออื่นๆ</ion-label>
-          <ion-input type="text" [(ngModel)]="editData.description"></ion-input>
+          <ion-label floating>Facebook</ion-label>
+          <ion-input type="text" [(ngModel)]="editData.facebook"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Line</ion-label>
+          <ion-input type="text" [(ngModel)]="editData.line"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col class="roundedclass containerclass" col-12 text-left>
         <ion-label>
           เวลาที่เปิด - ปิดร้าน
         </ion-label>
         <img src="https://image.flaticon.com/icons/svg/159/159719.svg" width="50vw" height="90vh" (click)="shopTimeEditPage()">
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col class="roundedclass containerclass" col-12>
+        <!-- <div class="slide-xpromote"> -->
+        <ion-label text-left>
+          เวลาที่เปิด - ปิดร้าน
+        </ion-label>
+        <ion-scroll scrollX="true" class="slide-xsize">
+          <ion-row no-padding class="row-custom">
+            <!-- <ion-col col-6 (click)="addTime()"> -->
+            <ion-col col-6 (click)="shopTimeEditPage()">
+              <img style="height: 120px; width: 100%;" src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg">
+            </ion-col>
+            <!-- <div> -->
+            <!-- </div> -->
+
+            <!-- <div *ngIf="shop && shop.promoteimage"> -->
+            <ion-col col-6 text-left *ngFor="let time of editData.times" style="margin-right:20px;">
+              <div class="detailtimes">
+                <p class="textTimes">{{time.description}}</p>
+                <p class="textTimes">{{time.timestart}} AM - {{time.timeend}} PM</p>
+                <p class="textTimesDay">วันที่เปิด</p>
+                <div *ngIf="time.days.length == 7">
+                  <label style="margin-left: 5px;">ทุกวัน</label>
+                </div>
+                <div *ngIf="time.days.length < 7">
+                  <label style="margin-left: 5px;" *ngFor="let day of time.days">{{day.length > 1 ? day + ', ' : day}}</label>
+                </div>
+
+              </div>
+            </ion-col>
+            <!-- </div> -->
+          </ion-row>
+        </ion-scroll>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -74,8 +110,7 @@
         <ion-label text-left>
           ที่อยู่
         </ion-label>
-        <ion-textarea placeholder="Enter a description" type="text" class="wordbreak" rows="4">
-
+        <ion-textarea placeholder="Enter a description" type="text" class="wordbreak" rows="4" [(ngModel)]="editData.address.address">
         </ion-textarea>
 
         <ion-label text-right>
@@ -92,11 +127,14 @@
         </span>
       </ion-col>
     </ion-row> -->
-    <ion-row style="margin-bottom: 3vh; text-align: center;">
+    <!-- <ion-row style="margin-bottom: 3vh; text-align: center;">
       <ion-col col-12>
         <button ion-button round color="danger" (click)="save()">Save</button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
 
   </ion-grid>
 </ion-content>
+<!-- <ion-footer no-border>
+  <button ion-button block (click)="save()" color="danger">Save</button>
+</ion-footer> -->

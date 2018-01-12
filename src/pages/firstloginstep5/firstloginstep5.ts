@@ -49,7 +49,7 @@ export class Firstloginstep5Page {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Firstloginstep5Page');
-    this.getlocation();
+    // this.getlocation();
     if (this.firstLogin.address.lat && this.firstLogin.address.lng) {
       this.showMap();
     }
