@@ -40,8 +40,11 @@
       <!-- </div> -->
 
       <!-- <div *ngIf="shop && shop.promoteimage"> -->
-      <ion-col col-6 *ngFor="let time of firstLogin.times">
+      <ion-col col-6 *ngFor="let time of firstLogin.times;let i = index">
         <div class="detailtimes">
+          <div class="textTimes" text-right>
+            <ion-icon name="close-circle" color="light" (click)="deleteTimes(i)"></ion-icon>
+          </div>
           <p class="textTimes">{{time.description}}</p>
           <p class="textTimes">เปิด {{time.timestart}} AM</p>
           <p class="textTimes">ปิด {{time.timeend}} PM</p>
