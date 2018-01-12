@@ -109,8 +109,9 @@
         </ion-col>
       </ion-row>
       <ion-row no-padding *ngIf="!isModify">
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" [ngClass]="''">
-          <img class="img-h" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()" (click)="viewProduct(itm._id)">
+        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2">
+          <img class="img-h" *ngIf="itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()" (click)="viewProduct(itm._id)">
+          <img class="img-h" *ngIf="!itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px" (press)="setModeEdit()" >
           <div class="texthoverproduct2" *ngIf="itm.name">
             <div *ngIf="itm.name">
               <label> {{itm.name}}</label>

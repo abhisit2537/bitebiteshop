@@ -57,7 +57,12 @@ export class Firstloginstep3Page {
 
   step4() {
     if (this.categories && this.categories.length > 0) {
-      this.firstLogin.categories = this.categories;
+      let cateIds = [];
+      this.firstLogin.categories = [];
+      this.categories.forEach(function (data) {
+        cateIds.push(data._id);
+      })
+      this.firstLogin.categories = cateIds;
     }
     // alert(JSON.stringify(this.firstLogin));
     this.navCtrl.setRoot(Firstloginstep4Page, this.firstLogin);
