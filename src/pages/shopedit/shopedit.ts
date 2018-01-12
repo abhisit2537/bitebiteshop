@@ -61,6 +61,7 @@ export class ShopeditPage {
     ShoptimeModal.present();
   }
   save() {
+    this.editData.categories = this.categories;
     let loadingCtrl = this.loading.create();
     loadingCtrl.present();
     this.shopServiceProvider.editShop(this.editData._id, this.editData).then((data) => {
