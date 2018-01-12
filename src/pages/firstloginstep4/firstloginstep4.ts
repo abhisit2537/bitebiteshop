@@ -50,9 +50,6 @@ export class Firstloginstep4Page {
   //   this.isAdd = false;
   // }
   deleteTimes(index) {
-    // this.firstLogin.times.forEach(data => {
-    //   data.slice(item, 1);
-    // });
     this.firstLogin.times.splice(index, 1);
   }
   step5() {
