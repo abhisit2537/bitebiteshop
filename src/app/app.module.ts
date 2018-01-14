@@ -47,6 +47,7 @@ import {
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 import { GreetingPage } from '../pages/greeting/greeting';
+import { PreloadImageComponent } from '../components/preload-image/preload-image';
 @NgModule({
   declarations: [
     MyApp,
@@ -60,6 +61,7 @@ import { GreetingPage } from '../pages/greeting/greeting';
     LoginPage,
     CreateproductPage,
     IonUploadImagesComponent,
+    PreloadImageComponent,
     CreatecatePage,
     ProfilePage,
     AgreementPage,
