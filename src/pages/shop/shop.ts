@@ -36,8 +36,10 @@ import { UserModel } from '../../assets/model/user.model';
 
 })
 export class ShopPage {
+  selectedCateId = '';
   shop: ShopModel = new ShopModel();
   index: Number = 0;
+  idx: Number = 0;
   images: Array<any> = [];
   prodIndex: Number = 0;
   cate: any = {};
@@ -67,7 +69,6 @@ export class ShopPage {
   
   ionViewWillEnter() {
     this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
-    alert(this.user.profileImageURL);
     this.shopService();
   }
 
@@ -95,12 +96,12 @@ export class ShopPage {
         chosenClass: 'xxx',
         ghostClass: 'xxx2',
         onEnd: (event: any) => {
-          // console.log(JSON.stringify(this.shop.items[0]));
-            this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
-              this.shopService();
-            }, (err) => {
+           //console.log(JSON.stringify(this.shop.items[this.idx]));
+            // this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
+            //   this.shopService();
+            // }, (err) => {
 
-            });
+            // });
 
         },
         animation: 150,
@@ -115,10 +116,7 @@ export class ShopPage {
       this.app.getRootNav().setRoot(LoginPage);
     });
   }
-  selectedCate(index, cate) {
-    this.index = index;
-    this.cate = cate;
-  }
+  
 
   productIndex(i) {
     this.prodIndex = i;
@@ -376,5 +374,17 @@ export class ShopPage {
       photos: images
     });
     modal.present();
+  }
+
+  selectCate(i, cate) {
+    this.index = i;
+    this.idx = i-1;
+    console.log(this.idx);
+    this.selectedCateId = cate ? cate._id : '';
+  }
+
+  selectedCate(index, cate) {
+    this.index = index;
+    this.cate = cate;
   }
 }
