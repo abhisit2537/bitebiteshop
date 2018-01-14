@@ -63,10 +63,6 @@
 
   <ion-scroll scrollX="true">
     <ion-row class="row-custom">
-      <!-- <ion-col col-3 class="col-imgpromote" (click)="selectCate(0,null)">
-        <preload-image class="categories-image" [ratio]="{w:1, h:1}" src="./assets/imgs/Catagory/menu-all.png" [ngClass]="index === 0 ? 'selectedCategory' : ''"></preload-image>
-        <p class="cate-order">{{'PRODUCT_CATEGORY_ALL' | translate}}</p>
-      </ion-col> -->
       <ion-col col-3 *ngFor="let cate of shop.items; let ii = index;" class="col-imgpromote" (click)="selectCate(ii + 1,cate)">
         <preload-image class="categories-image" [ratio]="{w:1, h:1}" [src]="cate.cate.image" [ngClass]="ii === (index -1) ? 'selectedCategory' : ''"></preload-image>
         <p class="cate-order">{{cate.cate.name}}</p>
@@ -74,30 +70,9 @@
     </ion-row>
   </ion-scroll>
 
-  <!-- <ion-list *ngIf="shop.products && shop.products.length">
-    <ion-item *ngFor="let productitem of shop.products[category].items | filter:{cateid : selectedCateId}" (click)="selectProduct()">
-      <ion-thumbnail item-start>
-        <preload-image [ratio]="{w:1, h:1}" [src]="productitem.image"></preload-image>
-      </ion-thumbnail>
-      <h2>{{productitem.name}}</h2>
-      <p>{{productitem.price | number:'0.2-2'}} {{'THB' | translate}}</p>
-    </ion-item>
-  </ion-list> -->
-
+  
   <ion-grid class="grid-product" *ngIf="shop.items && idx >= 0">
     <ion-row no-padding [sortablejs]="shop.items[idx].products" [sortablejsOptions]="options">
-      <!-- <ion-col *ngFor="let itm of shop.items[idx].products; let i = idx" class="col-md-2">
-        <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''"
-          (click)="productIndex(i)">
-        <div class="texthoverproduct2" *ngIf="itm.name">
-          <div *ngIf="itm.name">
-            <label> {{itm.name}}</label>
-          </div>
-          <div class="paragraph" *ngIf="itm.price">
-            <p>{{itm.price | number}}.-</p>
-          </div>
-        </div>
-      </ion-col> -->
       <ion-col col-3 *ngFor="let itm of shop.items[idx].products; let i = idx;" >
           <preload-image [ratio]="{w:1, h:1}" [src]="itm.image" ></preload-image>
           <div class="cate-order">{{itm.name}}</div>
