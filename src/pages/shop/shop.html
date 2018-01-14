@@ -1,150 +1,86 @@
-<!--
-  Generated template for the ShopPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="maintheme">
     <ion-buttons left>
       <button ion-button icon-only (click)="myProfile()">
         <ion-icon name="ios-contact-outline"></ion-icon>
+        <!-- <preload-image class="preload-profile-image" [ratio]="{w:1, h:1}" [src]="user.profileImageURL" [isIcon]="true"></preload-image> -->
       </button>
     </ion-buttons>
-    <ion-title>Shop</ion-title>
+
+    <ion-title>{{shop.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div *ngIf="shop && shop.coverimage" class="setBg">
-    <img src="{{shop.coverimage}}" style="height: 165px;width:100%;" alt="image">
-    <span class="thisfill"></span>
-    <ion-row class="camera">
-      <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
-      <!-- <ion-icon name="camera" color="light" ></ion-icon> -->
-    </ion-row>
-    <ion-row class="nameshop">
-      <ion-col>
-        {{shop.name}}
-        <!-- <ion-icon name="md-create" color="light" (click)="edit()"> -->
-        <ion-icon name="md-create" color="light" (click)="edit(shop)">
-        </ion-icon>
+  <preload-image [ratio]="{w:20, h:9}" [src]="shop.coverimage" [isIcon]="true"></preload-image>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-row>
+          <h4>
+              {{shop.name}}
+              <ion-icon name="md-create" color="light" (click)="edit(shop)">
+              </ion-icon>
+          </h4>
+        </ion-row>
+        <ion-row>
+          {{shop.detail}}
+        </ion-row>
+        <ion-row>
+          <span>{{shop.address.addressdetail}}</span>&nbsp;
+          <!-- <ion-badge class="icon-ads" item-end color="bite" [ngClass]="{'open': shop.isopen}">{{isO | translate}}</ion-badge> -->
+          <ion-badge color="secondary" *ngIf="shop.isopen == true" class="isopen" (click)="changeStatus('open')">เปิด</ion-badge>
+          <ion-badge color="danger" *ngIf="shop.isopen == false" class="isopen" (click)="changeStatus('close')">ปิด</ion-badge>
+        </ion-row>
+
+        <button ion-button icon-left clear large class="cover-changer">
+          <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
-    <ion-row class="days">
-      <ion-col>
-        {{shop.detail}}
+  </ion-grid>
+
+  <ion-scroll scrollX="true">
+    <ion-row class="row-custom">
+      <ion-col col-3 *ngFor="let item of shop.promoteimage; let i = index;" class="col-imgpromote">
+        <preload-image [ratio]="{w:1, h:1}" [src]="item" (click)="showPhoto(i)"></preload-image>
       </ion-col>
     </ion-row>
-    <ion-row class="times">
-      <ion-col>
-        <span *ngIf="shop.address.addressdetail" ion-text color="light"> {{shop.address.addressdetail}}</span>
-        <ion-badge color="secondary" *ngIf="shop.isopen == true" class="isopen" (click)="changeStatus('open')">เปิด</ion-badge>
-        <ion-badge color="danger" *ngIf="shop.isopen == false" class="isopen" (click)="changeStatus('close')">ปิด</ion-badge>
-      </ion-col>
-    </ion-row>
-    <!-- <ion-row>
-      <ion-col>
+  </ion-scroll>
 
-        <ion-toggle color="secondary" checked="true" class="toggle"></ion-toggle>
-
-      </ion-col>
-    </ion-row> -->
-    <ion-scroll scrollX="true" class="slide-xpromote" *ngIf="shop">
-      <ion-row no-padding class="row-custom ">
-        <ion-col col-2-4 (click)="addPromote()">
-          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
-        </ion-col>
-        <!-- <div *ngIf="shop && shop.promoteimage"> -->
-        <ion-col col-2-4 *ngFor="let item of shop.promoteimage">
-          <img [src]="item" class="cateimg" (click)="viewImage(item)">
-        </ion-col>
-        <!-- </div> -->
-      </ion-row>
-    </ion-scroll>
-    <!-- <ion-label fixed class="productstxt">Products</ion-label>  -->
-    <ion-list *ngIf="shop">
-      <ion-item style=" padding: 0;">
-        <ion-label fixed class="productstxt" item-start>Products</ion-label>
-
-        <!-- <button ion-button item-end (click)="clearMode()" *ngIf="isModify">Done</button> -->
-      </ion-item>
-    </ion-list>
-
-    <ion-scroll scrollX="true" class="slide-xcate paragraph">
-      <ion-row no-padding class="row-custom">
-        <!-- <div *ngIf="shop && shop.items && shop.items.length > 0"> -->
-        <ion-col col-2-4 *ngFor="let item of shop.items;let i = index" (click)="selectedCate(i, item.cate)">
-          <img [src]="item.cate.image" class="cateimg" (click)="viewImage(item.cate.image)">
-          <div class="texthover2" [ngClass]=" i === index ? 'selectedCategory' : ''">
-            <span mode="ios"> {{item.cate.name}} </span>
-          </div>
-        </ion-col>
-        <!-- </div> -->
-        <ion-col col-2-4 *ngIf="!isModify">
-          <img src="./assets/imgs/add1.jpg" class="cateimg">
-        </ion-col>
-        <ion-col col-2-4 (click)="createCate()" *ngIf="isModify">
-          <img src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg" class="cateimg">
-        </ion-col>
-      </ion-row>
-    </ion-scroll>
-  </div>
-  <div>
-    <ion-grid *ngIf="shop && shop.items && shop.items.length > 0">
-      <ion-row no-padding *ngIf="isModify" [sortablejs]="shop.items[index].products" [sortablejsOptions]="options">
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" >
-          <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''" (click)="productIndex(i)" >
-          <div class="texthoverproduct2" *ngIf="itm.name">
-            <div *ngIf="itm.name">
-              <label> {{itm.name}}</label>
-            </div>
-            <div class="paragraph" *ngIf="itm.price">
-              <p>{{itm.price | number}}.-</p>
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row no-padding *ngIf="!isModify">
-        <ion-col *ngFor="let itm of shop.items[index].products; let i = index" class="col-md-2" >
-          <img class="img-h" *ngIf="itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px"
-            (click)="viewProduct(itm._id)">
-          <img class="img-h" *ngIf="!itm.name" [src]="itm.name ? itm.image: './assets/imgs/add1.jpg'" alt="image" height="180px" width="220px">
-          <div class="texthoverproduct2" *ngIf="itm.name">
-            <div *ngIf="itm.name">
-              <label> {{itm.name}}</label>
-            </div>
-            <div class="paragraph" *ngIf="itm.price">
-              <p>{{itm.price | number}}.-</p>
-            </div>
-          </div>
-
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <div padding>
+    <ion-segment mode="ios" color="bite" [(ngModel)]="category">
+      <ion-segment-button *ngFor="let segment of shop.products; let i = index;" [ngClass]="{'active-page' : i == category}" (click)="onSelectedConditionCate(i)">
+        {{ segment.title | translate }}
+      </ion-segment-button>
+    </ion-segment>
   </div>
 
-  <!-- <div class="col-md-2" *ngFor="let item of shop.items">
-              <div *ngFor="let itm of item.products">
-                <span class="bin" (click)="deleteProduct(item.id)" *ngIf="sd[item.id]">
-                  <ion-icon name="md-close-circle"></ion-icon>
-                </span>
-                <img class="img-h" [src]="itm.image" alt="image" height="180px" width="220px">
-                <span class="texthoverproduct" *ngIf="itm.name"> {{itm.name}} {{itm.price | number}}.-</span>
-              </div>
-            </div> -->
-  <ion-fab right bottom *ngIf="isModify">
-    <button ion-fab color="secondary" (click)="clearMode()">
-      <ion-icon class="larger" name="md-checkmark" ></ion-icon>
-    </button>
-  </ion-fab>
-  <ion-fab right bottom *ngIf="!isModify">
-    <button ion-fab color="danger" (click)="setModeEdit()">
-      <ion-icon name="md-create"></ion-icon>
-    </button>
-  </ion-fab>
-  <!-- <button ion-button block (click)="imageGallery()"></button> -->
+  <h5 class="category-title">{{'PRODUCT_CATEGORY' | translate}}</h5>
+  
+  <ion-scroll scrollX="true">
+    <ion-row class="row-custom">
+      <!-- <ion-col col-3 class="col-imgpromote" (click)="selectCate(0,null)">
+        <preload-image class="categories-image" [ratio]="{w:1, h:1}" src="./assets/imgs/Catagory/menu-all.png" [ngClass]="index === 0 ? 'selectedCategory' : ''"></preload-image>
+        <p class="cate-order">{{'PRODUCT_CATEGORY_ALL' | translate}}</p>
+      </ion-col> -->
+      <ion-col col-3 *ngFor="let cate of shop.categories; let ii = index;" class="col-imgpromote" (click)="selectCate(ii + 1,cate)">
+        <preload-image class="categories-image" [ratio]="{w:1, h:1}" [src]="cate.image" [ngClass]="ii === (index - 1) ? 'selectedCategory' : ''"></preload-image>
+        <p class="cate-order">{{cate.name}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>
+
+  <!-- <ion-list *ngIf="shop.products && shop.products.length">
+    <ion-item *ngFor="let productitem of shop.products[category].items | filter:{cateid : selectedCateId}" (click)="selectProduct()">
+      <ion-thumbnail item-start>
+        <preload-image [ratio]="{w:1, h:1}" [src]="productitem.image"></preload-image>
+      </ion-thumbnail>
+      <h2>{{productitem.name}}</h2>
+      <p>{{productitem.price | number:'0.2-2'}} {{'THB' | translate}}</p>
+    </ion-item>
+  </ion-list> -->
 </ion-content>

@@ -21,6 +21,7 @@ import { ProfilePage } from '../profile/profile';
 import { SortablejsOptions } from 'angular-sortablejs/dist';
 import { ShopeditPage } from '../shopedit/shopedit';
 import { GalleryModal } from 'ionic-gallery-modal';
+import { UserModel } from '../../assets/model/user.model';
 /**
  * Generated class for the ShopPage page.
  *
@@ -45,6 +46,7 @@ export class ShopPage {
   options: SortablejsOptions = {
   };
   isCreateCate: boolean = false;
+  user: UserModel = new UserModel();
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loading: LoadingController,
@@ -62,10 +64,10 @@ export class ShopPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShopPage');
   }
-
+  
   ionViewWillEnter() {
-
-    console.log('ionViewWillEnter ShopPage');
+    this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
+    alert(this.user.profileImageURL);
     this.shopService();
   }
 
