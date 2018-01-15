@@ -39,13 +39,7 @@ import { Crop } from '@ionic-native/crop';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    CreateproductPage,
-    CreatecatePage,
-    ProfilePage,
-    ShopeditPage,
-    ShoptimeeditPage,
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -64,13 +58,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    CreateproductPage,
-    CreatecatePage,
-    ProfilePage,
-    ShopeditPage,
-    ShoptimeeditPage,
+    MyApp
   ],
   providers: [
     StatusBar,

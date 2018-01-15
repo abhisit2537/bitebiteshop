@@ -46,7 +46,7 @@ export class Firstloginstep5Page {
     loadingCtrl.present();
     this.firstLogin = this.navParams.data;
     loadingCtrl.dismiss();
-    
+
     // alert(JSON.stringify(this.firstLogin));
     // alert(this.firstLogin._id);
   }
@@ -85,16 +85,17 @@ export class Firstloginstep5Page {
     });
   }
   showMap() {
-    
+
     this.nativeGeocoder.reverseGeocode(this.firstLogin.address.lat, this.firstLogin.address.lng)
       .then((result: NativeGeocoderReverseResult) => {
         // alert(JSON.stringify(result))
+        // console.log(result);
         this.address.address = result.subThoroughfare;
         this.address.subdistinct = result.locality;
         this.address.distinct = result.subAdministrativeArea;
         this.address.province = result.administrativeArea;
         this.address.postcode = result.postalCode;
-        
+
       })
       .catch((error: any) => console.log(error));
 
@@ -111,11 +112,12 @@ export class Firstloginstep5Page {
     let loadingCtrl = this.loading.create();
     loadingCtrl.present();
     this.map = this.googleMaps.create('map_canvas', mapOptions);
+    // alert('Map!');
 
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
-        console.log('Map is ready!');
+        // alert('Map is ready!');
 
         // Now you can use all methods safely.
         this.map.addMarker({
@@ -142,7 +144,7 @@ export class Firstloginstep5Page {
               });
           });
       });
-      loadingCtrl.dismiss();
+    loadingCtrl.dismiss();
   }
 }
 

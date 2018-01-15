@@ -12,15 +12,10 @@ import {
 } from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
-import { LoginPage } from '../login/login';
-import { CreatecatePage } from '../createcate/createcate';
 import { ImagePicker } from '@ionic-native/image-picker';
 import * as firebase from 'firebase';
-import { CreateproductPage } from '../createproduct/createproduct';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { ProfilePage } from '../profile/profile';
 import { SortablejsOptions } from 'angular-sortablejs/dist';
-import { ShopeditPage } from '../shopedit/shopedit';
 import { GalleryModal } from 'ionic-gallery-modal';
 import { UserModel } from '../../assets/model/user.model';
 import { Crop } from '@ionic-native/crop';
@@ -81,7 +76,7 @@ export class ShopPage {
   edit(shop) {
     console.log(shop);
     this.saveDragDrop();
-    this.navCtrl.push(ShopeditPage, shop)
+    this.navCtrl.push('ShopeditPage', shop)
   }
 
   shopService() {
@@ -121,7 +116,7 @@ export class ShopPage {
     }, (err) => {
       window.localStorage.removeItem('bikebikeshop');
       loading.dismiss();
-      this.app.getRootNav().setRoot(LoginPage);
+      this.app.getRootNav().setRoot('LoginPage');
     });
   }
 
@@ -177,7 +172,7 @@ export class ShopPage {
       shopid: this.shop._id,
       img: img
     };
-    let modalopen = this.modalCtrl.create(CreatecatePage, data);
+    let modalopen = this.modalCtrl.create('CreatecatePage', data);
 
 
     modalopen.onDidDismiss(datadismiss => {
@@ -212,7 +207,7 @@ export class ShopPage {
       index: this.prodIndex,
       cateindex: this.index
     };
-    let modalproduct = this.modalCtrl.create(CreateproductPage, data);
+    let modalproduct = this.modalCtrl.create('CreateproductPage', data);
     modalproduct.onDidDismiss(datadismiss => {
       this.images = [];
       // alert(JSON.stringify(datadismiss));
@@ -365,7 +360,7 @@ export class ShopPage {
     profileModal.present();
   }
   myProfile() {
-    this.navCtrl.push(ProfilePage);
+    this.navCtrl.push('ProfilePage');
   }
 
   viewImage(img) {
