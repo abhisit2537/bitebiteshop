@@ -48,6 +48,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 import { GreetingPage } from '../pages/greeting/greeting';
 import { PreloadImageComponent } from '../components/preload-image/preload-image';
+import { Crop } from '@ionic-native/crop';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
@@ -131,7 +133,9 @@ import { PreloadImageComponent } from '../components/preload-image/preload-image
     ImagePicker,
     Geolocation,
     GoogleMaps,
-    NativeGeocoder
+    NativeGeocoder,
+    Crop,
+    Camera
   ]
 })
 export class AppModule { }

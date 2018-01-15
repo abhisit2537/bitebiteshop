@@ -8,6 +8,7 @@ import {
   NavParams,
   PopoverController,
   Slides,
+  ActionSheetController,
 } from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
@@ -22,6 +23,8 @@ import { SortablejsOptions } from 'angular-sortablejs/dist';
 import { ShopeditPage } from '../shopedit/shopedit';
 import { GalleryModal } from 'ionic-gallery-modal';
 import { UserModel } from '../../assets/model/user.model';
+import { Crop } from '@ionic-native/crop';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 /**
  * Generated class for the ShopPage page.
  *
@@ -58,7 +61,9 @@ export class ShopPage {
     public imagePicker: ImagePicker,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
-
+    public actionSheetCtrl: ActionSheetController,
+    private crop: Crop,
+    private camera: Camera
   ) {
 
   }
@@ -66,7 +71,7 @@ export class ShopPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShopPage');
   }
-  
+
   ionViewWillEnter() {
     this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
     this.shopService();
@@ -96,12 +101,12 @@ export class ShopPage {
         chosenClass: 'xxx',
         ghostClass: 'xxx2',
         onEnd: (event: any) => {
-           //console.log(JSON.stringify(this.shop.items[this.idx]));
-            // this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
-            //   this.shopService();
-            // }, (err) => {
+          //console.log(JSON.stringify(this.shop.items[this.idx]));
+          // this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
+          //   this.shopService();
+          // }, (err) => {
 
-            // });
+          // });
 
         },
         animation: 150,
@@ -116,7 +121,7 @@ export class ShopPage {
       this.app.getRootNav().setRoot(LoginPage);
     });
   }
-  
+
 
   productIndex(i) {
     this.prodIndex = i;
@@ -220,6 +225,7 @@ export class ShopPage {
 
   updateShopBG() {
     let img = this.images && this.images.length > 0 ? this.images[0] : 'noimage';
+    alert(img);
     this.shopServiceProvider.setCover(this.shop._id, img).then((data) => {
       this.shopService();
     }, (err) => {
@@ -297,36 +303,36 @@ export class ShopPage {
     }, (err) => { });
   }
 
-  uploadImage(imageString): Promise<any> {
+  // uploadImage(imageString): Promise<any> {
 
-    let storageRef = firebase.storage().ref();
-    let filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
-    let imageRef = storageRef.child(`images/${filename}.jpg`);
-    let parseUpload: any;
+  //   let storageRef = firebase.storage().ref();
+  //   let filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
+  //   let imageRef = storageRef.child(`images/${filename}.jpg`);
+  //   let parseUpload: any;
 
-    return new Promise((resolve, reject) => {
-      parseUpload = imageRef.putString('data:image/jpeg;base64,' + imageString, 'data_url');
+  //   return new Promise((resolve, reject) => {
+  //     parseUpload = imageRef.putString('data:image/jpeg;base64,' + imageString, 'data_url');
 
-      parseUpload.on('state_changed', (_snapshot) => {
-        let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-        switch (_snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-            console.log('Upload is paused');
-            break;
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-            console.log('Upload is running');
-            break;
-        }
-      },
-        (_err) => {
-          reject(_err);
-        },
-        (success) => {
-          resolve(parseUpload.snapshot.downloadURL);
-        });
-    });
-  }
+  //     parseUpload.on('state_changed', (_snapshot) => {
+  //       let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
+  //       console.log('Upload is ' + progress + '% done');
+  //       switch (_snapshot.state) {
+  //         case firebase.storage.TaskState.PAUSED: // or 'paused'
+  //           console.log('Upload is paused');
+  //           break;
+  //         case firebase.storage.TaskState.RUNNING: // or 'running'
+  //           console.log('Upload is running');
+  //           break;
+  //       }
+  //     },
+  //       (_err) => {
+  //         reject(_err);
+  //       },
+  //       (success) => {
+  //         resolve(parseUpload.snapshot.downloadURL);
+  //       });
+  //   });
+  // }
   doAlert(itm) {
     console.log(itm.image);
     let alert = this.alertCtrl.create({
@@ -378,7 +384,7 @@ export class ShopPage {
 
   selectCate(i, cate) {
     this.index = i;
-    this.idx = i-1;
+    this.idx = i - 1;
     console.log(this.idx);
     this.selectedCateId = cate ? cate._id : '';
   }
@@ -387,4 +393,186 @@ export class ShopPage {
     this.index = index;
     this.cate = cate;
   }
+  openActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Camera',
+          handler: () => {
+            this.openCamera();
+          }
+        },
+        {
+          text: 'Photo Gallery',
+          handler: () => {
+            this.onImagePicker('cover', 1);
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
+
+  openCamera() {
+    this.images = [];
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      // alert(JSON.stringify(imageData));
+      this.resizeImage(imageData).then((data) => {
+        // alert(JSON.stringify(data));
+        this.images.push(data);
+        // this.updateProfile();
+        this.updateShopBG();
+      }, (err) => {
+        alert(err);
+        console.log(err);
+      })
+      //  let base64Image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      // Handle error
+    });
+  }
+
+  resizeImage(fileUri): Promise<any> {
+    // alert('resize');
+    return new Promise((resolve, reject) => {
+      this.crop.crop(fileUri, { quality: 100 }).then((cropData) => {
+        // alert(JSON.stringify(cropData));
+        this.uploadImage(cropData).then((uploadImageData) => {
+          // alert('uploadImage');
+
+          resolve(uploadImageData);
+        }, (uploadImageError) => {
+          // alert('uploadImage err');/
+
+          reject(uploadImageError)
+        });
+      }, (cropError) => {
+        // alert('crop err');        
+        reject(cropError)
+      });
+    });
+  }
+
+  onImagePicker(from, maxImg) {
+    let options = {
+      maximumImagesCount: maxImg,
+      width: 900,
+      quality: 30,
+      outputType: 0
+    };
+
+    this.imagePicker.getPictures(options).then((results) => {
+      let loading = [];
+
+      let loadingCount = 0;
+      for (var i = 0; i < results.length; i++) {
+        // alert(results);
+        loading.push(this.loading.create({
+          content: (i + 1) + '/' + (results.length),
+          cssClass: `loading-upload`,
+          showBackdrop: false
+        }));
+        loading[i].present();
+
+        // this.uploadImage(results[i]).then((resUrl) => {
+        //   this.images.push(resUrl);
+
+        //   setTimeout(() => {
+        //     loading[loadingCount].dismiss();
+        //     loadingCount++;
+
+        //     if (loadingCount === results.length) {
+        //       if (from.toString() === 'profile') {
+        //         this.updateProfile();
+        //       }
+        //     }
+        //   }, 1000);
+
+        // }, (error) => {
+        //   loading[loadingCount].dismiss();
+        //   loadingCount++;
+        //   // alert('Upload Fail. ' + JSON.stringify(error));
+        // })
+
+        this.resizeImage(results[i]).then((data) => {
+          // alert(data);
+
+          alert(JSON.stringify(data));
+          this.images.push(data);
+
+          setTimeout(() => {
+            loading[loadingCount].dismiss();
+            loadingCount++;
+
+            if (loadingCount === results.length) {
+              if (from.toString() === 'cover') {
+                alert('cover');
+                this.updateShopBG();
+                // this.updateProfile();
+              }
+            }
+          }, 1000);
+        }, (err) => {
+          console.log(err);
+        })
+      }
+
+    }, (err) => { });
+  }
+  uploadImage(imageString): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+
+      const storageRef = firebase.storage().ref();
+      const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
+      let imageRef = storageRef.child(`images/${filename}.png`);
+      let parseUpload: any;
+      let metadata = {
+        contentType: 'image/png',
+      };
+
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', imageString, true);
+      xhr.responseType = 'blob';
+      xhr.onload = (e) => {
+        let blob = new Blob([xhr.response], { type: 'image/png' });
+
+        parseUpload = imageRef.put(blob, metadata);
+        parseUpload.on('state_changed', (_snapshot) => {
+          let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          switch (_snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log('Upload is running');
+              break;
+          }
+        },
+          (_err) => {
+            reject(_err);
+          },
+          (success) => {
+            resolve(parseUpload.snapshot.downloadURL);
+          });
+
+      }
+
+      xhr.send();
+
+    });
+
+  }
+
 }
