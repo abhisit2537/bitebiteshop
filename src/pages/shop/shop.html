@@ -46,7 +46,7 @@
   <ion-scroll scrollX="true">
     <ion-row class="row-custom">
       <ion-col col-3 *ngIf="isModify" class="col-imgpromote">
-        <preload-image [ratio]="{w:1, h:1}" [src]="'./assets/imgs/add.jpg'" (click)="showPhoto(i)"></preload-image>
+        <preload-image [ratio]="{w:1, h:1}" [src]="'./assets/imgs/add.jpg'" (click)="openActionSheet('promote')"></preload-image>
       </ion-col>
       <ion-col col-3 *ngFor="let item of shop.promoteimage; let i = index;" class="col-imgpromote">
         <preload-image [ratio]="{w:1, h:1}" [src]="item"></preload-image>
@@ -66,29 +66,35 @@
 
   <ion-scroll scrollX="true">
     <ion-row class="row-custom">
-      <ion-col col-3 *ngFor="let cate of shop.items; let ii = index;" class="col-imgpromote" (click)="selectCate(ii + 1,cate)">
-        <preload-image class="categories-image" [ratio]="{w:1, h:1}" [src]="cate.cate.image" [ngClass]="ii === (index -1) ? 'selectedCategory' : ''"></preload-image>
+      <ion-col col-3 *ngFor="let cate of shop.items; let ii = index;" class="col-imgpromote" (click)="selectCate(ii,cate.cate)">
+        <preload-image class="categories-image" [ratio]="{w:1, h:1}" [src]="cate.cate.image" [ngClass]="ii === index ? 'selectedCategory' : ''"></preload-image>
         <p class="cate-order">{{cate.cate.name}}</p>
       </ion-col>
       <ion-col col-3 *ngIf="isModify" class="col-imgpromote">
-        <preload-image [ratio]="{w:1, h:1}" [src]="'./assets/imgs/add.jpg'" (click)="showPhoto(i)"></preload-image>
+        <preload-image [ratio]="{w:1, h:1}" [src]="'./assets/imgs/add.jpg'" (click)="openActionSheet('cate')"></preload-image>
       </ion-col>
     </ion-row>
   </ion-scroll>
 
 
   <ion-grid class="grid-product" *ngIf="shop.items && idx >= 0">
-    <ion-row *ngIf="isModify" no-padding [sortablejs]="shop.items[idx].products" [sortablejsOptions]="options">
-      <ion-col col-3 *ngFor="let itm of shop.items[idx].products; let i = idx;" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''">
-        <preload-image [ratio]="{w:1, h:1}" [src]="itm.image"></preload-image>
-        <div class="cate-order">{{itm.name}}</div>
+    <ion-row *ngIf="isModify" no-padding [sortablejs]="shop.items[index].products" [sortablejsOptions]="options">
+      <ion-col col-3 *ngFor="let itm of shop.items[index].products; let i = index;" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''">
+        <preload-image [ratio]="{w:1, h:1}" [src]="itm.image" (click)="openActionSheet('product', i)"></preload-image>
+        <div [ngClass]="itm.name ? 'product-string' : ''">
+          <p class="magin-0" *ngIf="itm.name">{{itm.name}}</p>
+          <p class="magin-0" *ngIf="itm.name">{{itm.price}} .-</p>
+        </div>
       </ion-col>
     </ion-row>
 
     <ion-row *ngIf="!isModify">
-      <ion-col col-3 *ngFor="let itm of shop.items[idx].products; let i = idx;">
+      <ion-col col-3 *ngFor="let itm of shop.items[index].products; let i = index;">
         <preload-image [ratio]="{w:1, h:1}" [src]="itm.image === './assets/imgs/add.jpg' ? './assets/imgs/add1.jpg' : itm.image"></preload-image>
-        <div class="cate-order">{{itm.name}}</div>
+        <div [ngClass]="itm.name ? 'product-string' : ''">
+          <p class="magin-0" *ngIf="itm.name">{{itm.name}}</p>
+          <p class="magin-0" *ngIf="itm.name">{{itm.price}} .-</p>
+        </div>
       </ion-col>
     </ion-row>
 

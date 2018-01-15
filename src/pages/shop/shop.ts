@@ -52,6 +52,7 @@ export class ShopPage {
   };
   isCreateCate: boolean = false;
   user: UserModel = new UserModel();
+  isDrag: boolean = false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loading: LoadingController,
@@ -79,6 +80,7 @@ export class ShopPage {
 
   edit(shop) {
     console.log(shop);
+    this.saveDragDrop();
     this.navCtrl.push(ShopeditPage, shop)
   }
 
@@ -96,6 +98,7 @@ export class ShopPage {
         let lastcate = data.items.length - 1;
         this.cate = data.items[lastcate].cate;
         this.index = lastcate;
+        this.isCreateCate = false;
       }
       this.options = {
         chosenClass: 'xxx',
@@ -107,7 +110,7 @@ export class ShopPage {
           // }, (err) => {
 
           // });
-
+          this.isDrag = true;
         },
         animation: 150,
         delay: 0,
@@ -122,10 +125,23 @@ export class ShopPage {
     });
   }
 
+  saveDragDrop() {
+    if (this.isDrag) {
+      let loading = this.loading.create();
+      loading.present();
+      this.shopServiceProvider.editIndexProduct(this.shop._id, this.shop).then((data) => {
+        loading.dismiss();
+        this.isDrag = false;
+        this.shopService();
+      }, (err) => {
+        loading.dismiss();
+      });
+    }
+  }
 
   productIndex(i) {
     this.prodIndex = i;
-    this.onUpload('product', 3);
+    // this.onUpload('product', 3);
   }
 
   changeStatus(status) {
@@ -143,7 +159,7 @@ export class ShopPage {
   }
   clearMode() {
     this.isModify = false;
-
+    this.saveDragDrop();
   }
 
   createCate() {
@@ -225,7 +241,6 @@ export class ShopPage {
 
   updateShopBG() {
     let img = this.images && this.images.length > 0 ? this.images[0] : 'noimage';
-    alert(img);
     this.shopServiceProvider.setCover(this.shop._id, img).then((data) => {
       this.shopService();
     }, (err) => {
@@ -384,28 +399,29 @@ export class ShopPage {
 
   selectCate(i, cate) {
     this.index = i;
-    this.idx = i - 1;
-    console.log(this.idx);
+    this.idx = i;
     this.selectedCateId = cate ? cate._id : '';
+    this.cate = cate;
   }
 
   selectedCate(index, cate) {
     this.index = index;
     this.cate = cate;
   }
-  openActionSheet() {
+  openActionSheet(from, i) {
+    this.prodIndex = i;
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
           text: 'Camera',
           handler: () => {
-            this.openCamera();
+            this.openCamera(from);
           }
         },
         {
           text: 'Photo Gallery',
           handler: () => {
-            this.onImagePicker('cover', 1);
+            this.onImagePicker(from, 1);
           }
         }
       ]
@@ -414,7 +430,7 @@ export class ShopPage {
     actionSheet.present();
   }
 
-  openCamera() {
+  openCamera(from) {
     this.images = [];
     const options: CameraOptions = {
       quality: 100,
@@ -431,7 +447,17 @@ export class ShopPage {
         // alert(JSON.stringify(data));
         this.images.push(data);
         // this.updateProfile();
-        this.updateShopBG();
+        if (from.toString() === 'cover') {
+          this.updateShopBG();
+        } else if (from.toString() === 'promote') {
+          this.updatePromote();
+        } else if (from.toString() === 'cate') {
+          this.saveDragDrop();
+          this.formCate();
+        } else if (from.toString() === 'product') {
+          this.saveDragDrop();
+          this.formProduct();
+        }
       }, (err) => {
         alert(err);
         console.log(err);
@@ -507,7 +533,7 @@ export class ShopPage {
         this.resizeImage(results[i]).then((data) => {
           // alert(data);
 
-          alert(JSON.stringify(data));
+          // alert(JSON.stringify(data));
           this.images.push(data);
 
           setTimeout(() => {
@@ -516,9 +542,15 @@ export class ShopPage {
 
             if (loadingCount === results.length) {
               if (from.toString() === 'cover') {
-                alert('cover');
                 this.updateShopBG();
-                // this.updateProfile();
+              } else if (from.toString() === 'promote') {
+                this.updatePromote();
+              } else if (from.toString() === 'cate') {
+                this.saveDragDrop();
+                this.formCate();
+              } else if (from.toString() === 'product') {
+                this.saveDragDrop();
+                this.formProduct();
               }
             }
           }, 1000);
