@@ -393,13 +393,13 @@ export class ShopPage {
     this.index = index;
     this.cate = cate;
   }
-  openActionSheet(from) {
+  openActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
           text: 'Camera',
           handler: () => {
-            this.openCamera(from);
+            this.openCamera();
           }
         },
         {
@@ -414,7 +414,7 @@ export class ShopPage {
     actionSheet.present();
   }
 
-  openCamera(from) {
+  openCamera() {
     this.images = [];
     const options: CameraOptions = {
       quality: 100,
@@ -427,7 +427,7 @@ export class ShopPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       // alert(JSON.stringify(imageData));
-      this.resizeImage(imageData, from).then((data) => {
+      this.resizeImage(imageData).then((data) => {
         // alert(JSON.stringify(data));
         this.images.push(data);
         // this.updateProfile();
@@ -442,7 +442,7 @@ export class ShopPage {
     });
   }
 
-  resizeImage(fileUri, from): Promise<any> {
+  resizeImage(fileUri): Promise<any> {
     // alert('resize');
     return new Promise((resolve, reject) => {
       this.crop.crop(fileUri, { quality: 100 }).then((cropData) => {
@@ -529,9 +529,8 @@ export class ShopPage {
 
     }, (err) => { });
   }
-
   uploadImage(imageString): Promise<any> {
-    alert(imageString);
+
     return new Promise((resolve, reject) => {
 
       const storageRef = firebase.storage().ref();
