@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { ShopModel } from '../shop/shop.model';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { ShopServiceProvider } from '../shop/shop-service';
 
 import * as firebase from 'firebase';
 import { Auth } from '../../providers/auth-service/auth-service';
+import { Crop } from '@ionic-native/crop';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the ProfilePage page.
@@ -26,7 +28,17 @@ export class ProfilePage {
   profileImg: string = '';
   myDate: String = new Date().toISOString();
   shop: ShopModel = new ShopModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public loading: LoadingController, public shopServiceProvider: ShopServiceProvider, private auth: Auth) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public imagePicker: ImagePicker,
+    public loading: LoadingController,
+    public shopServiceProvider: ShopServiceProvider,
+    private auth: Auth,
+    private crop: Crop,
+    private camera: Camera,
+    public actionSheetCtrl: ActionSheetController
+  ) {
 
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
@@ -54,9 +66,9 @@ export class ProfilePage {
     console.log('ionViewDidLoad Firstloginstep1Page');
 
   }
-  selectProfile() {
-    this.onUpload('profile', 1);
-  }
+  // selectProfile() {
+  //   this.onUpload('profile', 1);
+  // }
 
   onUpload(from, maxImg) {
     let options = {
@@ -99,35 +111,35 @@ export class ProfilePage {
 
     }, (err) => { });
   }
-  uploadImage(imageString): Promise<any> {
+  // uploadImage(imageString): Promise<any> {
 
-    let storageRef = firebase.storage().ref();
-    let filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
-    let imageRef = storageRef.child(`images/${filename}.jpg`);
-    let parseUpload: any;
+  //   let storageRef = firebase.storage().ref();
+  //   let filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
+  //   let imageRef = storageRef.child(`images/${filename}.jpg`);
+  //   let parseUpload: any;
 
-    return new Promise((resolve, reject) => {
-      parseUpload = imageRef.putString('data:image/jpeg;base64,' + imageString, 'data_url');
-      parseUpload.on('state_changed', (_snapshot) => {
-        let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-        switch (_snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-            console.log('Upload is paused');
-            break;
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-            console.log('Upload is running');
-            break;
-        }
-      },
-        (_err) => {
-          reject(_err);
-        },
-        (success) => {
-          resolve(parseUpload.snapshot.downloadURL);
-        });
-    });
-  }
+  //   return new Promise((resolve, reject) => {
+  //     parseUpload = imageRef.putString('data:image/jpeg;base64,' + imageString, 'data_url');
+  //     parseUpload.on('state_changed', (_snapshot) => {
+  //       let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
+  //       console.log('Upload is ' + progress + '% done');
+  //       switch (_snapshot.state) {
+  //         case firebase.storage.TaskState.PAUSED: // or 'paused'
+  //           console.log('Upload is paused');
+  //           break;
+  //         case firebase.storage.TaskState.RUNNING: // or 'running'
+  //           console.log('Upload is running');
+  //           break;
+  //       }
+  //     },
+  //       (_err) => {
+  //         reject(_err);
+  //       },
+  //       (success) => {
+  //         resolve(parseUpload.snapshot.downloadURL);
+  //       });
+  //   });
+  // }
 
   updateProfile() {
     this.profileImg = this.images && this.images.length > 0 ? this.images[this.images.length - 1] : '';
@@ -144,6 +156,181 @@ export class ProfilePage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  selectProfile() {
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Camera',
+          handler: () => {
+            // if (this.platform.is('cordova')) {
+            //   this.onImagePicker();
+            // }
+            this.openCamera();
+            // this.onUpload('profile', 1);
+          }
+        },
+        {
+          text: 'Photo Gallory',
+          handler: () => {
+            // if (this.platform.is('cordova')) {
+            //   this.onCamera();
+            // }
+            this.onImagePicker('profile', 3);
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
+
+  uploadImage(imageString): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+
+      const storageRef = firebase.storage().ref();
+      const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
+      let imageRef = storageRef.child(`images/${filename}.png`);
+      let parseUpload: any;
+      let metadata = {
+        contentType: 'image/png',
+      };
+
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', imageString, true);
+      xhr.responseType = 'blob';
+      xhr.onload = (e) => {
+        let blob = new Blob([xhr.response], { type: 'image/png' });
+
+        parseUpload = imageRef.put(blob, metadata);
+        parseUpload.on('state_changed', (_snapshot) => {
+          let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          switch (_snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log('Upload is running');
+              break;
+          }
+        },
+          (_err) => {
+            reject(_err);
+          },
+          (success) => {
+            resolve(parseUpload.snapshot.downloadURL);
+          });
+
+      }
+
+      xhr.send();
+
+    });
+
+  }
+
+  openCamera() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      alert(JSON.stringify(imageData));
+      this.resizeImage(imageData).then((data) => {
+        alert(JSON.stringify(data));
+        this.images.push(data);
+        this.updateProfile();
+      }, (err) => {
+        console.log(err);
+      })
+      //  let base64Image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      // Handle error
+    });
+  }
+
+  resizeImage(fileUri): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.crop.crop(fileUri, { quality: 100 }).then((cropData) => {
+        this.uploadImage(cropData).then((uploadImageData) => {
+          resolve(uploadImageData);
+        }, (uploadImageError) => {
+          reject(uploadImageError)
+        });
+      }, (cropError) => {
+        reject(cropError)
+      });
+    });
+  }
+
+  onImagePicker(from, maxImg) {
+    let options = {
+      maximumImagesCount: maxImg,
+      width: 900,
+      quality: 30,
+      outputType: 0
+    };
+
+    this.imagePicker.getPictures(options).then((results) => {
+      let loading = [];
+
+      let loadingCount = 0;
+      for (var i = 0; i < results.length; i++) {
+        loading.push(this.loading.create({
+          content: (i + 1) + '/' + (results.length),
+          cssClass: `loading-upload`,
+          showBackdrop: false
+        }));
+        loading[i].present();
+
+        // this.uploadImage(results[i]).then((resUrl) => {
+        //   this.images.push(resUrl);
+
+        //   setTimeout(() => {
+        //     loading[loadingCount].dismiss();
+        //     loadingCount++;
+
+        //     if (loadingCount === results.length) {
+        //       if (from.toString() === 'profile') {
+        //         this.updateProfile();
+        //       }
+        //     }
+        //   }, 1000);
+
+        // }, (error) => {
+        //   loading[loadingCount].dismiss();
+        //   loadingCount++;
+        //   // alert('Upload Fail. ' + JSON.stringify(error));
+        // })
+
+        this.resizeImage(results[i]).then((data) => {
+          alert(JSON.stringify(data));
+          this.images.push(data);
+
+          setTimeout(() => {
+            loading[loadingCount].dismiss();
+            loadingCount++;
+
+            if (loadingCount === results.length) {
+              if (from.toString() === 'profile') {
+                this.updateProfile();
+              }
+            }
+          }, 1000);
+        }, (err) => {
+          console.log(err);
+        })
+      }
+
+    }, (err) => { });
   }
 
   // step2() {

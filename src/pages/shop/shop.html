@@ -36,8 +36,8 @@
           <ion-badge color="danger" *ngIf="shop.isopen == false" class="isopen" (click)="changeStatus('close')">ปิด</ion-badge>
         </ion-row>
 
-        <button ion-button icon-left clear large class="cover-changer">
-          <ion-icon name="camera" color="light" (click)="selectShopBG()"></ion-icon>
+        <button ion-button icon-left clear large class="cover-changer" (click)="openActionSheet('cover')">
+          <ion-icon name="camera" color="light"></ion-icon>
         </button>
       </ion-col>
     </ion-row>
@@ -46,7 +46,7 @@
   <ion-scroll scrollX="true">
     <ion-row class="row-custom">
       <ion-col col-3 *ngFor="let item of shop.promoteimage; let i = index;" class="col-imgpromote">
-        <preload-image [ratio]="{w:1, h:1}" [src]="item" (click)="showPhoto(i)"></preload-image>
+        <preload-image [ratio]="{w:1, h:1}" [src]="item"></preload-image>
       </ion-col>
     </ion-row>
   </ion-scroll>
