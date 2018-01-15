@@ -5,18 +5,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { TabnavPage } from '../pages/tabnav/tabnav';
-import { LoginPage } from '../pages/login/login';
+// import { LoginPage } from '../pages/login/login';
 
 import * as firebase from 'firebase';
-import { AgreementPage } from '../pages/agreement/agreement';
-import { GreetingPage } from '../pages/greeting/greeting';
+// import { AgreementPage } from '../pages/agreement/agreement';
+// import { GreetingPage } from '../pages/greeting/greeting';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   // rootPage:any = TabnavPage;
-  rootPage: any = LoginPage;
+  rootPage: any = 'LoginPage';
   user = {} as any;
   constructor(platform: Platform,
     statusBar: StatusBar,
@@ -35,7 +35,7 @@ export class MyApp {
     });
     let isFirstLogin = window.localStorage.getItem('bikebikeshopfirstlogin');
     if (!isFirstLogin) {
-      this.rootPage = GreetingPage;
+      this.rootPage = 'GreetingPage';
     } else {
       this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
       if (this.user) {

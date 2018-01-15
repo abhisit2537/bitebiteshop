@@ -421,7 +421,11 @@ export class ShopPage {
         {
           text: 'Photo Gallery',
           handler: () => {
-            this.onImagePicker(from, 1);
+            if (from == 'cover') {
+              this.galleryCamera(from);
+            } else {
+              this.onImagePicker(from, 1);
+            }
           }
         }
       ]
@@ -433,12 +437,65 @@ export class ShopPage {
   openCamera(from) {
     this.images = [];
     const options: CameraOptions = {
-      quality: 100,
+      quality: 30,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       allowEdit: from == 'cover' ? true : false,
       correctOrientation: from == 'cover' ? true : false
+    }
+
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      // alert(JSON.stringify(imageData));
+
+      if (from.toString() === 'cover') {
+        this.noResizeImage(imageData).then((data) => {
+          this.images.push(data);
+          this.updateShopBG();
+        }, (err) => {
+          // alert(err);
+          console.log(err);
+        });
+      } else {
+        this.resizeImage(imageData).then((data) => {
+          // alert(JSON.stringify(data));
+          this.images.push(data);
+          // this.updateProfile();
+
+
+          if (from.toString() === 'promote') {
+            this.updatePromote();
+          } else if (from.toString() === 'cate') {
+            this.saveDragDrop();
+            this.formCate();
+          } else if (from.toString() === 'product') {
+            this.saveDragDrop();
+            this.formProduct();
+          }
+        }, (err) => {
+          // alert(err);
+          console.log(err);
+        })
+      }
+      //  let base64Image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      // Handle error
+    });
+  }
+
+  galleryCamera(from) {
+    this.images = [];
+    const options: CameraOptions = {
+      quality: 30,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      allowEdit: from == 'cover' ? true : false,
+      correctOrientation: from == 'cover' ? true : false,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
 
 
@@ -520,9 +577,7 @@ export class ShopPage {
       maximumImagesCount: maxImg,
       width: 900,
       quality: 30,
-      outputType: 0,
-      allowEdit: from == 'cover' ? true : false,
-      correctOrientation: from == 'cover' ? true : false
+      outputType: 0
     };
 
     this.imagePicker.getPictures(options).then((results) => {

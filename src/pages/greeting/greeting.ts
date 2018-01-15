@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Slides, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AgreementPage } from '../agreement/agreement';
 
 /**
  * Generated class for the GreetingPage page.
@@ -58,7 +57,7 @@ export class GreetingPage {
   }
 
   goToApp() {
-    this.navCtrl.setRoot(AgreementPage);
+    this.navCtrl.setRoot('AgreementPage');
     console.log('Go to App clicked');
   }
   skip() {

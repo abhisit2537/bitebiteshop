@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login/login';
+// import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the AgreementPage page.
@@ -25,7 +25,7 @@ export class AgreementPage {
 
   agreement() {
     // window.localStorage.setItem('bikebikeshopfirstlogin', 'true');
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot('LoginPage');
   }
   doInfinite(infiniteScroll) {
     this.isShowAgreementBtn = false;

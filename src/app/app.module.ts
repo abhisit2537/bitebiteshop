@@ -16,7 +16,7 @@ import { OrderPage } from '../pages/order/order';
 import { StatusPage } from '../pages/status/status';
 import { MorePage } from '../pages/more/more';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { LoginPage } from '../pages/login/login';
+// import { LoginPage } from '../pages/login/login';
 import { Auth } from '../providers/auth-service/auth-service';
 import { Server } from '../providers/server-config/server-config';
 import { CoreserviceProvider } from '../providers/coreservice/coreservice';
@@ -28,7 +28,7 @@ import { CreatecatePage } from '../pages/createcate/createcate';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ProfilePage } from '../pages/profile/profile';
 import { SortablejsModule } from "angular-sortablejs";
-import { AgreementPage } from '../pages/agreement/agreement';
+// import { AgreementPage } from '../pages/agreement/agreement';
 import { Firstloginstep1Page } from '../pages/firstloginstep1/firstloginstep1';
 import { Firstloginstep2Page } from '../pages/firstloginstep2/firstloginstep2';
 import { Firstloginstep3Page } from '../pages/firstloginstep3/firstloginstep3';
@@ -46,7 +46,7 @@ import {
 } from '@ionic-native/google-maps';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
-import { GreetingPage } from '../pages/greeting/greeting';
+// import { GreetingPage } from '../pages/greeting/greeting';
 import { PreloadImageComponent } from '../components/preload-image/preload-image';
 import { Crop } from '@ionic-native/crop';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -60,13 +60,13 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     StatusPage,
     MorePage,
     TabnavPage,
-    LoginPage,
+    // LoginPage,
     CreateproductPage,
     IonUploadImagesComponent,
     PreloadImageComponent,
     CreatecatePage,
     ProfilePage,
-    AgreementPage,
+    // AgreementPage,
     Firstloginstep1Page,
     Firstloginstep2Page,
     Firstloginstep3Page,
@@ -75,7 +75,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     ShopeditPage,
     ShoptimeeditPage,
     FirstloginstepModalPage,
-    GreetingPage,
+    // GreetingPage,
   ],
   imports: [
     BrowserModule,
@@ -102,11 +102,11 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     StatusPage,
     MorePage,
     TabnavPage,
-    LoginPage,
+    // LoginPage,
     CreateproductPage,
     CreatecatePage,
     ProfilePage,
-    AgreementPage,
+    // AgreementPage,
     Firstloginstep1Page,
     Firstloginstep2Page,
     Firstloginstep3Page,
@@ -115,7 +115,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     ShopeditPage,
     ShoptimeeditPage,
     FirstloginstepModalPage,
-    GreetingPage,
+    // GreetingPage,
   ],
   providers: [
     StatusBar,
