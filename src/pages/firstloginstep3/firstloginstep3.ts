@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { Firstloginstep4Page } from '../firstloginstep4/firstloginstep4';
+// import { Firstloginstep4Page } from '../firstloginstep4/firstloginstep4';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { CateModel } from '../shop/shop.model';
 
@@ -65,7 +65,7 @@ export class Firstloginstep3Page {
       this.firstLogin.categories = cateIds;
     }
     // alert(JSON.stringify(this.firstLogin));
-    this.navCtrl.setRoot(Firstloginstep4Page, this.firstLogin);
+    this.navCtrl.setRoot('Firstloginstep4Page', this.firstLogin);
   }
 
 }

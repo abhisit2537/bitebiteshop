@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-
 /**
  * Generated class for the MorePage page.
  *
@@ -24,7 +22,7 @@ export class MorePage {
   }
   logout() {
     window.localStorage.removeItem('bikebikeshop');
-    this.app.getRootNav().setRoot(LoginPage);
+    this.app.getRootNav().setRoot('LoginPage');
   }
   doRefresh(refresher) {
     setTimeout(() => {

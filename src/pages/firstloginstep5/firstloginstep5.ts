@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { TabnavPage } from '../tabnav/tabnav';
+// import { TabnavPage } from '../tabnav/tabnav';
 import { Geolocation } from '@ionic-native/geolocation';
 import {
   GoogleMaps,
@@ -66,7 +66,7 @@ export class Firstloginstep5Page {
     console.log(this.firstLogin);
     this.shopServiceProvider.addFirstShop(this.firstLogin).then((data) => {
       loadingCtrl.dismiss();
-      this.navCtrl.setRoot(TabnavPage);
+      this.navCtrl.setRoot('TabnavPage');
     }, (err) => {
       loadingCtrl.dismiss();
       alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');

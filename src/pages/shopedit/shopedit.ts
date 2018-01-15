@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
-import { ShoptimeeditPage } from '../shoptimeedit/shoptimeedit';
+// import { ShoptimeeditPage } from '../shoptimeedit/shoptimeedit';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { CateModel } from '../shop/shop.model';
-import { TabnavPage } from '../tabnav/tabnav';
+// import { TabnavPage } from '../tabnav/tabnav';
 
 /**
  * Generated class for the ShopeditPage page.
@@ -54,7 +54,7 @@ export class ShopeditPage {
   }
   shopTimeEditPage() {
     console.log('shopTimeEditPage');
-    let ShoptimeModal = this.modalCtrl.create(ShoptimeeditPage, this.editData);
+    let ShoptimeModal = this.modalCtrl.create('ShoptimeeditPage', this.editData);
     ShoptimeModal.onDidDismiss(data => {
       console.log(data);
     });
@@ -66,7 +66,7 @@ export class ShopeditPage {
     loadingCtrl.present();
     this.shopServiceProvider.editShop(this.editData._id, this.editData).then((data) => {
       loadingCtrl.dismiss();
-      this.navCtrl.setRoot(TabnavPage);
+      this.navCtrl.setRoot('TabnavPage');
     }, (err) => {
       loadingCtrl.dismiss();
       alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { TabnavPage } from '../tabnav/tabnav';
 import { Auth } from '../../providers/auth-service/auth-service';
-import { Firstloginstep1Page } from '../firstloginstep1/firstloginstep1';
 /**
  * Generated class for the LoginPage page.
  *
@@ -33,9 +31,9 @@ export class LoginPage {
         loading.dismiss();
         let isFirstLogin = window.localStorage.getItem('bikebikeshopfirstlogin');
         if (isFirstLogin) {
-          this.navCtrl.setRoot(TabnavPage);
+          this.navCtrl.setRoot('TabnavPage');
         } else {
-          this.navCtrl.setRoot(Firstloginstep1Page);
+          this.navCtrl.setRoot('Firstloginstep1Page');
         }
       } else {
         loading.dismiss();

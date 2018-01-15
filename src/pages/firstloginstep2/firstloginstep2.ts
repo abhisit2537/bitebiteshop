@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { Firstloginstep3Page } from '../firstloginstep3/firstloginstep3';
+// import { Firstloginstep3Page } from '../firstloginstep3/firstloginstep3';
 import { ImagePicker } from '@ionic-native/image-picker';
 import * as firebase from 'firebase';
 /**
@@ -117,7 +117,7 @@ export class Firstloginstep2Page {
 
   step3() {
     // alert(JSON.stringify(this.firstLogin));
-    this.navCtrl.setRoot(Firstloginstep3Page, this.firstLogin);
+    this.navCtrl.setRoot('Firstloginstep3Page', this.firstLogin);
   }
 
 }

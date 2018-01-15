@@ -1,10 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Tabs } from 'ionic-angular';
-import { ShopPage } from '../shop/shop';
-import { BikerPage } from '../biker/biker';
-import { OrderPage } from '../order/order';
-import { StatusPage } from '../status/status';
-import { MorePage } from '../more/more';
 
 /**
  * Generated class for the TabnavPage tabs.
@@ -21,11 +16,11 @@ import { MorePage } from '../more/more';
 export class TabnavPage {
   color: string = '#EB3841';
   @ViewChild('myTabs') tabRef: Tabs;
-  shopRoot = ShopPage;
-  bikerRoot = BikerPage;
-  orderRoot = OrderPage;
-  statusRoot = StatusPage;
-  moreRoot = MorePage;
+  shopRoot = 'ShopPage';
+  bikerRoot = 'BikerPage';
+  orderRoot = 'OrderPage';
+  statusRoot = 'StatusPage';
+  moreRoot = 'MorePage';
 
 
   constructor(public navCtrl: NavController) {}

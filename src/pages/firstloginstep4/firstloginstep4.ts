@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
-import { Firstloginstep5Page } from '../firstloginstep5/firstloginstep5';
-import { FirstloginstepModalPage } from '../firstloginstep-modal/firstloginstep-modal';
+// import { Firstloginstep5Page } from '../firstloginstep5/firstloginstep5';
+// import { FirstloginstepModalPage } from '../firstloginstep-modal/firstloginstep-modal';
 
 /**
  * Generated class for the Firstloginstep4Page page.
@@ -33,7 +33,7 @@ export class Firstloginstep4Page {
   //   this.isAdd = true;
   // }
   openModal() {
-    let modalopen = this.modalCtrl.create(FirstloginstepModalPage, this.firstLogin);
+    let modalopen = this.modalCtrl.create('FirstloginstepModalPage', this.firstLogin);
 
 
     modalopen.onDidDismiss(datadismiss => {
@@ -53,7 +53,7 @@ export class Firstloginstep4Page {
     this.firstLogin.times.splice(index, 1);
   }
   step5() {
-    this.navCtrl.setRoot(Firstloginstep5Page, this.firstLogin);
+    this.navCtrl.setRoot('Firstloginstep5Page', this.firstLogin);
   }
 
 }

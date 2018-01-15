@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { TabnavPage } from '../pages/tabnav/tabnav';
+// import { TabnavPage } from '../pages/tabnav/tabnav';
 // import { LoginPage } from '../pages/login/login';
 
 import * as firebase from 'firebase';
@@ -40,7 +40,7 @@ export class MyApp {
       this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
       if (this.user) {
         console.log(this.user);
-        this.rootPage = TabnavPage;
+        this.rootPage = 'TabnavPage';
       }
     }
 
