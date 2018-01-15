@@ -72,12 +72,30 @@
 
   
   <ion-grid class="grid-product" *ngIf="shop.items && idx >= 0">
-    <ion-row no-padding [sortablejs]="shop.items[idx].products" [sortablejsOptions]="options">
+    <ion-row *ngIf="isModify" no-padding [sortablejs]="shop.items[idx].products" [sortablejsOptions]="options">
       <ion-col col-3 *ngFor="let itm of shop.items[idx].products; let i = idx;" >
           <preload-image [ratio]="{w:1, h:1}" [src]="itm.image" ></preload-image>
           <div class="cate-order">{{itm.name}}</div>
         </ion-col>
     </ion-row>
+
+    <ion-row *ngIf="!isModify" >
+        <ion-col col-3 *ngFor="let itm of shop.items[idx].products; let i = idx;" >
+            <preload-image [ratio]="{w:1, h:1}" [src]="itm.image" ></preload-image>
+            <div class="cate-order">{{itm.name}}</div>
+          </ion-col>
+      </ion-row>
     
   </ion-grid>
+
+  <ion-fab right bottom *ngIf="isModify">
+      <button ion-fab color="secondary" (click)="clearMode()">
+        <ion-icon class="larger" name="md-checkmark" ></ion-icon>
+      </button>
+    </ion-fab>
+    <ion-fab right bottom *ngIf="!isModify">
+      <button ion-fab color="danger" (click)="setModeEdit()">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-fab>
 </ion-content>
