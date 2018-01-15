@@ -421,10 +421,10 @@ export class ShopPage {
         {
           text: 'Photo Gallery',
           handler: () => {
-            if (from == 'cover') {
+            if (from) {
               this.galleryCamera(from);
-            } else {
-              this.onImagePicker(from, 1);
+              // } else {
+              //   this.onImagePicker(from, 1);
             }
           }
         }
@@ -441,8 +441,10 @@ export class ShopPage {
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: from == 'cover' ? true : false,
-      correctOrientation: from == 'cover' ? true : false
+      allowEdit: true,
+      correctOrientation: true,
+      targetHeight: from !== 'cover' ? 300 : 300,
+      targetWidth: from !== 'cover' ? 300 : 600,
     }
 
 
@@ -451,35 +453,47 @@ export class ShopPage {
       // If it's base64:
       // alert(JSON.stringify(imageData));
 
-      if (from.toString() === 'cover') {
-        this.noResizeImage(imageData).then((data) => {
-          this.images.push(data);
+
+      this.noResizeImage(imageData).then((data) => {
+        this.images.push(data);
+        if (from.toString() === 'cover') {
           this.updateShopBG();
-        }, (err) => {
-          // alert(err);
-          console.log(err);
-        });
-      } else {
-        this.resizeImage(imageData).then((data) => {
-          // alert(JSON.stringify(data));
-          this.images.push(data);
-          // this.updateProfile();
+        } else if (from.toString() === 'promote') {
+          this.updatePromote();
+        } else if (from.toString() === 'cate') {
+          this.saveDragDrop();
+          this.formCate();
+        } else if (from.toString() === 'product') {
+          this.saveDragDrop();
+          this.formProduct();
+        }
+
+      }, (err) => {
+        // alert(err);
+        console.log(err);
+      });
+
+      // else {
+      //   this.resizeImage(imageData).then((data) => {
+      //     // alert(JSON.stringify(data));
+      //     this.images.push(data);
+      //     // this.updateProfile();
 
 
-          if (from.toString() === 'promote') {
-            this.updatePromote();
-          } else if (from.toString() === 'cate') {
-            this.saveDragDrop();
-            this.formCate();
-          } else if (from.toString() === 'product') {
-            this.saveDragDrop();
-            this.formProduct();
-          }
-        }, (err) => {
-          // alert(err);
-          console.log(err);
-        })
-      }
+      //     if (from.toString() === 'promote') {
+      //       this.updatePromote();
+      //     } else if (from.toString() === 'cate') {
+      //       this.saveDragDrop();
+      //       this.formCate();
+      //     } else if (from.toString() === 'product') {
+      //       this.saveDragDrop();
+      //       this.formProduct();
+      //     }
+      //   }, (err) => {
+      //     // alert(err);
+      //     console.log(err);
+      //   })
+      // }
       //  let base64Image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       // Handle error
@@ -493,8 +507,10 @@ export class ShopPage {
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: from == 'cover' ? true : false,
-      correctOrientation: from == 'cover' ? true : false,
+      allowEdit: true,
+      correctOrientation: true,
+      targetHeight: from !== 'cover' ? 300 : 300,
+      targetWidth: from !== 'cover' ? 300 : 600,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
 
@@ -504,35 +520,45 @@ export class ShopPage {
       // If it's base64:
       // alert(JSON.stringify(imageData));
 
-      if (from.toString() === 'cover') {
-        this.noResizeImage(imageData).then((data) => {
-          this.images.push(data);
+      // if (from) {
+      this.noResizeImage(imageData).then((data) => {
+        this.images.push(data);
+        if (from.toString() === 'cover') {
           this.updateShopBG();
-        }, (err) => {
-          // alert(err);
-          console.log(err);
-        });
-      } else {
-        this.resizeImage(imageData).then((data) => {
-          // alert(JSON.stringify(data));
-          this.images.push(data);
-          // this.updateProfile();
+        } else if (from.toString() === 'promote') {
+          this.updatePromote();
+        } else if (from.toString() === 'cate') {
+          this.saveDragDrop();
+          this.formCate();
+        } else if (from.toString() === 'product') {
+          this.saveDragDrop();
+          this.formProduct();
+        }
+      }, (err) => {
+        console.log(err);
+      });
+      // }
+      // else {
+      //   this.resizeImage(imageData).then((data) => {
+      //     // alert(JSON.stringify(data));
+      //     this.images.push(data);
+      //     // this.updateProfile();
 
 
-          if (from.toString() === 'promote') {
-            this.updatePromote();
-          } else if (from.toString() === 'cate') {
-            this.saveDragDrop();
-            this.formCate();
-          } else if (from.toString() === 'product') {
-            this.saveDragDrop();
-            this.formProduct();
-          }
-        }, (err) => {
-          // alert(err);
-          console.log(err);
-        })
-      }
+      //     if (from.toString() === 'promote') {
+      //       this.updatePromote();
+      //     } else if (from.toString() === 'cate') {
+      //       this.saveDragDrop();
+      //       this.formCate();
+      //     } else if (from.toString() === 'product') {
+      //       this.saveDragDrop();
+      //       this.formProduct();
+      //     }
+      //   }, (err) => {
+      //     // alert(err);
+      //     console.log(err);
+      //   })
+      // }
       //  let base64Image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       // Handle error
