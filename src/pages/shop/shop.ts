@@ -9,6 +9,7 @@ import {
   PopoverController,
   Slides,
   ActionSheetController,
+  Platform,
 } from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
@@ -59,13 +60,15 @@ export class ShopPage {
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
     private crop: Crop,
-    private camera: Camera
+    private camera: Camera,
+    public platform: Platform
   ) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShopPage');
+    alert(JSON.stringify(this.platform));
   }
 
   ionViewWillEnter() {
@@ -440,7 +443,8 @@ export class ShopPage {
     }
     const options: CameraOptions = {
       quality: 30,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.NATIVE_URI,
+      // destinationType: this.camera.DestinationType.FILE_URI,
       popoverOptions: popover,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
