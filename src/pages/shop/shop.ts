@@ -432,10 +432,10 @@ export class ShopPage {
   openCamera(from) {
     this.images = [];
     const popover: CameraPopoverOptions = {
-      x: 300,
-      y: 300,
-      width: 100,
-      height: 100,
+      x: 0,
+      y: 32,
+      width: 320,
+      height: 480,
       arrowDir: this.camera.PopoverArrowDirection.ARROW_ANY
     }
     const options: CameraOptions = {
