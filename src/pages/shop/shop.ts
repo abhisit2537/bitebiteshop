@@ -19,7 +19,7 @@ import { SortablejsOptions } from 'angular-sortablejs/dist';
 import { GalleryModal } from 'ionic-gallery-modal';
 import { UserModel } from '../../assets/model/user.model';
 import { Crop } from '@ionic-native/crop';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
 /**
  * Generated class for the ShopPage page.
  *
@@ -431,9 +431,17 @@ export class ShopPage {
 
   openCamera(from) {
     this.images = [];
+    const popover: CameraPopoverOptions = {
+      x: 20,
+      y: 60,
+      width: 200,
+      height: 100,
+      arrowDir: 1
+    }
     const options: CameraOptions = {
       quality: 30,
       destinationType: this.camera.DestinationType.FILE_URI,
+      popoverOptions: popover,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       allowEdit: true,
@@ -441,6 +449,8 @@ export class ShopPage {
       targetHeight: from !== 'cover' ? 300 : 300,
       targetWidth: from !== 'cover' ? 300 : 600,
     }
+
+
 
 
     this.camera.getPicture(options).then((imageData) => {
