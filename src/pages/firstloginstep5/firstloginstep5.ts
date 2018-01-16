@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 // import { TabnavPage } from '../tabnav/tabnav';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -27,6 +27,7 @@ import { ShopServiceProvider } from '../shop/shop-service';
   templateUrl: 'firstloginstep5.html',
 })
 export class Firstloginstep5Page {
+  @ViewChild('map') mapref: ElementRef;
   map: GoogleMap;
   lat = 0;
   long = 0;
@@ -111,7 +112,8 @@ export class Firstloginstep5Page {
     };
     let loadingCtrl = this.loading.create();
     loadingCtrl.present();
-    this.map = this.googleMaps.create('map_canvas', mapOptions);
+    let mapref = this.mapref.nativeElement;
+    this.map = this.googleMaps.create(mapref, mapOptions);
     // alert('Map!');
 
     // Wait the MAP_READY before using any methods.
