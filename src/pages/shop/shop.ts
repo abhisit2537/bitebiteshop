@@ -9,7 +9,7 @@ import {
   PopoverController,
   Slides,
   ActionSheetController,
-  Platform,
+  // Platform,
 } from 'ionic-angular';
 import { ShopModel } from "./shop.model";
 import { ShopServiceProvider } from "./shop-service"
@@ -61,14 +61,14 @@ export class ShopPage {
     public actionSheetCtrl: ActionSheetController,
     private crop: Crop,
     private camera: Camera,
-    public platform: Platform
+    // public platform: Platform
   ) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShopPage');
-    alert(JSON.stringify(this.platform));
+    // alert(JSON.stringify(this.platform));
   }
 
   ionViewWillEnter() {
