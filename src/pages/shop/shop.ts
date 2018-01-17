@@ -447,8 +447,7 @@ export class ShopPage {
       allowEdit: true,
       correctOrientation: true,
       targetHeight: from !== 'cover' ? 150 : 150,
-      targetWidth: from !== 'cover' ? 150 : 450,
-      saveToPhotoAlbum: true
+      targetWidth: from !== 'cover' ? 150 : 450
     }
 
 
