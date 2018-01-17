@@ -448,6 +448,7 @@ export class ShopPage {
       correctOrientation: true,
       targetHeight: from !== 'cover' ? 150 : 150,
       targetWidth: from !== 'cover' ? 150 : 450,
+      saveToPhotoAlbum: true
     }
 
 
