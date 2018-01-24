@@ -44,8 +44,12 @@
   </ion-grid>
 
   <ion-scroll scrollX="true">
+      
     <ion-row class="row-custom">
       <ion-col col-3 *ngIf="isModify" class="col-imgpromote">
+          <button ion-button icon-left>
+              <ion-icon name="md-close-circle" color="maintheme" class="deletepromote"></ion-icon>
+            </button>
         <preload-image [ratio]="{w:1, h:1}" [src]="'./assets/imgs/add.jpg'" (click)="openActionSheet('promote')"></preload-image>
       </ion-col>
       <ion-col col-3 *ngFor="let item of shop.promoteimage; let i = index;" class="col-imgpromote">

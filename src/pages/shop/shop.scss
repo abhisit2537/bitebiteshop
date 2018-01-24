@@ -23,7 +23,7 @@ page-shop {
         //color: $bite-color !important; // border-bottom: 4px solid !important;
         background-color: rgba(235, 56, 65, 0.1);
         width: auto !important;
-    } // }
+    } // 
     .col-imgpromote {
         padding: 0px !important;
         margin-right: 2px !important;
@@ -107,5 +107,8 @@ page-shop {
     }
     ion-item {
         padding-left: 8px !important;
+    }
+    .deletepromote{
+        position:absolute;
     }
 }
