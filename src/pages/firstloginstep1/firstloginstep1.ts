@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ActionSheetController } from 'ionic-angular';
 // import { Firstloginstep2Page } from '../firstloginstep2/firstloginstep2';
-import { ImagePicker } from '@ionic-native/image-picker';
+// import { ImagePicker } from '@ionic-native/image-picker';
 import * as firebase from 'firebase';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { ShopModel } from "../shop/shop.model";
 import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
-// import { SortablejsOptions } from 'angular-sortablejs/dist';
 /**
  * Generated class for the Firstloginstep1Page page.
  *
@@ -25,12 +24,10 @@ export class Firstloginstep1Page {
   profileImg: string = '';
   myDate: String = new Date().toISOString();
   shop: ShopModel = new ShopModel();
-  // options: SortablejsOptions = {
-  // };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public imagePicker: ImagePicker,
+    // public imagePicker: ImagePicker,
     public loading: LoadingController,
     public shopServiceProvider: ShopServiceProvider,
     public actionSheetCtrl: ActionSheetController,
