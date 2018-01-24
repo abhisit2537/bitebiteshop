@@ -736,5 +736,5 @@ export class ShopPage {
     });
 
   }
-
+  
 }
