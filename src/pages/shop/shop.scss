@@ -110,12 +110,14 @@ page-shop {
     }
     .deletepromote{
         position:absolute;
-        top: -5px;
-        left: 65px;
+        top: 0;
+        right: 0;
+        // transform: translate(50%, 0%);
     }
     .productoption{
         position:absolute;
-        top: -13px;
-        left: 45px;
+        top: 0;
+        right: 0;
+        transform: translate(0%, -20%)
     }
 }

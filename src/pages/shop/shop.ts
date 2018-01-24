@@ -403,6 +403,26 @@ export class ShopPage {
     this.index = index;
     this.cate = cate;
   }
+  openEditProduct() {
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Edit',
+          handler: () => {
+            alert('Edit');
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            alert('Delete');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
   openActionSheet(from, i) {
     this.prodIndex = i;
     let actionSheet = this.actionSheetCtrl.create({
@@ -736,5 +756,5 @@ export class ShopPage {
     });
 
   }
-  
+
 }

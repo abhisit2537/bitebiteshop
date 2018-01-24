@@ -50,9 +50,12 @@
       </ion-col>
       <ion-col col-3 *ngFor="let item of shop.promoteimage; let i = index;" class="col-imgpromote">
        <preload-image [ratio]="{w:1, h:1}" [src]="item"></preload-image>
-       <button *ngIf="isModify" ion-button icon-left clear small class="deletepromote">
+       <div class="deletepromote" no-padding>
+        <button *ngIf="isModify" ion-button icon-left clear small no-padding>
           <ion-icon name="md-close-circle" color="maintheme"></ion-icon>
         </button>
+       </div>
+      
       </ion-col>
     </ion-row>
   </ion-scroll>
@@ -92,13 +95,15 @@
     <ion-row *ngIf="isModify" no-padding [sortablejs]="shop.items[index].products" [sortablejsOptions]="options">
       <ion-col col-3 *ngFor="let itm of shop.items[index].products; let i = index;" [ngClass]="itm.image === './assets/imgs/add.jpg' ? 'js-edit' : ''">
         <preload-image [ratio]="{w:1, h:1}" [src]="itm.image" (click)="openActionSheet('product', i)"></preload-image>
-        <button ion-button icon-left clear large class="productoption">
+        <div  class="productoption" no-padding>
+          <button ion-button icon-left clear large no-padding (click)="openEditProduct()">
             <ion-icon name="md-more" color="maintheme"></ion-icon>
-            <ion-select interface="popover">
+            <!-- <ion-select interface="popover">
                 <ion-option>Bacon</ion-option>
                 <ion-option>Black Olives</ion-option>
-            </ion-select>
+            </ion-select> -->
           </button>
+        </div>
         <div [ngClass]="itm.name ? 'product-string' : ''">
           <p class="magin-0" *ngIf="itm.name">{{itm.name}}</p>
           <p class="magin-0" *ngIf="itm.name">{{itm.price}} .-</p>
