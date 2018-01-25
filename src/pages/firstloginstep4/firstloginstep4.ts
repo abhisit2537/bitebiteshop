@@ -53,7 +53,8 @@ export class Firstloginstep4Page {
     this.firstLogin.times.splice(index, 1);
   }
   step5() {
-    this.navCtrl.setRoot('Firstloginstep5Page', this.firstLogin);
+    // this.navCtrl.setRoot('Firstloginstep5Page', this.firstLogin);
+    this.navCtrl.push('Firstloginstep5Page', this.firstLogin);
   }
 
 }
