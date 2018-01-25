@@ -19,7 +19,7 @@ export class FirstloginstepModalPage {
   addTime: any = {};
   isCheck: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
-    // this.firstLogin = this.navParams.data;
+    this.firstLogin = this.navParams.data;
     // console.log(this.firstLogin);
 
   }
@@ -27,7 +27,7 @@ export class FirstloginstepModalPage {
   ionViewWillEnter() {
     let loading = this.loadingCtrl.create();
     loading.present();
-    this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
+    // this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     let timenow = new Date();
     let days = [{
       name: 'จันทร์',
@@ -81,6 +81,7 @@ export class FirstloginstepModalPage {
       closeTime: timenow,
       days: days
     };
+    this.addDays();
     loading.dismiss();
   }
   ionViewWillLeave() {
