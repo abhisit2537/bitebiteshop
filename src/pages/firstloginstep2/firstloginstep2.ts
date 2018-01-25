@@ -75,8 +75,8 @@ export class Firstloginstep2Page {
       popoverOptions: popover,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true,
-      correctOrientation: true,
+      // allowEdit: true,
+      // correctOrientation: true,
       targetHeight: from !== 'cover' ? 150 : 150,
       targetWidth: from !== 'cover' ? 150 : 450
     }
@@ -185,7 +185,8 @@ export class Firstloginstep2Page {
 
   step3() {
     // alert(JSON.stringify(this.firstLogin));
-    this.navCtrl.setRoot('Firstloginstep3Page', this.firstLogin);
+    // this.navCtrl.setRoot('Firstloginstep3Page', this.firstLogin);
+    this.navCtrl.push('Firstloginstep3Page', this.firstLogin);
   }
 
 }

@@ -65,7 +65,8 @@ export class Firstloginstep3Page {
       this.firstLogin.categories = cateIds;
     }
     // alert(JSON.stringify(this.firstLogin));
-    this.navCtrl.setRoot('Firstloginstep4Page', this.firstLogin);
+    // this.navCtrl.setRoot('Firstloginstep4Page', this.firstLogin);
+    this.navCtrl.push('Firstloginstep4Page', this.firstLogin);
   }
 
 }

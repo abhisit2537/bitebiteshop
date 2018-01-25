@@ -212,7 +212,8 @@ export class Firstloginstep1Page {
     this.firstLogin.categories = this.shop.categories ? this.shop.categories : [];
     this.firstLogin.address = this.shop.address ? this.shop.address : {};
     // alert(JSON.stringify(this.firstLogin.coverimage));
-    this.navCtrl.setRoot('Firstloginstep2Page', this.firstLogin);
+    // this.navCtrl.setRoot('Firstloginstep2Page', this.firstLogin);
+    this.navCtrl.push('Firstloginstep2Page', this.firstLogin);
   }
 
 }
