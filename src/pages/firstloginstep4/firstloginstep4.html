@@ -52,7 +52,8 @@
           <p class="textTimes">เปิด {{time.timestart}}</p>
           <p class="textTimes">ปิด {{time.timeend}}</p>
           <p class="textTimesDay">วันที่เปิด</p>
-          <label style="margin-left: 5px;" *ngFor="let day of time.days">{{day.length > 1 ? day + ', ' : day}}</label>
+          <label style="margin-left: 5px;">{{time.days | pipes}}</label>
+          <!-- <label style="margin-left: 5px;" *ngFor="let day of time.days">{{day.length > 1 ? day + ', ' : day}}</label> -->
         </div>
       </ion-col>
       <!-- </div> -->
