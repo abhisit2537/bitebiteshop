@@ -33,11 +33,13 @@ export class Firstloginstep4Page {
   //   this.isAdd = true;
   // }
   openModal() {
-    let modalopen = this.modalCtrl.create('FirstloginstepModalPage', this.firstLogin);
+    let modalopen = this.modalCtrl.create('FirstloginstepModalPage');
 
 
     modalopen.onDidDismiss(datadismiss => {
-      // alert(JSON.stringify(datadismiss));
+      if (datadismiss) {
+        this.firstLogin.times.push(datadismiss);
+      }
     });
     modalopen.present();
   }
@@ -51,6 +53,19 @@ export class Firstloginstep4Page {
   // }
   deleteTimes(index) {
     this.firstLogin.times.splice(index, 1);
+  }
+  editTimes(item, i) {
+    item.editMode = true;
+    let modalopen = this.modalCtrl.create('FirstloginstepModalPage', item);
+
+    modalopen.onDidDismiss(datadismiss => {
+      // this.firstLogin
+      // alert(JSON.stringify(datadismiss));
+      if (datadismiss) {
+        this.firstLogin.times[i] = datadismiss;
+      }
+    });
+    modalopen.present();
   }
   step5() {
     // this.navCtrl.setRoot('Firstloginstep5Page', this.firstLogin);
