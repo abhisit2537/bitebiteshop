@@ -18,12 +18,16 @@ export class FirstloginstepModalPage {
   // addTime: any = [];
   addTime: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
-    this.firstLogin = this.navParams.data;
-    console.log(this.firstLogin);
-    // alert(JSON.stringify(this.firstLogin));
+    // this.firstLogin = this.navParams.data;
+    // console.log(this.firstLogin);
+
+  }
+
+  ionViewWillEnter() {
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     let timenow = new Date();
-    // timenow.setHours(timenow.getHours() + 7);
-    // alert(timenow);
     let days = [{
       name: 'จันทร์',
       checked: false
@@ -76,14 +80,12 @@ export class FirstloginstepModalPage {
       closeTime: timenow,
       days: days
     };
+    loading.dismiss();
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FirstloginstepModalPage');
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
-  // updateDays() {
-  //   alert(JSON.stringify(this.addTime.days));
-  // }
   add(data) {
     let newDay = [];
     data.days.forEach(day => {
