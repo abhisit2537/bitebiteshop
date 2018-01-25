@@ -75,6 +75,10 @@ export class Firstloginstep5Page {
     });
 
   }
+  cancel(){
+    this.firstLogin = [];
+    this.navCtrl.setRoot('Firstloginstep1Page', this.firstLogin);
+  }
   getlocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
       console.log(resp.coords.latitude + '    ' + resp.coords.longitude);
