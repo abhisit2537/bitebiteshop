@@ -30,11 +30,12 @@ export class Firstloginstep2Page {
     private camera: Camera,
     public imgCoverService: ImagecoverProvider
   ) {
-    
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Firstloginstep2Page');
+
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter Firstloginstep2Page');
     let loadingCtrl = this.loading.create();
     loadingCtrl.present();
     // this.firstLogin = this.navParams.data;
@@ -42,8 +43,8 @@ export class Firstloginstep2Page {
     console.log(this.firstLogin);
     loadingCtrl.dismiss();
   }
-  ionViewDidLeave(){
-    console.log('ionViewDidLeave');
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
     console.log(this.firstLogin);
   }
@@ -202,14 +203,11 @@ export class Firstloginstep2Page {
     }, (err) => {
       console.log(err);
     });
-    // this.getMeta(this.coverImg)
-
   }
 
   step3() {
-    // alert(JSON.stringify(this.firstLogin));
-    // this.navCtrl.setRoot('Firstloginstep3Page', this.firstLogin);
-    this.navCtrl.push('Firstloginstep3Page', this.firstLogin);
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
+    this.navCtrl.push('Firstloginstep3Page');
   }
 
 }

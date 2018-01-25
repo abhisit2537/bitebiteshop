@@ -18,20 +18,25 @@ import { IonicPage, NavController, NavParams, ModalController, LoadingController
 export class Firstloginstep4Page {
   isAdd = false;
   firstLogin: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loading: LoadingController) {
-    let loadingCtrl = this.loading.create();
-    loadingCtrl.present();
-    this.firstLogin = this.navParams.data;
-    loadingCtrl.dismiss();
-    // alert(JSON.stringify(this.firstLogin.times));
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public loading: LoadingController
+  ) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Firstloginstep4Page');
+  ionViewWillEnter() {
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
+    this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
+    loadingCtrl.dismiss();
   }
-  // addTime() {
-  //   this.isAdd = true;
-  // }
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
+  }
   openModal() {
     let modalopen = this.modalCtrl.create('FirstloginstepModalPage');
 
@@ -68,8 +73,8 @@ export class Firstloginstep4Page {
     modalopen.present();
   }
   step5() {
-    // this.navCtrl.setRoot('Firstloginstep5Page', this.firstLogin);
-    this.navCtrl.push('Firstloginstep5Page', this.firstLogin);
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
+    this.navCtrl.push('Firstloginstep5Page');
   }
 
 }

@@ -20,53 +20,64 @@ export class Firstloginstep3Page {
   firstLogin: any = {};
   cate: Array<CateModel>;
   categories = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public shopServiceProvider: ShopServiceProvider, public loadingCtrl: LoadingController) {
-    this.firstLogin = this.navParams.data;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public shopServiceProvider: ShopServiceProvider, 
+    public loadingCtrl: LoadingController
+  ) {
+
+  }
+
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter Firstloginstep3Page');
     let loading = this.loadingCtrl.create();
     loading.present();
+    this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     this.shopServiceProvider.getCate().then(data => {
+      this.categories = [];
       this.cate = data;
+      console.log(this.firstLogin.categories);
       this.firstLogin.categories.forEach(fcate => {
         data.forEach(dcate => {
-          if (fcate._id.toString() === dcate._id.toString()) {
+          if (fcate._id.toString() ? fcate._id.toString() === dcate._id.toString() : fcate === dcate._id.toString()) {
             this.categories.push(dcate);
           }
         });
       });
-      // alert(JSON.stringify(this.cate));
-      // this.firstLogin.name = this.shop.name ? this.shop.name : '';
-      // alert(JSON.stringify(this.categories));
 
       loading.dismiss();
-
-
     }, (err) => {
       loading.dismiss();
-
-      // window.localStorage.removeItem('bikebikeshop');
     });
   }
-  // onSelect() {
-  //   if (this.categories.length > 3) {
-  //     alert('4');
-  //   }
-  // }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Firstloginstep3Page');
+  ionViewWillLeave() {
+    this.firstLogin.categories = [];
+    
+    if (this.categories && this.categories.length > 0) {
+      let cateIds = [];
+      this.categories.forEach(function (data) {
+        cateIds.push(data);
+      })
+      this.firstLogin.categories = cateIds;
+    }
+    console.log(this.categories);
+    console.log('ionViewWillLeave');
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
 
   step4() {
+    this.firstLogin.categories = [];
     if (this.categories && this.categories.length > 0) {
       let cateIds = [];
-      this.firstLogin.categories = [];
+      
       this.categories.forEach(function (data) {
         cateIds.push(data._id);
       })
       this.firstLogin.categories = cateIds;
     }
-    // alert(JSON.stringify(this.firstLogin));
-    // this.navCtrl.setRoot('Firstloginstep4Page', this.firstLogin);
-    this.navCtrl.push('Firstloginstep4Page', this.firstLogin);
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
+    this.navCtrl.push('Firstloginstep4Page');
   }
 
 }
