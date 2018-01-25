@@ -53,6 +53,7 @@ export class Firstloginstep3Page {
           }
         });
       });
+      this.validationEmail();
       loading.dismiss();
     }, (err) => {
       loading.dismiss();
