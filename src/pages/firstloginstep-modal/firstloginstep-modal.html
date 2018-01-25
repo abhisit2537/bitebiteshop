@@ -12,18 +12,20 @@
         <ion-icon name="close-circle"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Add Times</ion-title>
+    <ion-title>{{firstLogin && firstLogin.editMode ? 'Edit Times' : 'Add Times'}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+    <!-- <ion-input type="text" [(ngModel)]="addTime.detail" [value]="firstLogin.description"></ion-input> -->
+  
   <div>
     <!-- <div *ngIf="isAdd" class="detail-open-close"> -->
     <ion-item>
       <ion-label fixed>รายละเอียด</ion-label>
-      <ion-input type="text" [(ngModel)]="addTime.detail" text-right></ion-input>
+      <ion-input type="text" [(ngModel)]="addTime.detail" [value]="firstLogin.description" text-right></ion-input>
     </ion-item>
 
     <ion-item>
@@ -35,7 +37,7 @@
       <ion-label>เวลาปิด</ion-label>
       <ion-datetime placeholder="กรุณาเลือกเวลาปิด" displayFormat="HH:mm" [(ngModel)]="addTime.closeTime"></ion-datetime>
     </ion-item>
-    
+
     <ion-row>
       <ion-col col-1>
       </ion-col>
@@ -43,11 +45,11 @@
         <ion-list class="containerclass">
           <!-- <ion-list class="detail-open-close"> -->
 
-              
+
 
           <ion-item fix-margin-label *ngFor="let day of addTime.days">
             <ion-label class="fontStyle">{{day.name}}</ion-label>
-            <ion-checkbox  [(ngModel)]="day.checked" item-end></ion-checkbox>
+            <ion-checkbox [(ngModel)]="day.checked" item-end></ion-checkbox>
           </ion-item>
           <!-- <ion-item no-lines fix-margin-label>
             <ion-label>อังคาร</ion-label>
@@ -74,7 +76,7 @@
               <ion-label item-start>อาทิตย์</ion-label>
               <ion-checkbox [(ngModel)]="addTime.days.sun" item-end></ion-checkbox>
             </ion-item> -->
-       
+
 
         </ion-list>
       </ion-col>
@@ -92,5 +94,5 @@
   </div>
 </ion-content>
 <ion-footer no-border>
-  <button ion-button block (click)="add(addTime,days)" color="danger">Add</button>
+  <button ion-button block (click)="add(addTime,days)" color="danger">{{firstLogin && firstLogin.editMode ? 'Edit' : 'Add'}}</button>
 </ion-footer>

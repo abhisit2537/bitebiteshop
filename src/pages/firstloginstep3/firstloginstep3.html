@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="maintheme">
     <ion-title>Step 3</ion-title>
   </ion-navbar>
 
@@ -22,19 +22,19 @@
   </ion-item>
   <ion-item>
     <ion-label floating>รายละเอียดร้าน</ion-label>
-    <ion-input [(ngModel)]="firstLogin.detail"></ion-input>
+    <ion-input type="text" [(ngModel)]="firstLogin.detail"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>E-mail</ion-label>
-    <ion-input [(ngModel)]="firstLogin.email"></ion-input>
+    <ion-input type="text" [(ngModel)]="firstLogin.email"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Facebook</ion-label>
-    <ion-input [(ngModel)]="firstLogin.facebook"></ion-input>
+    <ion-label floating>Facebook Fanpage</ion-label>
+    <ion-input type="text" [(ngModel)]="firstLogin.facebook"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Line</ion-label>
-    <ion-input [(ngModel)]="firstLogin.line"></ion-input>
+    <ion-label floating>Line Official</ion-label>
+    <ion-input type="text" [(ngModel)]="firstLogin.line"></ion-input>
   </ion-item>
 </ion-content>
 <ion-footer padding no-border>

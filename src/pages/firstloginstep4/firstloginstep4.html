@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="maintheme">
     <ion-title>Step 4</ion-title>
   </ion-navbar>
 
@@ -44,6 +44,9 @@
         <div class="detailtimes">
           <div class="iconCloseTimes" text-right>
             <ion-icon name="close-circle" color="light" (click)="deleteTimes(i)"></ion-icon>
+          </div>
+          <div class="iconEditTimes" text-right>
+            <ion-icon name="md-create" color="light" (click)="editTimes(time, i)"></ion-icon>
           </div>
           <p class="textTimes">{{time.description}}</p>
           <p class="textTimes">เปิด {{time.timestart}}</p>

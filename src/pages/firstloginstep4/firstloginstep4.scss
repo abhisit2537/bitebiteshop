@@ -15,21 +15,27 @@ page-firstloginstep4 {
         height: 150px;
         margin-left: auto;
         margin-right: auto;
-        border: 1px solid #eb3841;
-        // margin-bottom: 3vh;
+        border: 1px solid #eb3841; // margin-bottom: 3vh;
         background-color: #eb3841;
-        color: white;
-        // margin-bottom: -22px;
+        color: white; // margin-bottom: -22px;
     }
-    .textTimes{
+    .iconEditTimes {
+        margin-right: 5px;
+        margin-top: 19px;
+        position: absolute;
+        right: 0;
+    }
+    .textTimes {
         margin-left: 5px;
         margin-bottom: -12px;
     }
-    .iconCloseTimes{
+    .iconCloseTimes {
         margin-right: 5px;
         margin-bottom: -12px;
+        position: absolute;
+        right: 0;
     }
-    .textTimesDay{
+    .textTimesDay {
         margin-left: 5px;
         margin-bottom: 0px;
     }
