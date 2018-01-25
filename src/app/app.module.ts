@@ -37,6 +37,7 @@ import {
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { Crop } from '@ionic-native/crop';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ImagecoverProvider } from '../providers/imagecover/imagecover';
 @NgModule({
   declarations: [
     MyApp
@@ -78,7 +79,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     GoogleMaps,
     NativeGeocoder,
     Crop,
-    Camera
+    Camera,
+    ImagecoverProvider
   ]
 })
 export class AppModule { }
