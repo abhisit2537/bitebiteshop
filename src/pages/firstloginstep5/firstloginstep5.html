@@ -20,8 +20,7 @@
         ที่อยู่
       </ion-label>
     </ion-item>
-    <!-- <p>ที่อยู่</p> -->
-    <p class="txtAddress">
+    <p class="txtAddress" *ngIf="firstLogin.address">
       {{firstLogin.address.address ? firstLogin.address.address : ''}}
     </p>
     <!-- <p class="txtAddress">
@@ -39,4 +38,5 @@
 </ion-content>
 <ion-footer padding no-border>
   <button ion-button block (click)="save()" color="danger">บันทึก</button>
+  <button ion-button block (click)="cancel()" color="danger">ยกเลิก</button>
 </ion-footer>
