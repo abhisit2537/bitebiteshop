@@ -34,10 +34,10 @@ export class Firstloginstep3Page {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
+    
     this.shopServiceProvider.getCate().then(data => {
-      this.categories = [];
       this.cate = data;
-      console.log(this.firstLogin.categories);
+      // this.categories = [];
       this.firstLogin.categories.forEach(fcate => {
         data.forEach(dcate => {
           if (fcate._id.toString() ? fcate._id.toString() === dcate._id.toString() : fcate === dcate._id.toString()) {
@@ -45,7 +45,6 @@ export class Firstloginstep3Page {
           }
         });
       });
-
       loading.dismiss();
     }, (err) => {
       loading.dismiss();
@@ -61,12 +60,12 @@ export class Firstloginstep3Page {
       })
       this.firstLogin.categories = cateIds;
     }
-    console.log(this.categories);
     console.log('ionViewWillLeave');
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
 
   step4() {
+    
     this.firstLogin.categories = [];
     if (this.categories && this.categories.length > 0) {
       let cateIds = [];

@@ -74,7 +74,7 @@ export class Firstloginstep4Page {
   }
   step5() {
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
-    this.navCtrl.push('Firstloginstep5Page');
+    this.navCtrl.push('Firstloginstep5Page',this.firstLogin);
   }
 
 }

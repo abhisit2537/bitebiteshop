@@ -42,22 +42,32 @@ export class Firstloginstep5Page {
     lng: ''
   }
   firstLogin: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private googleMaps: GoogleMaps, private nativeGeocoder: NativeGeocoder, public shopServiceProvider: ShopServiceProvider, public loading: LoadingController) {
-    let loadingCtrl = this.loading.create();
-    loadingCtrl.present();
-    this.firstLogin = this.navParams.data;
-    loadingCtrl.dismiss();
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private geolocation: Geolocation, 
+    private googleMaps: GoogleMaps, 
+    private nativeGeocoder: NativeGeocoder, 
+    public shopServiceProvider: ShopServiceProvider, 
+    public loading: LoadingController
+  ) {
 
-    // alert(JSON.stringify(this.firstLogin));
-    // alert(this.firstLogin._id);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Firstloginstep5Page');
-    // this.getlocation();
+  ionViewWillEnter() {
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
+    this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     if (this.firstLogin.address.lat && this.firstLogin.address.lng) {
       this.showMap();
+      loadingCtrl.dismiss();
+    }else{
+      loadingCtrl.dismiss();
     }
+  }
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
 
   save() {
@@ -76,8 +86,8 @@ export class Firstloginstep5Page {
 
   }
   cancel(){
-    this.firstLogin = [];
-    this.navCtrl.setRoot('Firstloginstep1Page', this.firstLogin);
+    window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
+    this.navCtrl.setRoot('Firstloginstep1Page');
   }
   getlocation() {
     this.geolocation.getCurrentPosition().then((resp) => {

@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="maintheme">
     <ion-title>ที่อยู่ร้านค้า</ion-title>
   </ion-navbar>
 
@@ -37,6 +37,12 @@
   </div>
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block (click)="save()" color="danger">บันทึก</button>
-  <button ion-button block (click)="cancel()" color="danger">ยกเลิก</button>
+    <ion-row>
+        <ion-col col-6>
+          <button ion-button block (click)="save()" color="danger">บันทึก</button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button block (click)="cancel()" color="light">ยกเลิก</button>
+        </ion-col>
+      </ion-row>
 </ion-footer>

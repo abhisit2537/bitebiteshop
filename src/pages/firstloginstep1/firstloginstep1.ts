@@ -50,7 +50,7 @@ export class Firstloginstep1Page {
     getfirstLogin.dateOfBirth = getfirstLogin.dateOfBirth ? getfirstLogin.dateOfBirth : this.myDate;
     if (backfirstLogin) {
       this.firstLogin = backfirstLogin;
-    } else {
+    } else if (!backfirstLogin){
       this.firstLogin = getfirstLogin;
     }
   }
@@ -205,8 +205,6 @@ export class Firstloginstep1Page {
   step2() {
     let backfirstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     if (backfirstLogin) {
-      console.log('if backfirstLogin');
-
       this.firstLogin.coverimage = backfirstLogin.coverimage ? backfirstLogin.coverimage : 'no image';
       this.firstLogin.name = backfirstLogin.name ? backfirstLogin.name : '';
       this.firstLogin.name_eng = backfirstLogin.name_eng ? backfirstLogin.name_eng : '';
@@ -221,9 +219,7 @@ export class Firstloginstep1Page {
 
       window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
       this.navCtrl.push('Firstloginstep2Page');
-    } else {
-      console.log('else backfirstLogin');
-      
+    } else if (!backfirstLogin){
       this.firstLogin.coverimage = this.shop.coverimage ? this.shop.coverimage : 'no image';
       this.firstLogin.name = this.shop.name ? this.shop.name : '';
       this.firstLogin.name_eng = this.shop.name_eng ? this.shop.name_eng : '';
