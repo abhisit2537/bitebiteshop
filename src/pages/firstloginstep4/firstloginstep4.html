@@ -127,5 +127,5 @@
   </div> -->
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block (click)="step5()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="firstLogin.times && firstLogin.times.length == 0" (click)="step5()" color="danger">ถัดไป</button>
 </ion-footer>

@@ -43,12 +43,12 @@ export class Firstloginstep5Page {
   }
   firstLogin: any = {};
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private geolocation: Geolocation, 
-    private googleMaps: GoogleMaps, 
-    private nativeGeocoder: NativeGeocoder, 
-    public shopServiceProvider: ShopServiceProvider, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private geolocation: Geolocation,
+    private googleMaps: GoogleMaps,
+    private nativeGeocoder: NativeGeocoder,
+    public shopServiceProvider: ShopServiceProvider,
     public loading: LoadingController
   ) {
 
@@ -61,7 +61,7 @@ export class Firstloginstep5Page {
     if (this.firstLogin.address.lat && this.firstLogin.address.lng) {
       this.showMap();
       loadingCtrl.dismiss();
-    }else{
+    } else {
       loadingCtrl.dismiss();
     }
   }
@@ -77,6 +77,7 @@ export class Firstloginstep5Page {
     console.log(this.firstLogin);
     this.shopServiceProvider.addFirstShop(this.firstLogin).then((data) => {
       loadingCtrl.dismiss();
+      localStorage.removeItem('firstlogin');
       this.navCtrl.setRoot('TabnavPage');
     }, (err) => {
       loadingCtrl.dismiss();
@@ -85,7 +86,7 @@ export class Firstloginstep5Page {
     });
 
   }
-  cancel(){
+  cancel() {
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
     this.navCtrl.setRoot('Firstloginstep1Page');
   }

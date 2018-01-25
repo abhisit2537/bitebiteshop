@@ -17,6 +17,7 @@ export class FirstloginstepModalPage {
   firstLogin: any = {};
   // addTime: any = [];
   addTime: any = {};
+  isCheck: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
     // this.firstLogin = this.navParams.data;
     // console.log(this.firstLogin);
@@ -86,6 +87,16 @@ export class FirstloginstepModalPage {
     console.log('ionViewWillLeave');
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
+
+  addDays() {
+    this.isCheck = false;    
+    this.addTime.days.forEach(e => {
+      if (e.checked) {
+        this.isCheck = true;
+      }
+    });
+  }
+
   add(data) {
     let newDay = [];
     data.days.forEach(day => {
