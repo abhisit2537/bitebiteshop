@@ -7,6 +7,7 @@
 </ion-header>
 <ion-content fullscreen="true" class="no-padding-top">
   <!-- autoplay="2000" -->
+  
   <ion-slides #slider pager="true" (ionSlideWillChange)="onSlideChanged()">
     <ion-slide *ngFor="let slide of slides" class="slide-background" [ngStyle]="{'background-image': 'url(' + slide.imageUrl +')'}">
       <!-- <div class="text-wrapper">
@@ -23,5 +24,4 @@
   <!-- <ion-fab bottom right>
     <button ion-fab color="danger" (click)="goToApp()">Skip</button>
   </ion-fab> -->
-
 </ion-content>
