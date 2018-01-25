@@ -17,7 +17,8 @@
   <ion-row>
     <ion-col col-12 text-center>
       <div *ngIf="firstLogin && firstLogin.coverimage">
-        <img src="{{firstLogin.coverimage}}" style="height: 165px;width:100%;" alt="image">
+        <preload-image [ratio]="{w:20, h:9}" [src]="firstLogin.coverimage" [isIcon]="true"></preload-image>
+        <!-- <img src="{{firstLogin.coverimage}}" style="height: 165px;width:100%;" alt="image"> -->
         <!-- <img src="./assets/imgs/logo-bg.png" style="height: 165px;width:100%;" alt="image"> -->
         <span class="thisfill"></span>
         <ion-row class="camera">
@@ -32,5 +33,5 @@
   </ion-item>
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block (click)="step3()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="!firstLogin.coverimage || !firstLogin.name" (click)="step3()" color="danger">ถัดไป</button>
 </ion-footer>

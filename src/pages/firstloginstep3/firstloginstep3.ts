@@ -20,15 +20,23 @@ export class Firstloginstep3Page {
   firstLogin: any = {};
   cate: Array<CateModel>;
   categories = [];
+  validateEmail = false;
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public shopServiceProvider: ShopServiceProvider, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public shopServiceProvider: ShopServiceProvider,
     public loadingCtrl: LoadingController
   ) {
 
   }
+  validationEmail() {
+    if (this.firstLogin.email.indexOf('@') != -1) {
+      this.validateEmail = true;
+    } else {
+      this.validateEmail = false;
 
+    }
+  }
   ionViewWillEnter() {
     console.log('ionViewWillEnter Firstloginstep3Page');
     let loading = this.loadingCtrl.create();
@@ -53,7 +61,7 @@ export class Firstloginstep3Page {
   }
   ionViewWillLeave() {
     this.firstLogin.categories = [];
-    
+
     if (this.categories && this.categories.length > 0) {
       let cateIds = [];
       this.categories.forEach(function (data) {
@@ -70,7 +78,7 @@ export class Firstloginstep3Page {
     this.firstLogin.categories = [];
     if (this.categories && this.categories.length > 0) {
       let cateIds = [];
-      
+
       this.categories.forEach(function (data) {
         cateIds.push(data._id);
       })
