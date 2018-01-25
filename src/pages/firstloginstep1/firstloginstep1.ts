@@ -39,17 +39,20 @@ export class Firstloginstep1Page {
       this.shop = data;
       console.log(this.shop);
       loadingCtrl.dismiss();
-
-
     }, (err) => {
       loadingCtrl.dismiss();
       // window.localStorage.removeItem('bikebikeshop');
     });
 
     let getfirstLogin = JSON.parse(window.localStorage.getItem('user'));
+    let backfirstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     getfirstLogin.profileImageURL = getfirstLogin.profileImageURL ? getfirstLogin.profileImageURL : './assets/imgs/Upload-Profile.png';
     getfirstLogin.dateOfBirth = getfirstLogin.dateOfBirth ? getfirstLogin.dateOfBirth : this.myDate;
-    this.firstLogin = getfirstLogin;
+    if (backfirstLogin) {
+      this.firstLogin = backfirstLogin;
+    } else {
+      this.firstLogin = getfirstLogin;
+    }
   }
 
   ionViewDidLoad() {
@@ -200,20 +203,45 @@ export class Firstloginstep1Page {
   }
 
   step2() {
-    this.firstLogin.coverimage = this.shop.coverimage ? this.shop.coverimage : 'no image';
-    this.firstLogin.name = this.shop.name ? this.shop.name : '';
-    this.firstLogin.name_eng = this.shop.name_eng ? this.shop.name_eng : '';
-    this.firstLogin.detail = this.shop.detail ? this.shop.detail : '';
-    this.firstLogin.email = this.shop.email ? this.shop.email : '';
-    this.firstLogin.tel = this.shop.tel ? this.shop.tel : '';
-    this.firstLogin.facebook = this.shop.facebook ? this.shop.facebook : '';
-    this.firstLogin.line = this.shop.line ? this.shop.line : '';
-    this.firstLogin.times = this.shop.times ? this.shop.times : [];
-    this.firstLogin.categories = this.shop.categories ? this.shop.categories : [];
-    this.firstLogin.address = this.shop.address ? this.shop.address : {};
-    // alert(JSON.stringify(this.firstLogin.coverimage));
-    // this.navCtrl.setRoot('Firstloginstep2Page', this.firstLogin);
-    this.navCtrl.push('Firstloginstep2Page', this.firstLogin);
+    let backfirstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
+    if (backfirstLogin) {
+      console.log('if backfirstLogin');
+
+      this.firstLogin.coverimage = backfirstLogin.coverimage ? backfirstLogin.coverimage : 'no image';
+      this.firstLogin.name = backfirstLogin.name ? backfirstLogin.name : '';
+      this.firstLogin.name_eng = backfirstLogin.name_eng ? backfirstLogin.name_eng : '';
+      this.firstLogin.detail = backfirstLogin.detail ? backfirstLogin.detail : '';
+      this.firstLogin.email = backfirstLogin.email ? backfirstLogin.email : '';
+      this.firstLogin.tel = backfirstLogin.tel ? backfirstLogin.tel : '';
+      this.firstLogin.facebook = backfirstLogin.facebook ? backfirstLogin.facebook : '';
+      this.firstLogin.line = backfirstLogin.line ? backfirstLogin.line : '';
+      this.firstLogin.times = backfirstLogin.times ? backfirstLogin.times : [];
+      this.firstLogin.categories = backfirstLogin.categories ? backfirstLogin.categories : [];
+      this.firstLogin.address = backfirstLogin.address ? backfirstLogin.address : {};
+
+      window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
+      this.navCtrl.push('Firstloginstep2Page');
+    } else {
+      console.log('else backfirstLogin');
+      
+      this.firstLogin.coverimage = this.shop.coverimage ? this.shop.coverimage : 'no image';
+      this.firstLogin.name = this.shop.name ? this.shop.name : '';
+      this.firstLogin.name_eng = this.shop.name_eng ? this.shop.name_eng : '';
+      this.firstLogin.detail = this.shop.detail ? this.shop.detail : '';
+      this.firstLogin.email = this.shop.email ? this.shop.email : '';
+      this.firstLogin.tel = this.shop.tel ? this.shop.tel : '';
+      this.firstLogin.facebook = this.shop.facebook ? this.shop.facebook : '';
+      this.firstLogin.line = this.shop.line ? this.shop.line : '';
+      this.firstLogin.times = this.shop.times ? this.shop.times : [];
+      this.firstLogin.categories = this.shop.categories ? this.shop.categories : [];
+      this.firstLogin.address = this.shop.address ? this.shop.address : {};
+      // alert(JSON.stringify(this.firstLogin.coverimage));
+      // this.navCtrl.setRoot('Firstloginstep2Page', this.firstLogin);
+      // console.log(this.firstLogin);
+      window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
+      this.navCtrl.push('Firstloginstep2Page');
+    }
+
   }
 
 }
