@@ -21,7 +21,13 @@ export class ShopeditPage {
   editData: any;
   cate: Array<CateModel>;
   categories = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shopServiceProvider: ShopServiceProvider, public loading: LoadingController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public modalCtrl: ModalController, 
+    public shopServiceProvider: ShopServiceProvider, 
+    public loading: LoadingController
+  ) {
     this.editData = this.navParams.data;
     let loadingCtrl = this.loading.create();
     loadingCtrl.present();

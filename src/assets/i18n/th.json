@@ -1,5 +1,6 @@
 {
     "SHOP": "ร้านค้า",
+    "PRODUCT_CATEGORY" : "ประเภทอาหาร",
     "PROFILE": "ข้อมูลส่วนตัว",
     "FIRST_NAME": "ชื่อ",
     "LAST_NAME": "สกุล",
