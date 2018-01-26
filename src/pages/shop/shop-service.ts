@@ -112,6 +112,18 @@ export class ShopServiceProvider {
       .then(response => response as any)
       .catch(this.handleError);
   }
+  deleteProduct(shopID, prodID, prodIndex, cateIndex): Promise<any> {
+    let prod = {
+      _id: prodID,
+      index: prodIndex,
+      cateindex: cateIndex
+    };
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/deleteproduct/' + shopID, prod,{ headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
 
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);

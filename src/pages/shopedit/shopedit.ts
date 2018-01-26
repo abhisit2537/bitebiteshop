@@ -21,7 +21,14 @@ export class ShopeditPage {
   editData: any;
   cate: Array<CateModel>;
   categories = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shopServiceProvider: ShopServiceProvider, public loading: LoadingController) {
+  validateEmail: boolean = true;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public modalCtrl: ModalController, 
+    public shopServiceProvider: ShopServiceProvider, 
+    public loading: LoadingController
+  ) {
     this.editData = this.navParams.data;
     let loadingCtrl = this.loading.create();
     loadingCtrl.present();
@@ -43,11 +50,18 @@ export class ShopeditPage {
       // window.localStorage.removeItem('bikebikeshop');
     });
   }
+  validationEmail() {
+    if (this.editData.email.indexOf('@') != -1) {
+      this.validateEmail = true;
+    } else {
+      this.validateEmail = false;
 
+    }
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShopeditPage');
     console.log(this.editData);
-
+    this.validationEmail();
   }
   deleteTimes(index) {
     this.editData.times.splice(index, 1);
