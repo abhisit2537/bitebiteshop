@@ -403,7 +403,8 @@ export class ShopPage {
     this.index = index;
     this.cate = cate;
   }
-  openEditProduct() {
+  openEditProduct(product, index) {
+
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
@@ -415,7 +416,7 @@ export class ShopPage {
         {
           text: 'Delete',
           handler: () => {
-            alert('Delete');
+            this.showConfirm(this.shop._id, product._id, index, this.index);
           }
         }
       ]
@@ -756,5 +757,30 @@ export class ShopPage {
     });
 
   }
-
+  showConfirm(shopID, prodID, prodIndex, cateIndex) {
+    let confirm = this.alertCtrl.create({
+      title: 'การแจ้งเตือน',
+      message: 'คุณต้องการลบสินค้านี้ใช่หรือไม่?',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'ตกลง',
+          handler: () => {
+            this.shopServiceProvider.deleteProduct(shopID, prodID, prodIndex, cateIndex).then((data) => {
+              this.shopService();
+            }, (err) => {
+              // alert(JSON.stringify(JSON.parse(err._body).message));
+              alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+            });
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 }
