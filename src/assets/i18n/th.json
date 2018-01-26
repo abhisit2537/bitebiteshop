@@ -6,5 +6,22 @@
     "BIRTHDAY": "วันเกิด",
     "CITIZEN_ID": "หมายเลขบัตรประชาชน",
     "BANK_ACCOUNT": "เลขที่บัญชีธนาคาร",
-    "NEXT": "ถัดไป"
+    "NEXT": "ถัดไป",
+    "CANCEL": "ยกเลิก",
+    "SAVE": "บันทึก",
+    "ADDRESS": "ที่อยู่",
+    "SHOP_INFO":"ข้อมูลร้านค้า",
+    "SHOP_NAME":"ชื่อร้าน",
+    "SHOP_DETAIL":"รายละเอียดร้านค้า",
+    "SHOP_CATEGORY":"หมวดหมู่ร้านค้า",
+    "SHOP_ADDRESS":"ที่อยู่ร้านค้า",
+    "PLEASE_SELECT_A_DATE_OF_BIRTH":"กรุณาเลือกวันเกิด",
+    "INVALID_EMAIL":"อีเมล์ไม่ถูกต้อง",
+    "EXAMPLE":"ตัวอย่าง",
+    "OPENING_TIMES":"เวลา เปิด-ปิด ร้านค้า",
+    "OPEN_TIMES":"เวลาเปิด",
+    "OPEN":"เปิด",
+    "CLOSE":"ปิด",
+    "OPENING_DAY":"วันที่เปิด"
+    
 }

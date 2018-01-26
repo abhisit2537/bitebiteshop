@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
-    <ion-title>ที่อยู่ร้านค้า</ion-title>
+    <ion-title>{{'SHOP_ADDRESS' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,7 +17,7 @@
   <div class="containerclass">
     <ion-item no-lines>
       <ion-label class="fontStyle">
-        ที่อยู่
+        {{'ADRESS' | translate}}
       </ion-label>
     </ion-item>
     <p class="txtAddress" *ngIf="firstLogin.address">
@@ -39,10 +39,10 @@
 <ion-footer padding no-border>
   <ion-row>
     <ion-col col-6>
-      <button ion-button block (click)="cancel()" color="light">ยกเลิก</button>
+      <button ion-button block (click)="cancel()" color="light">{{'CANCEL' | translate}}</button>
     </ion-col>
     <ion-col col-6>
-      <button ion-button block [disabled]="!firstLogin.address || !firstLogin.address.address" (click)="save()" color="danger">บันทึก</button>
+      <button ion-button block [disabled]="!firstLogin.address || !firstLogin.address.address" (click)="save()" color="danger">{{'SAVE' | translate}}</button>
     </ion-col>
   </ion-row>
 </ion-footer>

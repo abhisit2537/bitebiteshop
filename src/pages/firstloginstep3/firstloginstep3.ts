@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 // import { Firstloginstep4Page } from '../firstloginstep4/firstloginstep4';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { CateModel } from '../shop/shop.model';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the Firstloginstep3Page page.
@@ -25,7 +26,8 @@ export class Firstloginstep3Page {
     public navCtrl: NavController,
     public navParams: NavParams,
     public shopServiceProvider: ShopServiceProvider,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private translate: TranslateService,
   ) {
 
   }
