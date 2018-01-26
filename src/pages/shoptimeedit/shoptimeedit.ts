@@ -49,7 +49,11 @@ export class ShoptimeeditPage {
     }]
   };
   // private day: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController
+  ) {
     this.editData = this.navParams.data;
   }
 
