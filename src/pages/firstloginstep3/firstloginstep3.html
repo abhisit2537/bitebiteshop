@@ -15,8 +15,7 @@
 
 <ion-content padding>
   <ion-item *ngIf="cate && cate.length > 0">
-    <ion-label>หมวดหมู่ร้าน
-      <span *ngIf="categories && categories.length == 0" class="warning-invalid">*</span>
+    <ion-label>หมวดหมู่ร้าน <span *ngIf="categories && categories.length == 0" class="warning-invalid">*</span>
     </ion-label>
     <ion-select [(ngModel)]="categories" multiple="true">
       <ion-option *ngFor="let catename of cate" (ionChange)="onSelect()" [value]="catename">{{catename.name}}</ion-option>
@@ -27,8 +26,7 @@
     <ion-input type="text" [(ngModel)]="firstLogin.detail"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>E-mail
-      <span *ngIf="!firstLogin.email || !validateEmail" class="warning-invalid">*</span>
+    <ion-label floating>E-mail <span *ngIf="!firstLogin.email || !validateEmail" class="warning-invalid">*</span>
     </ion-label>
     <ion-input type="text" [(ngModel)]="firstLogin.email" (ionChange)="validationEmail()"></ion-input>
   </ion-item>
@@ -45,6 +43,5 @@
   </ion-item>
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block [disabled]="categories.length === 0 || !firstLogin.detail || !firstLogin.email || !firstLogin.facebook || !firstLogin.line || !validateEmail"
-    (click)="step4()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="categories.length === 0 || !firstLogin.email || !validateEmail" (click)="step4()" color="danger">ถัดไป</button>
 </ion-footer>
