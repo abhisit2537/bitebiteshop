@@ -7,6 +7,23 @@
     "BIRTHDAY": "Birthday",
     "CITIZEN_ID": "Citizen id",
     "BANK_ACCOUNT": "Bank account",
-    "NEXT": "Next"
+    "NEXT": "Next",
+    "CANCEL": "Cancel",
+    "SAVE": "บันทึก",
+    "ADDRESS": "Adress",
+    "SHOP_INFO":"Shop info",
+    "SHOP_NAME":"Shop name",
+    "SHOP_DETAIL":"Shop detail",
+    "SHOP_CATEGORY":"Shop category",
+    "SHOP_ADDRESS":"Shop address",
+    "PLEASE_SELECT_A_DATE_OF_BIRTH":"Please select a date of birth",
+    "INVALID_EMAIL":"Invalid email",
+    "EXAMPLE":"Example",
+    "OPENING_TIMES":"Opening times",
+    "OPEN":"Open",
+    "OPEN_TIMES":"Open",
+    "CLOSE":"Close",
+    "OPENING_DAY":"Opening day"
+
 
 }

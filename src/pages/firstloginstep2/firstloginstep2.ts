@@ -5,6 +5,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ActionSheetCont
 import * as firebase from 'firebase';
 import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
 import { ImagecoverProvider } from '../../providers/imagecover/imagecover';
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Generated class for the Firstloginstep2Page page.
  *
@@ -28,7 +29,8 @@ export class Firstloginstep2Page {
     public loading: LoadingController,
     public actionSheetCtrl: ActionSheetController,
     private camera: Camera,
-    public imgCoverService: ImagecoverProvider
+    public imgCoverService: ImagecoverProvider,
+    private translate: TranslateService,
   ) {
 
   }
