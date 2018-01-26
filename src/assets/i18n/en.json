@@ -1,4 +1,12 @@
 {
     "SHOP": "Shop",
-    "PRODUCT_CATEGORY" : "Product"
+    "PRODUCT_CATEGORY" : "Product",
+    "PROFILE": "Profile",
+    "FIRST_NAME": "Firstname",
+    "LAST_NAME": "Lastname",
+    "BIRTHDAY": "Birthday",
+    "CITIZEN_ID": "Citizen id",
+    "BANK_ACCOUNT": "Bank account",
+    "NEXT": "Next"
+
 }
