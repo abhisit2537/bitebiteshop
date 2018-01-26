@@ -45,6 +45,5 @@
   </ion-item>
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block [disabled]="categories.length === 0 || !firstLogin.detail || !firstLogin.email || !firstLogin.facebook || !firstLogin.line || !validateEmail"
-    (click)="step4()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="categories.length === 0 || !firstLogin.email || !validateEmail" (click)="step4()" color="danger">ถัดไป</button>
 </ion-footer>
