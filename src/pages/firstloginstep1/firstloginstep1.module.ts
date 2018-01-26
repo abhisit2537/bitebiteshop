@@ -5,6 +5,7 @@ import { PreloadImageComponent } from '../../components/preload-image/preload-im
 import { ComponentsModule } from '../../components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
 
+
 @NgModule({
   declarations: [
     Firstloginstep1Page

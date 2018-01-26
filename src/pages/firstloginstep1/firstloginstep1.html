@@ -31,13 +31,17 @@
   <ion-row>
     <ion-col col-6>
       <ion-item>
-        <ion-label floating>ชื่อ  <span *ngIf="!firstLogin.firstName" class="danger">*</span></ion-label>
+        <ion-label floating>{{'FIRST_NAME' | translate}}
+          <span *ngIf="!firstLogin.firstName" class="danger">*</span>
+        </ion-label>
         <ion-input type="text" [(ngModel)]="firstLogin.firstName"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-6>
       <ion-item>
-        <ion-label floating>นามสกุล <span *ngIf="!firstLogin.lastName" class="danger">*</span></ion-label>
+        <ion-label floating>{{'LAST_NAME' | translate}}
+          <span *ngIf="!firstLogin.lastName" class="danger">*</span>
+        </ion-label>
         <ion-input type="text" [(ngModel)]="firstLogin.lastName"></ion-input>
       </ion-item>
     </ion-col>
@@ -46,7 +50,7 @@
   <ion-row>
     <ion-col col-12>
       <ion-item>
-        <ion-label>วันเกิด</ion-label>
+        <ion-label>{{'BIRTHDAY' | translate}}</ion-label>
         <!-- <ion-datetime placeholder="กรุณาเลือกวันเกิด" displayFormat="hh/mm/A" [(ngModel)]="firstLogin.dateOfBirth"></ion-datetime> -->
         <ion-datetime placeholder="กรุณาเลือกวันเกิด" displayFormat="DD/MM/YYYY" [(ngModel)]="firstLogin.dateOfBirth"></ion-datetime>
       </ion-item>
@@ -55,7 +59,7 @@
   <ion-row>
     <ion-col col-12>
       <ion-item>
-        <ion-label floating>เลขที่บัตรประชาชน</ion-label>
+        <ion-label floating>{{'CITIZEN_ID' | translate}}</ion-label>
         <ion-input type="number" [(ngModel)]="firstLogin.citizenid"></ion-input>
       </ion-item>
     </ion-col>
@@ -63,7 +67,9 @@
   <ion-row>
     <ion-col col-12>
       <ion-item>
-        <ion-label floating>เลขที่บัญชีธนาคาร <span *ngIf="!firstLogin.bankaccount" class="danger">*</span></ion-label>
+        <ion-label floating>{{'BANK_ACCOUNT' | translate}}
+          <span *ngIf="!firstLogin.bankaccount" class="danger">*</span>
+        </ion-label>
         <ion-input type="number" [(ngModel)]="firstLogin.bankaccount"></ion-input>
       </ion-item>
     </ion-col>
@@ -71,6 +77,6 @@
 
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block [disabled]="!firstLogin.firstName || !firstLogin.lastName || !firstLogin.bankaccount"
-    (click)="step2()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="!firstLogin.firstName || !firstLogin.lastName || !firstLogin.bankaccount" (click)="step2()"
+    color="danger">ถัดไป</button>
 </ion-footer>
