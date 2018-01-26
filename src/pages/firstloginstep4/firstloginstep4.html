@@ -5,50 +5,24 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="maintheme">
     <ion-title>{{'OPENING_TIMES' | translate}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-  <!-- <ion-row>
-        <ion-col class="roundedclass containerclass" col-12 text-left>
-          <ion-label>
-            เวลาที่เปิด - ปิดร้าน
-          </ion-label>
-          <img src="https://image.flaticon.com/icons/svg/159/159719.svg" width="50vw" height="90vh" (click)="shopTimeEditPage()">
-        </ion-col>
-      </ion-row> -->
   <div class="containerclass">
-    <!-- <div class="slide-xpromote"> -->
     <ion-item no-lines>
       <ion-label class="fontStyle">
         {{'OPEN_TIMES' | translate}} - {{'CLOSE' | translate}}
       </ion-label>
     </ion-item>
-    <!-- <p class="font-size">เวลาที่เปิด - ปิดร้าน</p> -->
-    <!-- <ion-scroll scrollX="true" class="slide-xsize"> -->
     <ion-row no-padding class="row-custom">
-      <!-- <ion-col col-6 (click)="addTime()"> -->
       <ion-col col-6 (click)="openModal()">
         <img style="height: 150px; width: 100%;" src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg">
       </ion-col>
-      <!-- <div> -->
-      <!-- </div> -->
-
-      <!-- <div *ngIf="shop && shop.promoteimage"> -->
       <ion-col col-6 *ngFor="let time of firstLogin.times;let i = index">
         <div class="detailtimes">
-          <!-- <div class="iconCloseTimes" text-right>
-            <ion-icon name="close-circle" color="light" (click)="deleteTimes(i)"></ion-icon>
-          </div> -->
-          <!-- <div class="iconEditTimes" text-right>
-            <ion-icon name="md-create" color="light" (click)="editTimes(time, i)"></ion-icon>
-            <ion-icon name="md-more" color="maintheme"></ion-icon>
-          </div> -->
           <button class="iconEditTimes" ion-button icon-left clear large no-padding (click)="openActionsheet(time, i)">
             <ion-icon name="md-more" color="light"></ion-icon>
           </button>
@@ -57,78 +31,10 @@
           <p class="textTimes">{{'CLOSE' | translate}} {{time.timeend}}</p>
           <p class="textTimesDay">{{'OPENING_DAY' | translate}}</p> 
           <label style="margin-left: 5px;">{{time.days | pipes}}</label>
-          <!-- <label style="margin-left: 5px;" *ngFor="let day of time.days">{{day.length > 1 ? day + ', ' : day}}</label> -->
         </div>
       </ion-col>
-      <!-- </div> -->
     </ion-row>
-    <!-- </ion-scroll> -->
   </div>
-
-  <!-- <div *ngIf="isAdd" class="containerclass">
-    <ion-item>
-      <ion-label floating>รายละเอียด</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>เวลาเปิด</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>เวลาปิด</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-row>
-      <ion-col col-2>
-
-      </ion-col>
-      <ion-col>
-        <ion-list class="containerclass">
-
-          <ion-item>
-            <ion-label>จันทร์</ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label>อังคาร</ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label>พุทธ</ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label>พฤหัสบดี</ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label>ศุกร์</ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label>เสาร์</ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label>อาทิตย์</ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-
-        </ion-list>
-      </ion-col>
-      <ion-col col-2>
-
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-right>
-        <button ion-button class="buttonIon" (click)="add()" color="danger">เพิ่ม</button>
-      </ion-col>
-      <ion-col text-left>
-        <button ion-button class="buttonIon" (click)="cancel()" color="danger">ยกเลิก</button>
-      </ion-col>
-    </ion-row>
-  </div> -->
 </ion-content>
 <ion-footer padding no-border>
   <button ion-button block [disabled]="firstLogin.times && firstLogin.times.length == 0" (click)="step5()" color="danger">{{'NEXT' | translate}}</button>

@@ -15,11 +15,21 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class ShoptimeeditPage {
   editData: any = {};
-  addTime: any = {
-    detail: "",
-    openTime: Date,
-    closeTime: Date,
-    days: [{
+  isCheck: boolean = false;
+  addTime: any = {};
+  // private day: any;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController
+  ) {
+    this.editData = this.navParams.data;
+    console.log(this.editData);
+  }
+
+  ionViewWillEnter() {
+    let timenow = new Date();
+    let days = [{
       name: 'จันทร์',
       checked: false
     },
@@ -46,24 +56,46 @@ export class ShoptimeeditPage {
     {
       name: 'อาทิตย์',
       checked: false
-    }]
-  };
-  // private day: any;
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController
-  ) {
-    this.editData = this.navParams.data;
-  }
+    }];
+    if (this.editData) {
+      if (this.editData.days && this.editData.days.length > 0) {
+        this.editData.days.forEach(fday => {
+          days.forEach(dday => {
+            if (fday === dday.name) {
+              dday.checked = true;
+            }
+          });
+        });
+      }
+    }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ShoptimeeditPage');
+    let data = {
+      detail: this.editData.description,
+      openTime: this.editData.timestart,
+      closeTime: this.editData.timeend,
+      days: days
+    }
+    this.addTime = this.editData ? data : {
+      detail: "",
+      openTime: timenow,
+      closeTime: timenow,
+      days: days
+    };
+    this.addDays();
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
   }
+  addDays() {
+    this.isCheck = false;    
+    this.addTime.days.forEach(e => {
+      if (e.checked) {
+        this.isCheck = true;
+      }
+    });
+  }
+
   add(data) {
     let newDay = [];
     data.days.forEach(day => {
@@ -71,14 +103,20 @@ export class ShoptimeeditPage {
         newDay.push(day.name);
       }
     });
-    // alert(JSON.stringify(this.addTime));
-    this.editData.times.push({
+  
+    let resData = {
       description: data.detail,
       timestart: data.openTime,
       timeend: data.closeTime,
       days: newDay
-    });
-    this.viewCtrl.dismiss(this.editData);
+    };
+
+
+    if (data.openTime && data.closeTime) {
+      this.viewCtrl.dismiss(resData);
+    } else {
+      alert('เกิดข้อผิดพลาด กรุณาเลือดเวลาเปิด-ปิด');
+    }
   }
 
 }

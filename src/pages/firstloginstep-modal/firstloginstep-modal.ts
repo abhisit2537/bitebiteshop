@@ -105,15 +105,7 @@ export class FirstloginstepModalPage {
         newDay.push(day.name);
       }
     });
-    // alert(JSON.stringify(this.addTime));
-    // if () {
-    //   this.firstLogin.times.push({
-    //     description: data.detail,
-    //     timestart: data.openTime,
-    //     timeend: data.closeTime,
-    //     days: newDay
-    //   });
-    // }
+  
     let resData = {
       description: data.detail,
       timestart: data.openTime,

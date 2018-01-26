@@ -1,26 +1,11 @@
 page-shoptimeedit {
     .containerclass {
-        // width: auto;
-        // margin-left: auto;
-        // margin-right: auto;
         border: 1px solid #eb3841;
-        // margin-bottom: 3vh; 
-        // padding-bottom: 4vh;
-        // background-color: #dadada !important; 
     }
     .fontStyle {
         color: #999 !important;
     }
+    .warning-invalid {
+        color: #eb3841;
+    }
 }
-
-// ion-modal {
-//     margin: auto !important;
-//     display: block !important;
-//     width: 80% !important;
-//     height: 80% !important;
-//     position: absolute !important;
-//     top: 50% !important;
-//     left: 50% !important;
-//     margin-right: -50% !important;
-//     transform: translate(-50%, -50%) !important;
-// }

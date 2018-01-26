@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController, ActionSheetController } from 'ionic-angular';
 // import { ShoptimeeditPage } from '../shoptimeedit/shoptimeedit';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { CateModel } from '../shop/shop.model';
@@ -23,11 +23,12 @@ export class ShopeditPage {
   categories = [];
   validateEmail: boolean = true;
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public modalCtrl: ModalController, 
-    public shopServiceProvider: ShopServiceProvider, 
-    public loading: LoadingController
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public shopServiceProvider: ShopServiceProvider,
+    public loading: LoadingController,
+    public actionSheetCtrl: ActionSheetController,
   ) {
     this.editData = this.navParams.data;
     let loadingCtrl = this.loading.create();
@@ -63,14 +64,49 @@ export class ShopeditPage {
     console.log(this.editData);
     this.validationEmail();
   }
+  openActionsheet(item, i) {
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Edit',
+          handler: () => {
+            this.editTimes(item, i);
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.deleteTimes(i);
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
   deleteTimes(index) {
     this.editData.times.splice(index, 1);
   }
-  shopTimeEditPage() {
+  editTimes(item, i) {
+    item.editMode = true;
+    let modalopen = this.modalCtrl.create('ShoptimeeditPage', item);
+
+    modalopen.onDidDismiss(datadismiss => {
+      // this.firstLogin
+      // alert(JSON.stringify(datadismiss));
+      if (datadismiss) {
+        this.editData.times[i] = datadismiss;
+      }
+    });
+    modalopen.present();
+  }
+  addTime() {
     console.log('shopTimeEditPage');
-    let ShoptimeModal = this.modalCtrl.create('ShoptimeeditPage', this.editData);
+    let ShoptimeModal = this.modalCtrl.create('ShoptimeeditPage');
     ShoptimeModal.onDidDismiss(data => {
-      console.log(data);
+      if (data) {
+        this.editData.times.push(data);
+      }
     });
     ShoptimeModal.present();
   }
