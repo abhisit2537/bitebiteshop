@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
-    <ion-title>เวลา เปิด-ปิด ร้านค้า</ion-title>
+    <ion-title>{{'OPENING_TIMES' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -26,7 +26,7 @@
     <!-- <div class="slide-xpromote"> -->
     <ion-item no-lines>
       <ion-label class="fontStyle">
-        เวลาที่เปิด - ปิดร้าน
+        {{'OPEN_TIMES' | translate}} - {{'CLOSE' | translate}}
       </ion-label>
     </ion-item>
     <!-- <p class="font-size">เวลาที่เปิด - ปิดร้าน</p> -->
@@ -53,9 +53,9 @@
             <ion-icon name="md-more" color="light"></ion-icon>
           </button>
           <p class="textTimes">{{time.description}}</p>
-          <p class="textTimes">เปิด {{time.timestart}}</p>
-          <p class="textTimes">ปิด {{time.timeend}}</p>
-          <p class="textTimesDay">วันที่เปิด</p>
+          <p class="textTimes">{{'OPEN' | translate}} {{time.timestart}}</p>
+          <p class="textTimes">{{'CLOSE' | translate}} {{time.timeend}}</p>
+          <p class="textTimesDay">{{'OPENING_DAY' | translate}}</p> 
           <label style="margin-left: 5px;">{{time.days | pipes}}</label>
           <!-- <label style="margin-left: 5px;" *ngFor="let day of time.days">{{day.length > 1 ? day + ', ' : day}}</label> -->
         </div>
@@ -131,5 +131,5 @@
   </div> -->
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block [disabled]="firstLogin.times && firstLogin.times.length == 0" (click)="step5()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="firstLogin.times && firstLogin.times.length == 0" (click)="step5()" color="danger">{{'NEXT' | translate}}</button>
 </ion-footer>

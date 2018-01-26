@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
-    <ion-title>ข้อมูลร้านค้า</ion-title>
+    <ion-title>{{'SHOP_INFO' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -28,10 +28,10 @@
     </ion-col>
   </ion-row>
   <ion-item>
-    <ion-label floating>ชื่อร้าน <span class="warning-invalid">*</span></ion-label>
+    <ion-label floating>{{'SHOP_NAME' | translate}} <span class="warning-invalid">*</span></ion-label>
     <ion-input [(ngModel)]="firstLogin.name"></ion-input>
   </ion-item>
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block [disabled]="!firstLogin.coverimage || !firstLogin.name" (click)="step3()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="!firstLogin.coverimage || !firstLogin.name" (click)="step3()" color="danger">{{'NEXT' | translate}}</button>
 </ion-footer>

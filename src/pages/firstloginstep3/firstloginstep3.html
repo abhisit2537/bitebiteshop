@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
-    <ion-title>รายละเอียดร้านค้า</ion-title>
+    <ion-title>{{'SHOP_DETAIL' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,14 +15,14 @@
 
 <ion-content padding>
   <ion-item *ngIf="cate && cate.length > 0">
-    <ion-label>หมวดหมู่ร้าน <span class="warning-invalid">*</span>
+    <ion-label>{{'SHOP_CATEGORY' | translate}} <span class="warning-invalid">*</span>
     </ion-label>
     <ion-select [(ngModel)]="categories" multiple="true">
       <ion-option *ngFor="let catename of cate" (ionChange)="onSelect()" [value]="catename">{{catename.name}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label floating>รายละเอียดร้าน</ion-label>
+    <ion-label floating>{{'SHOP_DETAIL' | translate}}</ion-label>
     <ion-input type="text" [(ngModel)]="firstLogin.detail"></ion-input>
   </ion-item>
   <ion-item>
@@ -39,9 +39,9 @@
     <ion-input type="text" [(ngModel)]="firstLogin.line"></ion-input>
   </ion-item>
   <ion-item *ngIf="!validateEmail">
-    <p class="warning-invalid">*อีเมล์ไม่ถูกต้อง ( ตัวอย่าง : exam@exam.com )</p>
+    <p class="warning-invalid">{{'INVALID_EMAIL' | translate}} ( {{'EXAMPLE' | translate}} : exam@exam.com )</p>
   </ion-item>
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block [disabled]="categories.length === 0 || !firstLogin.email || !validateEmail" (click)="step4()" color="danger">ถัดไป</button>
+  <button ion-button block [disabled]="categories.length === 0 || !firstLogin.email || !validateEmail" (click)="step4()" color="danger">{{'NEXT' | translate}}</button>
 </ion-footer>
