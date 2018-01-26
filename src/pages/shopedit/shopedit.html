@@ -9,7 +9,7 @@
   <ion-navbar color="maintheme">
     <ion-title>Edit Shop</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (click)="save()">
+      <button ion-button icon-only [disabled]="cate && cate.length == 0 || !editData.name || !editData.email || !editData.tel" (click)="save()">
         Save
       </button>
     </ion-buttons>
@@ -100,12 +100,14 @@
                 <p class="textTimes">{{time.description}}</p>
                 <p class="textTimes">{{time.timestart}} - {{time.timeend}}</p>
                 <p class="textTimesDay">วันที่เปิด</p>
-                <div *ngIf="time.days.length == 7">
+                <label style="margin-left: 5px;">{{time.days | pipes}}</label>
+                
+                <!-- <div *ngIf="time.days.length == 7">
                   <label style="margin-left: 5px;">ทุกวัน</label>
                 </div>
                 <div *ngIf="time.days.length < 7">
                   <label style="margin-left: 5px;" *ngFor="let day of time.days">{{day.length > 1 ? day + ', ' : day}}</label>
-                </div>
+                </div> -->
 
               </div>
             </ion-col>
