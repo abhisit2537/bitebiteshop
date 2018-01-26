@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { ShopModel } from "../shop/shop.model";
 import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Generated class for the Firstloginstep1Page page.
  *
@@ -31,7 +32,8 @@ export class Firstloginstep1Page {
     public loading: LoadingController,
     public shopServiceProvider: ShopServiceProvider,
     public actionSheetCtrl: ActionSheetController,
-    private camera: Camera
+    private camera: Camera,
+    private translate: TranslateService,
   ) {
     let loadingCtrl = this.loading.create();
     loadingCtrl.present();
