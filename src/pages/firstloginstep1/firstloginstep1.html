@@ -32,7 +32,7 @@
     <ion-col col-6>
       <ion-item>
         <ion-label floating>{{'FIRST_NAME' | translate}}
-          <span *ngIf="!firstLogin.firstName" class="danger">*</span>
+          <span class="danger">*</span>
         </ion-label>
         <ion-input type="text" [(ngModel)]="firstLogin.firstName"></ion-input>
       </ion-item>
@@ -40,7 +40,7 @@
     <ion-col col-6>
       <ion-item>
         <ion-label floating>{{'LAST_NAME' | translate}}
-          <span *ngIf="!firstLogin.lastName" class="danger">*</span>
+          <span class="danger">*</span>
         </ion-label>
         <ion-input type="text" [(ngModel)]="firstLogin.lastName"></ion-input>
       </ion-item>
@@ -68,7 +68,7 @@
     <ion-col col-12>
       <ion-item>
         <ion-label floating>{{'BANK_ACCOUNT' | translate}}
-          <span *ngIf="!firstLogin.bankaccount" class="danger">*</span>
+          <span class="danger">*</span>
         </ion-label>
         <ion-input type="number" [(ngModel)]="firstLogin.bankaccount"></ion-input>
       </ion-item>
@@ -78,5 +78,5 @@
 </ion-content>
 <ion-footer padding no-border>
   <button ion-button block [disabled]="!firstLogin.firstName || !firstLogin.lastName || !firstLogin.bankaccount" (click)="step2()"
-    color="danger">ถัดไป</button>
+    color="danger">{{'NEXT' | translate}}</button>
 </ion-footer>

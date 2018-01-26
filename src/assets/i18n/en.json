@@ -6,6 +6,7 @@
     "LAST_NAME": "Lastname",
     "BIRTHDAY": "Birthday",
     "CITIZEN_ID": "Citizen id",
-    "BANK_ACCOUNT": "Bank account"
+    "BANK_ACCOUNT": "Bank account",
+    "NEXT": "Next"
 
 }
