@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController, ActionSheetController } from 'ionic-angular';
 // import { Firstloginstep5Page } from '../firstloginstep5/firstloginstep5';
 // import { FirstloginstepModalPage } from '../firstloginstep-modal/firstloginstep-modal';
 
@@ -22,7 +22,8 @@ export class Firstloginstep4Page {
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public loading: LoadingController
+    public loading: LoadingController,
+    public actionSheetCtrl: ActionSheetController,
   ) {
 
   }
@@ -56,6 +57,26 @@ export class Firstloginstep4Page {
   // cancel() {
   //   this.isAdd = false;
   // }
+  openActionsheet(item, i){
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Edit',
+          handler: () => {
+            this.editTimes(item, i);
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.deleteTimes(i);
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
   deleteTimes(index) {
     this.firstLogin.times.splice(index, 1);
   }

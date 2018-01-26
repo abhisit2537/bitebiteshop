@@ -19,21 +19,15 @@ page-firstloginstep4 {
         background-color: #eb3841;
         color: white; // margin-bottom: -22px;
     }
-    .iconEditTimes {
-        margin-right: 5px;
-        margin-top: 19px;
-        position: absolute;
-        right: 0;
-    }
     .textTimes {
         margin-left: 5px;
         margin-bottom: -12px;
     }
-    .iconCloseTimes {
-        margin-right: 5px;
-        margin-bottom: -12px;
+    .iconEditTimes {
         position: absolute;
+        top: 0;
         right: 0;
+        transform: translate(0%, -20%)
     }
     .textTimesDay {
         margin-left: 5px;

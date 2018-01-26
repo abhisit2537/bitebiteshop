@@ -42,12 +42,16 @@
       <!-- <div *ngIf="shop && shop.promoteimage"> -->
       <ion-col col-6 *ngFor="let time of firstLogin.times;let i = index">
         <div class="detailtimes">
-          <div class="iconCloseTimes" text-right>
+          <!-- <div class="iconCloseTimes" text-right>
             <ion-icon name="close-circle" color="light" (click)="deleteTimes(i)"></ion-icon>
-          </div>
-          <div class="iconEditTimes" text-right>
+          </div> -->
+          <!-- <div class="iconEditTimes" text-right>
             <ion-icon name="md-create" color="light" (click)="editTimes(time, i)"></ion-icon>
-          </div>
+            <ion-icon name="md-more" color="maintheme"></ion-icon>
+          </div> -->
+          <button class="iconEditTimes" ion-button icon-left clear large no-padding (click)="openActionsheet(time, i)">
+            <ion-icon name="md-more" color="light"></ion-icon>
+          </button>
           <p class="textTimes">{{time.description}}</p>
           <p class="textTimes">เปิด {{time.timestart}}</p>
           <p class="textTimes">ปิด {{time.timeend}}</p>
