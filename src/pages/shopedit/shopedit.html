@@ -9,7 +9,7 @@
   <ion-navbar color="maintheme">
     <ion-title>Edit Shop</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only [disabled]="cate && cate.length == 0 || !editData.name || !editData.email || !editData.tel" (click)="save()">
+      <button ion-button icon-only [disabled]="categories && categories.length == 0 || !editData.name || !editData.email || !editData.tel" (click)="save()">
         Save
       </button>
     </ion-buttons>
