@@ -10,9 +10,9 @@ page-shopedit {
         margin-bottom: 1vh;
         padding-bottom: 1vh;
     }
-    .fixHeight {
-        margin-bottom: -25px;
-    }
+    // .fixHeight {
+    //     margin-bottom: -25px;
+    // }
     .padding-15 {
         padding-top: 15px;
     }
@@ -69,5 +69,14 @@ page-shopedit {
     }
     .fontStyle {
         color: #999 !important;
+    }
+    .warning-invalid {
+        color: #eb3841;
+    }
+    .iconEditTimes {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(0%, -20%)
     }
 }
