@@ -15,8 +15,7 @@
 
 <ion-content padding>
   <ion-item *ngIf="cate && cate.length > 0">
-    <ion-label>หมวดหมู่ร้าน
-      <span *ngIf="categories && categories.length == 0" class="warning-invalid">*</span>
+    <ion-label>หมวดหมู่ร้าน <span *ngIf="categories && categories.length == 0" class="warning-invalid">*</span>
     </ion-label>
     <ion-select [(ngModel)]="categories" multiple="true">
       <ion-option *ngFor="let catename of cate" (ionChange)="onSelect()" [value]="catename">{{catename.name}}</ion-option>
@@ -27,8 +26,7 @@
     <ion-input type="text" [(ngModel)]="firstLogin.detail"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>E-mail
-      <span *ngIf="!firstLogin.email || !validateEmail" class="warning-invalid">*</span>
+    <ion-label floating>E-mail <span *ngIf="!firstLogin.email || !validateEmail" class="warning-invalid">*</span>
     </ion-label>
     <ion-input type="text" [(ngModel)]="firstLogin.email" (ionChange)="validationEmail()"></ion-input>
   </ion-item>

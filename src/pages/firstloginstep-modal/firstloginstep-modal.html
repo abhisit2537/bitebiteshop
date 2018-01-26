@@ -19,22 +19,28 @@
 
 
 <ion-content>
-    <!-- <ion-input type="text" [(ngModel)]="addTime.detail" [value]="firstLogin.description"></ion-input> -->
-  
+  <!-- <ion-input type="text" [(ngModel)]="addTime.detail" [value]="firstLogin.description"></ion-input> -->
+
   <div>
     <!-- <div *ngIf="isAdd" class="detail-open-close"> -->
     <ion-item>
-      <ion-label fixed>รายละเอียด</ion-label>
+      <ion-label fixed>รายละเอียด
+        <span *ngIf="!addTime.detail" class="warning-invalid">*</span>
+      </ion-label>
       <ion-input type="text" [(ngModel)]="addTime.detail" [value]="firstLogin.description" text-right></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>เวลาเปิด</ion-label>
+      <ion-label>เวลาเปิด
+        <span *ngIf="!addTime.openTime" class="warning-invalid">*</span>
+      </ion-label>
       <ion-datetime placeholder="กรุณาเลือกเวลาเปิด" displayFormat="HH:mm" [(ngModel)]="addTime.openTime"></ion-datetime>
     </ion-item>
 
     <ion-item>
-      <ion-label>เวลาปิด</ion-label>
+      <ion-label>เวลาปิด
+        <span *ngIf="!addTime.closeTime" class="warning-invalid">*</span>
+      </ion-label>
       <ion-datetime placeholder="กรุณาเลือกเวลาปิด" displayFormat="HH:mm" [(ngModel)]="addTime.closeTime"></ion-datetime>
     </ion-item>
 
@@ -50,6 +56,9 @@
           <ion-item fix-margin-label *ngFor="let day of addTime.days">
             <ion-label class="fontStyle">{{day.name}}</ion-label>
             <ion-checkbox [(ngModel)]="day.checked" item-end (ionChange)="addDays()"></ion-checkbox>
+          </ion-item>
+          <ion-item fix-margin-label *ngIf="!isCheck">
+            <p class="warning-invalid">*กรุณาเลือกช่วงวันอย่างน้อย 1 วัน</p>
           </ion-item>
           <!-- <ion-item no-lines fix-margin-label>
             <ion-label>อังคาร</ion-label>
@@ -94,5 +103,6 @@
   </div>
 </ion-content>
 <ion-footer no-border>
-  <button ion-button block [disabled]="!addTime.detail || !addTime.openTime || !addTime.closeTime || !isCheck" (click)="add(addTime,days)" color="danger">{{firstLogin && firstLogin.editMode ? 'Edit' : 'Add'}}</button>
+  <button ion-button block [disabled]="!addTime.detail || !addTime.openTime || !addTime.closeTime || !isCheck" (click)="add(addTime,days)"
+    color="danger">{{firstLogin && firstLogin.editMode ? 'Edit' : 'Add'}}</button>
 </ion-footer>
