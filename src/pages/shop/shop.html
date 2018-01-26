@@ -51,7 +51,7 @@
       <ion-col col-3 *ngFor="let item of shop.promoteimage; let i = index;" class="col-imgpromote">
        <preload-image [ratio]="{w:1, h:1}" [src]="item"></preload-image>
        <div class="deletepromote" no-padding>
-        <button *ngIf="isModify" ion-button icon-left clear small no-padding>
+        <button *ngIf="isModify" ion-button icon-left clear small no-padding (click)="deletePromoteShop(i)">
           <ion-icon name="md-close-circle" color="light"></ion-icon>
         </button>
        </div>
@@ -75,7 +75,7 @@
         <preload-image class="categories-image" [ratio]="{w:1, h:1}" [src]="cate.cate.image" [ngClass]="ii === index ? 'selectedCategory' : ''"></preload-image>
         <p class="cate-order">{{cate.cate.name}}</p>
         <div class="deletepromote" no-padding>
-          <button *ngIf="isModify && ii === index ? 'selectedCategory' : ''" ion-button icon-left clear small no-padding>
+          <button *ngIf="isModify && ii === index ? 'selectedCategory' : ''" ion-button icon-left clear small no-padding (click)="deleteCateProd(cate.cate._id)">
             <ion-icon name="md-close-circle" color="light"></ion-icon>
           </button>
          </div>

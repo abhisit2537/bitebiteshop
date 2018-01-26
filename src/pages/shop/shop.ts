@@ -783,4 +783,59 @@ export class ShopPage {
     });
     confirm.present();
   }
+  deletePromoteShop(index) {
+    let confirm = this.alertCtrl.create({
+      title: 'การแจ้งเตือน',
+      message: 'คุณต้องการลบรูปโปรโมทร้านนี้ใช่หรือไม่?',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'ตกลง',
+          handler: () => {
+            this.shopServiceProvider.deletePromoteShop(this.shop._id, index).then((data) => {
+              this.shopService();
+            }, (err) => {
+              // alert(JSON.stringify(JSON.parse(err._body).message));
+              alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+            });
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+  deleteCateProd(cateID) {
+    let confirm = this.alertCtrl.create({
+      title: 'การแจ้งเตือน',
+      message: 'คุณต้องการลบหมวดหมู่สินค้านี้ใช่หรือไม่? สินค้าทั้งหมดจะถูกลบไปด้วย!',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'ตกลง',
+          handler: () => {
+            console.log(cateID);
+            let dataCate = { cateId: cateID };
+            this.shopServiceProvider.deleteCateProd(this.shop._id, dataCate).then((data) => {
+              this.isCreateCate = true;
+              this.shopService();
+            }, (err) => {
+              // alert(JSON.stringify(JSON.parse(err._body).message));
+              alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+            });
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 }

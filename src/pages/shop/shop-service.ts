@@ -119,13 +119,27 @@ export class ShopServiceProvider {
       cateindex: cateIndex
     };
     let headers = this.coreService.authorizationHeader();
-    return this.http.put(this.server.url + 'api/deleteproduct/' + shopID, prod,{ headers: headers })
+    return this.http.put(this.server.url + 'api/deleteproduct/' + shopID, prod, { headers: headers })
       .toPromise()
       .then(response => response as any)
       .catch(this.handleError);
   }
-
+  deletePromoteShop(shopID, index) {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/removepromote/' + shopID, {index:index}, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+  deleteCateProd(shopID, categoryId) {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/deletecateproduct/' + shopID, categoryId, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
+
 }
