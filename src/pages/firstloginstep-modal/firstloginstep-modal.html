@@ -25,21 +25,21 @@
     <!-- <div *ngIf="isAdd" class="detail-open-close"> -->
     <ion-item>
       <ion-label fixed>รายละเอียด
-        <span *ngIf="!addTime.detail" class="warning-invalid">*</span>
+        <span class="warning-invalid">*</span>
       </ion-label>
       <ion-input type="text" [(ngModel)]="addTime.detail" [value]="firstLogin.description" text-right></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>เวลาเปิด
-        <span *ngIf="!addTime.openTime" class="warning-invalid">*</span>
+        <span class="warning-invalid">*</span>
       </ion-label>
       <ion-datetime placeholder="กรุณาเลือกเวลาเปิด" displayFormat="HH:mm" [(ngModel)]="addTime.openTime"></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label>เวลาปิด
-        <span *ngIf="!addTime.closeTime" class="warning-invalid">*</span>
+        <span class="warning-invalid">*</span>
       </ion-label>
       <ion-datetime placeholder="กรุณาเลือกเวลาปิด" displayFormat="HH:mm" [(ngModel)]="addTime.closeTime"></ion-datetime>
     </ion-item>
