@@ -36,7 +36,7 @@ import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camer
 export class ShopPage {
   selectedCateId = '';
   shop: ShopModel = new ShopModel();
-  index: Number = 0;
+  index: number = 0;
   idx: Number = 0;
   images: Array<any> = [];
   prodIndex: Number = 0;
@@ -826,7 +826,9 @@ export class ShopPage {
             console.log(cateID);
             let dataCate = { cateId: cateID };
             this.shopServiceProvider.deleteCateProd(this.shop._id, dataCate).then((data) => {
-              this.isCreateCate = true;
+              if (this.index > 0) {
+                this.index -= 1;
+              }
               this.shopService();
             }, (err) => {
               // alert(JSON.stringify(JSON.parse(err._body).message));
