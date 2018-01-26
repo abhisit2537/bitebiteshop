@@ -20,7 +20,7 @@ export class Firstloginstep3Page {
   firstLogin: any = {};
   cate: Array<CateModel>;
   categories = [];
-  validateEmail = false;
+  validateEmail = true;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
