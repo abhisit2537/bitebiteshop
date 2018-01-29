@@ -15,27 +15,27 @@
 
 <ion-content padding>
   <ion-item *ngIf="cate && cate.length > 0">
-    <ion-label>{{'SHOP_CATEGORY' | translate}} <span class="warning-invalid">*</span>
+    <ion-label color="topic">{{'SHOP_CATEGORY' | translate}} <span class="warning-invalid">*</span>
     </ion-label>
     <ion-select [(ngModel)]="categories" multiple="true">
       <ion-option *ngFor="let catename of cate" (ionChange)="onSelect()" [value]="catename">{{catename.name}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label floating>{{'SHOP_DETAIL' | translate}}</ion-label>
+    <ion-label floating color="topic">{{'SHOP_DETAIL' | translate}}</ion-label>
     <ion-input type="text" [(ngModel)]="firstLogin.detail"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>E-mail <span class="warning-invalid">*</span>
+    <ion-label floating color="topic">E-mail <span class="warning-invalid">*</span>
     </ion-label>
     <ion-input type="text" [(ngModel)]="firstLogin.email" (ionChange)="validationEmail()"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Facebook Fanpage</ion-label>
+    <ion-label floating color="topic">Facebook Fanpage</ion-label>
     <ion-input type="text" [(ngModel)]="firstLogin.facebook"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Line Official</ion-label>
+    <ion-label floating color="topic">Line Official</ion-label>
     <ion-input type="text" [(ngModel)]="firstLogin.line"></ion-input>
   </ion-item>
   <ion-item *ngIf="!validateEmail">
