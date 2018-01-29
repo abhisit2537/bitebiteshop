@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
 import * as firebase from 'firebase';
+
 /**
  * Generated class for the CreateproductPage page.
  *
@@ -24,16 +25,53 @@ export class CreateproductPage {
     public shopServiceProvider: ShopServiceProvider,
     public viewCtrl: ViewController,
     public actionSheetCtrl: ActionSheetController,
-    private camera: Camera
+    private camera: Camera,
+    private loading: LoadingController
   ) {
-    this.createprod.cateindex = this.navParams.data.cateindex;
-    this.createprod.index = this.navParams.data.index;
-    this.createprod.categories = this.navParams.data.cate;
-    this.createprod.images = this.navParams.data.images;
+    if (this.navParams.data._id) {
+      // this.createprod = this.navParams.data;
+      let loading = this.loading.create();
+      loading.present();
+      this.shopServiceProvider.getProduct(this.navParams.data._id).then((data) => {
+        let images = [];
+        data.images.forEach(img => {
+          images.push(img);
+        });
+        console.log(data);
+        this.createprod._id = data._id;
+        this.createprod.name = data.name;
+        this.createprod.price = data.price;
+        this.createprod.images = images;
+        this.createprod.ispromotionprice = data.ispromotionprice ? data.ispromotionprice : false;
+        this.createprod.isrecommend = data.isrecommend ? data.isrecommend : false;
+        this.createprod.promotionprice = data.promotionprice ? data.promotionprice : null;
+        this.createprod.startdate = data.startdate;
+        this.createprod.expiredate = data.expiredate;
+        console.log(this.createprod);
+        loading.dismiss();
+      }, (err) => {
+        loading.dismiss();
+        console.log(err);
+      })
+
+    } else {
+      this.createprod.cateindex = this.navParams.data.cateindex;
+      this.createprod.index = this.navParams.data.index;
+      this.createprod.categories = this.navParams.data.cate;
+      this.createprod.images = this.navParams.data.images;
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateproductPage');
+  }
+  checkedPromotion() {
+    // console.log(this.createprod.ispromotionprice);
+    if (this.createprod.ispromotionprice === false) {
+      this.createprod.promotionprice = null;
+      this.createprod.startdate = null;
+      this.createprod.expiredate = null;
+    }
   }
   openActionSheet(from) {
     let actionSheet = this.actionSheetCtrl.create({
@@ -166,7 +204,11 @@ export class CreateproductPage {
       xhr.send();
     });
   }
+  deleteProd(i) {
+    this.createprod.images.splice(i, 1);
+  }
   save() {
+    console.log(this.createprod);
     this.viewCtrl.dismiss(this.createprod);
   }
   closeDismiss() {

@@ -112,6 +112,13 @@ export class ShopServiceProvider {
       .then(response => response as any)
       .catch(this.handleError);
   }
+  editProduct(prodID, data): Promise<any> {
+    let headers = this.coreService.authorizationHeader();
+    return this.http.put(this.server.url + 'api/products/' + prodID, data, { headers: headers })
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
   deleteProduct(shopID, prodID, prodIndex, cateIndex): Promise<any> {
     let prod = {
       _id: prodID,
@@ -126,7 +133,7 @@ export class ShopServiceProvider {
   }
   deletePromoteShop(shopID, index) {
     let headers = this.coreService.authorizationHeader();
-    return this.http.put(this.server.url + 'api/removepromote/' + shopID, {index:index}, { headers: headers })
+    return this.http.put(this.server.url + 'api/removepromote/' + shopID, { index: index }, { headers: headers })
       .toPromise()
       .then(response => response as any)
       .catch(this.handleError);

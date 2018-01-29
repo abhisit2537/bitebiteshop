@@ -404,13 +404,25 @@ export class ShopPage {
     this.cate = cate;
   }
   openEditProduct(product, index) {
-
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
           text: 'Edit',
           handler: () => {
-            alert('Edit');
+            
+            let modalproduct = this.modalCtrl.create('CreateproductPage', product);
+            modalproduct.onDidDismiss(dismiss => {
+              console.log(dismiss);
+              if (dismiss) {
+                this.shopServiceProvider.editProduct(dismiss._id, dismiss).then((data) => {
+                  this.shopService();
+                }, (err) => {
+                  alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                });
+                
+              }
+            });
+            modalproduct.present();
           }
         },
         {
