@@ -25,7 +25,7 @@ export class AddressModel {
     subdistinct: string;
     distinct: string;
     province: string;
-    postcode: Number;
+    postcode: string;
     lat: string;
     lng: string;
 }

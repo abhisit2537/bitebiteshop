@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <div class="containerclass">
+  <div class="containerclass" (click)="showMap()">
     <ion-item no-lines>
       <ion-label class="fontStyle">
         {{'ADDRESS' | translate}}
@@ -33,8 +33,8 @@
       </button>
     </ion-buttons>
   </div>
-  <div #map class="map">
-  </div>
+  <!-- <div #map class="map">
+  </div> -->
 </ion-content>
 <ion-footer padding no-border>
   <ion-row>
