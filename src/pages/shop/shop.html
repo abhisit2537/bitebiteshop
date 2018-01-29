@@ -1,16 +1,14 @@
 <ion-header>
-
   <ion-navbar color="maintheme">
-    <ion-buttons left>
-      <button ion-button icon-only (click)="myProfile()">
-        <ion-icon name="ios-contact-outline"></ion-icon>
-        <!-- <preload-image class="preload-profile-image" [ratio]="{w:1, h:1}" [src]="user.profileImageURL" [isIcon]="true"></preload-image> -->
-      </button>
-    </ion-buttons>
-
-    <ion-title>{{shop.name}}</ion-title>
-  </ion-navbar>
-
+      <ion-buttons start *ngIf="user && user.profileImageURL">
+        <button ion-button clear (click)="myProfile()">
+          <ion-avatar class="avatar-profile">
+            <preload-image class="preload-profile-image" [ratio]="{w:1, h:1}" [src]="user.profileImageURL" [isIcon]="true"></preload-image>
+          </ion-avatar>
+        </button>
+      </ion-buttons>
+      <ion-title>{{shop.name}}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 

@@ -62,6 +62,15 @@ page-shop {
         font-weight: 400 !important;
         font-size: 100%;
     }
+    ion-avatar {
+        .preload-profile-image {
+            border-radius: 100% !important;
+        }
+        width: 40px !important;
+    }
+    .avatar-profile {
+        width: 50px;
+    }
     .productoption{
         position:absolute;
         top: 0;
