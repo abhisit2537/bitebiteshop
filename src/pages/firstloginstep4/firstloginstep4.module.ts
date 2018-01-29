@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { Firstloginstep4Page } from './firstloginstep4';
-import { PipesPipe } from '../../pipes/pipes/pipes';
 import { TranslateModule } from '@ngx-translate/core';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
-    Firstloginstep4Page,
-    PipesPipe
+    Firstloginstep4Page
   ],
   imports: [
     IonicPageModule.forChild(Firstloginstep4Page),
     TranslateModule.forChild(),
+    PipesModule
   ],
 })
 export class Firstloginstep4PageModule {}
