@@ -24,7 +24,7 @@
       <ion-col col-4 *ngFor="let item of createprod.images; let i = index;">
         <img src="{{item}}">
         <div class="deleteprod" no-padding>
-          <button ion-button icon-left clear small no-padding (click)="deleteProd(i)">
+          <button ion-button icon-left clear small no-padding (click)="deleteCate(i)">
             <ion-icon name="md-close-circle" color="light"></ion-icon>
           </button>
         </div>

@@ -403,6 +403,40 @@ export class ShopPage {
     this.index = index;
     this.cate = cate;
   }
+  openEditCate(cate) {
+    console.log(cate);
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Edit',
+          handler: () => {
+            
+            let modalproduct = this.modalCtrl.create('CreatecatePage', cate);
+            modalproduct.onDidDismiss(dismiss => {
+              console.log(dismiss);
+              if (dismiss) {
+                this.shopServiceProvider.editCate(dismiss._id, dismiss).then((data) => {
+                  this.shopService();
+                }, (err) => {
+                  alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+                });
+                
+              }
+            });
+            modalproduct.present();
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.deleteCateProd(cate._id);
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
   openEditProduct(product, index) {
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
