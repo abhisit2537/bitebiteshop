@@ -23,7 +23,17 @@
     "OPEN":"Open",
     "OPEN_TIMES":"Open",
     "CLOSE":"Close",
-    "OPENING_DAY":"Opening day"
+    "OPENING_DAY":"Opening day",
+    "PRODUCT_NAME":"Product Name",
+    "PRICE":"Price",
+    "RECOMMEND":"Recommend",
+    "PROMOTION":"Promotion",
+    "PROMOTION_PRICE":"Promotion Price",
+    "START_DATE":"Start Date",
+    "EXPIRE_DATE":"End Date",
+    "CREATE_PRODUCT":"Create Product",
+    "EDIT_PRODUCT":"Edit Product"
+    
 
 
 }

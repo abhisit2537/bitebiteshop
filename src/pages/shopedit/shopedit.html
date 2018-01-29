@@ -4,7 +4,7 @@
     <ion-buttons right>
       <button ion-button icon-only [disabled]="categories && categories.length == 0 || !editData.name || !editData.email || !editData.tel"
         (click)="save()">
-        Save
+        {{'SAVE'| translate}}
       </button>
     </ion-buttons>
   </ion-navbar>

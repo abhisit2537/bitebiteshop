@@ -7,10 +7,10 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
-    <ion-title>Profile</ion-title>
+    <ion-title>{{'PROFILE'| translate}}</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="save()">
-        Save
+        {{'SAVE'| translate}}
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -36,13 +36,13 @@
   <ion-row>
     <ion-col col-6>
       <ion-item>
-        <ion-label floating>ชื่อ</ion-label>
+        <ion-label floating>{{'FIRST_NAME'| translate}}</ion-label>
         <ion-input [(ngModel)]="firstLogin.firstName"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-6>
       <ion-item>
-        <ion-label floating>นามสกุล</ion-label>
+        <ion-label floating>{{'LAST_NAME'| translate}}</ion-label>
         <ion-input [(ngModel)]="firstLogin.lastName"></ion-input>
       </ion-item>
     </ion-col>
@@ -51,7 +51,7 @@
   <ion-row>
     <ion-col col-12>
       <ion-item>
-        <ion-label>วันเกิด</ion-label>
+        <ion-label>{{'BIRTHDAY'| translate}}</ion-label>
         <!-- <ion-datetime placeholder="กรุณาเลือกวันเกิด" displayFormat="hh/mm/A" [(ngModel)]="firstLogin.dateOfBirth"></ion-datetime> -->
         <ion-datetime placeholder="กรุณาเลือกวันเกิด" displayFormat="DD/MM/YYYY" [(ngModel)]="firstLogin.dateOfBirth"></ion-datetime>
       </ion-item>
@@ -89,7 +89,7 @@
   <ion-row>
     <ion-col col-12>
       <ion-item>
-        <ion-label floating>เลขที่บัตรประชาชน</ion-label>
+        <ion-label floating> {{'CITIZEN_ID'| translate}}</ion-label>
         <ion-input [(ngModel)]="firstLogin.citizenid"></ion-input>
       </ion-item>
     </ion-col>
@@ -97,7 +97,7 @@
   <ion-row>
     <ion-col col-12>
       <ion-item>
-        <ion-label floating>เลขที่บัญชีธนาคาร</ion-label>
+        <ion-label floating> {{'BANK_ACCOUNT'| translate}}</ion-label>
         <ion-input [(ngModel)]="firstLogin.bankaccount"></ion-input>
       </ion-item>
     </ion-col>

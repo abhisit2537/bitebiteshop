@@ -23,6 +23,16 @@
     "OPEN_TIMES":"เวลาเปิด",
     "OPEN":"เปิด",
     "CLOSE":"ปิด",
-    "OPENING_DAY":"วันที่เปิด"
+    "OPENING_DAY":"วันที่เปิด",
+    "PRODUCT_NAME":"ชื่อสินค้า",
+    "PRICE":"ราคา",
+    "RECOMMEND":"สินค้าแนะนำ",
+    "PROMOTION":"สินค้าโปรโมชั่น",
+    "PROMOTION_PRICE":"ราคาโปรโมชั่น",
+    "START_DATE":"วันที่เริ่มต้น",
+    "EXPIRE_DATE":"วันที่สิ้นสุด",
+    "CREATE_PRODUCT":"สร้างสินค้า",
+    "EDIT_PRODUCT":"แก้ไขสินค้า"
+
     
 }
