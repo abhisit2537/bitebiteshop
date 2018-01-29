@@ -32,7 +32,11 @@
     "START_DATE":"วันที่เริ่มต้น",
     "EXPIRE_DATE":"วันที่สิ้นสุด",
     "CREATE_PRODUCT":"สร้างสินค้า",
-    "EDIT_PRODUCT":"แก้ไขสินค้า"
+    "EDIT_PRODUCT":"แก้ไขสินค้า",
+    "CREATE_CATEGORY":"สร้างหมวดหมู่สินค้า",
+    "EDIT_CATEGORY":"แก้ไขหมวดหมู่สินค้า",
+    "CATEGORY_NAME":"ชื่อหมวดหมู่สินค้า",
+    "EDIT":"แก้ไข"
 
     
 }
