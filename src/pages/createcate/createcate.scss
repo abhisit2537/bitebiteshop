@@ -5,27 +5,10 @@ page-createcate {
     .setImg {
         width: 100%;
         height: 200px;
-    } // .borderinput {
-    //     background: rgb(255, 255, 255);
-    //     padding-left: 2vh;
-    //     height: 5vh;
-    //     width: auto;
-    //     margin-left: 1vh;
-    //     margin-right: 1vh;
-    //     // margin-bottom: 3vh;
-    //     border-radius: 25px;
-    //     border: 1px solid red;
-    // }
-    // .btncent {
-    //     text-align: center;
-    // }
-    // .margintop {
-    //     margin-top: 4vh;
-    // }
-    // [fix-height] {
-    //     height: 15vh;
-    // }
-    // [fix-height2] {
-    //     height: 13vh;
-    // }
+    } 
+    .deletecate{
+        position:absolute;
+        top: 0;
+        right: 0;
+    }
 }
