@@ -32,7 +32,11 @@
     "START_DATE":"Start Date",
     "EXPIRE_DATE":"End Date",
     "CREATE_PRODUCT":"Create Product",
-    "EDIT_PRODUCT":"Edit Product"
+    "EDIT_PRODUCT":"Edit Product",
+    "CREATE_CATEGORY":"Create Category",
+    "EDIT_CATEGORY":"Edit Category",
+    "CATEGORY_NAME":"Category Name",
+    "EDIT":"Edit"
     
 
 
