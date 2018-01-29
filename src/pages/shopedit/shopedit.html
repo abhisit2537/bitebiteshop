@@ -68,7 +68,7 @@
             เวลาที่เปิด - ปิดร้าน
           </ion-label>
         </ion-item>
-        
+
         <ion-scroll scrollX="true" class="slide-xsize">
           <ion-row no-padding class="row-custom">
             <ion-col col-6 (click)="addTime()">
@@ -90,14 +90,17 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="containerclass" col-12>
+      <ion-col class="containerclass" col-12 (click)="showMap()">
         <ion-item class="fixHeight" no-lines>
           <ion-label class="fontStyle">
             ที่อยู่
           </ion-label>
         </ion-item>
-        <ion-textarea placeholder="Enter a description" type="text" class="wordbreak fixHeight padding-15" rows="4" [(ngModel)]="editData.address.address">
-        </ion-textarea>
+        <p class="txtAddress" *ngIf="editData.address">
+          {{editData.address.address ? editData.address.address : ''}}
+        </p>
+        <!-- <ion-textarea placeholder="Enter a description" type="text" class="wordbreak fixHeight padding-15" rows="4" [(ngModel)]="editData.address.address">
+        </ion-textarea> -->
 
         <ion-label class="fixPin" text-right>
           <span ion-text class="pin">

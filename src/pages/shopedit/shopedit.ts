@@ -22,6 +22,16 @@ export class ShopeditPage {
   cate: Array<CateModel>;
   categories = [];
   validateEmail: boolean = true;
+  address: any = {
+    address: '',
+    addressdetail: '',
+    subdistinct: '',
+    distinct: '',
+    province: '',
+    postcode: '',
+    lat: '',
+    lng: ''
+  }
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -59,11 +69,21 @@ export class ShopeditPage {
 
     }
   }
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad ShopeditPage');
     console.log(this.editData);
     this.validationEmail();
+    this.address = window.localStorage.getItem('shop_location_address') ? JSON.parse(window.localStorage.getItem('shop_location_address')) : this.editData.address;
+    // alert(JSON.stringify(this.address));
+    this.editData.address = this.address ? this.address : this.editData.address;
   }
+
+  ionViewWillLeave() {
+    if (window.localStorage.getItem('shop_location_address')) {
+      window.localStorage.removeItem('shop_location_address');
+    }
+  }
+
   openActionsheet(item, i) {
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
@@ -116,6 +136,7 @@ export class ShopeditPage {
     loadingCtrl.present();
     this.shopServiceProvider.editShop(this.editData._id, this.editData).then((data) => {
       loadingCtrl.dismiss();
+      window.localStorage.removeItem('shop_location_address');
       this.navCtrl.setRoot('TabnavPage');
     }, (err) => {
       loadingCtrl.dismiss();
@@ -123,5 +144,7 @@ export class ShopeditPage {
       // alert(JSON.stringify(JSON.parse(err._body).message));
     });
   }
-
+  showMap() {
+    this.navCtrl.push('GoogleMapsPage');
+  }
 }
