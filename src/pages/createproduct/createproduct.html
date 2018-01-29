@@ -12,7 +12,9 @@
         <ion-icon name="ios-close-circle"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>{{this.createprod._id ? 'Edit Product' : 'Create Product'}}</ion-title>
+    <ion-title *ngIf="this.createprod._id">{{'EDIT_PRODUCT' | translate}}</ion-title>
+    <ion-title *ngIf="!this.createprod._id">{{'CREATE_PRODUCT' | translate}}</ion-title>
+    
   </ion-navbar>
 
 </ion-header>
@@ -36,34 +38,34 @@
     <ion-row>
       <ion-col col-12>
         <ion-item>
-          <ion-label color="topic" floating>Product Name</ion-label>
+          <ion-label color="topic" floating>{{'PRODUCT_NAME'| translate}}</ion-label>
           <ion-input type="text" [(ngModel)]="createprod.name"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label color="topic" floating>Price</ion-label>
+          <ion-label color="topic" floating>{{'PRICE'| translate}}</ion-label>
           <ion-input type="number" [(ngModel)]="createprod.price"></ion-input>
         </ion-item>
         <ion-item no-lines>
-            <ion-label color="topic">Recommend</ion-label>
-            <ion-checkbox color="danger" [(ngModel)]="createprod.isrecommend"></ion-checkbox>
-          </ion-item>
+          <ion-label color="topic">{{'RECOMMEND'| translate}}</ion-label>
+          <ion-checkbox color="danger" [(ngModel)]="createprod.isrecommend"></ion-checkbox>
+        </ion-item>
         <ion-item no-lines>
-          <ion-label color="topic">Promotion</ion-label>
+          <ion-label color="topic">{{'PROMOTION'| translate}}</ion-label>
           <ion-checkbox color="danger" [(ngModel)]="createprod.ispromotionprice" (ionChange)="checkedPromotion()"></ion-checkbox>
         </ion-item>
         <ion-item *ngIf="createprod.ispromotionprice">
-          <ion-label color="topic" floating>Promotion Price</ion-label>
+          <ion-label color="topic" floating>{{'PROMOTION_PRICE'| translate}}</ion-label>
           <ion-input type="number" [(ngModel)]="createprod.promotionprice"></ion-input>
         </ion-item>
         <ion-item *ngIf="createprod.ispromotionprice">
-          <ion-label color="topic">Start Date</ion-label>
+          <ion-label color="topic">{{'START_DATE'| translate}}</ion-label>
           <ion-datetime placeholder="Start Date" displayFormat="DD/MM/YYYY" [(ngModel)]="createprod.startdate"></ion-datetime>
         </ion-item>
         <ion-item *ngIf="createprod.ispromotionprice">
-          <ion-label color="topic">Expire Date</ion-label>
+          <ion-label color="topic">{{'EXPIRE_DATE'| translate}}</ion-label>
           <ion-datetime placeholder="Expire Date" displayFormat="DD/MM/YYYY" [(ngModel)]="createprod.expiredate"></ion-datetime>
         </ion-item>
-        
+
       </ion-col>
     </ion-row>
 
@@ -75,7 +77,7 @@
       <button ion-button block color="danger" (click)="save()" [disabled]="!createprod.promotionprice || !createprod.startdate || !createprod.expiredate">{{this.createprod._id ? 'Edit':'Save'}}</button>
     </ion-col>
     <ion-col col-12 class="btncent" *ngIf="!createprod.ispromotionprice">
-        <button ion-button block color="danger" (click)="save()">{{this.createprod._id ? 'Edit':'Save'}}</button>
-      </ion-col>
+      <button ion-button block color="danger" (click)="save()">{{this.createprod._id ? 'Edit':'Save'}}</button>
+    </ion-col>
   </ion-row>
 </ion-footer>
