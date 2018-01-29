@@ -50,7 +50,7 @@ export class Firstloginstep3Page {
       // this.categories = [];
       this.firstLogin.categories.forEach(fcate => {
         data.forEach(dcate => {
-          if (fcate._id.toString() ? fcate._id.toString() === dcate._id.toString() : fcate === dcate._id.toString()) {
+          if (fcate._id ? fcate._id.toString() === dcate._id.toString() : fcate === dcate._id.toString()) {
             this.categories.push(dcate);
           }
         });

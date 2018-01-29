@@ -15,7 +15,7 @@
     <ion-row>
       <ion-col>
         <ion-item *ngIf="cate && cate.length > 0">
-          <ion-label>หมวดหมู่ร้าน
+          <ion-label color="topic">หมวดหมู่ร้าน
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-select [(ngModel)]="categories" multiple="true">
@@ -23,7 +23,7 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label floating>ชื่อร้าน
+          <ion-label floating color="topic">ชื่อร้าน
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-input type="text" [(ngModel)]="editData.name"></ion-input>
@@ -33,11 +33,11 @@
     <ion-row>
       <ion-col col-12>
         <ion-item>
-          <ion-label floating>รายละเอียดร้าน</ion-label>
+          <ion-label floating color="topic">รายละเอียดร้าน</ion-label>
           <ion-input type="text" [(ngModel)]="editData.detail"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>E-mail
+          <ion-label floating color="topic">E-mail
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-input type="text" [(ngModel)]="editData.email" (ionChange)="validationEmail()"></ion-input>
@@ -46,17 +46,17 @@
           <p class="warning-invalid">*อีเมล์ไม่ถูกต้อง ( exam@exam.com )</p>
         </ion-item>
         <ion-item>
-          <ion-label floating>หมายเลขโทรศัพท์
+          <ion-label floatingcolor="topic">หมายเลขโทรศัพท์
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-input type="text" [(ngModel)]="editData.tel"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>Facebook</ion-label>
+          <ion-label floating color="topic">Facebook</ion-label>
           <ion-input type="text" [(ngModel)]="editData.facebook"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>Line</ion-label>
+          <ion-label floating color="topic">Line</ion-label>
           <ion-input type="text" [(ngModel)]="editData.line"></ion-input>
         </ion-item>
       </ion-col>
@@ -72,7 +72,7 @@
         <ion-scroll scrollX="true" class="slide-xsize">
           <ion-row no-padding class="row-custom">
             <ion-col col-6 (click)="addTime()">
-              <img style="height: 120px; width: 100%;" src="http://res.cloudinary.com/ha7s6qhcg/image/upload/v1511499758/pp_clfpol.jpg">
+              <img style="height: 120px; width: 100%;" src="./assets/imgs/add.jpg">
             </ion-col>
             <ion-col col-6 text-left *ngFor="let time of editData.times;let i = index" style="margin-right:20px;">
               <button class="iconEditTimes" ion-button icon-left clear large no-padding (click)="openActionsheet(time, i)">
