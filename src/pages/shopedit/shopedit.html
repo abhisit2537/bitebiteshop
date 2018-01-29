@@ -15,7 +15,7 @@
     <ion-row>
       <ion-col>
         <ion-item *ngIf="cate && cate.length > 0">
-          <ion-label color="topic">หมวดหมู่ร้าน
+          <ion-label color="topic">{{'CATEGORY'| translate}}
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-select [(ngModel)]="categories" multiple="true">
@@ -23,7 +23,7 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label floating color="topic">ชื่อร้าน
+          <ion-label floating color="topic">{{'SHOP_NAME'| translate}}
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-input type="text" [(ngModel)]="editData.name"></ion-input>
@@ -33,7 +33,7 @@
     <ion-row>
       <ion-col col-12>
         <ion-item>
-          <ion-label floating color="topic">รายละเอียดร้าน</ion-label>
+          <ion-label floating color="topic"> {{'SHOP_DETAIL'| translate}}</ion-label>
           <ion-input type="text" [(ngModel)]="editData.detail"></ion-input>
         </ion-item>
         <ion-item>
@@ -43,10 +43,10 @@
           <ion-input type="text" [(ngModel)]="editData.email" (ionChange)="validationEmail()"></ion-input>
         </ion-item>
         <ion-item *ngIf="!validateEmail">
-          <p class="warning-invalid">*อีเมล์ไม่ถูกต้อง ( exam@exam.com )</p>
+          <p class="warning-invalid">*{{'INVALID_EMAIL' | translate}} ( {{'EXAMPLE' | translate}} : exam@exam.com )</p>
         </ion-item>
         <ion-item>
-          <ion-label floating color="topic">หมายเลขโทรศัพท์
+          <ion-label floating color="topic">{{'PHONE'| translate}}
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-input type="text" [(ngModel)]="editData.tel"></ion-input>
@@ -65,7 +65,7 @@
       <ion-col class="containerclass" col-12>
         <ion-item no-lines>
           <ion-label class="fontStyle">
-            เวลาที่เปิด - ปิดร้าน
+              {{'OPEN_TIMES'| translate}} - {{'CLOSE'| translate}}
           </ion-label>
         </ion-item>
 
@@ -81,7 +81,7 @@
               <div class="detailtimes">
                 <p class="textTimes">{{time.description}}</p>
                 <p class="textTimes">{{time.timestart}} - {{time.timeend}}</p>
-                <p class="textTimesDay">วันที่เปิด</p>
+                <p class="textTimesDay">{{'OPENING_DAY'| translate}}</p>
                 <label style="margin-left: 5px;">{{time.days | pipes}}</label>
               </div>
             </ion-col>
