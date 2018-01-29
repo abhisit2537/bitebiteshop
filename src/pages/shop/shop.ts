@@ -20,6 +20,7 @@ import { GalleryModal } from 'ionic-gallery-modal';
 import { UserModel } from '../../assets/model/user.model';
 import { Crop } from '@ionic-native/crop';
 import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
+import { ImagecoverProvider } from '../../providers/imagecover/imagecover';
 /**
  * Generated class for the ShopPage page.
  *
@@ -59,7 +60,8 @@ export class ShopPage {
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
     private crop: Crop,
-    private camera: Camera
+    private camera: Camera,
+    public imgCoverService: ImagecoverProvider
   ) {
 
   }
@@ -236,14 +238,36 @@ export class ShopPage {
 
   updateShopBG() {
     let img = this.images && this.images.length > 0 ? this.images[0] : 'noimage';
-    this.shopServiceProvider.setCover(this.shop._id, img).then((data) => {
-      this.shopService();
-    }, (err) => {
-      // alert(JSON.stringify(JSON.parse(err._body).message));
-      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
+    this.imgCoverService.getMeta(img).then((data) => {
+      if (data) {
+        this.shopServiceProvider.setCover(this.shop._id, img).then((data) => {
+          loadingCtrl.dismiss();
+          this.shopService();
+        }, (err) => {
+          // alert(JSON.stringify(JSON.parse(err._body).message));
+          loadingCtrl.dismiss();
+          alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
 
+          console.log(err);
+        });
+      } else {
+        loadingCtrl.dismiss();
+        alert('ขนาดรูปไม่ถูกต้อง กรุณาตรวจสอบรูปและลองใหม่อีกครั้ง!');
+      }
+    }, (err) => {
+      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
       console.log(err);
     });
+    // this.shopServiceProvider.setCover(this.shop._id, img).then((data) => {
+    //   this.shopService();
+    // }, (err) => {
+    //   // alert(JSON.stringify(JSON.parse(err._body).message));
+    //   alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+
+    //   console.log(err);
+    // });
   }
 
   addPromote() {
@@ -410,7 +434,7 @@ export class ShopPage {
         {
           text: 'Edit',
           handler: () => {
-            
+
             let modalproduct = this.modalCtrl.create('CreatecatePage', cate);
             modalproduct.onDidDismiss(dismiss => {
               console.log(dismiss);
@@ -420,7 +444,7 @@ export class ShopPage {
                 }, (err) => {
                   alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
                 });
-                
+
               }
             });
             modalproduct.present();
@@ -443,7 +467,7 @@ export class ShopPage {
         {
           text: 'Edit',
           handler: () => {
-            
+
             let modalproduct = this.modalCtrl.create('CreateproductPage', product);
             modalproduct.onDidDismiss(dismiss => {
               console.log(dismiss);
@@ -453,7 +477,7 @@ export class ShopPage {
                 }, (err) => {
                   alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
                 });
-                
+
               }
             });
             modalproduct.present();
@@ -512,7 +536,7 @@ export class ShopPage {
       popoverOptions: popover,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true,
+      allowEdit: from !== 'cover' ? true : false,
       correctOrientation: true,
       targetHeight: from !== 'cover' ? 150 : 150,
       targetWidth: from !== 'cover' ? 150 : 450
@@ -580,7 +604,7 @@ export class ShopPage {
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true,
+      allowEdit: from !== 'cover' ? true : false,
       correctOrientation: true,
       targetHeight: from !== 'cover' ? 300 : 300,
       targetWidth: from !== 'cover' ? 300 : 600,
