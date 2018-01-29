@@ -21,8 +21,11 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of createprod.images">
+      <ion-col col-4 *ngFor="let item of createprod.images">
         <img src="{{item}}" width="90vw" height="90vh">
+      </ion-col>
+      <ion-col col-4 *ngIf="createprod.images.length < 3">
+          <img src="./assets/imgs/add.jpg" width="90vw" height="90vh" (click)="openActionSheet('product')">
       </ion-col>
     </ion-row>
     <ion-row>
