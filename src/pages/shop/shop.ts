@@ -424,30 +424,31 @@ export class ShopPage {
 
     actionSheet.present();
   }
-  openActionSheet(from, i) {
-    this.prodIndex = i;
-    let actionSheet = this.actionSheetCtrl.create({
-      buttons: [
-        {
-          text: 'Camera',
-          handler: () => {
-            this.openCamera(from);
-          }
-        },
-        {
-          text: 'Photo Gallery',
-          handler: () => {
-            if (from) {
-              this.galleryCamera(from);
-              // } else {
-              //   this.onImagePicker(from, 1);
+  openActionSheet(from, i, name) {
+    if (!name || name === '') {
+      this.prodIndex = i;
+      let actionSheet = this.actionSheetCtrl.create({
+        buttons: [
+          {
+            text: 'Camera',
+            handler: () => {
+              this.openCamera(from);
+            }
+          },
+          {
+            text: 'Photo Gallery',
+            handler: () => {
+              if (from) {
+                this.galleryCamera(from);
+                // } else {
+                //   this.onImagePicker(from, 1);
+              }
             }
           }
-        }
-      ]
-    });
-
-    actionSheet.present();
+        ]
+      });
+      actionSheet.present();
+    }
   }
 
   openCamera(from) {
