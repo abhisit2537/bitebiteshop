@@ -54,5 +54,14 @@
     "PASSWORD":"Password",
     "LOGIN":"Login",
     "EDIT_SHOP":"Edit shop",
-    "EMAIL":"E-mail"
+    "EMAIL":"E-mail",
+    "LANGUAGE":"Language",
+    "BIKER":"Biker",
+    "ORDER":"Order",
+    "STATUS":"Status",
+    "MORE":"More",
+    "LOGOUT":"Logout",
+    "SETTING":"Setting",
+    "SETTING_DETAIL":"Sertting Detail"
+
 }
