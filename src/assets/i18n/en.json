@@ -65,6 +65,8 @@
     "SETTING_DETAIL":"Sertting Detail",
     "WALLET":"Wallet",
     "ENGLISH":"English",
-    "THAI":"Thai"
+    "THAI":"Thai",
+    "CONFIRM_LOCATION":"Confirm location",
+    "SEARCH_LOCATION":"Confirm location"
 
 }

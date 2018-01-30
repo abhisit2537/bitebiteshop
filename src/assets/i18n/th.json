@@ -65,5 +65,7 @@
     "SETTING_DETAIL":"การตั้งค่า",
     "WALLET":"กระเป๋าเงิน",
     "ENGLISH":"อังกฤษ",
-    "THAI":"ไทย"
+    "THAI":"ไทย",
+    "CONFIRM_LOCATION":"ยืนยันตำแหน่ง",
+    "SEARCH_LOCATION":"ค้นหาตำแหน่ง"
 }
