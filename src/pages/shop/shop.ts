@@ -85,7 +85,8 @@ export class ShopPage {
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
       if (data.items && data.items.length > 0) {
-        this.cate = data.items[0].cate;
+        let index = this.index > 0 ? this.index : 0;
+        this.cate = data.items[index].cate;
       }
       if (this.isCreateCate) {
         let lastcate = data.items.length - 1;
