@@ -74,7 +74,7 @@ export class ShopPage {
   }
 
   ionViewWillEnter() {
-    this.user = JSON.parse(window.localStorage.getItem('bikebikeshop'));
+    this.user = window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : JSON.parse(window.localStorage.getItem('bikebikeshop'));
     this.shopService();
   }
 
