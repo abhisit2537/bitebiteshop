@@ -18,9 +18,13 @@
     <ion-refresher-content pullingIcon="arrow-down" pullingText="Pull to refresh" refreshingSpinner="dots" refreshingText="Refreshing..."></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <ion-item (click)="logout()">
+    <button ion-item item-start (click)="logout()">
       <ion-icon name="md-log-out" item-start></ion-icon>
       Logout
-    </ion-item>
+    </button>
+    <button ion-item item-start (click)="onSetting()">
+      <ion-icon name="md-settings" item-start></ion-icon>
+      Setting
+    </button>
   </ion-list>
 </ion-content>

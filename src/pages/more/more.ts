@@ -29,5 +29,7 @@ export class MorePage {
       refresher.complete();
     }, 1500);
   }
-
+  onSetting() {
+    this.app.getRootNav().push('SettingDetailPage');
+  }
 }
