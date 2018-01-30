@@ -93,13 +93,13 @@ export class ShopeditPage {
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Edit',
+          text: textEdit,
           handler: () => {
             this.editTimes(item, i);
           }
         },
         {
-          text: 'Delete',
+          text: textDelete,
           handler: () => {
             this.deleteTimes(i);
           }
