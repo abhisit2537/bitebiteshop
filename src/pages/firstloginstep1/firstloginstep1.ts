@@ -52,7 +52,7 @@ export class Firstloginstep1Page {
     getfirstLogin.dateOfBirth = getfirstLogin.dateOfBirth ? getfirstLogin.dateOfBirth : this.myDate;
     if (backfirstLogin) {
       this.firstLogin = backfirstLogin;
-    } else if (!backfirstLogin){
+    } else if (!backfirstLogin) {
       this.firstLogin = getfirstLogin;
     }
   }
@@ -62,16 +62,19 @@ export class Firstloginstep1Page {
 
   }
   selectProfile() {
+    let language = this.translate.currentLang;
+    let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
+    let textGallery = language === 'en' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Camera',
+          text: textCamera,
           handler: () => {
             this.openCamera('profile');
           }
         },
         {
-          text: 'Photo Gallery',
+          text: textGallery,
           handler: () => {
             this.galleryCamera('profile');
           }
@@ -221,7 +224,7 @@ export class Firstloginstep1Page {
 
       window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
       this.navCtrl.push('Firstloginstep2Page');
-    } else if (!backfirstLogin){
+    } else if (!backfirstLogin) {
       this.firstLogin.coverimage = this.shop.coverimage ? this.shop.coverimage : 'no image';
       this.firstLogin.name = this.shop.name ? this.shop.name : '';
       this.firstLogin.name_eng = this.shop.name_eng ? this.shop.name_eng : '';

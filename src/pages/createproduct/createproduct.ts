@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, ActionSheetControl
 import { ShopServiceProvider } from '../shop/shop-service';
 import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
 import * as firebase from 'firebase';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the CreateproductPage page.
@@ -26,7 +27,8 @@ export class CreateproductPage {
     public viewCtrl: ViewController,
     public actionSheetCtrl: ActionSheetController,
     private camera: Camera,
-    private loading: LoadingController
+    private loading: LoadingController,
+    private translate: TranslateService
   ) {
     if (this.navParams.data._id) {
       // this.createprod = this.navParams.data;
@@ -74,16 +76,19 @@ export class CreateproductPage {
     }
   }
   openActionSheet(from) {
+    let language = this.translate.currentLang;
+    let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
+    let textGallery = language === 'en' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Camera',
+          text: textCamera,
           handler: () => {
             this.openCamera(from);
           }
         },
         {
-          text: 'Photo Gallery',
+          text: textGallery,
           handler: () => {
             this.galleryCamera(from);
           }

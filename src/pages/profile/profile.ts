@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
 import { Auth } from '../../providers/auth-service/auth-service';
 import { Crop } from '@ionic-native/crop';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the ProfilePage page.
@@ -37,7 +38,8 @@ export class ProfilePage {
     private auth: Auth,
     private crop: Crop,
     private camera: Camera,
-    public actionSheetCtrl: ActionSheetController
+    public actionSheetCtrl: ActionSheetController,
+    private translate: TranslateService
   ) {
 
     this.shopServiceProvider.getShop().then(data => {
@@ -159,24 +161,20 @@ export class ProfilePage {
   }
 
   selectProfile() {
+    let language = this.translate.currentLang;
+    let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
+    let textGallery = language === 'en' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Camera',
+          text: textCamera,
           handler: () => {
-            // if (this.platform.is('cordova')) {
-            //   this.onImagePicker();
-            // }
             this.openCamera();
-            // this.onUpload('profile', 1);
           }
         },
         {
-          text: 'Photo Gallory',
+          text: textGallery,
           handler: () => {
-            // if (this.platform.is('cordova')) {
-            //   this.onCamera();
-            // }
             this.onImagePicker('profile', 3);
           }
         }
