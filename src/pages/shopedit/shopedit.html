@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="maintheme">
-    <ion-title>Edit Shop</ion-title>
+    <ion-title>{{'EDIT_SHOP'| translate}}</ion-title>
     <ion-buttons right>
       <button ion-button icon-only [disabled]="categories && categories.length == 0 || !editData.name || !editData.email || !editData.tel"
         (click)="save()">
@@ -33,11 +33,11 @@
     <ion-row>
       <ion-col col-12>
         <ion-item>
-          <ion-label floating color="topic"> {{'SHOP_DETAIL'| translate}}</ion-label>
+          <ion-label floating color="topic">{{'SHOP_DETAIL'| translate}}</ion-label>
           <ion-input type="text" [(ngModel)]="editData.detail"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating color="topic">E-mail
+          <ion-label floating color="topic">{{'EMAIL'| translate}}
             <span class="warning-invalid">*</span>
           </ion-label>
           <ion-input type="text" [(ngModel)]="editData.email" (ionChange)="validationEmail()"></ion-input>
