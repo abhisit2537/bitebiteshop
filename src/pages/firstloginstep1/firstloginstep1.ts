@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ActionSheetController } from 'ionic-angular';
-// import { Firstloginstep2Page } from '../firstloginstep2/firstloginstep2';
-// import { ImagePicker } from '@ionic-native/image-picker';
 import * as firebase from 'firebase';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { ShopModel } from "../shop/shop.model";
@@ -13,7 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-firstloginstep1',
@@ -28,7 +25,6 @@ export class Firstloginstep1Page {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    // public imagePicker: ImagePicker,
     public loading: LoadingController,
     public shopServiceProvider: ShopServiceProvider,
     public actionSheetCtrl: ActionSheetController,
@@ -39,13 +35,10 @@ export class Firstloginstep1Page {
     loadingCtrl.present();
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
-      console.log(this.shop);
       loadingCtrl.dismiss();
     }, (err) => {
       loadingCtrl.dismiss();
-      // window.localStorage.removeItem('bikebikeshop');
     });
-
     let getfirstLogin = JSON.parse(window.localStorage.getItem('user'));
     let backfirstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     getfirstLogin.profileImageURL = getfirstLogin.profileImageURL ? getfirstLogin.profileImageURL : './assets/imgs/Upload-Profile.png';
@@ -56,10 +49,8 @@ export class Firstloginstep1Page {
       this.firstLogin = getfirstLogin;
     }
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad Firstloginstep1Page');
-
   }
   selectProfile() {
     let language = this.translate.currentLang;
@@ -81,7 +72,6 @@ export class Firstloginstep1Page {
         }
       ]
     });
-
     actionSheet.present();
   }
   openCamera(from) {
@@ -104,16 +94,17 @@ export class Firstloginstep1Page {
       targetHeight: from !== 'cover' ? 150 : 150,
       targetWidth: from !== 'cover' ? 150 : 450
     }
+    let loadingCtrl = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
+      loadingCtrl.present();
       this.noResizeImage(imageData).then((data) => {
-        let loadingCtrl = this.loading.create();
-        loadingCtrl.present();
         this.images.push(data);
+        loadingCtrl.dismiss();
         if (from.toString() === 'profile') {
-          loadingCtrl.dismiss();
           this.updateProfile();
         }
       }, (err) => {
+        loadingCtrl.dismiss();
         console.log(err);
       });
     }, (err) => {
@@ -133,16 +124,17 @@ export class Firstloginstep1Page {
       targetWidth: from !== 'cover' ? 150 : 450,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
+    let loadingCtrl = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
+      loadingCtrl.present();
       this.noResizeImage(imageData).then((data) => {
-        let loadingCtrl = this.loading.create();
-        loadingCtrl.present();
         this.images.push(data);
+        loadingCtrl.dismiss();
         if (from.toString() === 'profile') {
-          loadingCtrl.dismiss();
           this.updateProfile();
         }
       }, (err) => {
+        loadingCtrl.dismiss();
         console.log(err);
       });
     }, (err) => {
@@ -172,7 +164,6 @@ export class Firstloginstep1Page {
       xhr.responseType = 'blob';
       xhr.onload = (e) => {
         let blob = new Blob([xhr.response], { type: 'image/png' });
-
         parseUpload = imageRef.put(blob, metadata);
         parseUpload.on('state_changed', (_snapshot) => {
           let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
@@ -192,12 +183,10 @@ export class Firstloginstep1Page {
           (success) => {
             resolve(parseUpload.snapshot.downloadURL);
           });
-
       }
       xhr.send();
     });
   }
-
   updateProfile() {
     this.profileImg = this.images && this.images.length > 0 ? this.images[this.images.length - 1] : '';
     if (this.profileImg) {
@@ -206,7 +195,6 @@ export class Firstloginstep1Page {
       this.firstLogin.profileImageURL = '';
     }
   }
-
   step2() {
     let backfirstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     if (backfirstLogin) {
@@ -221,7 +209,6 @@ export class Firstloginstep1Page {
       this.firstLogin.times = backfirstLogin.times ? backfirstLogin.times : [];
       this.firstLogin.categories = backfirstLogin.categories ? backfirstLogin.categories : [];
       this.firstLogin.address = backfirstLogin.address ? backfirstLogin.address : {};
-
       window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
       this.navCtrl.push('Firstloginstep2Page');
     } else if (!backfirstLogin) {
@@ -236,13 +223,8 @@ export class Firstloginstep1Page {
       this.firstLogin.times = this.shop.times ? this.shop.times : [];
       this.firstLogin.categories = this.shop.categories ? this.shop.categories : [];
       this.firstLogin.address = this.shop.address ? this.shop.address : {};
-      // alert(JSON.stringify(this.firstLogin.coverimage));
-      // this.navCtrl.setRoot('Firstloginstep2Page', this.firstLogin);
-      // console.log(this.firstLogin);
       window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
       this.navCtrl.push('Firstloginstep2Page');
     }
-
   }
-
 }

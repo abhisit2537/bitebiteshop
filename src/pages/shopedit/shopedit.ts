@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController, ActionSheetController } from 'ionic-angular';
-// import { ShoptimeeditPage } from '../shoptimeedit/shoptimeedit';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { CateModel } from '../shop/shop.model';
 import { TranslateService } from '@ngx-translate/core';
-// import { TabnavPage } from '../tabnav/tabnav';
 
 /**
  * Generated class for the ShopeditPage page.
@@ -12,7 +10,6 @@ import { TranslateService } from '@ngx-translate/core';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-shopedit',
@@ -54,9 +51,6 @@ export class ShopeditPage {
           }
         });
       });
-      // alert(JSON.stringify(this.cate));
-      // this.firstLogin.name = this.shop.name ? this.shop.name : '';
-      // alert(JSON.stringify(this.categories));
       loadingCtrl.dismiss();
     }, (err) => {
       loadingCtrl.dismiss();
@@ -68,24 +62,18 @@ export class ShopeditPage {
       this.validateEmail = true;
     } else {
       this.validateEmail = false;
-
     }
   }
   ionViewWillEnter() {
-    console.log('ionViewDidLoad ShopeditPage');
-    console.log(this.editData);
     this.validationEmail();
     this.address = window.localStorage.getItem('shop_location_address') ? JSON.parse(window.localStorage.getItem('shop_location_address')) : this.editData.address;
-    // alert(JSON.stringify(this.address));
     this.editData.address = this.address ? this.address : this.editData.address;
   }
-
   ionViewWillLeave() {
     if (window.localStorage.getItem('shop_location_address')) {
       window.localStorage.removeItem('shop_location_address');
     }
   }
-
   openActionsheet(item, i) {
     let language = this.translate.currentLang;
     let textEdit = language === 'th' ? 'แก้ไขเวลา' : 'Edit Times';
@@ -106,7 +94,6 @@ export class ShopeditPage {
         }
       ]
     });
-
     actionSheet.present();
   }
   deleteTimes(index) {
@@ -115,10 +102,7 @@ export class ShopeditPage {
   editTimes(item, i) {
     item.editMode = true;
     let modalopen = this.modalCtrl.create('ShoptimeeditPage', item);
-
     modalopen.onDidDismiss(datadismiss => {
-      // this.firstLogin
-      // alert(JSON.stringify(datadismiss));
       if (datadismiss) {
         this.editData.times[i] = datadismiss;
       }
@@ -126,7 +110,6 @@ export class ShopeditPage {
     modalopen.present();
   }
   addTime() {
-    console.log('shopTimeEditPage');
     let ShoptimeModal = this.modalCtrl.create('ShoptimeeditPage');
     ShoptimeModal.onDidDismiss(data => {
       if (data) {

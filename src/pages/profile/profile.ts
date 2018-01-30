@@ -3,7 +3,6 @@ import { IonicPage, LoadingController, NavController, NavParams, ActionSheetCont
 import { ShopModel } from '../shop/shop.model';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { ShopServiceProvider } from '../shop/shop-service';
-
 import * as firebase from 'firebase';
 import { Auth } from '../../providers/auth-service/auth-service';
 import { Crop } from '@ionic-native/crop';
@@ -23,7 +22,6 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
   firstLogin: any = {};
   images: Array<any> = [];
   profileImg: string = '';
@@ -41,37 +39,26 @@ export class ProfilePage {
     public actionSheetCtrl: ActionSheetController,
     private translate: TranslateService
   ) {
-
     this.shopServiceProvider.getShop().then(data => {
       this.shop = data;
-      console.log(this.shop);
-
-
-
     }, (err) => {
       // window.localStorage.removeItem('bikebikeshop');
     });
-
     let getfirstLogin = JSON.parse(window.localStorage.getItem('user'));
     getfirstLogin.profileImageURL = getfirstLogin.profileImageURL ? getfirstLogin.profileImageURL : './assets/imgs/Upload-Profile.png';
     getfirstLogin.dateOfBirth = getfirstLogin.dateOfBirth ? getfirstLogin.dateOfBirth : this.myDate;
-
     // let getDate = new Date();
     // let month = getDate.getUTCMonth() + 1; //months from 1-12
     // let day = getDate.getUTCDate();
     // let year = getDate.getUTCFullYear();
-
     this.firstLogin = getfirstLogin;
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad Firstloginstep1Page');
-
   }
   // selectProfile() {
   //   this.onUpload('profile', 1);
   // }
-
   onUpload(from, maxImg) {
     let options = {
       maximumImagesCount: maxImg,
@@ -79,7 +66,6 @@ export class ProfilePage {
       quality: 30,
       outputType: 1
     };
-
     this.imagePicker.getPictures(options).then((results) => {
       let loading = [];
       let loadingCount = 0;
@@ -142,7 +128,6 @@ export class ProfilePage {
   //       });
   //   });
   // }
-
   updateProfile() {
     this.profileImg = this.images && this.images.length > 0 ? this.images[this.images.length - 1] : '';
     if (this.profileImg) {
@@ -151,7 +136,6 @@ export class ProfilePage {
       this.firstLogin.profileImageURL = '';
     }
   }
-
   save() {
     this.auth.manageUser(this.firstLogin).then((data) => {
       window.localStorage.setItem('user', JSON.stringify(data));
@@ -160,7 +144,6 @@ export class ProfilePage {
       console.log(err);
     });
   }
-
   selectProfile() {
     let language = this.translate.currentLang;
     let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
@@ -184,11 +167,8 @@ export class ProfilePage {
 
     actionSheet.present();
   }
-
   uploadImage(imageString): Promise<any> {
-
     return new Promise((resolve, reject) => {
-
       const storageRef = firebase.storage().ref();
       const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
       let imageRef = storageRef.child(`images/${filename}.png`);
@@ -202,7 +182,6 @@ export class ProfilePage {
       xhr.responseType = 'blob';
       xhr.onload = (e) => {
         let blob = new Blob([xhr.response], { type: 'image/png' });
-
         parseUpload = imageRef.put(blob, metadata);
         parseUpload.on('state_changed', (_snapshot) => {
           let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
@@ -222,15 +201,10 @@ export class ProfilePage {
           (success) => {
             resolve(parseUpload.snapshot.downloadURL);
           });
-
       }
-
       xhr.send();
-
     });
-
   }
-
   openCamera() {
     const options: CameraOptions = {
       quality: 100,
@@ -238,24 +212,21 @@ export class ProfilePage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
-
+    let loading = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:
-      // alert(JSON.stringify(imageData));
+      loading.present();
       this.resizeImage(imageData).then((data) => {
-        // alert(JSON.stringify(data));
         this.images.push(data);
+        loading.dismiss();
         this.updateProfile();
       }, (err) => {
+        loading.dismiss();
         console.log(err);
       })
-      //  let base64Image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
-      // Handle error
+      loading.dismiss();
     });
   }
-
   resizeImage(fileUri): Promise<any> {
     return new Promise((resolve, reject) => {
       this.crop.crop(fileUri, { quality: 100 }).then((cropData) => {
@@ -269,7 +240,6 @@ export class ProfilePage {
       });
     });
   }
-
   onImagePicker(from, maxImg) {
     let options = {
       maximumImagesCount: maxImg,
@@ -277,10 +247,8 @@ export class ProfilePage {
       quality: 30,
       outputType: 0
     };
-
     this.imagePicker.getPictures(options).then((results) => {
       let loading = [];
-
       let loadingCount = 0;
       for (var i = 0; i < results.length; i++) {
         loading.push(this.loading.create({
@@ -289,35 +257,27 @@ export class ProfilePage {
           showBackdrop: false
         }));
         loading[i].present();
-
         // this.uploadImage(results[i]).then((resUrl) => {
         //   this.images.push(resUrl);
-
         //   setTimeout(() => {
         //     loading[loadingCount].dismiss();
         //     loadingCount++;
-
         //     if (loadingCount === results.length) {
         //       if (from.toString() === 'profile') {
         //         this.updateProfile();
         //       }
         //     }
         //   }, 1000);
-
         // }, (error) => {
         //   loading[loadingCount].dismiss();
         //   loadingCount++;
         //   // alert('Upload Fail. ' + JSON.stringify(error));
         // })
-
         this.resizeImage(results[i]).then((data) => {
-          // alert(JSON.stringify(data));
           this.images.push(data);
-
           setTimeout(() => {
             loading[loadingCount].dismiss();
             loadingCount++;
-
             if (loadingCount === results.length) {
               if (from.toString() === 'profile') {
                 this.updateProfile();
@@ -328,10 +288,8 @@ export class ProfilePage {
           console.log(err);
         })
       }
-
     }, (err) => { });
   }
-
   // step2() {
   //   this.firstLogin.coverimage = this.shop.coverimage ? this.shop.coverimage : 'no image';
   //   this.firstLogin.name = this.shop.name ? this.shop.name : '';

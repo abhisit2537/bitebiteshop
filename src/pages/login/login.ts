@@ -15,9 +15,13 @@ import { Auth } from '../../providers/auth-service/auth-service';
 })
 export class LoginPage {
   private credentials: any = {};
-  constructor(private auth: Auth, public navCtrl: NavController, public navParams: NavParams, public loading: LoadingController) {
+  constructor(
+    private auth: Auth,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public loading: LoadingController
+  ) {
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -25,7 +29,6 @@ export class LoginPage {
     let loading = this.loading.create();
     loading.present()
     this.auth.login(this.credentials).then((res) => {
-      // alert(JSON.stringify(res.roles.indexOf('shop')));
       if (res.roles.indexOf('shop') >= 0) {
         window.localStorage.setItem('bikebikeshop', JSON.stringify(res));
         loading.dismiss();
@@ -41,7 +44,6 @@ export class LoginPage {
         this.credentials.username = '';
         this.credentials.password = '';
       }
-
     }, (err) => {
       console.log(err);
       loading.dismiss();

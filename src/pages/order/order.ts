@@ -15,11 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrderPage {
   order: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
     this.order = "new";
-    
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
   }
@@ -28,5 +29,4 @@ export class OrderPage {
       refresher.complete();
     }, 1500);
   }
-
 }

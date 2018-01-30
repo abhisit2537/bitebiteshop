@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-// import { Firstloginstep4Page } from '../firstloginstep4/firstloginstep4';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { CateModel } from '../shop/shop.model';
 import { TranslateService } from '@ngx-translate/core';
-
 /**
  * Generated class for the Firstloginstep3Page page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-firstloginstep3',
@@ -36,18 +33,14 @@ export class Firstloginstep3Page {
       this.validateEmail = true;
     } else {
       this.validateEmail = false;
-
     }
   }
   ionViewWillEnter() {
-    console.log('ionViewWillEnter Firstloginstep3Page');
     let loading = this.loadingCtrl.create();
     loading.present();
     this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
-    
     this.shopServiceProvider.getCate().then(data => {
       this.cate = data;
-      // this.categories = [];
       this.firstLogin.categories.forEach(fcate => {
         data.forEach(dcate => {
           if (fcate._id ? fcate._id.toString() === dcate._id.toString() : fcate === dcate._id.toString()) {
@@ -63,7 +56,6 @@ export class Firstloginstep3Page {
   }
   ionViewWillLeave() {
     this.firstLogin.categories = [];
-
     if (this.categories && this.categories.length > 0) {
       let cateIds = [];
       this.categories.forEach(function (data) {
@@ -71,16 +63,12 @@ export class Firstloginstep3Page {
       })
       this.firstLogin.categories = cateIds;
     }
-    console.log('ionViewWillLeave');
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
-
   step4() {
-    
     this.firstLogin.categories = [];
     if (this.categories && this.categories.length > 0) {
       let cateIds = [];
-
       this.categories.forEach(function (data) {
         cateIds.push(data._id);
       })
@@ -89,5 +77,4 @@ export class Firstloginstep3Page {
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
     this.navCtrl.push('Firstloginstep4Page');
   }
-
 }

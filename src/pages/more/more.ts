@@ -13,10 +13,12 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
   templateUrl: 'more.html',
 })
 export class MorePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public app: App
+  ) {
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad MorePage');
   }
@@ -29,5 +31,4 @@ export class MorePage {
       refresher.complete();
     }, 1500);
   }
-
 }

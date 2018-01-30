@@ -31,7 +31,6 @@ export class CreateproductPage {
     private translate: TranslateService
   ) {
     if (this.navParams.data._id) {
-      // this.createprod = this.navParams.data;
       let loading = this.loading.create();
       loading.present();
       this.shopServiceProvider.getProduct(this.navParams.data._id).then((data) => {
@@ -39,7 +38,6 @@ export class CreateproductPage {
         data.images.forEach(img => {
           images.push(img);
         });
-        console.log(data);
         this.createprod._id = data._id;
         this.createprod.name = data.name;
         this.createprod.price = data.price;
@@ -49,13 +47,11 @@ export class CreateproductPage {
         this.createprod.promotionprice = data.promotionprice ? data.promotionprice : null;
         this.createprod.startdate = data.startdate;
         this.createprod.expiredate = data.expiredate;
-        console.log(this.createprod);
         loading.dismiss();
       }, (err) => {
         loading.dismiss();
         console.log(err);
       })
-
     } else {
       this.createprod.cateindex = this.navParams.data.cateindex;
       this.createprod.index = this.navParams.data.index;
@@ -68,7 +64,6 @@ export class CreateproductPage {
     console.log('ionViewDidLoad CreateproductPage');
   }
   checkedPromotion() {
-    // console.log(this.createprod.ispromotionprice);
     if (this.createprod.ispromotionprice === false) {
       this.createprod.promotionprice = null;
       this.createprod.startdate = null;
@@ -117,19 +112,18 @@ export class CreateproductPage {
       targetHeight: from !== 'cover' ? 150 : 150,
       targetWidth: from !== 'cover' ? 150 : 450
     }
+    let loading = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
+      loading.present();
       this.noResizeImage(imageData).then((data) => {
         this.createprod.images.push(data);
-        if (from.toString() === 'product') {
-          // this.update();
-        }
+        loading.dismiss();
       }, (err) => {
-        // alert(err);
+        loading.dismiss();
         console.log(err);
       });
-
     }, (err) => {
-      // Handle error
+      console.log(err);
     });
   }
   galleryCamera(from) {
@@ -145,25 +139,22 @@ export class CreateproductPage {
       targetWidth: from !== 'cover' ? 300 : 600,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
-
-
+    let loading = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
+      loading.present();
       this.noResizeImage(imageData).then((data) => {
         this.createprod.images.push(data);
-        // if (from.toString() === 'product') {
-        //   this.update();
-        // }
+        loading.dismiss();
       }, (err) => {
+        loading.dismiss();
         console.log(err);
       });
     }, (err) => {
-      // Handle error
+      console.log(err);
     });
   }
   noResizeImage(fileUri): Promise<any> {
-    // alert('resize');
     return new Promise((resolve, reject) => {
-      // alert(JSON.stringify(cropData));
       this.uploadImage(fileUri).then((uploadImageData) => {
         resolve(uploadImageData);
       }, (uploadImageError) => {
@@ -173,7 +164,6 @@ export class CreateproductPage {
   }
   uploadImage(imageString): Promise<any> {
     return new Promise((resolve, reject) => {
-
       const storageRef = firebase.storage().ref();
       const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
       let imageRef = storageRef.child(`images/${filename}.png`);

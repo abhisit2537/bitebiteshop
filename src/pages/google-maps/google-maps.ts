@@ -14,14 +14,12 @@ declare let google: any;
   templateUrl: 'google-maps.html',
 })
 export class GoogleMapsPage {
-
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('places', { read: ElementRef }) places: ElementRef;
   private map: GoogleMap;
   private location: LatLng;
   private address: string = '';
   fullAddress: AddressModel = new AddressModel();
-
   constructor(
     public navCtrl: NavController,
     public navParam: NavParams,
@@ -34,7 +32,6 @@ export class GoogleMapsPage {
     // private loading: LoadingProvider
   ) {
   }
-
   ionViewDidLoad() {
     this.platform.ready().then(() => {
       // this.loading.onLoading();
@@ -45,9 +42,7 @@ export class GoogleMapsPage {
       }, 1000);
     });
   }
-
   initplaces() {
-
     let input = this.places.nativeElement.querySelector('.searchbar-input');
     // let input = document.getElementById('places');
     let autocomplete = new google.maps.places.Autocomplete(input);
@@ -61,7 +56,6 @@ export class GoogleMapsPage {
     });
 
   }
-
   initialMap() {
     let element = this.mapElement.nativeElement;
     this.map = this.googleMaps.create(element, {
@@ -83,7 +77,6 @@ export class GoogleMapsPage {
         zoom: 16
       }
     });
-
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.map.getMyLocation().then((res) => {
         this.location = res.latLng;
@@ -98,7 +91,6 @@ export class GoogleMapsPage {
       });
     });
   }
-
   onMapMove() {
     this.map.on(GoogleMapsEvent.MAP_DRAG_END).subscribe((res) => {
       let location = this.map.getCameraTarget();
@@ -106,7 +98,6 @@ export class GoogleMapsPage {
       this.reverseGeocode();
     });
   }
-
   onMyLocationClick() {
     this.map.on(GoogleMapsEvent.MY_LOCATION_BUTTON_CLICK).subscribe(() => {
       this.map.one(GoogleMapsEvent.CAMERA_MOVE_END).then(() => {
@@ -116,7 +107,6 @@ export class GoogleMapsPage {
       });
     });
   }
-
   addMarker() {
     let position = {
       lat: this.location.lat,
@@ -134,17 +124,14 @@ export class GoogleMapsPage {
     }
     this.map.clear();
     this.map.addMarker(markerOption).then((marker) => {
-
       let loading = this.loadingCtrl.create({
         spinner: 'hide',
         cssClass: 'loading-hide',
         duration: 1,
       });
       loading.present();
-
     });
   }
-
   reverseGeocode() {
     this.nativeGeocoder.reverseGeocode(this.location.lat, this.location.lng)
       .then((result: NativeGeocoderReverseResult) => {
@@ -169,18 +156,15 @@ export class GoogleMapsPage {
       })
       .catch((error: any) => console.log('error ' + error));
   }
-
   doConfirm() {
     window.localStorage.setItem('shop_location_address', JSON.stringify(this.fullAddress));
     this.navCtrl.pop();
   }
-
   updateAddress() {
     let language = this.translate.currentLang;
     let title = '';
     let cancel = '';
     let ok = '';
-
     if (language === 'th') {
       title = "ที่อยู่ของฉัน"
       cancel = 'ยกเลิก'
@@ -190,7 +174,6 @@ export class GoogleMapsPage {
       cancel = 'Cancal'
       ok = 'Confirm'
     }
-
     let alert = this.alertCtrl.create({
       title: title,
       mode: 'ios',
@@ -224,5 +207,4 @@ export class GoogleMapsPage {
     });
     alert.present();
   }
-
 }
