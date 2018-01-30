@@ -154,6 +154,7 @@ export class ProfilePage {
 
   save() {
     this.auth.manageUser(this.firstLogin).then((data) => {
+      window.localStorage.setItem('user', JSON.stringify(data));
       this.navCtrl.pop();
     }, (err) => {
       console.log(err);
@@ -175,7 +176,7 @@ export class ProfilePage {
         {
           text: textGallery,
           handler: () => {
-            this.onImagePicker('profile', 3);
+            this.onImagePicker('profile', 1);
           }
         }
       ]
@@ -243,7 +244,7 @@ export class ProfilePage {
       // If it's base64:
       // alert(JSON.stringify(imageData));
       this.resizeImage(imageData).then((data) => {
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
         this.images.push(data);
         this.updateProfile();
       }, (err) => {
@@ -310,7 +311,7 @@ export class ProfilePage {
         // })
 
         this.resizeImage(results[i]).then((data) => {
-          alert(JSON.stringify(data));
+          // alert(JSON.stringify(data));
           this.images.push(data);
 
           setTimeout(() => {
