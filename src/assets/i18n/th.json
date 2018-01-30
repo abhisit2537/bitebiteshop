@@ -47,7 +47,7 @@
     "ADD_TIMES": "เพิ่มเวลา",
     "PLEASE_SELECT_AT_LEAST_ONEDAY":"กรุณาเลือกช่วงวันอย่างน้อย 1 วัน",
     "FACEBOOK_FANPAGE":"เฟสบุ๊ค แฟนเพจ",
-    "LINE_OFFICIAL":"ไลน์@",
+    "LINE_OFFICIAL":"Line Official",
     "AGREEMENT": "ข้อตกลง",
     "ACCEPT":"ยอมรับ",
     "USERNAME":"ชื่อผู้ใช้",
@@ -63,5 +63,7 @@
     "LOGOUT":"ออกจากระบบ",
     "SETTING":"ตั้งค่า",
     "SETTING_DETAIL":"การตั้งค่า",
-    "WALLET":"กระเป๋าเงิน"
+    "WALLET":"กระเป๋าเงิน",
+    "ENGLISH":"อังกฤษ",
+    "THAI":"ไทย"
 }

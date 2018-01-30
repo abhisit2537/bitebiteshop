@@ -47,7 +47,7 @@
     "ADD_TIMES": "Add Times",
     "PLEASE_SELECT_AT_LEAST_ONEDAY":"Please select at least 1 day",
     "FACEBOOK_FANPAGE":"Facebook fanpage",
-    "LINE_OFFICIAL":"Line@",
+    "LINE_OFFICIAL":"Line Official",
     "AGREEMENT": "Agreement",
     "ACCEPT":"Accept",
     "USERNAME":"Username",
@@ -63,6 +63,8 @@
     "LOGOUT":"Logout",
     "SETTING":"Setting",
     "SETTING_DETAIL":"Sertting Detail",
-    "WALLET":"Wallet"
+    "WALLET":"Wallet",
+    "ENGLISH":"English",
+    "THAI":"Thai"
 
 }
