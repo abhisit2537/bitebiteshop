@@ -59,7 +59,7 @@
             <ion-checkbox [(ngModel)]="day.checked" item-end (ionChange)="addDays()"></ion-checkbox>
           </ion-item>
           <ion-item fix-margin-label *ngIf="!isCheck">
-            <p class="warning-invalid">*กรุณาเลือกช่วงวันอย่างน้อย 1 วัน</p>
+            <p class="warning-invalid">*{{'PLEASE_SELECT_AT_LEAST_ONEDAY'| translate}}</p>
           </ion-item>
           <!-- <ion-item no-lines fix-margin-label>
             <ion-label>อังคาร</ion-label>
