@@ -7,7 +7,6 @@ import { IonicPage, NavController, Tabs } from 'ionic-angular';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-tabnav',
@@ -21,9 +20,11 @@ export class TabnavPage {
   orderRoot = 'OrderPage';
   statusRoot = 'StatusPage';
   moreRoot = 'MorePage';
-
-
-  constructor(public navCtrl: NavController) {}
+  constructor(
+    public navCtrl: NavController
+  ) {
+    
+  }
   ordertab(){
     this.tabRef.select(2);
   }

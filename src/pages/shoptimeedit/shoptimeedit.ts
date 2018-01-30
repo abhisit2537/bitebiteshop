@@ -7,7 +7,6 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-shoptimeedit',
@@ -24,9 +23,7 @@ export class ShoptimeeditPage {
     public viewCtrl: ViewController
   ) {
     this.editData = this.navParams.data;
-    console.log(this.editData);
   }
-
   ionViewWillEnter() {
     let timenow = new Date();
     let days = [{
@@ -68,7 +65,6 @@ export class ShoptimeeditPage {
         });
       }
     }
-
     let data = {
       detail: this.editData.description,
       openTime: this.editData.timestart,
@@ -83,19 +79,17 @@ export class ShoptimeeditPage {
     };
     this.addDays();
   }
-
   dismiss() {
     this.viewCtrl.dismiss();
   }
   addDays() {
-    this.isCheck = false;    
+    this.isCheck = false;
     this.addTime.days.forEach(e => {
       if (e.checked) {
         this.isCheck = true;
       }
     });
   }
-
   add(data) {
     let newDay = [];
     data.days.forEach(day => {
@@ -103,20 +97,16 @@ export class ShoptimeeditPage {
         newDay.push(day.name);
       }
     });
-  
     let resData = {
       description: data.detail,
       timestart: data.openTime,
       timeend: data.closeTime,
       days: newDay
     };
-
-
     if (data.openTime && data.closeTime) {
       this.viewCtrl.dismiss(resData);
     } else {
       alert('เกิดข้อผิดพลาด กรุณาเลือดเวลาเปิด-ปิด');
     }
   }
-
 }

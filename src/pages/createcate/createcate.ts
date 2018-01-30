@@ -86,16 +86,18 @@ export class CreatecatePage {
       targetHeight: from !== 'cover' ? 150 : 150,
       targetWidth: from !== 'cover' ? 150 : 450
     }
+    let loading = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
+      loading.present();
       this.noResizeImage(imageData).then((data) => {
         this.cate.image = data;
+        loading.dismiss();
       }, (err) => {
-        // alert(err);
+        loading.dismiss();
         console.log(err);
       });
-
     }, (err) => {
-      // Handle error
+      console.log(err);
     });
   }
   galleryCamera(from) {
@@ -112,15 +114,18 @@ export class CreatecatePage {
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
 
-
+    let loading = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
+      loading.present();
       this.noResizeImage(imageData).then((data) => {
         this.cate.image = data;
+        loading.dismiss();
       }, (err) => {
+        loading.dismiss();
         console.log(err);
       });
     }, (err) => {
-      // Handle error
+      console.log(err);
     });
   }
   noResizeImage(fileUri): Promise<any> {

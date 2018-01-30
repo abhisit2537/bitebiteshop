@@ -18,16 +18,17 @@ export class FirstloginstepModalPage {
   // addTime: any = [];
   addTime: any = {};
   isCheck: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController
+  ){
     this.firstLogin = this.navParams.data;
-    // console.log(this.firstLogin);
-
   }
-
   ionViewWillEnter() {
     let loading = this.loadingCtrl.create();
     loading.present();
-    // this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
     let timenow = new Date();
     let days = [{
       name: 'จันทร์',
@@ -68,7 +69,6 @@ export class FirstloginstepModalPage {
         });
       }
     }
-
     let data = {
       detail: this.firstLogin.description,
       openTime: this.firstLogin.timestart,
@@ -85,19 +85,16 @@ export class FirstloginstepModalPage {
     loading.dismiss();
   }
   ionViewWillLeave() {
-    console.log('ionViewWillLeave');
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
-
   addDays() {
-    this.isCheck = false;    
+    this.isCheck = false;
     this.addTime.days.forEach(e => {
       if (e.checked) {
         this.isCheck = true;
       }
     });
   }
-
   add(data) {
     let newDay = [];
     data.days.forEach(day => {
@@ -105,15 +102,12 @@ export class FirstloginstepModalPage {
         newDay.push(day.name);
       }
     });
-  
     let resData = {
       description: data.detail,
       timestart: data.openTime,
       timeend: data.closeTime,
       days: newDay
     };
-
-
     if (data.openTime && data.closeTime) {
       this.viewCtrl.dismiss(resData);
     } else {
@@ -123,5 +117,4 @@ export class FirstloginstepModalPage {
   closeModel() {
     this.viewCtrl.dismiss();
   }
-
 }

@@ -47,7 +47,6 @@ export class GreetingPage {
   ];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad GreetingPage');
   }
@@ -55,7 +54,6 @@ export class GreetingPage {
     this.slideIndex = this.slider.getActiveIndex();
     console.log('Slide changed! Current index is', this.slideIndex);
   }
-
   goToApp() {
     this.navCtrl.setRoot('AgreementPage');
     console.log('Go to App clicked');

@@ -10,7 +10,6 @@ import { TranslateService } from '@ngx-translate/core';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-firstloginstep4',
@@ -29,21 +28,14 @@ export class Firstloginstep4Page {
   ) {
 
   }
-
   ionViewWillEnter() {
-    let loadingCtrl = this.loading.create();
-    loadingCtrl.present();
     this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
-    loadingCtrl.dismiss();
   }
   ionViewWillLeave() {
-    console.log('ionViewWillLeave');
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
   }
   openModal() {
     let modalopen = this.modalCtrl.create('FirstloginstepModalPage');
-
-
     modalopen.onDidDismiss(datadismiss => {
       if (datadismiss) {
         this.firstLogin.times.push(datadismiss);
@@ -51,14 +43,6 @@ export class Firstloginstep4Page {
     });
     modalopen.present();
   }
-
-  // add() {
-  //   this.isAdd = false;
-  // }
-
-  // cancel() {
-  //   this.isAdd = false;
-  // }
   openActionsheet(item, i){
     let language = this.translate.currentLang;
     let textEdit = language === 'th' ? 'แก้ไขเวลา' : 'Edit Times';
@@ -79,7 +63,6 @@ export class Firstloginstep4Page {
         }
       ]
     });
-
     actionSheet.present();
   }
   deleteTimes(index) {
@@ -88,10 +71,7 @@ export class Firstloginstep4Page {
   editTimes(item, i) {
     item.editMode = true;
     let modalopen = this.modalCtrl.create('FirstloginstepModalPage', item);
-
     modalopen.onDidDismiss(datadismiss => {
-      // this.firstLogin
-      // alert(JSON.stringify(datadismiss));
       if (datadismiss) {
         this.firstLogin.times[i] = datadismiss;
       }
@@ -102,5 +82,4 @@ export class Firstloginstep4Page {
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
     this.navCtrl.push('Firstloginstep5Page',this.firstLogin);
   }
-
 }

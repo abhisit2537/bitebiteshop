@@ -12,7 +12,6 @@ import { TranslateService } from '@ngx-translate/core';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-firstloginstep2',
@@ -25,7 +24,6 @@ export class Firstloginstep2Page {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    // public imagePicker: ImagePicker, 
     public loading: LoadingController,
     public actionSheetCtrl: ActionSheetController,
     private camera: Camera,
@@ -37,21 +35,12 @@ export class Firstloginstep2Page {
 
 
   ionViewWillEnter() {
-    console.log('ionViewWillEnter Firstloginstep2Page');
-    let loadingCtrl = this.loading.create();
-    loadingCtrl.present();
-    // this.firstLogin = this.navParams.data;
     this.firstLogin = JSON.parse(window.localStorage.getItem('firstlogin'));
-    console.log(this.firstLogin);
-    loadingCtrl.dismiss();
   }
   ionViewWillLeave() {
-    console.log('ionViewWillLeave');
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
-    console.log(this.firstLogin);
   }
   selectCover() {
-    // this.onUpload('cover', 1);
     let language = this.translate.currentLang;
     let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
     let textGallery = language === 'th' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
@@ -71,10 +60,8 @@ export class Firstloginstep2Page {
         }
       ]
     });
-
     actionSheet.present();
   }
-
   openCamera(from) {
     this.images = [];
     const popover: CameraPopoverOptions = {
@@ -90,21 +77,18 @@ export class Firstloginstep2Page {
       popoverOptions: popover,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      // allowEdit: true,
-      // correctOrientation: true,
-      // targetHeight: from !== 'cover' ? 150 : 150,
-      // targetWidth: from !== 'cover' ? 150 : 450
     }
+    let loadingCtrl = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
-      let loadingCtrl = this.loading.create();
       loadingCtrl.present();
       this.noResizeImage(imageData).then((data) => {
         this.images.push(data);
+        loadingCtrl.dismiss();
         if (from.toString() === 'cover') {
-          loadingCtrl.dismiss();
           this.updateCover();
         }
       }, (err) => {
+        loadingCtrl.dismiss();
         console.log(err);
       });
     }, (err) => {
@@ -118,23 +102,20 @@ export class Firstloginstep2Page {
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      // allowEdit: true,
       correctOrientation: true,
-      // targetHeight: from !== 'cover' ? 150 : 150,
-      // targetWidth: from !== 'cover' ? 150 : 450,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
+    let loadingCtrl = this.loading.create();
     this.camera.getPicture(options).then((imageData) => {
-      let loadingCtrl = this.loading.create();
       loadingCtrl.present();
       this.noResizeImage(imageData).then((data) => {
-
         this.images.push(data);
+        loadingCtrl.dismiss();
         if (from.toString() === 'cover') {
-          loadingCtrl.dismiss();
           this.updateCover();
         }
       }, (err) => {
+        loadingCtrl.dismiss();
         console.log(err);
       });
     }, (err) => {
@@ -164,7 +145,6 @@ export class Firstloginstep2Page {
       xhr.responseType = 'blob';
       xhr.onload = (e) => {
         let blob = new Blob([xhr.response], { type: 'image/png' });
-
         parseUpload = imageRef.put(blob, metadata);
         parseUpload.on('state_changed', (_snapshot) => {
           let progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
@@ -184,7 +164,6 @@ export class Firstloginstep2Page {
           (success) => {
             resolve(parseUpload.snapshot.downloadURL);
           });
-
       }
       xhr.send();
     });
@@ -195,11 +174,12 @@ export class Firstloginstep2Page {
     loadingCtrl.present();
     this.imgCoverService.getMeta(this.coverImg).then((data) => {
       if (data) {
-        loadingCtrl.dismiss();
         if (this.coverImg) {
           this.firstLogin.coverimage = this.coverImg;
+          loadingCtrl.dismiss();
         } else {
           this.firstLogin.coverimage = '';
+          loadingCtrl.dismiss();
         }
       } else {
         loadingCtrl.dismiss();
@@ -209,10 +189,8 @@ export class Firstloginstep2Page {
       console.log(err);
     });
   }
-
   step3() {
     window.localStorage.setItem('firstlogin', JSON.stringify(this.firstLogin));
     this.navCtrl.push('Firstloginstep3Page');
   }
-
 }
