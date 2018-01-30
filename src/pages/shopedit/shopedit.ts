@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, LoadingController
 // import { ShoptimeeditPage } from '../shoptimeedit/shoptimeedit';
 import { ShopServiceProvider } from '../shop/shop-service';
 import { CateModel } from '../shop/shop.model';
+import { TranslateService } from '@ngx-translate/core';
 // import { TabnavPage } from '../tabnav/tabnav';
 
 /**
@@ -39,6 +40,7 @@ export class ShopeditPage {
     public shopServiceProvider: ShopServiceProvider,
     public loading: LoadingController,
     public actionSheetCtrl: ActionSheetController,
+    private translate: TranslateService
   ) {
     this.editData = this.navParams.data;
     let loadingCtrl = this.loading.create();
@@ -85,6 +87,9 @@ export class ShopeditPage {
   }
 
   openActionsheet(item, i) {
+    let language = this.translate.currentLang;
+    let textEdit = language === 'th' ? 'แก้ไขเวลา' : 'Edit Times';
+    let textDelete = language === 'en' ? 'ลบเวลา' : 'Delete Times';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
