@@ -21,6 +21,8 @@ import { UserModel } from '../../assets/model/user.model';
 import { Crop } from '@ionic-native/crop';
 import { Camera, CameraOptions, CameraPopoverOptions } from '@ionic-native/camera';
 import { ImagecoverProvider } from '../../providers/imagecover/imagecover';
+import { TranslateService } from '@ngx-translate/core';
+
 /**
  * Generated class for the ShopPage page.
  *
@@ -61,7 +63,8 @@ export class ShopPage {
     public actionSheetCtrl: ActionSheetController,
     private crop: Crop,
     private camera: Camera,
-    public imgCoverService: ImagecoverProvider
+    public imgCoverService: ImagecoverProvider,
+    private translate: TranslateService
   ) {
 
   }
@@ -429,10 +432,13 @@ export class ShopPage {
   }
   openEditCate(cate) {
     console.log(cate);
+    let language = this.translate.currentLang;
+    let textEdit = language === 'th' ? 'แก้ไขหมวดหมู่สินค้า' : 'Edit Category';
+    let textDelete = language === 'en' ? 'ลบหมวดหมู่สินค้า' : 'Delete Category';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Edit',
+          text: textEdit,
           handler: () => {
 
             let modalproduct = this.modalCtrl.create('CreatecatePage', cate);
@@ -451,7 +457,7 @@ export class ShopPage {
           }
         },
         {
-          text: 'Delete',
+          text: textDelete,
           handler: () => {
             this.deleteCateProd(cate._id);
           }
@@ -462,10 +468,13 @@ export class ShopPage {
     actionSheet.present();
   }
   openEditProduct(product, index) {
+    let language = this.translate.currentLang;
+    let textEdit = language === 'th' ? 'แก้ไขสินค้า' : 'Edit Product';
+    let textDelete = language === 'en' ? 'ลบสินค้า' : 'Delete Product';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Edit',
+          text: textEdit,
           handler: () => {
 
             let modalproduct = this.modalCtrl.create('CreateproductPage', product);
@@ -484,7 +493,7 @@ export class ShopPage {
           }
         },
         {
-          text: 'Delete',
+          text: textDelete,
           handler: () => {
             this.showConfirm(this.shop._id, product._id, index, this.index);
           }
@@ -495,18 +504,21 @@ export class ShopPage {
     actionSheet.present();
   }
   openActionSheet(from, i, name) {
+    let language = this.translate.currentLang;
+    let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
+    let textGallery = language === 'en' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
     if (!name || name === '') {
       this.prodIndex = i;
       let actionSheet = this.actionSheetCtrl.create({
         buttons: [
           {
-            text: 'Camera',
+            text: textCamera,
             handler: () => {
               this.openCamera(from);
             }
           },
           {
-            text: 'Photo Gallery',
+            text: textGallery,
             handler: () => {
               if (from) {
                 this.galleryCamera(from);
