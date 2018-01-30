@@ -163,7 +163,7 @@ export class ProfilePage {
   selectProfile() {
     let language = this.translate.currentLang;
     let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
-    let textGallery = language === 'en' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
+    let textGallery = language === 'th' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
@@ -241,7 +241,7 @@ export class ProfilePage {
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
-      alert(JSON.stringify(imageData));
+      // alert(JSON.stringify(imageData));
       this.resizeImage(imageData).then((data) => {
         alert(JSON.stringify(data));
         this.images.push(data);
