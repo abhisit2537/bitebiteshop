@@ -53,5 +53,6 @@
     "USERNAME":"Username",
     "PASSWORD":"Password",
     "LOGIN":"Login",
-    "EDIT_SHOP":"Edit shop"
+    "EDIT_SHOP":"Edit shop",
+    "EMAIL":"E-mail"
 }
