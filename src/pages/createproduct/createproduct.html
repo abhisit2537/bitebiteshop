@@ -12,8 +12,8 @@
         <ion-icon name="ios-close-circle"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title *ngIf="this.createprod._id">{{'EDIT_PRODUCT' | translate}}</ion-title>
-    <ion-title *ngIf="!this.createprod._id">{{'CREATE_PRODUCT' | translate}}</ion-title>
+    <ion-title *ngIf="createprod._id">{{'EDIT_PRODUCT' | translate}}</ion-title>
+    <ion-title *ngIf="!createprod._id">{{'CREATE_PRODUCT' | translate}}</ion-title>
     
   </ion-navbar>
 
@@ -77,7 +77,8 @@
       <button ion-button block color="danger" (click)="save()" [disabled]="!createprod.promotionprice || !createprod.startdate || !createprod.expiredate">{{this.createprod._id ? 'Edit':'Save'}}</button>
     </ion-col>
     <ion-col col-12 class="btncent" *ngIf="!createprod.ispromotionprice">
-      <button ion-button block color="danger" (click)="save()">{{this.createprod._id ? 'Edit':'Save'}}</button>
+      <button ion-button block color="danger" (click)="save()" *ngIf="createprod._id">{{'EDIT'| translate}}</button>
+      <button ion-button block color="danger" (click)="save()" *ngIf="!createprod._id">{{'SAVE'| translate}}</button>
     </ion-col>
   </ion-row>
 </ion-footer>

@@ -64,7 +64,7 @@ export class Firstloginstep1Page {
   selectProfile() {
     let language = this.translate.currentLang;
     let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
-    let textGallery = language === 'en' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
+    let textGallery = language === 'th' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {

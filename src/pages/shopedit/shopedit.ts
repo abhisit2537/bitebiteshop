@@ -89,17 +89,17 @@ export class ShopeditPage {
   openActionsheet(item, i) {
     let language = this.translate.currentLang;
     let textEdit = language === 'th' ? 'แก้ไขเวลา' : 'Edit Times';
-    let textDelete = language === 'en' ? 'ลบเวลา' : 'Delete Times';
+    let textDelete = language === 'th' ? 'ลบเวลา' : 'Delete Times';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Edit',
+          text: textEdit,
           handler: () => {
             this.editTimes(item, i);
           }
         },
         {
-          text: 'Delete',
+          text: textDelete,
           handler: () => {
             this.deleteTimes(i);
           }

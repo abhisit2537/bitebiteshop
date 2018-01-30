@@ -434,7 +434,7 @@ export class ShopPage {
     console.log(cate);
     let language = this.translate.currentLang;
     let textEdit = language === 'th' ? 'แก้ไขหมวดหมู่สินค้า' : 'Edit Category';
-    let textDelete = language === 'en' ? 'ลบหมวดหมู่สินค้า' : 'Delete Category';
+    let textDelete = language === 'th' ? 'ลบหมวดหมู่สินค้า' : 'Delete Category';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
@@ -470,7 +470,7 @@ export class ShopPage {
   openEditProduct(product, index) {
     let language = this.translate.currentLang;
     let textEdit = language === 'th' ? 'แก้ไขสินค้า' : 'Edit Product';
-    let textDelete = language === 'en' ? 'ลบสินค้า' : 'Delete Product';
+    let textDelete = language === 'th' ? 'ลบสินค้า' : 'Delete Product';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
@@ -506,7 +506,7 @@ export class ShopPage {
   openActionSheet(from, i, name) {
     let language = this.translate.currentLang;
     let textCamera = language === 'th' ? 'กล้อง' : 'Camera';
-    let textGallery = language === 'en' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
+    let textGallery = language === 'th' ? 'อัลบั้มรูปภาพ' : 'Photo Gallery';
     if (!name || name === '') {
       this.prodIndex = i;
       let actionSheet = this.actionSheetCtrl.create({
