@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController, ActionSheetController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 // import { Firstloginstep5Page } from '../firstloginstep5/firstloginstep5';
 // import { FirstloginstepModalPage } from '../firstloginstep-modal/firstloginstep-modal';
 
@@ -24,6 +25,7 @@ export class Firstloginstep4Page {
     public modalCtrl: ModalController,
     public loading: LoadingController,
     public actionSheetCtrl: ActionSheetController,
+    private translate: TranslateService
   ) {
 
   }
@@ -58,16 +60,19 @@ export class Firstloginstep4Page {
   //   this.isAdd = false;
   // }
   openActionsheet(item, i){
+    let language = this.translate.currentLang;
+    let textEdit = language === 'th' ? 'แก้ไขเวลา' : 'Edit Times';
+    let textDelete = language === 'en' ? 'ลบเวลา' : 'Delete Times';
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Edit',
+          text: textEdit,
           handler: () => {
             this.editTimes(item, i);
           }
         },
         {
-          text: 'Delete',
+          text: textDelete,
           handler: () => {
             this.deleteTimes(i);
           }

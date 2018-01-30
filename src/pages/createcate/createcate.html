@@ -12,8 +12,8 @@
         <ion-icon name="ios-close-circle"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title *ngIf="this.cate._id">{{'EDIT_CATEGORY' | translate}}</ion-title>
-    <ion-title *ngIf="!this.cate._id">{{'CREATE_CATEGORY' | translate}}</ion-title>
+    <ion-title *ngIf="cate._id">{{'EDIT_CATEGORY' | translate}}</ion-title>
+    <ion-title *ngIf="!cate._id">{{'CREATE_CATEGORY' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -55,8 +55,8 @@
 <ion-footer no-border>
   <ion-row>
     <ion-col text-center>
-      <button *ngIf="this.cate._id" (click)="save()">{{'SAVE' | translate}}</button>
-      <button *ngIf="this.cate._id" (click)="save()">{{'EDIT' | translate}}</button>
+      <button ion-button block color="danger" *ngIf="!cate._id" (click)="save()">{{'SAVE' | translate}}</button>
+      <button ion-button block color="danger" *ngIf="cate._id" (click)="save()">{{'EDIT' | translate}}</button>
       <!-- <button ion-button block color="danger" (click)="save()">{{cate._id ? 'Edit' : 'Save'}}</button>
       <button ion-button block color="danger" (click)="save()">{{cate._id ? 'Edit' : 'Save'}}</button> -->
     </ion-col>

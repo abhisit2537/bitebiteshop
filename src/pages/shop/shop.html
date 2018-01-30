@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
-    <ion-buttons left>
+    <ion-buttons left *ngIf="user && user.profileImageURL">
       <button ion-button icon-only (click)="myProfile()">
         <ion-avatar item-start>
           <preload-image class="preload-profile-image" [ratio]="{w:1, h:1}" [src]="user.profileImageURL" [isIcon]="true"></preload-image>
