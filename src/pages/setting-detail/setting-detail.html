@@ -15,7 +15,7 @@
 
 <ion-content>
     <ion-item>
-      <ion-label>{{ 'LANGUAGE' | translate }}</ion-label>
+      <ion-label color="topic">{{ 'LANGUAGE' | translate }}</ion-label>
       <ion-select [(ngModel)]="language" (ionChange)="selectLanguage()" interface="action-sheet">
         <ion-option *ngFor="let item of languages" [value]="item.json">{{ item.language | translate }}</ion-option>
       </ion-select>
