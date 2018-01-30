@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="maintheme">
-    <ion-title>Agreement</ion-title>
+    <ion-title>{{'AGREEMENT'| translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -102,6 +102,6 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <button [disabled]="isShowAgreementBtn" ion-button full (click)="agreement()" color="danger">Accept</button>
+    <button [disabled]="isShowAgreementBtn" ion-button full (click)="agreement()" color="danger">{{'ACCEPT'| translate}}</button>
   </ion-toolbar>
 </ion-footer>

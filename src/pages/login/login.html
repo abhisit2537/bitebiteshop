@@ -20,17 +20,17 @@
   <ion-item class="loginfont">
     <ion-label mode="ios" color="light" floating>
       <!-- <ion-icon name="ios-person-outline" item-start></ion-icon> -->
-      Username
+      {{'USERNAME'| translate}} 
     </ion-label>
     <ion-input type="text" [(ngModel)]="credentials.username"></ion-input>
   </ion-item>
   <ion-item class="loginfont">
     <ion-label mode="ios" color="light" floating>
       <!-- <ion-icon name="md-log-in" item-start></ion-icon> -->
-      Password
+      {{'PASSWORD'| translate}} 
     </ion-label>
     <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
   </ion-item>
-  <button class="button-login" ion-button block color="maintheme" (click)="login()" [disabled]="!credentials.username || !credentials.password">เข้าสู่ระบบ</button>
+  <button class="button-login" ion-button block color="maintheme" (click)="login()" [disabled]="!credentials.username || !credentials.password"> {{'LOGIN'| translate}} </button>
   <!-- <button ion-button full margin-top (click)="register()">สมัครสมาชิก</button> -->
 </ion-content>

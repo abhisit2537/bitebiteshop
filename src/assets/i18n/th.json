@@ -44,5 +44,14 @@
     "PLEASE_SELECT_CLOSE_TIMES": "กรุณาเลือกเวลาเปิด",
     "ADD": "เพิ่ม",
     "EDIT_TIMES": "แก้ไขเวลา",
-    "ADD_TIMES": "เพิ่มเวลา"
+    "ADD_TIMES": "เพิ่มเวลา",
+    "PLEASE_SELECT_AT_LEAST_ONEDAY":"กรุณาเลือกช่วงวันอย่างน้อย 1 วัน",
+    "FACEBOOK_FANPAGE":"เฟสบุ๊ค แฟนเพจ",
+    "LINE_OFFICIAL":"ไลน์@",
+    "AGREEMENT": "ข้อตกลง",
+    "ACCEPT":"ยอมรับ",
+    "USERNAME":"ชื่อผู้ใช้",
+    "PASSWORD":"รหัสผ่าน",
+    "LOGIN":"เข้าสู่ระบบ",
+    "EDIT_SHOP":"แก้ไขร้านค้า"
 }
