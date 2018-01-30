@@ -45,5 +45,13 @@
     "ADD": "Add",
     "EDIT_TIMES": "Edit Times",
     "ADD_TIMES": "Add Times",
-    "PLEASE_SELECT_AT_LEAST_ONEDAY":"Please select at least 1 day"
+    "PLEASE_SELECT_AT_LEAST_ONEDAY":"Please select at least 1 day",
+    "FACEBOOK_FANPAGE":"Facebook fanpage",
+    "LINE_OFFICIAL":"Line@",
+    "AGREEMENT": "Agreement",
+    "ACCEPT":"Accept",
+    "USERNAME":"Username",
+    "PASSWORD":"Password",
+    "LOGIN":"Login",
+    "EDIT_SHOP":"Edit shop"
 }
