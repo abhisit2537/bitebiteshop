@@ -33,6 +33,7 @@ export class CreatecatePage {
     } else {
       this.cate.image = this.navParams.data.img;
     }
+    // console.log(this.navParams.data);
   }
 
   ionViewDidLoad() {
